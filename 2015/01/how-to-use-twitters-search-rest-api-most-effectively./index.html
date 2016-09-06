@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>How to use Twitter’s Search REST API most effectively.</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="generator" content="Hugo 0.16" />
+		<link href="" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
+		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" rel="stylesheet"/>
+    
+		
+		
+	</head>
+	<body>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> How to use Twitter’s Search REST API most effectively.</div>
+		<div id="wrapper">
+
+			
+			<div class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="/"><p class="navbar-brand">Bhaskar Karambelkar&#39;s Blog</p></a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						
+						<li><a href="/about/">About Me </a></li>
+						
+						<li><a href="/">Home </a></li>
+						
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<a href="/"><img class="sidebar-logo" src="/images/profile.jpg" /></a>
+					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3></h3></li>
+					<hr />
+					
+						<li><a href="/about/">About Me </a></li>
+					
+						<li><a href="/">Home </a></li>
+					
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+					
+                    <hr/>
+					<div id="social-wrapper">
+						<li> <a target="_blank" data-toggle="tooltip" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk"><i class="fa fa-linkedin"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Twitter" href="https://www.twitter.com/bhaskar_vk"><i class="fa fa-twitter-square"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Github" href="https://github.com/bhaskarvk"><i class="fa fa-github-square"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="StackOverflow" href="https://stackoverflow.com/users/507484"><i class="fa fa-stack-overflow"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="Keybase" href="https://www.keybase.io/bhaskarvk"><i class="fa fa-key"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="SlideShare" href="//www.slideshare.net/bhaskar_vk"><i class="fa fa-slideshare"></i></a> </li>
+						<li> <a target="_blank" data-toggle="tooltip" title="RSS Feed" href="/index.xml"><i class="fa fa-rss"></i></a></li>
+                    </div>
+                    <hr/>
+				</ul>
+			</div>
+
+			<div class="container">
+
+<div id="article">
+	<div class="article-title">How to use Twitter’s Search REST API most effectively.</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2015-01-05</small></p> <hr/>
+  <div class="post">
+		
+
+<p>This blog post will discuss various techniques to use Twitter&rsquo;s search REST API most effectively, given the constraints and limits of the said API. I&rsquo;ll be using python for demonstration, but any native API which supports the Twitter REST API will do.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Twitter provides the <a href="https://dev.twitter.com/rest/public/search">REST search api</a> for searching tweets from Twitter&rsquo;s search index. This is different than using the <a href="https://dev.twitter.com/streaming/reference/post/statuses/filter">streaming filter API</a>, in that the later is real-time and starts giving you results from the point of query, while the former is retrospective and will give you results from past, up to as far back as the search index goes (usually last 7 days).
+While the streaming API seems like the thing to use when you want to track a certain query in real time, there are situations where you may want to use the regular REST search API. You may also want to combine the two approaches, i.e. start 2 searches, one using the streaming filter API to go forward in time and one using the REST search API to go backwards in time, in order to get some on-going and past context for your search term.</p>
+
+<p>Either way if the REST Search API is something you want to use, then there are a few limitations you need to be aware of and some techniques you can use to maximize the resources the API gives you. This post will explore approaches to use the REST search API optimally in order to find as much information as fast as possible and yet remain within the constraints of the API. To start with the <a href="https://dev.twitter.com/rest/public/rate-limiting">API Rate Limit</a> page details the limits of various Twitter APIs, and as per the page the limit for the Search API is <strong>180 Requests per 15 mins window</strong> for per-user authentication.
+Now here&rsquo;s the kicker, most code samples on the internet for the search API use the <a href="https://dev.twitter.com/oauth/overview/application-owner-access-tokens">Access Token Auth</a> method, which is limited to the aforementioned 180 Requests/15 mins limit, and per request you can ask for maximum 100 tweets, giving you a grand total limit of <strong>18,000 tweets/15 mins</strong>, If you download 18K tweets before 15 mins, you won&rsquo;t be able to get any more results until your 15 min. window expires and you search again. Also you need to be aware of the following limitations of the search API.</p>
+
+<blockquote>
+<p>Please note that Twitter’s search service and, by extension, the Search API is not meant to be an exhaustive source of Tweets. Not all Tweets will be indexed or made available via the search interface.</p>
+<footer>
+<cite><a href="https://dev.twitter.com/rest/reference/get/search/tweets">Reference for GET /search/tweets API Endpoint</a></cite>
+</footer>
+</blockquote>
+
+<p>and
+<blockquote>
+<p>Before getting involved, it’s important to know that the Search API is focused on relevance and not completeness. This means that some Tweets and users may be missing from search results. If you want to match for completeness you should consider using a Streaming API instead.</p>
+<footer>
+<cite><a href="https://dev.twitter.com/rest/public/search">The Search API</a></cite>
+</footer>
+</blockquote></p>
+
+<p>What this means is, using the search API you are not going to get all the tweets that match your search criteria, even if they are present in your desired timeframe. This is an important point to keep in mind when drawing conclusions about the size of the dataset obtained from using the search REST API.</p>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>So given this background information, can we do something about the following points ?</p>
+
+<ul>
+<li>Could we query at a rate faster than 18K tweets/15 mins ?</li>
+<li>Could we maintain a search context across our API rate limit window, so as to avoid getting duplicate results when searching repeatedly over a long period of time ?</li>
+<li>Could we do something about the fact that not all tweets matching the search criteria will be returned by the API ?</li>
+</ul>
+
+<p>And the answer to all these 3 questions is YES. There wouldn&rsquo;t be a point to this blog post if the answers were no, would there ?</p>
+
+<h2 id="the-solution">The Solution</h2>
+
+<p>I&rsquo;ll be using python and the excellent <a href="http://tweepy.readthedocs.org/en/v3.0.0/">Tweepy</a> API for this purpose, but any API in any programming language that supports Twitter&rsquo;s REST APIs will do.</p>
+
+<p><strong>T</strong>o start with our first question about being able to search at a rate greater than 18K tweets/15 mins. The solution is to use <a href="https://dev.twitter.com/oauth/application-only">Application only Auth</a> instead of the Access Token Auth. Application only auth has higher limits, precisely up to 450 request/sec and again with a limitation of requesting maximum 100 tweets per request, this gives a rate of <strong>45,000 tweets/15-min</strong>, which is <strong>2.5 times</strong> more than the Access Token Limit.</p>
+
+<p>The code sample below shows how to use App Only Auth using the Tweepy API.</p>
+
+<pre><code class="language-python">import tweepy
+
+# Replace the API_KEY and API_SECRET with your application's key and secret.
+auth = tweepy.AppAuthHandler(API_KEY, API_SECRET)
+ 
+api = tweepy.API(auth, wait_on_rate_limit=True,
+				   wait_on_rate_limit_notify=True)
+ 
+if (not api):
+    print (&quot;Can't Authenticate&quot;)
+    sys.exit(-1)
+ 
+# Continue with rest of code
+</code></pre>
+
+<p>The secret is the <code>AppAuthHandler</code> instead of the more frequent <code>OAuthHandler</code> which you find being used in lots of code samples. This sets up App-only Auth and gives you higher limits.
+Also as an added bonus notice the <code>wait_on_rate_limit</code> &amp; <code>wait_on_rate_limit_notify</code> flags set to true. What this does is make the Tweepy API call auto wait (sleep) when it hits the rate limit and continue upon expiry of the window. This avoids you to have to program this part manually, which as you&rsquo;ll shortly see makes your program much more simple and elegant.</p>
+
+<p><strong>N</strong>ext we tackle the second question about maintaining a search context when querying repeatedly over a long time frame. REST APIs by their very nature are stateless, i.e. there is no implicit context maintained by the server in between successive calls to the same API which can tell it what results have been sent to the client so far. So what we need is a way for the client to tell the API server where it is in a search result context, so that the server can then send the next set of results (This is called pagination). The search REST API allows this by accepting two input parameters as part of the API viz. <code>max_id</code> &amp; <code>since_id</code> which serve as the upper and lower bounds of the unique IDs that Twitter assigns each tweet. By manipulating these two inputs during successive calls to the search API you can paginate your results.
+Below is a code sample that does just that.</p>
+
+<pre><code class="language-python">import sys
+import jsonpickle
+import os
+
+searchQuery = '#someHashtag'  # this is what we're searching for
+maxTweets = 10000000 # Some arbitrary large number
+tweetsPerQry = 100  # this is the max the API permits
+fName = 'tweets.txt' # We'll store the tweets in a text file.
+
+
+# If results from a specific ID onwards are reqd, set since_id to that ID.
+# else default to no lower limit, go as far back as API allows
+sinceId = None
+
+# If results only below a specific ID are, set max_id to that ID.
+# else default to no upper limit, start from the most recent tweet matching the search query.
+max_id = -1L
+
+tweetCount = 0
+print(&quot;Downloading max {0} tweets&quot;.format(maxTweets))
+with open(fName, 'w') as f:
+    while tweetCount &lt; maxTweets:
+        try:
+            if (max_id &lt;= 0):
+                if (not sinceId):
+                    new_tweets = api.search(q=searchQuery, count=tweetsPerQry)
+                else:
+                    new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
+                                            since_id=sinceId)
+            else:
+                if (not sinceId):
+                    new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
+                                            max_id=str(max_id - 1))
+                else:
+                    new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
+                                            max_id=str(max_id - 1),
+                                            since_id=sinceId)
+            if not new_tweets:
+                print(&quot;No more tweets found&quot;)
+                break
+            for tweet in new_tweets:
+                f.write(jsonpickle.encode(tweet._json, unpicklable=False) +
+                        '\n')
+            tweetCount += len(new_tweets)
+            print(&quot;Downloaded {0} tweets&quot;.format(tweetCount))
+            max_id = new_tweets[-1].id
+        except tweepy.TweepError as e:
+            # Just exit if any error
+            print(&quot;some error : &quot; + str(e))
+            break
+
+print (&quot;Downloaded {0} tweets, Saved to {1}&quot;.format(tweetCount, fName))
+
+</code></pre>
+
+<p>The above code will write all the downloaded tweets in a text file. Each line representing a tweet encoded in JSON format. The tweets in the file are in reversed order of the creation timestamp i.e. going from most recent to most farthest. There&rsquo;s probably some room for beautifying the above code, but it works and can download literally millions of tweets at the optimal rate of 45K tweets/15-mins. Just run the code in a background process and it will go back as far as the search API allows until it has exhausted all the results. What&rsquo;s more using the initial values for <code>max_id</code> and/or <code>since_id</code> you can fetch results to and from arbitrary IDs. This is really helpful if you want to the program repeatedly to fetch newer results since last run. Just look up the max ID (the ID of the first line) from the previous run and set that to <code>since_id</code> for the next run. If you&rsquo;ve to stop your program before exhausting all the possible results and rerun it again to fetch the remaining results, you can look up the min ID (the ID of the last line) and pass that as <code>max_id</code> for the next run to start from that ID and below.</p>
+
+<p><strong>N</strong>ow we look at our third question, given the fact that the search results will not contain all possible matching tweets, can we do something about it ? The answer is yes, but it gets a bit tricky. The idea is that; Of the tweets you have fetched there will be quite a lot of retweets, and chances are that some of the original tweets of these retweets are not in the results downloaded. But each retweet also encodes the entire original tweet object in its JSON representation. So if we pick out these original tweets from retweets then we can augment our results by including the missing original tweets in the result set. We can easily do this as each tweet is assigned a unique ID, thus allowing us to use set functions to pick out only the missing tweets.</p>
+
+<p>This approach is not as complicated as it sounds, and can be easily accomplished in any programming language. I have a working code written in R (not shown here). I leave it as an exercise to the reader to implement it in python or whichever language of his/her choice. From my tests for various search queries , I get anywhere from 2% to 10% more tweets this way, so it&rsquo;s a worthwhile exercise, and it completes your dataset in that you have all the original tweets of every retweet found in your dataset.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I highlighted some of the limitations of Twitter&rsquo;s search REST API; how you can best use it to the fullest allowed rate limit. I also explained approaches to paginate results as well as extending the result set by another 2% to 10% by extracting missing original tweets from the retweets. Using these approaches you should be able to download a whole lot more tweets at a much faster rate.</p>
+
+<p><em>Technical Notes</em>:</p>
+
+<ul>
+<li>Tweepy also has a <code>api.Cursor</code> <a href="http://docs.tweepy.org/en/latest/cursor_tutorial.html">method </a> which could possibly replace the whole while loop in the second code sample, but it seems the Cursor API suffers from memory leak and will eventually <a href="https://stackoverflow.com/questions/22469713/managing-tweepy-api-search/23996991#comment37338657_22473254">crash your program</a>. Hence my approach is based on modification of <a href="http://stackoverflow.com/a/22473254">this</a> answer on stackoverflow.</li>
+<li>For extracting the missing original tweets from retweets, think of the following pseudo-code.
+
+<ul>
+<li>Store all downloaded tweets in a set (say set A)</li>
+<li>From this set filter out the retweets &amp;
+extract the original tweet from these retweets (say set B)</li>
+<li>Insert in set A all unique tweets from set B that are not already in set A</li>
+</ul></li>
+</ul>
+
+  </div>
+</div>
+
+<a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<ul class="pager">
+   &nbsp;<li class="previous"><a href="/2015/02/visualizing-india-v/s-pakistan-one-day-international-results/"> Visualizing India v/s Pakistan One Day International Results</a></li>
+   &nbsp;<li class="next"><a href="/2014/12/slides-from-my-talk-at-elasticsearch-dc-meetup-dec-11-14./"> Slides from my talk at Elasticsearch DC Meetup Dec 11 &#39;14.</a></li>
+</ul>
+
+				<footer>
+                    <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
+				</footer>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/hc.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/r.min.js"></script>
+        <script>
+          hljs.initHighlightingOnLoad();
+        </script>
+		
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+			var u="//apps.karambelkar.info/pk/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 1]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+		
+	</body>
+</html>
+

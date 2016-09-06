@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/java/</link>
+    <description>Recent content in Java on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Mon, 26 May 2008 20:30:00 +0000</lastBuildDate>
+    <atom:link href="/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Wicket&#39;s Date &amp; Time Components and Client-Server Timezones</title>
+      <link>/2008/05/wickets-date--time-components-and-client-server-timezones/</link>
+      <pubDate>Mon, 26 May 2008 20:30:00 +0000</pubDate>
+      
+      <guid>/2008/05/wickets-date--time-components-and-client-server-timezones/</guid>
+      <description>
+
+&lt;h2 id=&#34;the-problem&#34;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;In a typical web application, it is often necessary to work with multiple Timezones on the Client side. On the server side you may wish to store the data in one single &amp;ldquo;Timezone&amp;rdquo; preferably &amp;ldquo;GMT&amp;rdquo;, but it hardly makes sense to display and accept dates in GMT, as this places the onus on the user to translate time in his local timezone, to GMT before entering the time information, and vice-verse for interpreting any dates shown in the Web application.&lt;/p&gt;
+
+&lt;p&gt;What is required is for the web application to show and display date and times in the User&amp;rsquo;s timezone, and do all the necessary conversions while transmitting the date/time information between the User and the Back end. &lt;a href=&#34;http://wicket.apache.org/&#34; title=&#34;wicket framework&#34;&gt;wicket framework&lt;/a&gt; makes this extremely simple to implement.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-solution&#34;&gt;The Solution&lt;/h2&gt;
+
+&lt;p&gt;Wicket provides built in support to detect the Client&amp;rsquo;s Timezone and also provides necessary IO components as well as display components that transparently convert date/time data between the Server&amp;rsquo;s Timezone and the Client&amp;rsquo;s Timezone. What&amp;rsquo;s more you can also provide the Client an option to explicitly specify a Timezone and the said wicket components will use this user supplied Timezone instead of the User&amp;rsquo;s default Timezone.&lt;/p&gt;
+
+&lt;p&gt;Here I briefly describe how you can achieve seamless conversion of date/time wicket components between server and client Timezones.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-application-class&#34;&gt;The Application class&lt;/h3&gt;
+
+&lt;p&gt;We start with the Application class. In order for wicket to determine the Client&amp;rsquo;s Timezone, it needs to do a small redirect to an internal page that gathers information about the Client&amp;rsquo;s browser, that amongst other things includes the Client&amp;rsquo;s Timezone. &lt;strong&gt;Note&lt;/strong&gt; For this to work , the browser must be Javascript enabled, but even if the user&amp;rsquo;s browser has disabled Javascript you can easily fallback to the Server&amp;rsquo;s Timezone in such a case.
+For the internal page to gather browser information, we need to add some code in the &lt;code&gt;Application.init()&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import org.apache.wicket.Application;
+
+public class MyApplication extends Application {
+   @Override
+   public void init() {
+        getRequestCycleSettings().setGaterExtendedBroserInfo(true);
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The highlighted code is where the magic happens. Well not exactly. All the &amp;ldquo;setGatherExtendedBrowserInfo(true)&amp;rdquo; call does, is instructs Wicket to temporarily redirect an incoming request to an internal Wicket page, that will gather the extended browser info.
+Of course this will not happen for any wicket Page, but has to be specifically coded in the Page class.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-page-class&#34;&gt;The Page class&lt;/h3&gt;
+
+&lt;p&gt;Even after setting the proper setting in the Application class, our work is not done. We need to tell wicket when to collect the browser&amp;rsquo;s information.&lt;/p&gt;
+
+&lt;p&gt;Typically to acchive a consistent look for your application, you would use &lt;a href=&#34;http://cwiki.apache.org/WICKET/markup-inheritance.html&#34; title=&#34;markup inheritance&#34;&gt;markup inheritance&lt;/a&gt;, by having all your wicket Pages inherit from a BasePage.
+So considering this, the code we need is best placed in the BasePage of your application. This way the redirect for gathering extended browser info. happens regardless of the URL used to enter the application. It can be via the Home Page or a Bookmarked page, as
+long as all your wicket pages extend from your &amp;ldquo;BasePage&amp;rdquo; , you can be sure that wicket will discover
+the client&amp;rsquo;s Timezone (provided javascript is enabled).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class BasePage extends WebPage {
+
+   // we will use this to show the client what timezone are we using for this session.
+   private Timezone timezone ;
+
+   public BasePage() {
+
+       //trigger the redirect to an intermediate page which will obtain the timezone info for us.
+       getSession.getClientInfo();
+
+       add(new Label(&amp;quot;timezone&amp;quot;,new PropertyModel(BasePage.this,&amp;quot;timezone.displayName&amp;quot;));
+
+       // add date/time components from wicket-datetime project.
+   }
+
+   public Timezone getTimezone() {
+       if(timezone == null) {
+           timezone =
+               ((WebClientInfo)getSession().getClientInfo()).getProperties().getTimezone();
+       }
+       // fallback to server&#39;s timezone if we can&#39;t determine the client&#39;s timezone.
+       if(timezone == null) {
+           timezone = Timezone.getDefault();
+       }
+       return timezone;
+   }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the corresponding BasePage.html file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!-- somewhere in a convenient location --&amp;gt;
+&amp;lt;span&amp;gt;America/NewYork&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the constructor of &amp;lsquo;BasePage&amp;rsquo; class, we trigger the redirect to the intermediate page, for obtaining the client browser&amp;rsquo;s properties, using the &amp;lsquo;getSession().getClinetInfo()&amp;rsquo; call.
+It is very important to have this call, otherwise wicket will not determine the client browser&amp;rsquo;s properties, one of which is the client m/c&amp;rsquo;s timezone.
+Adding the timezone information in a wicket label is not strictly necessary, but it serves a purpose, without this the user will be unsure whether the date/time shown is in his local timezone or the server timezone. Of course as an alternative you can explictly display the timezone in each date/time textfiled/label.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-date-time-components&#34;&gt;The Date/Time Components&lt;/h3&gt;
+
+&lt;p&gt;Now for some wicket magic, after the client&amp;rsquo;s Timezone has been determined, we can now use any input/label components from the wicket-datetime project, and safely rely on them to do the automatic Timezone conversions between server and client.
+e.g.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;org.apache.wicket.datetime.markup.html.form.DateTextField&lt;/li&gt;
+&lt;li&gt;org.apache.wicket.datetime.markup.html.basic.DateLabel&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The DateTextField is an INPUT component which will translate the user inputted date/time values, from the client timezone to the server&amp;rsquo;s timezone.
+The DateLabel is a display LABEL that will display a date/time value from the server, after converting it into the client&amp;rsquo;s timezone.&lt;/p&gt;
+
+&lt;p&gt;Thus using wicket you can greatly simplify working with client timezones, by coding only a few lines in about 2 Java files.&lt;/p&gt;
+
+&lt;h2 id=&#34;other-thoughts&#34;&gt;Other thoughts&lt;/h2&gt;
+
+&lt;p&gt;One thing to stress, is that wicket&amp;rsquo;s ability to correctly determine the clinet&amp;rsquo;s timezone depends on 2 things, one is the requirement that &amp;lsquo;javascript&amp;rsquo; be turned on, in the client browser and secondly on the timezone offset provided by the javascript API. So it may not always work in every situation. But from my experience it works correctly most of the time.&lt;/p&gt;
+
+&lt;p&gt;In my next post I&amp;rsquo;ll examine how to convert the &amp;lsquo;timezone&amp;rsquo; label in our example, in to a drop down select box, that will give the user an option to select the timezone he wants to see the date/time contents in.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Some useful Java System Properties</title>
+      <link>/2008/05/some-useful-java-system-properties/</link>
+      <pubDate>Thu, 22 May 2008 17:55:00 +0000</pubDate>
+      
+      <guid>/2008/05/some-useful-java-system-properties/</guid>
+      <description>
+
+&lt;p&gt;Here are some Java system properties that can be used while starting a new JVM.
+These options either provide some kind of performance benefits under certain conditions, or are used
+to override default values, when using default values is not suitable or not a good option.&lt;/p&gt;
+
+&lt;h2 id=&#34;general-properties&#34;&gt;General Properties&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;-Duser.timezone=XYZ&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Used to set the Default Timezone of the JVM. This can be used, when you are not sure of the platform&amp;rsquo;s default Timezone, and want to be sure that the JVM always uses a certain timezone.
+e.g. &lt;code&gt;-Duser.timezone=GMT&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;-Djava.awt.headless=true&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Used to run AWT in a headless (i.e. no X server) environment. Even if you are running an application server, if you need to use the AWT API to generate dynamic images, then you either need access to a Graphics Environment or you need to set this system property. This is relevant only in a *NIX environment.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;-Djava.net.preferIPv4Stack=true&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This property can be set to speed up certain parts of the Networking API, if you don&amp;rsquo;t intend to deploy the JVM in an IPV6 environment. Unless you are deploying your JVM in a IPV6 network it is a good idea to set this system property.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;-Dsun.lang.ClassLoader.allowArraySyntax=true&lt;/code&gt;&lt;/strong&gt;
+This option is relevant only in Java 1.6 (Java 6) and above. If you get strange Arrays related errors while running code compiled with JDK 5 and below, you can try and set this property to solve this problem.&lt;/p&gt;
+
+&lt;h2 id=&#34;security-related-options&#34;&gt;Security related Options&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;javax.net.ssl.keyStore=location&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Used to override the default keystore location, from $HOME/.keystore&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;javax.net.ssl.trustStore=location&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Used to override the default root CA file from $JAVA_HOME/jre/lib/security/cacerts&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;javax.net.ssl.keyStoreType&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Used to change the default keystore type from JKS. You can use a different format to store your keys, provided you have a proper security provider installed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;javax.net.ssl.keyStorePassword&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Used to provide a password for the keystore if different from the default &amp;ldquo;changeit&amp;rdquo;. And by the way it is a good idea to take that advise and change the default password.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;javax.net.ssl.trustStoreType&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Used to change the default truststore type from JKS. You can use a different format to store your keys, provided you have a proper security provider installed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;javax.net.ssl.trustStorePassword&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Used to provide a password for the truststore if different from the default &amp;ldquo;changeit&amp;rdquo;. And by the way it is a good idea to take that advise and change the default password.&lt;/p&gt;
+
+&lt;p&gt;I often use these options to override the default locations of keystore and truststore files. Sometimes it is necessary that you need to import certain SSL certificates in your truststore file especially the self signed ones or when importing a CA Root Certificate that is not in the truststore.&lt;/p&gt;
+
+&lt;p&gt;If you use the default values, then it means you will have to change a file in the JDK installation, which is not a good idea. By overriding the default locations, you are free to place your truststore outside of the JDK, probably also bundle it as part of your installation. Same goes true for your keystore too.&lt;/p&gt;
+
+&lt;h2 id=&#34;jmx-related-options&#34;&gt;JMX Related Options&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;-Dcom.sun.management.jmxremote&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Used to enable local JMX agent for the target JVM. Once a JMX agent has been enabled for your JVM, you can use JMX applications such as JConsole etc for monitoring and managing your JVM. &lt;strong&gt;Note&lt;/strong&gt;Since Java 6 you no longer need this option if all you need is a local agent. Java 6 can automatically connect to any locally running (running on the same machine) JVM.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;-Dcom.sun.management.jmxremote.port=portNum&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;-Dcom.sun.management.jmxremote.password.file=pwFilePath&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;-Dcom.sun.management.jmxremote.authenticate=false&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;com.sun.management.jmxremote.ssl=false&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;com.sun.management.jmxremote.ssl.need.client.auth=true&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The default port for the JXM Remote agent is 1099. You can use the first option to override it. Jboss, starts up the Naming service on port 1099, so this option comes in handy when you want to enable remote jmx agent for a jboss server. The following options are for authentication and enabling SSL for the communications port. To be able to use SSL , you need to setup a Private Key and a Certificate and provide that information, using the security related JVM options as described above.&lt;/p&gt;
+
+&lt;h2 id=&#34;garbase-collection&#34;&gt;Garbase Collection&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;-Dsun.rmi.dgc.server.gcInterval=3600000&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;-Dsun.rmi.dgc.client.gcInterval=3600000&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This increase the garbage collection interval for JVMs that start up an RMI communications. Ideal candidates for these settings are application servers.&lt;/p&gt;
+
+&lt;h2 id=&#34;other-useful-properties&#34;&gt;Other useful properties&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;-Duser.name=XYZ&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This may not be useful to all, but it sets the default username of the JVM. One place where I find this useful is, when using maven2 + openssh for repository and site uploads. Usually I have different user a/cs on different subversion repositories, so I use this to set the username to my a/c name on the corresponding subversion repository for (svn+ssh) or site upload scp locations.&lt;/p&gt;
+
+&lt;p&gt;Please add any more options you can think of, in the comments section.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Maven best practices: Use dependency management for multi module projects.</title>
+      <link>/2007/06/maven-best-practices-use-dependency-management-for-multi-module-projects./</link>
+      <pubDate>Wed, 13 Jun 2007 12:45:00 +0000</pubDate>
+      
+      <guid>/2007/06/maven-best-practices-use-dependency-management-for-multi-module-projects./</guid>
+      <description>&lt;p&gt;Do you struggle to maintain a common configuration for dependencies (version #, type etc.),
+between various modules of your multi-module maven 2.x project ?&lt;/p&gt;
+
+&lt;p&gt;There is a very easy way to control all your dependency related configurations from the parent &amp;lsquo;pom&amp;rsquo; project.
+Instead of specifying the same kind of configuration for dependencies over and over, in various modules, just
+specify them once inside the &lt;strong&gt;&lt;code&gt;&amp;lt;dependencyManagement&amp;gt;&lt;/code&gt;&lt;/strong&gt; node of the parent pom.xml.&lt;/p&gt;
+
+&lt;p&gt;What ever configurations are done in the &amp;lsquo;dependencyManagement&amp;rsquo; section of the parent pom.xml,
+are automatically inherited by the child projects.
+Typical configurations include a version number of the dependency artifact, a list of transitive dependencies
+to exclude, when including this dependency, the default scope of the dependency, etc.
+Infact when properly configured, any sub project needs to specify only the group-id and artifact-id of a required
+dependency, everything else is inherited from the parent pom.xml.&lt;/p&gt;
+
+&lt;p&gt;Just think about it for a second, a clear simple way to have the same version of log4j jars in all your sub modules,
+A clear way to have junit.jar scope set to &amp;lsquo;test&amp;rsquo; in all sub projects. And when you need to change the version
+of a dependency, you just need to do it in one place, and bam. every child project now referes to the newer version
+of your dependency.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a code sniplet of &amp;lsquo;dependencyManagement&amp;rsquo; block in one of my parent pom.xml&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;project....&amp;gt;
+  ......
+  &amp;lt;packaging&amp;gt;pom&amp;lt;/packaging&amp;gt;
+  ............
+  &amp;lt;dependencymanagement&amp;gt;
+     &amp;lt;dependencies&amp;gt;
+         &amp;lt;dependency&amp;gt;
+               &amp;lt;groupid&amp;gt;commons-logging&amp;lt;/groupid&amp;gt;
+               &amp;lt;artifactid&amp;gt;commons-logging&amp;lt;/artifactid&amp;gt;
+               &amp;lt;version&amp;gt;${commons.logging.version}&amp;lt;/version&amp;gt;
+               &amp;lt;exclusions&amp;gt;
+                   &amp;lt;exclusion&amp;gt;
+                       &amp;lt;groupid&amp;gt;log4j&amp;lt;/groupid&amp;gt;
+                       &amp;lt;artifactid&amp;gt;log4j&amp;lt;/artifactid&amp;gt;
+                   &amp;lt;/exclusion&amp;gt;
+                   &amp;lt;exclusion&amp;gt;
+                       &amp;lt;groupid&amp;gt;logkit&amp;lt;/groupid&amp;gt;
+                       &amp;lt;artifactid&amp;gt;logkit&amp;lt;/artifactid&amp;gt;
+                   &amp;lt;/exclusion&amp;gt;
+                   &amp;lt;exclusion&amp;gt;
+                       &amp;lt;groupid&amp;gt;avalon-framework&amp;lt;/groupid&amp;gt;
+                       &amp;lt;artifactid&amp;gt;avalon-framework&amp;lt;/artifactid&amp;gt;
+                   &amp;lt;/exclusion&amp;gt;
+                   &amp;lt;exclusion&amp;gt;
+                       &amp;lt;groupid&amp;gt;javax.servlet&amp;lt;/groupid&amp;gt;
+                       &amp;lt;artifactid&amp;gt;servlet-api&amp;lt;/artifactid&amp;gt;
+                   &amp;lt;/exclusion&amp;gt;
+               &amp;lt;/exclusions&amp;gt;
+           &amp;lt;/dependency&amp;gt;
+          ..........
+       &amp;lt;/dependencies&amp;gt;
+  &amp;lt;/dependencymanagement&amp;gt;
+  &amp;lt;properties&amp;gt;
+     &amp;lt;commons.logging.version&amp;gt;1.1&amp;lt;/commons.logging.version&amp;gt;
+  &amp;lt;/properties&amp;gt;
+&amp;lt;/project....&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, I have 2 things here, I have specified a default version that all subsequent children projects will inherit,
+and I have also specified a bunch of transitive dependencies that I want to exclude from this dependency.&lt;/p&gt;
+
+&lt;p&gt;Now all a child project needs to do is&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;project&amp;gt;
+···&amp;lt;packaging&amp;gt;jar&amp;lt;/packaging&amp;gt;
+···&amp;lt;dependencies&amp;gt;
+···      &amp;lt;dependency&amp;gt;
+               &amp;lt;groupid&amp;gt;commons-logging&amp;lt;/groupid&amp;gt;
+               &amp;lt;artifactid&amp;gt;commons-logging&amp;lt;/artifactid&amp;gt;
+······&amp;lt;/dependency&amp;gt;
+···.....
+···&amp;lt;/dependencies&amp;gt;
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Everything else is inherited from the parent, and when commons-logging is out with a new version, that I need to use
+I need to change the version # in just one place.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt; Beware that any dependency specified in &amp;lsquo;dependencyManagement&amp;rsquo; section is not an
+actual dependency on either the parent project nor the child project, unless it is explicitly specified as one, in the regular
+&amp;lsquo;dependencies&amp;rsquo; block.
+So in short dependencyManagement is a place to configure all possible dependencies that your
+sub-projects may have, but not a place to actually state a dependency. e.g. for the above configuration, a child project
+will not have a dependency on commons-logging unless it includes it in its pom.xml.&lt;/p&gt;
+
+&lt;p&gt;Another thing to keep in mind, is that many IDEs that have the ability to work with maven projects (Eclipse, Netbeans etc),
+might not give you this functionality of managing dependencies from &amp;lsquo;dependencyManagement&amp;rsquo; block
+, so you may have to do this part by hand.
+In my case, where I use Netbean 6.0 IDE, the IDE picks up correct dependency
+attributes from the parent pom, only if the files already have the stuff setup before opening the project. If I add a dependency
+inside the pom.xml of an open parent project, and then refer to it in a open child project, the maven plugin gets confused, and
+refuses to recognize the child project as a valid maven project. The only solution in that case is to restart the IDE :(.&lt;/p&gt;
+
+&lt;p&gt;Hope you have found this little piece of information helpful.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

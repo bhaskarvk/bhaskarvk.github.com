@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maven on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/maven/</link>
+    <description>Recent content in Maven on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Wed, 13 Jun 2007 12:45:00 +0000</lastBuildDate>
+    <atom:link href="/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Maven best practices: Use dependency management for multi module projects.</title>
+      <link>/2007/06/maven-best-practices-use-dependency-management-for-multi-module-projects./</link>
+      <pubDate>Wed, 13 Jun 2007 12:45:00 +0000</pubDate>
+      
+      <guid>/2007/06/maven-best-practices-use-dependency-management-for-multi-module-projects./</guid>
+      <description>&lt;p&gt;Do you struggle to maintain a common configuration for dependencies (version #, type etc.),
+between various modules of your multi-module maven 2.x project ?&lt;/p&gt;
+
+&lt;p&gt;There is a very easy way to control all your dependency related configurations from the parent &amp;lsquo;pom&amp;rsquo; project.
+Instead of specifying the same kind of configuration for dependencies over and over, in various modules, just
+specify them once inside the &lt;strong&gt;&lt;code&gt;&amp;lt;dependencyManagement&amp;gt;&lt;/code&gt;&lt;/strong&gt; node of the parent pom.xml.&lt;/p&gt;
+
+&lt;p&gt;What ever configurations are done in the &amp;lsquo;dependencyManagement&amp;rsquo; section of the parent pom.xml,
+are automatically inherited by the child projects.
+Typical configurations include a version number of the dependency artifact, a list of transitive dependencies
+to exclude, when including this dependency, the default scope of the dependency, etc.
+Infact when properly configured, any sub project needs to specify only the group-id and artifact-id of a required
+dependency, everything else is inherited from the parent pom.xml.&lt;/p&gt;
+
+&lt;p&gt;Just think about it for a second, a clear simple way to have the same version of log4j jars in all your sub modules,
+A clear way to have junit.jar scope set to &amp;lsquo;test&amp;rsquo; in all sub projects. And when you need to change the version
+of a dependency, you just need to do it in one place, and bam. every child project now referes to the newer version
+of your dependency.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a code sniplet of &amp;lsquo;dependencyManagement&amp;rsquo; block in one of my parent pom.xml&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;project....&amp;gt;
+  ......
+  &amp;lt;packaging&amp;gt;pom&amp;lt;/packaging&amp;gt;
+  ............
+  &amp;lt;dependencymanagement&amp;gt;
+     &amp;lt;dependencies&amp;gt;
+         &amp;lt;dependency&amp;gt;
+               &amp;lt;groupid&amp;gt;commons-logging&amp;lt;/groupid&amp;gt;
+               &amp;lt;artifactid&amp;gt;commons-logging&amp;lt;/artifactid&amp;gt;
+               &amp;lt;version&amp;gt;${commons.logging.version}&amp;lt;/version&amp;gt;
+               &amp;lt;exclusions&amp;gt;
+                   &amp;lt;exclusion&amp;gt;
+                       &amp;lt;groupid&amp;gt;log4j&amp;lt;/groupid&amp;gt;
+                       &amp;lt;artifactid&amp;gt;log4j&amp;lt;/artifactid&amp;gt;
+                   &amp;lt;/exclusion&amp;gt;
+                   &amp;lt;exclusion&amp;gt;
+                       &amp;lt;groupid&amp;gt;logkit&amp;lt;/groupid&amp;gt;
+                       &amp;lt;artifactid&amp;gt;logkit&amp;lt;/artifactid&amp;gt;
+                   &amp;lt;/exclusion&amp;gt;
+                   &amp;lt;exclusion&amp;gt;
+                       &amp;lt;groupid&amp;gt;avalon-framework&amp;lt;/groupid&amp;gt;
+                       &amp;lt;artifactid&amp;gt;avalon-framework&amp;lt;/artifactid&amp;gt;
+                   &amp;lt;/exclusion&amp;gt;
+                   &amp;lt;exclusion&amp;gt;
+                       &amp;lt;groupid&amp;gt;javax.servlet&amp;lt;/groupid&amp;gt;
+                       &amp;lt;artifactid&amp;gt;servlet-api&amp;lt;/artifactid&amp;gt;
+                   &amp;lt;/exclusion&amp;gt;
+               &amp;lt;/exclusions&amp;gt;
+           &amp;lt;/dependency&amp;gt;
+          ..........
+       &amp;lt;/dependencies&amp;gt;
+  &amp;lt;/dependencymanagement&amp;gt;
+  &amp;lt;properties&amp;gt;
+     &amp;lt;commons.logging.version&amp;gt;1.1&amp;lt;/commons.logging.version&amp;gt;
+  &amp;lt;/properties&amp;gt;
+&amp;lt;/project....&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, I have 2 things here, I have specified a default version that all subsequent children projects will inherit,
+and I have also specified a bunch of transitive dependencies that I want to exclude from this dependency.&lt;/p&gt;
+
+&lt;p&gt;Now all a child project needs to do is&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;project&amp;gt;
+···&amp;lt;packaging&amp;gt;jar&amp;lt;/packaging&amp;gt;
+···&amp;lt;dependencies&amp;gt;
+···      &amp;lt;dependency&amp;gt;
+               &amp;lt;groupid&amp;gt;commons-logging&amp;lt;/groupid&amp;gt;
+               &amp;lt;artifactid&amp;gt;commons-logging&amp;lt;/artifactid&amp;gt;
+······&amp;lt;/dependency&amp;gt;
+···.....
+···&amp;lt;/dependencies&amp;gt;
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Everything else is inherited from the parent, and when commons-logging is out with a new version, that I need to use
+I need to change the version # in just one place.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt; Beware that any dependency specified in &amp;lsquo;dependencyManagement&amp;rsquo; section is not an
+actual dependency on either the parent project nor the child project, unless it is explicitly specified as one, in the regular
+&amp;lsquo;dependencies&amp;rsquo; block.
+So in short dependencyManagement is a place to configure all possible dependencies that your
+sub-projects may have, but not a place to actually state a dependency. e.g. for the above configuration, a child project
+will not have a dependency on commons-logging unless it includes it in its pom.xml.&lt;/p&gt;
+
+&lt;p&gt;Another thing to keep in mind, is that many IDEs that have the ability to work with maven projects (Eclipse, Netbeans etc),
+might not give you this functionality of managing dependencies from &amp;lsquo;dependencyManagement&amp;rsquo; block
+, so you may have to do this part by hand.
+In my case, where I use Netbean 6.0 IDE, the IDE picks up correct dependency
+attributes from the parent pom, only if the files already have the stuff setup before opening the project. If I add a dependency
+inside the pom.xml of an open parent project, and then refer to it in a open child project, the maven plugin gets confused, and
+refuses to recognize the child project as a valid maven project. The only solution in that case is to restart the IDE :(.&lt;/p&gt;
+
+&lt;p&gt;Hope you have found this little piece of information helpful.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

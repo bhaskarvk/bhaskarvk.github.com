@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Re-plotting Russian AirStrikes In Syria</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="generator" content="Hugo 0.16" />
+		<link href="" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
+		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" rel="stylesheet"/>
+    
+		
+		
+	</head>
+	<body>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Re-plotting Russian AirStrikes In Syria</div>
+		<div id="wrapper">
+
+			
+			<div class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="/"><p class="navbar-brand">Bhaskar Karambelkar&#39;s Blog</p></a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						
+						<li><a href="/about/">About Me </a></li>
+						
+						<li><a href="/">Home </a></li>
+						
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<a href="/"><img class="sidebar-logo" src="/images/profile.jpg" /></a>
+					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3></h3></li>
+					<hr />
+					
+						<li><a href="/about/">About Me </a></li>
+					
+						<li><a href="/">Home </a></li>
+					
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+					
+                    <hr/>
+					<div id="social-wrapper">
+						<li> <a target="_blank" data-toggle="tooltip" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk"><i class="fa fa-linkedin"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Twitter" href="https://www.twitter.com/bhaskar_vk"><i class="fa fa-twitter-square"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Github" href="https://github.com/bhaskarvk"><i class="fa fa-github-square"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="StackOverflow" href="https://stackoverflow.com/users/507484"><i class="fa fa-stack-overflow"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="Keybase" href="https://www.keybase.io/bhaskarvk"><i class="fa fa-key"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="SlideShare" href="//www.slideshare.net/bhaskar_vk"><i class="fa fa-slideshare"></i></a> </li>
+						<li> <a target="_blank" data-toggle="tooltip" title="RSS Feed" href="/index.xml"><i class="fa fa-rss"></i></a></li>
+                    </div>
+                    <hr/>
+				</ul>
+			</div>
+
+			<div class="container">
+
+<div id="article">
+	<div class="article-title">Re-plotting Russian AirStrikes In Syria</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2015-11-10</small></p> <hr/>
+  <div class="post">
+		
+
+<p>My Cartography mentor <a href="https://twitter.com/hrbrmstr">Bob Rudis</a> pointed me to a blog post visualizing <a href="http://r-datameister.blogspot.com/2015/11/plotting-russian-airstrikes-in-syria.html">Russian Air Strikes in Syria</a> and commanded me to redo the static maps to something more interactive and easier to explore.</p>
+
+<h2 id="tl-dr-version">TL;DR Version</h2>
+
+<p>Interactive Map at <a href="http://rpubs.com/bhaskarvk/russian-airstrikes-in-syria">Rpubs</a> created using Leaflet after scraping data using RSelenium+ PhantomJS + dplyr. You can use the LayerSelector at the Top Right to toggle various Base Tiles. Clicking on any Marker will show details about that Air Strike.</p>
+
+<h2 id="data-acquisition">Data Acquisition</h2>
+
+<p>The data comes from crowdsourcing of Russian Ministry of Defense&rsquo;s (MOD) Youtube<sup>TM</sup> channel. The process and the data is described <a href="https://www.bellingcat.com/news/mena/2015/10/26/what-russias-own-videos-and-maps-reveal-about-who-they-are-bombing-in-syria/">here</a> and the data can be found at <a href="http://russia-strikes-syria.silk.co/">http://russia-strikes-syria.silk.co/</a>. The argument is that a majority of the strikes claimed by the Russian MOD to be targeting ISIS held areas are actually targeting non-ISIS rebel areas and as such helping the Asaad regime more than fighting ISIS.</p>
+
+<p>The original visualization was done by copying the data and putting it in an excel spreadsheet and then mapped using R&rsquo;s <code>ggmap</code> package. But in the interest of reproducibility I wanted to scrape the data directly from within R. For this I initially tried using <a href="https://cran.r-project.org/web/packages/rvest/">rvest</a> but quickly realized that this was a no go as the table containing the data was dynamically populated using AJAX/Javascript stuff. So I had to turn to RSelenium + PhantomJS as described <a href="https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html">here</a>.</p>
+
+<p>Below is the web-scraping code, and the webpage from where this data was scraped can be found <a href="http://russia-strikes-syria.silk.co/explore/table/collection/strike-id/column/date-uploaded/column/time-in-utc-uploaded/column/accuracy-of-russian-location/column/actual-location-co-ords/column/closest-location-governorate/column/claimed-location/column/claimed-targets/column/closest-location-actual/column/status/column/isis-in-the-area/column/error-type/column/notes/column/checkdesk-link/column/video-url/slice/0/1000">here</a>.</p>
+
+<pre><code class="language-r">library(RSelenium)
+library(rvest)
+
+pJS &lt;- phantom()
+Sys.sleep(5) # give the binary a moment
+remDr &lt;- remoteDriver(browserName = 'phantomjs')
+remDr$open()
+remDr$navigate('http://russia-strikes-syria.silk.co/explore/table/collection/strike-id/column/date-uploaded/column/time-in-utc-uploaded/column/accuracy-of-russian-location/column/actual-location-co-ords/column/closest-location-governorate/column/claimed-location/column/claimed-targets/column/closest-location-actual/column/status/column/isis-in-the-area/column/error-type/column/notes/column/checkdesk-link/column/video-url/slice/0/1000')
+Sys.sleep(2) # Some time for page to load
+events &lt;- read_html(remDr$getPageSource()[[1]]) %&gt;%
+  html_node(xpath= '//*[@id=&quot;canvas&quot;]/div/div[3]/div[2]/div[2]/div[4]/table') %&gt;%
+  html_table()
+remDr$close()
+pJS$stop() # close the PhantomJS process
+
+</code></pre>
+
+<p><br/>
+In short the code starts a RSelenium + PhantomJS WebDriver fetches the webpage containing the data. Then the html table is parsed using rvest&rsquo;s <code>html_table()</code> after the correct table is selected using the proper xpath to the table.</p>
+
+<h2 id="data-preparation">Data Preparation</h2>
+
+<p>To plot the data correctly I need to perform the following steps.</p>
+
+<ul>
+<li>Filter out data containing invalid Lat/Long coordinates.</li>
+<li>Split the single column containing Lat/Long in to two columns.</li>
+<li>Create a new column to be used for Popup Display when a point is clicked on the map.</li>
+</ul>
+
+<p>Thankfully <code>dplyr</code> and <code>tidyr</code> are more than capable of doing all this using some basic simple steps shown below.</p>
+
+<pre><code class="language-r">library(dplyr)
+library(tidyr)
+
+events %&gt;% filter(str_detect(`Actual location co-ords`,
+                             '[0-9]+\\.[0-9]+, *[0-9]+\\.[0-9]+')) %&gt;%
+  separate(`Actual location co-ords`,c('lat','lon'),
+           sep = ',', convert = TRUE, remove = TRUE ) %&gt;%
+  mutate(popup = sprintf('&lt;P&gt;&lt;center&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/center&gt;&lt;br/&gt;&lt;i&gt;Status:&lt;/i&gt; &lt;b&gt;%s&lt;/b&gt;&lt;br/&gt;&lt;i&gt;Date Uploaded:&lt;/i&gt; &lt;b&gt;%s %s&lt;/b&gt;&lt;br/&gt;&lt;i&gt;Claimed Location:&lt;/i&gt; &lt;b&gt;%s&lt;/b&gt;&lt;br/&gt;&lt;i&gt;Claimed Targets:&lt;/i&gt; &lt;b&gt;%s&lt;/b&gt;&lt;br/&gt;&lt;i&gt;Closest Governorate:&lt;/i&gt; &lt;b&gt;%s&lt;/b&gt;&lt;br/&gt;&lt;i&gt;Closest Actual Location:&lt;/i&gt; &lt;b&gt;%s&lt;/b&gt;&lt;br/&gt;&lt;i&gt;ISIS Presence:&lt;/i&gt; &lt;b&gt;%s&lt;/b&gt;&lt;br/&gt;&lt;i&gt;Error:&lt;/i&gt; &lt;b&gt;%s&lt;/b&gt;&lt;br/&gt;&lt;i&gt;Notes:&lt;/i&gt; %s&lt;br/&gt;&lt;i&gt;Description:&lt;/i&gt; &lt;a href=&quot;%s&quot;&gt;%s&lt;/a&gt; / &lt;i&gt;Video:&lt;/i&gt; &lt;a href=&quot;%s&quot;&gt;%s&lt;/a&gt;&lt;br/&gt;&lt;/P&gt;',
+                         Airstrikes, Status,
+                         `Date (Uploaded)`, `Time in UTC (Uploaded)`,
+                         `Claimed location`, `Claimed targets`,
+                          `Closest location governorate`, `Closest location (actual)`,
+                         `ISIS in the area?`, `Error type`,
+                         Notes, `Checkdesk link`, Airstrikes,
+                         `Video URL`, Airstrikes
+                         )) -&gt; events
+</code></pre>
+
+<p>The <code>filter</code> function filters out all data points which don&rsquo;t match the regex for the the Lat/Long format. The <code>separate</code> function splits the &lsquo;Actual location co-ords&rsquo; column in to two columns lat and lon. And finally the <code>mutate</code> function is used to create the HTML code that will be used to display the popup when this datapoint is clicked on the Map.</p>
+
+<h2 id="data-plotting">Data Plotting</h2>
+
+<p>Finally for Data Plotting I used <a href="https://rstudio.github.io/leaflet/">Leaflet for R</a> library. You will need to build the library from source as I use some new features in the library that haven&rsquo;t yet made it to CRAN. You can do this using <code>devetool::install_github('rstudio/leaflet')</code>.</p>
+
+<p>The Map consists of following elements</p>
+
+<ul>
+<li>Multiple Base Tile Maps out of which only one can be active at any given time.</li>
+<li>A GeoJSON for plotting the various Administrative areas of Syria superimposed on the base map.</li>
+<li>Markers for the Air Strikes.</li>
+<li>A Layer Selection option.</li>
+<li>A mini map to know the global context.</li>
+</ul>
+
+<p>I also needed a way to visually distinguish between VERIFIED and FALSE strikes. Verified being strikes that claimed to have targeted ISIS and actually targeted ISIS or actually have targeted non-ISIS areas and not claimed to have targeted ISIS in short those where the claim and actual targets tally, and FALSE being the ones where there was a discrepancy in either the claimed and actual target or claimed and actual location. I chose to use Blue colored Markers for VERIFIED and Red colored for FALSE.</p>
+
+<p>The code for plotting is shown below</p>
+
+<pre><code class="language-r">library(leaflet)
+
+if(!file.exists('./cities.json') {
+	# Syrian Cities GeoJSON downloaded from 
+	# http://crisis.net/projects/syria-tracker/cities.json
+	# More Info @ http://blog.crisis.net/choropleth-maps-with-d3/
+	download.file(url='http://crisis.net/projects/syria-tracker/cities.json', destfile='cities.json')
+}
+cities &lt;- readLines('./cities.json', warn =F) %&gt;% paste(collapse='\n')
+
+# Leaflet Map + Various Base Tiles
+events %&gt;% leaflet() %&gt;%
+  addTiles(group=&quot;Default&quot;) %&gt;%
+  addProviderTiles('CartoDB.PositronNoLabels',group='Blank-Canvas') %&gt;%
+  addProviderTiles('OpenStreetMap.BlackAndWhite', group=&quot;OSM-BlackNWhite&quot;) %&gt;%
+  addProviderTiles('MapQuestOpen.OSM', group='MapQuest') %&gt;%
+  addProviderTiles('Stamen.TonerLite', group='Stamen-Light') %&gt;%
+  addProviderTiles('Esri.WorldStreetMap',group='Esri-1') %&gt;%
+  addProviderTiles('Esri.DeLorme',group='Esri-2') %&gt;%
+  addProviderTiles('Esri.OceanBasemap',group='Esri-3') %&gt;%
+  addProviderTiles('Esri.NatGeoWorldMap',group='NatGeo') %&gt;%
+  addProviderTiles('CartoDB.Positron',group='CartoDB-1') %&gt;%
+  addProviderTiles('CartoDB.PositronNoLabels',group='CartoDB-2') %&gt;%
+  addProviderTiles('Stamen.TonerHybrid',group='CartoDB-2') %&gt;%
+  addProviderTiles('Stamen.TonerLines',group='CartoDB-2') %&gt;%
+  addProviderTiles('CartoDB.DarkMatter',group='CartoDB-3') %&gt;%
+  addProviderTiles('CartoDB.DarkMatterNoLabels',group='CartoDB-4') %&gt;%
+  addProviderTiles('Acetate.basemap',group='Acetate') %&gt;%
+  addProviderTiles('Stamen.TonerLabels',group='Acetate') -&gt; eventMap
+
+# Awesome Icons with color depending on Status
+icon &lt;- awesomeIcons(icon = 'crosshairs',
+                     markerColor = ifelse(events$Status == 'VERIFIED','blue','red'),
+                     library = 'fa',
+                     iconColor = 'black')
+
+# Add Markers for AirStrikes and GeoJSON for Syrian Regions                     
+eventMap %&gt;%
+  addAwesomeMarkers(
+    lat=~lat, lng=~lon,
+    label = ~Airstrikes, icon=icon,
+    group = 'Air Strikes',
+    popup = ~popup
+  ) %&gt;%
+  addGeoJSON(cities, weight = 0.7, color = &quot;#00FF00&quot;,
+             stroke=T, fill = F, fillOpacity = 0.1,
+             group='Syria Regions') -&gt; eventMap
+
+# Add a Layer Control for toggling Layers/BaseMaps
+eventMap  %&gt;%  addLayersControl(
+  baseGroups = c('Default',
+                 'Blank-Canvas',
+                 'OSM-BlackNWhite',
+                 'MapQuest',
+                 'Stamen-Light',
+                 'Esri-1',
+                 'Esri-2',
+                 'Esri-3',
+                 'NatGeo',
+                 'CartoDB-1',
+                 'CartoDB-2',
+                 'CartoDB-3',
+                 'CartoDB-4',
+                 'Acetate'),
+  overlayGroups = c(&quot;Air Strikes&quot;, &quot;Syria Regions&quot;),
+  options = layersControlOptions(collapsed = TRUE)
+) -&gt; eventMap
+
+# Finally Add a Minimap and render the Map
+eventMap %&gt;% addMiniMap()
+
+</code></pre>
+
+<p><br/>
+And the final map is shown below. This is just a screenshot you can find an interactive version of this at <a href="http://rpubs.com/bhaskarvk/russian-airstrikes-in-syria">Rpubs</a>.</p>
+
+<p><img src="/images/Syria.png" alt="Russian Air Strikes in Syria" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<ul>
+<li>For Web Scraping dynamic data RSelinium + PhantomJS makes a killer combo.</li>
+<li>R&rsquo;s leaflet library allows for easy creation of interactive maps.</li>
+</ul>
+
+  </div>
+</div>
+
+<a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<ul class="pager">
+   &nbsp;<li class="previous"><a href="/2016/03/alternative-to-using-legends-in-ggplot2/"> Alternative to using legends in ggplot2</a></li>
+   &nbsp;<li class="next"><a href="/2015/10/shiny-in-a-smartos-zone/"> Shiny in a SmartOS zone</a></li>
+</ul>
+
+				<footer>
+                    <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
+				</footer>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/hc.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/r.min.js"></script>
+        <script>
+          hljs.initHighlightingOnLoad();
+        </script>
+		
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+			var u="//apps.karambelkar.info/pk/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 1]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+		
+	</body>
+</html>
+

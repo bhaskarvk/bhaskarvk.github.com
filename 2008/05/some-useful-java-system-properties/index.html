@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Some useful Java System Properties</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="generator" content="Hugo 0.16" />
+		<link href="" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
+		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" rel="stylesheet"/>
+    
+		
+		
+	</head>
+	<body>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Some useful Java System Properties</div>
+		<div id="wrapper">
+
+			
+			<div class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="/"><p class="navbar-brand">Bhaskar Karambelkar&#39;s Blog</p></a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						
+						<li><a href="/about/">About Me </a></li>
+						
+						<li><a href="/">Home </a></li>
+						
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<a href="/"><img class="sidebar-logo" src="/images/profile.jpg" /></a>
+					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3></h3></li>
+					<hr />
+					
+						<li><a href="/about/">About Me </a></li>
+					
+						<li><a href="/">Home </a></li>
+					
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+					
+                    <hr/>
+					<div id="social-wrapper">
+						<li> <a target="_blank" data-toggle="tooltip" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk"><i class="fa fa-linkedin"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Twitter" href="https://www.twitter.com/bhaskar_vk"><i class="fa fa-twitter-square"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Github" href="https://github.com/bhaskarvk"><i class="fa fa-github-square"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="StackOverflow" href="https://stackoverflow.com/users/507484"><i class="fa fa-stack-overflow"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="Keybase" href="https://www.keybase.io/bhaskarvk"><i class="fa fa-key"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="SlideShare" href="//www.slideshare.net/bhaskar_vk"><i class="fa fa-slideshare"></i></a> </li>
+						<li> <a target="_blank" data-toggle="tooltip" title="RSS Feed" href="/index.xml"><i class="fa fa-rss"></i></a></li>
+                    </div>
+                    <hr/>
+				</ul>
+			</div>
+
+			<div class="container">
+
+<div id="article">
+	<div class="article-title">Some useful Java System Properties</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2008-05-22</small></p> <hr/>
+  <div class="post">
+		
+
+<p>Here are some Java system properties that can be used while starting a new JVM.
+These options either provide some kind of performance benefits under certain conditions, or are used
+to override default values, when using default values is not suitable or not a good option.</p>
+
+<h2 id="general-properties">General Properties</h2>
+
+<p><strong><code>-Duser.timezone=XYZ</code></strong></p>
+
+<p>Used to set the Default Timezone of the JVM. This can be used, when you are not sure of the platform&rsquo;s default Timezone, and want to be sure that the JVM always uses a certain timezone.
+e.g. <code>-Duser.timezone=GMT</code></p>
+
+<p><strong><code>-Djava.awt.headless=true</code></strong></p>
+
+<p>Used to run AWT in a headless (i.e. no X server) environment. Even if you are running an application server, if you need to use the AWT API to generate dynamic images, then you either need access to a Graphics Environment or you need to set this system property. This is relevant only in a *NIX environment.</p>
+
+<p><strong><code>-Djava.net.preferIPv4Stack=true</code></strong></p>
+
+<p>This property can be set to speed up certain parts of the Networking API, if you don&rsquo;t intend to deploy the JVM in an IPV6 environment. Unless you are deploying your JVM in a IPV6 network it is a good idea to set this system property.</p>
+
+<p><strong><code>-Dsun.lang.ClassLoader.allowArraySyntax=true</code></strong>
+This option is relevant only in Java 1.6 (Java 6) and above. If you get strange Arrays related errors while running code compiled with JDK 5 and below, you can try and set this property to solve this problem.</p>
+
+<h2 id="security-related-options">Security related Options</h2>
+
+<p><strong><code>javax.net.ssl.keyStore=location</code></strong></p>
+
+<p>Used to override the default keystore location, from $HOME/.keystore</p>
+
+<p><strong><code>javax.net.ssl.trustStore=location</code></strong></p>
+
+<p>Used to override the default root CA file from $JAVA_HOME/jre/lib/security/cacerts</p>
+
+<p><strong><code>javax.net.ssl.keyStoreType</code></strong></p>
+
+<p>Used to change the default keystore type from JKS. You can use a different format to store your keys, provided you have a proper security provider installed.</p>
+
+<p><strong><code>javax.net.ssl.keyStorePassword</code></strong></p>
+
+<p>Used to provide a password for the keystore if different from the default &ldquo;changeit&rdquo;. And by the way it is a good idea to take that advise and change the default password.</p>
+
+<p><strong><code>javax.net.ssl.trustStoreType</code></strong></p>
+
+<p>Used to change the default truststore type from JKS. You can use a different format to store your keys, provided you have a proper security provider installed.</p>
+
+<p><strong><code>javax.net.ssl.trustStorePassword</code></strong></p>
+
+<p>Used to provide a password for the truststore if different from the default &ldquo;changeit&rdquo;. And by the way it is a good idea to take that advise and change the default password.</p>
+
+<p>I often use these options to override the default locations of keystore and truststore files. Sometimes it is necessary that you need to import certain SSL certificates in your truststore file especially the self signed ones or when importing a CA Root Certificate that is not in the truststore.</p>
+
+<p>If you use the default values, then it means you will have to change a file in the JDK installation, which is not a good idea. By overriding the default locations, you are free to place your truststore outside of the JDK, probably also bundle it as part of your installation. Same goes true for your keystore too.</p>
+
+<h2 id="jmx-related-options">JMX Related Options</h2>
+
+<p><strong><code>-Dcom.sun.management.jmxremote</code></strong></p>
+
+<p>Used to enable local JMX agent for the target JVM. Once a JMX agent has been enabled for your JVM, you can use JMX applications such as JConsole etc for monitoring and managing your JVM. <strong>Note</strong>Since Java 6 you no longer need this option if all you need is a local agent. Java 6 can automatically connect to any locally running (running on the same machine) JVM.</p>
+
+<p><strong><code>-Dcom.sun.management.jmxremote.port=portNum</code></strong></p>
+
+<p><strong><code>-Dcom.sun.management.jmxremote.password.file=pwFilePath</code></strong></p>
+
+<p><strong><code>-Dcom.sun.management.jmxremote.authenticate=false</code></strong></p>
+
+<p><strong><code>com.sun.management.jmxremote.ssl=false</code></strong></p>
+
+<p><strong><code>com.sun.management.jmxremote.ssl.need.client.auth=true</code></strong></p>
+
+<p>The default port for the JXM Remote agent is 1099. You can use the first option to override it. Jboss, starts up the Naming service on port 1099, so this option comes in handy when you want to enable remote jmx agent for a jboss server. The following options are for authentication and enabling SSL for the communications port. To be able to use SSL , you need to setup a Private Key and a Certificate and provide that information, using the security related JVM options as described above.</p>
+
+<h2 id="garbase-collection">Garbase Collection</h2>
+
+<p><strong><code>-Dsun.rmi.dgc.server.gcInterval=3600000</code></strong></p>
+
+<p><strong><code>-Dsun.rmi.dgc.client.gcInterval=3600000</code></strong></p>
+
+<p>This increase the garbage collection interval for JVMs that start up an RMI communications. Ideal candidates for these settings are application servers.</p>
+
+<h2 id="other-useful-properties">Other useful properties</h2>
+
+<p><strong><code>-Duser.name=XYZ</code></strong></p>
+
+<p>This may not be useful to all, but it sets the default username of the JVM. One place where I find this useful is, when using maven2 + openssh for repository and site uploads. Usually I have different user a/cs on different subversion repositories, so I use this to set the username to my a/c name on the corresponding subversion repository for (svn+ssh) or site upload scp locations.</p>
+
+<p>Please add any more options you can think of, in the comments section.</p>
+
+  </div>
+</div>
+
+<a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<ul class="pager">
+   &nbsp;<li class="previous"><a href="/2008/05/wickets-date--time-components-and-client-server-timezones/"> Wicket&#39;s Date &amp; Time Components and Client-Server Timezones</a></li>
+   &nbsp;<li class="next"><a href="/2007/06/new-features-in-vim-7/"> New Features in Vim 7</a></li>
+</ul>
+
+				<footer>
+                    <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
+				</footer>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/hc.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/r.min.js"></script>
+        <script>
+          hljs.initHighlightingOnLoad();
+        </script>
+		
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+			var u="//apps.karambelkar.info/pk/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 1]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+		
+	</body>
+</html>
+

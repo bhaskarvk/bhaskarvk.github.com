@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/mysql/</link>
+    <description>Recent content in Mysql on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Tue, 12 Jun 2007 19:35:00 +0000</lastBuildDate>
+    <atom:link href="/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Prototyping LAMP with WAMP</title>
+      <link>/2007/06/prototyping-lamp-with-wamp/</link>
+      <pubDate>Tue, 12 Jun 2007 19:35:00 +0000</pubDate>
+      
+      <guid>/2007/06/prototyping-lamp-with-wamp/</guid>
+      <description>
+
+&lt;p&gt;WAMP is the windows equivalent of the LAMP stack. LAMP stands for Linux (Operating System), Apache (Web Server), Mysql (Database), and PHP (Scripting Language). Under WAMP, instead of using Linux as the Operating System, you use one of the Microsoft Windows OSes such as XP, 2000 or 2k3.&lt;/p&gt;
+
+&lt;h2 id=&#34;why-use-wamp-instead-of-lamp&#34;&gt;Why use WAMP instead of LAMP&lt;/h2&gt;
+
+&lt;p&gt;Windows OSes since 2000 i.e. 2k, XP , 2k3 have been extremely stable as opposed to their predecessors. So if you are proficient in Windows, then there is no reason not to use it for web hosting. (barring security, but that&amp;rsquo;s another issue).
+Secondly if you want to develop your site off line and then move it to a LAMP Stack, and you are not familiar with Linux, then WAMP serves as an ideal prototyping environment. You can do almost every thing in WAMP that you can do in LAMP.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-wamp&#34;&gt;Installing WAMP&lt;/h2&gt;
+
+&lt;p&gt;WAMP is hosted at &lt;a href=&#34;http://www.en.wampserver.com&#34;&gt;www.en.wampserver.com&lt;/a&gt;. Unlike LAMP where you have to install and configure each component seperately, wamp comes bundled in as one single installer, and installs every thing under one directory. WAMP also provides you with a System Tray Menu to start/stop configure various components. For someone new to web development this is a great feature to have.&lt;/p&gt;
+
+&lt;p&gt;To install WAMP, download and run the latest WAMP installer 1.6.3 from the site mentioned above. As of WAMP 1.6.3, it contains Apache 2.0.55 , PHP 5.1.4, MySQL 5.0.21 as the main components and also phpmyadmin 2.8.0.3 and sqllitemanager 1.2.0 as add-ons.
+By default the installer will place every thing under &lt;code&gt;C:\wamp&lt;/code&gt;. The installer also creates 2 services viz. &amp;lsquo;wampapache&amp;rsquo; and &amp;lsquo;wampmysql&amp;rsquo; for starting/stopping Apache and MySQL respectively. The installer creates a handy &amp;lsquo;System tray monitor&amp;rsquo; for managing WAMP.&lt;/p&gt;
+
+&lt;a href=&#34;/images/lamp-wamp/wamp-default.jpg&#34; data-lightbox=&#34;wamp&#34; data-title=&#34;Default Homepage&#34; &gt;
+    &lt;img src=&#34;/images/lamp-wamp/wamp-default-sm.jpg&#34; /&gt;
+&lt;/a&gt;
+
+
+&lt;p&gt;Once installed, if you open a web browser on your windows box, and type &lt;code&gt;http://localhost/&lt;/code&gt; you should see, something like this.
+This confirms that you have successfully installed WAMP.
+You can click the &lt;code&gt;phpinfo()&lt;/code&gt; link to see details of your PHP environment. Also you can use the pre installed applications &lt;code&gt;phpmyadmin&lt;/code&gt; and &lt;code&gt;sqllitemanager&lt;/code&gt; to configure MySQL and sqllite respectively.&lt;/p&gt;
+
+&lt;p&gt;Next up Configuring and managing WAMP&lt;/p&gt;
+
+&lt;h2 id=&#34;configuring-and-managing-wamp&#34;&gt;Configuring and managing WAMP&lt;/h2&gt;
+
+&lt;a href=&#34;/images/lamp-wamp/wamp-systray.jpg&#34; data-lightbox=&#34;wamp&#34; data-title=&#34;WAMP-System Tray App&#34; &gt;
+    &lt;img src=&#34;/images/lamp-wamp/wamp-systray-sm.jpg&#34; /&gt;
+&lt;/a&gt;
+
+
+&lt;p&gt;One neat thing about WAMP is Apache, PHP and MySQL can be configured from one single &amp;lsquo;System Tray App&amp;rsquo;. No need to go digging in explorer to find the relevent files. You can also start/stop apache and MySQL services using the &amp;lsquo;System Tray App&amp;rsquo;.&lt;/p&gt;
+
+&lt;p&gt;The default configuration is sufficient to get started, but we are going to perform certain customizations.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;### Create a password for MySQL root account.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;First things first, the default WAMP install, creates a MySQL super-user (root) account with no password. This is OK for prototyping, but if you have an internet facing m/c, you should create a password for that a/c. This is easily done using the pre installed phpmyadmin web application.&lt;/p&gt;
+
+&lt;a href=&#34;/images/lamp-wamp/wamp-phpmyadmin.jpg&#34; data-lightbox=&#34;wamp&#34; data-title=&#34;WAMP phpmyadmin page&#34; &gt;
+    &lt;img src=&#34;/images/lamp-wamp/wamp-phpmyadmin-sm.jpg&#34; /&gt;
+&lt;/a&gt;
+
+
+&lt;p&gt;Open the URL &lt;code&gt;http://localhost/phpmyadmin/&lt;/code&gt; in a web browser. This should bring up the phpmyadmin page. This is the starting point of controlling everything related to MySQL.&lt;/p&gt;
+
+&lt;a href=&#34;/images/lamp-wamp/wamp-rootac.jpg&#34; data-lightbox=&#34;wamp&#34; data-title=&#34;WAMP user accounts page&#34; &gt;
+    &lt;img src=&#34;/images/lamp-wamp/wamp-rootac-sm.jpg&#34; /&gt;
+&lt;/a&gt;
+
+
+&lt;p&gt;Click on the &amp;lsquo;Privileges&amp;rsquo; link, that should bring up the user accounts page. Click on the icon besides the &amp;lsquo;Grant&amp;rsquo; column, to edit root user&amp;rsquo;s properties.&lt;/p&gt;
+
+&lt;a href=&#34;/images/lamp-wamp/wamp-rootpswd.jpg&#34; data-lightbox=&#34;wamp&#34; data-title=&#34;WAMP root account page&#34; &gt;
+    &lt;img src=&#34;/images/lamp-wamp/wamp-rootpswd-sm.jpg&#34; /&gt;
+&lt;/a&gt;
+
+
+&lt;p&gt;On the following page, scroll down to &amp;lsquo;Change password&amp;rsquo;. Select the &amp;lsquo;Password&amp;rsquo; check box and supply a password. Click &amp;lsquo;GO&amp;rsquo; button when done. This should setup a password for the root a/c.
+But we are only half done, now that the root a/c has a password, phpmyadmin application will not work unless you edit a config file and put the password in there.
+To get phpmyadmin working again , open the file &amp;lsquo;&lt;code&gt;C:\wamp\phpmyadmin\config.inc.php&lt;/code&gt;&amp;rsquo; using wordpad (any text editor). Change the line&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$cfg[&#39;Servers&#39;][$i][&#39;password&#39;] = &#39;&#39;;&lt;/code&gt;
+to
+&lt;code&gt;$cfg[&#39;Servers&#39;][$i][&#39;password&#39;] = &#39;newly-created-password&#39;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This will make phpmyadmin work correctly again.&lt;/p&gt;
+
+&lt;p&gt;Next up Configure Apache&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;### Configure Apache&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href=&#34;/images/lamp-wamp/wamp-configfiles.jpg&#34; data-lightbox=&#34;wamp&#34; data-title=&#34;WAMP Access Config Files&#34; &gt;
+    &lt;img src=&#34;/images/lamp-wamp/wamp-configfiles-sm.jpg&#34; /&gt;
+&lt;/a&gt;
+
+
+&lt;p&gt;Configuration files for Apache, PHP and MySQL can be easily accessed using the system tray icon, as shown by the figure in left. Click on &amp;lsquo;http.conf&amp;rsquo; to access apache&amp;rsquo;s configuration file.
+We are not going to change much here. Scroll down till you see a bunch of &amp;lsquo;LoadModule xyz&amp;rsquo; statements. Some of the Apache modules are commented out. Uncomment the following 3 modules by removing the leading &amp;lsquo;#&amp;rsquo; 1) mod_status , 2) mod_info and 3) mod_rewrite.
+mod_info and mod_status provide us with vital statistics regarding the apache server, (these shouldn&amp;rsquo;t be enabled on a production server). To be able to access the server info and status , we need to uncomment a few more lines.
+First of change the line &lt;code&gt;ExtendedStatus Off&lt;/code&gt; to &lt;code&gt;ExtendedStatus On&lt;/code&gt;, next search for and uncomment lines between&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;Location /server-status&amp;gt;...&amp;lt;/Location&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;Location /server-info&amp;gt;...&amp;lt;/Location&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will enable us to get the server status and info by navigating to URLs &lt;code&gt;http://localhost/server-status&lt;/code&gt; and &lt;code&gt;http://localhost/server-info&lt;/code&gt; respectively.
+If you install a PHP Content Management System (CMS) such as &lt;a href=&#34;http://www.drupal.org&#34;&gt;Drupal&lt;/a&gt; then it can use mod_rewrite module to output search engine friendly URLs.
+*   ### Configure PHP and MySQL&lt;/p&gt;
+
+&lt;p&gt;In case you need to configure PHP (add/remove extensions), you can use the &amp;lsquo;System Tray Monitor&amp;rsquo; or directly edit &lt;code&gt;C:\wamp\apache\bin\php.ini&lt;/code&gt; file. Similary to configure MySQL edit &lt;code&gt;C:\wamp\mysql\my.ini&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;final-thoughts&#34;&gt;Final thoughts&lt;/h2&gt;
+
+&lt;p&gt;Installing and configuring WAMP is really easy and straight forward. It is an ideal prototyping platform for any one who wishes to develop for the LAMP stack. And if you are feeling adventurous you can use WAMP as your final platform as well. I have also installed &lt;a href=&#34;http://www.drupal.org&#34;&gt;Drupal&lt;/a&gt; and &lt;a href=&#34;http://gallery.menalto.com/&#34;&gt;Gallery&lt;/a&gt; on top of WAMP without problems.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

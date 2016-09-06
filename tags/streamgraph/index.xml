@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Streamgraph on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/streamgraph/</link>
+    <description>Recent content in Streamgraph on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Sun, 15 Feb 2015 22:11:00 +0000</lastBuildDate>
+    <atom:link href="/tags/streamgraph/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Visualizing India v/s Pakistan One Day International Results</title>
+      <link>/2015/02/visualizing-india-v/s-pakistan-one-day-international-results/</link>
+      <pubDate>Sun, 15 Feb 2015 22:11:00 +0000</pubDate>
+      
+      <guid>/2015/02/visualizing-india-v/s-pakistan-one-day-international-results/</guid>
+      <description>&lt;p&gt;&lt;b&gt;T&lt;/b&gt;his is my small effort to pickup &lt;a href=&#34;https://github.com/hrbrmstr/streamgraph&#34; target=&#34;_blank&#34;&gt;streamgraph&lt;/a&gt;&amp;nbsp;support in R developed by &lt;a href=&#34;https://twitter.com/hrbrmstr&#34; target=&#34;_blank&#34;&gt;Bob Rudis&lt;/a&gt;. (Described &lt;a href=&#34;http://rud.is/b/2015/02/15/introducing-the-streamgraph-htmlwidget-r-pacakge/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;div&gt;What you see is per year aggregations of results of all India v/s Pakistan One day Internationals. I pulled the records from &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_ODI_cricket_matches_played_between_India_and_Pakistan&#34; target=&#34;_blank&#34;&gt;Wikipedia&lt;/a&gt; and used &lt;a href=&#34;https://github.com/hadley/rvest&#34;&gt;rvest&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/hadleywickham&#34; target=&#34;_blank&#34;&gt;Hadley Wickham&lt;/a&gt;.&amp;nbsp;for extracting the results. After that a little data munging using dplyr and lubridate and voilà. 
+
+
+&lt;div class=&#34;separator&#34; style=&#34;clear: both; text-align: center;&#34;&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/IndVsPak&#34; target=&#34;_blank&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;http://3.bp.blogspot.com/-z7OLkFbBD2k/VOFUVBjGnYI/AAAAAAAABsY/fb859QnN9-o/s1600/Screen%2BShot%2B2015-02-15%2Bat%2B9.19.53%2BPM.png&#34; height=&#34;361&#34; width=&#34;640&#34; /&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Blue&amp;rsquo;s are India and Green&amp;rsquo;s are Pakistan in accordance with their team colors. India had an abysmal records against Pakistan right up until mid 90s, but it has picked up quite a bit after that. And of course India has &lt;a href=&#34;https://twitter.com/search?q=%23Ind6Pak0&#34; target=&#34;_blank&#34;&gt;won&lt;/a&gt; all 6 of it&amp;rsquo;s Cricket world cup matches against Pakistan.&lt;/p&gt;
+
+&lt;p&gt;As of today the tally stands at: India 51 wins and Pakistan 72 wins. Below&amp;rsquo;s a detailed breakdown.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;separator&#34; style=&#34;clear: both; text-align: center;&#34;&gt;&lt;a href=&#34;http://2.bp.blogspot.com/-mOD3Pd4hmQQ/VOFcwVv5SpI/AAAAAAAABso/mMhKyqspfSc/s1600/Screen%2BShot%2B2015-02-15%2Bat%2B9.58.01%2BPM.png&#34; imageanchor=&#34;1&#34; style=&#34;margin-left: 1em; margin-right: 1em;&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;http://2.bp.blogspot.com/-mOD3Pd4hmQQ/VOFcwVv5SpI/AAAAAAAABso/mMhKyqspfSc/s1600/Screen%2BShot%2B2015-02-15%2Bat%2B9.58.01%2BPM.png&#34; height=&#34;102&#34; width=&#34;320&#34; /&gt;&lt;/a&gt;&lt;/div&gt;
+Running a&lt;a href=&#34;https://en.wikipedia.org/wiki/Chi-square_test&#34; target=&#34;_blank&#34;&gt; chi-square test&lt;/a&gt; for dependency between the result and the venue didn&amp;rsquo;t find any association between the two, which in layman terms means the results have been unrelated to the venue.&lt;/p&gt;
+
+&lt;p&gt;For the nerds (Oh sorry Data Scientists), the code is shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;/div&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;setwd(&amp;quot;~/code/R/workspaces/cricket&amp;quot;)
+library(stringr)
+library(rvest)
+library(lubridate)
+library(dplyr)
+library(streamgraph)
+
+# Wikipedia is our best go to source
+indvspak &amp;lt;- html(&#39;https://en.wikipedia.org/wiki/List_of_ODI_cricket_matches_played_between_India_and_Pakistan&#39;)
+# Summary table
+results.summary &amp;lt;- indvspak %&amp;gt;% html_node(&#39;.wikitable&#39;) %&amp;gt;% html_table()
+
+# Any dependency btween venue and result ?
+chisq.test(results.summary[2:3,3:5])
+
+# The XPATH expression below was obtained using Chrome&#39;s Element Inspector.
+results &amp;lt;-  indvspak %&amp;gt;%
+  html_node(xpath=&#39;//*[@id=&amp;quot;mw-content-text&amp;quot;]/table[4]&#39;) %&amp;gt;% html_table()
+
+# Sensible headers
+colnames(results) &amp;lt;- c(&#39;MatchNum&#39;,&#39;Date&#39;,&#39;Winner&#39;,&#39;WonBy&#39;,&#39;Venue&#39;,&#39;MoM&#39;)
+
+# Fix Date
+results$Date &amp;lt;- ymd(str_replace(results$Date,&#39;^0([0-9]{4}-[0-9]{2}-[0-9]{2}).*$&#39;,&#39;\\1&#39;))
+# Extract just the year in a new field
+results$year &amp;lt;- year(results$Date)
+
+# So that we get our colors as per team colors
+results$Winner &amp;lt;- factor(results$Winner,levels=c(&#39;India&#39;,&#39;Pakistan&#39;,&#39;No result&#39;),ordered=T)
+
+results %&amp;gt;% select(year,Winner) %&amp;gt;%
+  group_by(year,Winner) %&amp;gt;% tally() %&amp;gt;%
+  streamgraph(&amp;quot;Winner&amp;quot;, &amp;quot;n&amp;quot;, &amp;quot;year&amp;quot;, offset=&amp;quot;zero&amp;quot;, interpolate=&amp;quot;linear&amp;quot;) %&amp;gt;%
+  sg_legend(show=TRUE,
+            label=&amp;quot;Ind v/s Pak One Day International Results : Over the years&amp;quot;) %&amp;gt;%
+  sg_axis_x(1, &amp;quot;year&amp;quot;, &amp;quot;%Y&amp;quot;) %&amp;gt;%
+  sg_colors(&amp;quot;GnBu&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

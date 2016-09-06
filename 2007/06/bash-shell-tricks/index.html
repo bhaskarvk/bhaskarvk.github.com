@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Bash Shell Tricks</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="generator" content="Hugo 0.16" />
+		<link href="" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
+		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" rel="stylesheet"/>
+    
+		
+		
+	</head>
+	<body>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Bash Shell Tricks</div>
+		<div id="wrapper">
+
+			
+			<div class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="/"><p class="navbar-brand">Bhaskar Karambelkar&#39;s Blog</p></a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						
+						<li><a href="/about/">About Me </a></li>
+						
+						<li><a href="/">Home </a></li>
+						
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<a href="/"><img class="sidebar-logo" src="/images/profile.jpg" /></a>
+					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3></h3></li>
+					<hr />
+					
+						<li><a href="/about/">About Me </a></li>
+					
+						<li><a href="/">Home </a></li>
+					
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+					
+                    <hr/>
+					<div id="social-wrapper">
+						<li> <a target="_blank" data-toggle="tooltip" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk"><i class="fa fa-linkedin"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Twitter" href="https://www.twitter.com/bhaskar_vk"><i class="fa fa-twitter-square"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Github" href="https://github.com/bhaskarvk"><i class="fa fa-github-square"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="StackOverflow" href="https://stackoverflow.com/users/507484"><i class="fa fa-stack-overflow"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="Keybase" href="https://www.keybase.io/bhaskarvk"><i class="fa fa-key"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="SlideShare" href="//www.slideshare.net/bhaskar_vk"><i class="fa fa-slideshare"></i></a> </li>
+						<li> <a target="_blank" data-toggle="tooltip" title="RSS Feed" href="/index.xml"><i class="fa fa-rss"></i></a></li>
+                    </div>
+                    <hr/>
+				</ul>
+			</div>
+
+			<div class="container">
+
+<div id="article">
+	<div class="article-title">Bash Shell Tricks</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-06-12</small></p> <hr/>
+  <div class="post">
+		
+
+<p>Are you sure you are squeezing out all, that the bash shell can provide? Presented below are a few obscure things that bash can do, but chances are you may not have heard of them.</p>
+
+<h2 id="completion">Completion</h2>
+
+<p>No I am not talking about completing command/file names. I am talking about completing arguments to various commands, completing filenames based on application. This is one of the touted features of
+&lsquo;zsh&rsquo;, but unknown to many is the fact that it is also available in bash.
+All you need to do is install <a href="http://www.caliban.org/bash/index.shtml#completion">bash-completion</a>.</p>
+
+<p>With bash completion installed you can use the <code>TAB</code> key to complete arguments to common commands like <code>rpm, apt, find, grep</code> etc. Also bash-completion will complete host-names
+for <code>ssh, scp</code>, by looking up hosts inside your <code>$HOME/.ssh/authorized_keys</code> file. For <code>rpm</code> based distros, bash-completion will even lookup package names already installed.</p>
+
+<p>The feature I find most handy is file-name completion based on the context of the command. e.g. if you type <code>tar -zxvf</code> and then press the TAB key twice, you will get a list of only files ending in <code>.tar.gz or .tgz</code> rather than a list of all files in the directory.</p>
+
+<h2 id="socket-communication">Socket Communication</h2>
+
+<p>I bet a lot of you haven&rsquo;t heard of this, but bash can indeed perform basic socket communication via <code>/dev/tcp, /dev/udp</code>. These are pseudo devices that bash uses to communicate with network sockets. In fact if you did <code>ls -l /dev/tcp /dev/udp</code> you will get a &lsquo;No such file or directory&rsquo; error message.</p>
+
+<p>So how to use them, we below I present 2 examples.</p>
+
+<p>One to quickly check headers from a HTTP Server. Here is a simple function you can put in your <code>$HOME/.bashrc</code> that will check for headers of HTTP server.</p>
+
+<pre><code class="language-bash">headers() {
+  server=$1; port=${2:-80}
+  exec 5&lt;&gt; /dev/tcp/$server/$port
+  echo -e &quot;HEAD / HTTP/1.0\nHost: ${server}\n\n&quot; &gt;&amp;5;
+  cat 0&lt;&amp;5;
+  exec 5&gt;&amp;-
+}
+</code></pre>
+
+<p>Simply invoke it by</p>
+
+<p><code>bash# **headers &lt;servername or ip&gt; &lt;port&gt;**</code></p>
+
+<p>The port number defaults to 80 if not provided.</p>
+
+<p>Second example is a quick way to check if a port is open or not. You can always use netcat or telnet, but I find this easier.</p>
+
+<pre><code class="language-bash">testPort() {
+  server=$1; port=$2; proto=${3:-tcp}
+  exec 5&lt;&gt;/dev/$proto/$server/$port
+  (( $? == 0 )) &amp;&amp; exec 5&lt;&amp;-
+} 
+</code></pre>
+
+<p>Again invoke it by</p>
+
+<p><code>bash# **testPort &lt;servername or ip&gt; &lt;port&gt; &lt;protocol&gt;**</code></p>
+
+<p>The protocol can be either tcp or udp and defaults to tcp.</p>
+
+<h2 id="arithmetic-evaluations">Arithmetic Evaluations</h2>
+
+<p>Bash can perform arithmetic evaluations. They are much easier to using <code>expr</code> tool. Below are some examples.<em>Note the absense of $ prefix for variable names.</em></p>
+
+<pre><code class="language-bash">((count++)) #increment value of variable 'count' by one.
+((total+=current)) # set total = total+current.
+((current&gt;max?max=current:max=max)) # ternary expression.
+</code></pre>
+
+<h2 id="other-neat-bash-tricks">Other neat bash tricks</h2>
+
+<ul>
+<li><strong><code>^orig^repl^</code></strong> replace &lsquo;orig&rsquo; in previous command with &lsquo;repl&rsquo; and execute the new command.</li>
+<li><strong><code>cp filename{,.bak}</code></strong> Copy &lsquo;filename&rsquo; as &lsquo;filename.bak.</li>
+<li><strong><code>mkdir -p dir{1,2,3}/subdir{1,2}</code></strong> Create dir1/subdir1 dir1/subdir2 dir2/subdir1 dir2/subdir2 dir3/subdir1 dir3/subdir2</li>
+</ul>
+
+  </div>
+</div>
+
+<a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<ul class="pager">
+   &nbsp;<li class="previous"><a href="/2007/06/prototyping-lamp-with-wamp/"> Prototyping LAMP with WAMP</a></li>
+   &nbsp;<li class="next"><a href="/about/"> About Me</a></li>
+</ul>
+
+				<footer>
+                    <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
+				</footer>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/hc.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/r.min.js"></script>
+        <script>
+          hljs.initHighlightingOnLoad();
+        </script>
+		
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+			var u="//apps.karambelkar.info/pk/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 1]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+		
+	</body>
+</html>
+

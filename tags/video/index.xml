@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Video on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/video/</link>
+    <description>Recent content in Video on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Wed, 27 May 2015 02:01:00 +0000</lastBuildDate>
+    <atom:link href="/tags/video/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Video of my talk on Elasticsearch at Elastic{ON} 2015</title>
+      <link>/2015/05/video-of-my-talk-on-elasticsearch-at-elasticon-2015/</link>
+      <pubDate>Wed, 27 May 2015 02:01:00 +0000</pubDate>
+      
+      <guid>/2015/05/video-of-my-talk-on-elasticsearch-at-elasticon-2015/</guid>
+      <description>&lt;p&gt;Back in March, 2015 I gave a talk at &lt;a href=&#34;http://www.elasticon.com/&#34;&gt;Elastic{ON}, 2015&lt;/a&gt; on how to scale Elasticsearch for production scale data. Here&amp;rsquo;s a &lt;a href=&#34;https://www.elastic.co/blog/elasticon-video-of-the-week-verizon&#34;&gt;blog post&lt;/a&gt; on it and here&amp;rsquo;s the &lt;a href=&#34;https://www.elastic.co/elasticon/2015/sf/scaling-elasticsearch-for-production-at-verizon&#34;&gt;video&lt;/a&gt; of it. I got a lot of positive feedback from the community on the talk and it was personally a wonderful experience to share our story with the ever growing elasticsearch community. The opportunity to speak at a large user conference was beneficial for me tooa as it allowed me to sharpen my public speaking skills.&lt;/p&gt;
+
+&lt;p&gt;And here&amp;rsquo;s the slide deck of the talk&amp;hellip;&lt;/p&gt;
+
+&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;7ba5e31d097e4181b19ac084bcc07232&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

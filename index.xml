@@ -1,0 +1,1338 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/</link>
+    <description>Recent content on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Thu, 16 Jun 2016 18:30:00 -0400</lastBuildDate>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>My Thoughts on Northwestern University&#39;s MSPA</title>
+      <link>/2016/06/my-thoughts-on-northwestern-universitys-mspa/</link>
+      <pubDate>Thu, 16 Jun 2016 18:30:00 -0400</pubDate>
+      
+      <guid>/2016/06/my-thoughts-on-northwestern-universitys-mspa/</guid>
+      <description>
+
+&lt;p&gt;This is my review of Northwestern University&amp;rsquo;s Masters in Predictive Analytics (MSPA) online degree. I enrolled in MSAP in the Summer of 2013 and finished in the Summer of 2016. Normally it shouldn&amp;rsquo;t take this long to finish this program, but I took a break after the first Q1/015 and resumed in Q1/2016. This blog post is a retrospective analysis of the program, what I got out of it, and what it meant to me.&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p style=&#34;color:brown;font-size:105%&#34;&gt;I have not been paid a single cent nor been compensated by any other means for writing this review either by Northwestern University or by any other entity. This review is written with the sole aim of offering my perspective on this program to anyone who is interested in knowing more about the program from an actual student.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h2&gt;
+
+&lt;p&gt;Overall I am very satisfied with the program. The program is very flexible, both in terms of scheduling as well as topics covered. There are some caveats that one needs to be aware of and I discuss them towards the end of this post. It gave me a broad overview and  also in-depth understanding of topics related to predictive analytics. The program has been instrumental for me in moving up the career ladder, not to mention better monetary compensation (well deserved I hope). I would recommend this program for anyone who wishes to obtain a Master&amp;rsquo;s degree in this field, but also advice them to compare this program with similar programs offered by various other Universities. You can even learn and master most of these skills without being part of a formal graduate program.&lt;/p&gt;
+
+&lt;p&gt;This was just a teaser and the real juicy stuff is below. It is rather long but hopefully worth the full read, at least to some of you who dare proceed.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-is-mspa&#34;&gt;What is MSPA?&lt;/h2&gt;
+
+&lt;p&gt;Master&amp;rsquo;s in Predictive Analytics (MSPA) is a fully online graduate level degree program from Northwestern University&amp;rsquo;s School of Professional Studies (SPS). You can read about it more on Northwestern&amp;rsquo;s &lt;a href=&#34;http://sps.northwestern.edu/program-areas/graduate/predictive-analytics/&#34;&gt;official site&lt;/a&gt; for the program. The program is geared towards working professionals with some years of experience under their belt, who are looking to learn more about data analytics. This program is certainly not for someone straight out of undergrad, and the average age of a student is well over 30. You will have a chance to interact with fellow students from various diverse fields and backgrounds, and this to me is a core strength of the program. Besides this program, SPS offers various other online degree and certificate programs a list of which can be found &lt;a href=&#34;http://sps.northwestern.edu/main/online-programs.php&#34;&gt;here&lt;/a&gt;. The overall cost of the program was just under 50,000 USD, of which most was paid by my employer/s. Lastly the program is open to international students to and due to its online format does not require you to have a student visa in case you want to take it from outside USA.&lt;/p&gt;
+
+&lt;h2 id=&#34;why-mspa&#34;&gt;Why MSPA?&lt;/h2&gt;
+
+&lt;p&gt;I have been a software-developer/tech-lead all my professional life. Building enterprise systems capable of handling tons of data is something I have been doing for a very long time. But in addition to building extremely fast and scalable data processing pipelines, I also wanted to actually analyze data. I had good enough programming background but not much in terms of data analysis. This is why I decided to pursue a formal education in the field. Mind you, there are tons of non-formal ways to learn data analysis. From some really good free MOOCs from Coursera, Udacity, Edex etc. to paid boot camps from the likes of General Assembly and Zipfian Academy. So a graduate program is not the only option you have.&lt;/p&gt;
+
+&lt;p&gt;In the program I met several students who had no programming background and came from a traditional management or actuarial background. So fear not if you don&amp;rsquo;t have coding skills. As long as you are willing to learn, you can make it. Also the program is geared more towards people who want managerial and leadership roles in analytics and as such is not very theory or coding heavy. You do code quite a bit in R/Python/SAS but there is enough help available so not having a coding background is in no way a deterrent.&lt;/p&gt;
+
+&lt;h2 id=&#34;why-northwestern&#34;&gt;Why Northwestern?&lt;/h2&gt;
+
+&lt;p&gt;Back in &lt;sup&gt;2012&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2013&lt;/sub&gt;  when I was researching for a educational institution offering a program in data analytics there were not as many options available as there are today. Of the options available back then Northwestern&amp;rsquo;s SPS certainly stood out due to the stellar reputation of some of its other schools like &lt;a href=&#34;http://www.mccormick.northwestern.edu/&#34;&gt;McCormick&lt;/a&gt; and &lt;a href=&#34;http://www.kellogg.northwestern.edu/&#34;&gt;Kellogg&lt;/a&gt;. That is not to say that Northwestern is the only option, and in fact a lot of good universities have started offering similar programs. Here is one &lt;a href=&#34;http://www.predictiveanalyticstoday.com/top-predictive-analytics-programs/&#34;&gt;list&lt;/a&gt; for similar programs. Having said that, Northwestern has put good resources into this program, and they are always willing to listen to feedback. The program has already undergone some changes, and while I was part of the older format the newer format looks even better.&lt;/p&gt;
+
+&lt;p&gt;My top 3 reasons for enrolling in this program were&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Entire program was available online. This gave me the flexibility I needed.&lt;/li&gt;
+&lt;li&gt;Does not require GRE/GMAT.&lt;/li&gt;
+&lt;li&gt;Putting money down meant no excuse for slacking, which I had been guilty of when taking free MOOCs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now someone may frown upon the &amp;lsquo;entirely online&amp;rsquo; and &amp;lsquo;does not require GRE/GMAT&amp;rsquo; parts and take them as indicators of a not-worthy education. And indeed the entry barrier for this program seems very low. But in my opinion that does not take away from the quality of education received. After all the quality of education you receive depends also on your own efforts and sincerity towards your goals. Every student whom I interacted with as part of this program came into the program very motivated and as such contributed into making the courses and the program that much more worthwhile. For what it&amp;rsquo;s worth, Northwestern also offers the exact same courses as part of McCormick&amp;rsquo;s &lt;a href=&#34;http://www.mccormick.northwestern.edu/analytics/&#34;&gt;Master&amp;rsquo;s in Analytics&lt;/a&gt; program which is delivered on-campus.&lt;/p&gt;
+
+&lt;h2 id=&#34;mspa-structure&#34;&gt;MSPA structure&lt;/h2&gt;
+
+&lt;p&gt;The program in its current format requires you to take 12 courses, 8 core, 2 electives, either the leadership or the project management course, and either a capstone or a thesis. I was part of the older format which required only 11 courses. In the new format a new course &amp;lsquo;Predict 400-DL: Math for Modelers&amp;rsquo; was added as part of the core courses. I really like the contents of this course, and wish it was available when I started. Discrete math skills go a long way in data analytics. As far as electives are concerned you have a wide choice from some traditional domains like risk analytics, marketing analytics, to some newer domains like sports analytics, text analytics, web analytics etc.&lt;/p&gt;
+
+&lt;p&gt;Each course is 10 weeks long, and most of the professors have full time employments outside of academia. On one hand you may feel like that is not good but these professors have real work experience which they are very willing to share as part of the learning experience. There are no set days you meet as a class, but there are anywhere between 3 to 5 sync sessions per course. Many professors also have extensive video recordings made available. And all professors are available for scheduled chat through out the entire course duration. For every course there are discussion board topics that you must participate in and are graded accordingly. Each course has its own format for testing your skills. Some have a proctored exam at the end, while some require periodic submissions. Some courses require group activity and group submissions, while others are just individual study.&lt;/p&gt;
+
+&lt;p&gt;There are four terms in a year, winter, spring, summer and fall. You can take as many courses per term as you like, but most tend to take one and in some cases two. If you have a full time job + family doing two courses at a time is stressful enough so taking three courses per term is really out of the question. You can take breaks between terms, and in total you have 5 years to complete the whole program.&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p style=&#34;color:brown;font-size:105%&#34;&gt;I must warn you that MSPA is largely self-study with enough pointers from professors and occasional interactions. If self study format does not work for you then this is not the right program for you. I have seen some students complain about this nature of the program. I don&#39;t blame them, as at times it does feel like you are paying the University for self-study.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;the-program-materials&#34;&gt;The Program Materials&lt;/h2&gt;
+
+&lt;p&gt;Each course will require you to work with at least one book and more like three books. I preferred to buy most of these books, a not so cheap option. But I would still recommend this as you will likely return to these books even after you are done with your program. You can save money if using ebooks instead of dead trees. Other ways of saving on books is buying international versions instead of US versions of the books (ebay/Amazon) or buying from ex-students who want to sell their books, or finally renting books for the duration of the course. Lastly as part of your student account you have access to almost entire Springer publications book series in PDF format for free. Use it!&lt;/p&gt;
+
+&lt;p&gt;You also need to buy some software (SAS/SPSS) albeit at discounted prices, and some software is either free due to it being open source (R/Python) or available free from Northwestern. You can use either Windows or Mac depending on your preference. You can even use Linux, but some courses require software that is available only under Windows or Mac, so you will need virtualization.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-courses&#34;&gt;The courses&lt;/h2&gt;
+
+&lt;p&gt;Here I have put some notes on individual courses I took as part of the program. For a full list of all the courses you can take see the &lt;a href=&#34;http://sps.northwestern.edu/program-areas/graduate/predictive-analytics/&#34;&gt;official website&lt;/a&gt;. For each course I&amp;rsquo;ve given a rating on the scale of 1 to 10 in term of course content, professor engagement, overall value to the program, and overall value to me. Mind you the same course is offered by many different professors, so I highly encourage you to check individual professor evaluations available to you when you register for the program.&lt;/p&gt;
+
+&lt;p&gt;I was part of the old format and in the new format certain courses have been revised and/or renamed, and I have noted the revised contents/names for the benefit of the reader. Also if you have taken similar courses in a formal setting (read another University) you may be able to skip the course or substitute it with one of the electives. Check with the student advisor if such is the case.&lt;/p&gt;
+
+&lt;h3 id=&#34;401-introduction-to-statistics&#34;&gt;401: Introduction to Statistics&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Content: &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Professor Engagement: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to the Program: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to me: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This was the first course I took in Summer-2013 along with 475. Prior to taking this course I had very rudimentary understanding of probability theory and statistics. This was a very good first course to take, and it set the tone for the whole program. The professor was very engaging and made sure that we understood the concepts of probability theory and descriptive and inferential statistics well. Most of the coding was done in SPSS.&lt;/p&gt;
+
+&lt;p&gt;My only two complains were a) use of SPSS instead of R, which I believe is an option now but wasn&amp;rsquo;t when I took it, and b) no course on Bayesian analysis. I really wish there was a core course covering Bayesian analysis techniques in addition to the traditional frequentist techniques learned in this course.&lt;/p&gt;
+
+&lt;h3 id=&#34;475-project-management&#34;&gt;475: Project Management&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Content: &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Professor Engagement: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to the Program: &lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to me: &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I took this course in Summer-2013 along with 401. In the newer format of the program you are required to take either this course or foundations of leadership course. I had to take both as part of the older format. I was doubtful about the value of this course for analytics purposes, but the professor delivered a very compelling course, and I came out very satisfied having taken this course. Al though I have worked very closely with project managers I had no formal training in PM before this course, and suffice to say I have much better understanding of the process of project management as result of this course. The course did not however contain Agile/Scrum methodology of PM. I still question the value of this course to the overall program though.&lt;/p&gt;
+
+&lt;h3 id=&#34;317-database-management&#34;&gt;317: Database Management&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Now revised and renamed to 420: Database Systems and Data Prep&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Content: &lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Professor Engagement: &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to the Program: &lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to me: 0/10&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I took this course in Fall-2013, alone. As you have noticed I have given very dismal ratings to this course across every dimension except professor engagement. I have no complains about the professor under whom I took this course, but I do have major complains about this course&amp;rsquo;s contents and its usefulness. I have been working with databases for more than 15 years so I was very doubtful what I was going to learn new. And my doubts were not only confirmed but I was very disappointed that instead of teaching students how to work with databases using SQL the entire course was spent in how to design rudimentary database schemas and normalization.
+Don&amp;rsquo;t get me wrong, database schema design and normalization are very important skills, but just not as useful to have as SQL mastery when it comes to data analysis. A data analyst is not the one who should be designing database schemas and worry about normalization. Also the course did not cover any NoSQL technologies. I felt this was a very poorly designed course, and even for people who have no database experience, it will give a wrong impression to them of having learned something useful.&lt;/p&gt;
+
+&lt;p&gt;I would redesign this entire course and make it about mastering SQL and other NoSQL data access techniques like APIs/SDKs. These skills will be more beneficial to a data analyst/scientist than what this course currently covers. And in fact it seems like NU has just done that, the course has been revised and renamed to &amp;lsquo;420: Database Systems and Data Prep&amp;rsquo;, and looks like its content are exactly what I am preaching about.&lt;/p&gt;
+
+&lt;h3 id=&#34;435-data-mining-and-data-warehouse&#34;&gt;435: Data Mining and Data Warehouse&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Now revised and renamed to 422: Practical Machine Learning&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Content: &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Professor Engagement: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to the Program: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to me: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I took this course in Winter-2014, alone. This was a stellar course. We used the WEKA software for this course, but the newer format is delivered in Python/R. Regardless it was a really good course to study, as far as learning data mining / machine learning is concerned. We covered techniques for association rule mining, classification, clustering, decision trees etc. The data warehouse part was a bit of a miss. I would move it out of this course and put it in the database course.&lt;/p&gt;
+
+&lt;p&gt;My only complain is that this course needs a follow up course &amp;lsquo;Advanced Machine Learning&amp;rsquo; which covers Neural Networks, Deep Learning, Image/Text Analysis in depth. This course has since been revised and renamed to &amp;lsquo;422: Practical Machine Learning&amp;rsquo; and the new contents look even more appealing and now it&amp;rsquo;s delivered in Python/R instead of WEKA.&lt;/p&gt;
+
+&lt;h3 id=&#34;410-predictive-modeling-1&#34;&gt;410: Predictive Modeling 1&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Now renamed to 410: Regression and Multi Analysis&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Content: &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Professor Engagement: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to the Program: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to me: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I took this course in Winter-2014, alone. This is where things got serious. Regression analysis, variable selection, PCA, factor analysis, and cluster analysis were all given their due share. This was one tough course and required a lot of time and efforts. The professor made a good job in stressing the importance of this course as the foundation for courses to follow. I would advice anyone to take this course alone and not pair it up.&lt;/p&gt;
+
+&lt;p&gt;I do have some comments. Towards the end it felt like a lot was crammed in the short 10 weeks. I would have taken factor analysis and cluster analysis out and covered some advanced regression techniques. Also the course was delivered in SAS and I hated SAS from the get go. They should at least offer an option to take this course in R/Python. The course has since been renamed to &amp;lsquo;410: Regression and Multi Analysis&amp;rsquo;, but the contents look very similar to the old one.&lt;/p&gt;
+
+&lt;h3 id=&#34;411-predictive-modeling-2&#34;&gt;411: Predictive Modeling 2&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Now broken into 2 courses, 411:GLM &amp;amp; 413:Time Series and Forecasting&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Content: &lt;sup&gt;4&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Professor Engagement: &lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to the Program: &lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to me: &lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I took this course in Winter-2014, alone. In terms of the entire program this was perhaps the most disappointing course even more so than 317: Database. The course had generalized linear models (GLM), logistic regression, panel data analysis, and time series analysis all crammed in. It meant a very superficial treatment of each subject and no proper foundation was laid down of each subject. On top of that the professor was extremely arrogant and delivered the course very poorly. I am not the only one with this opinion.&lt;/p&gt;
+
+&lt;p&gt;In short, what could have been a great course was ruined completely by too much content and an incompetent professor. Also the course was once again delivered in SAS, without the option for R/Python. Thankfully the course has now been broken down into two separate courses, 411: Generalized Linear Models and 413:Time Series and Forecasting. I believe NU did get a lot of feedback from students like me and decided to do the right thing. A pity I could not benefit from it, but hopefully future students will.&lt;/p&gt;
+
+&lt;h3 id=&#34;412-advanced-predictive-modeling&#34;&gt;412: Advanced Predictive Modeling&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Now renamed to 454: Advanced Modeling Techniques&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Content: &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Professor Engagement: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to the Program: &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to me: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I took this course in Winter-2014, alone. This was my first elective. I took it before completing the other core courses as it felt like a natural progression from 410 and 411. This was a complete do-it-yourself course. We had to select a &lt;a href=&#34;https://www.kaggle.com/&#34;&gt;Kaggle&lt;/a&gt; competition and work on it as a team. The point is to use whatever learned in 435 (now 422), 410, 411 (Now 411 + 413) in solving real world analytical problems. I was very glad I took this elective as nothing beats practical use of your acquired knowledge. There was no test, but we had to submit a proper report of our work as a team. I would highly recommend this elective to everyone as one of their two elective.&lt;/p&gt;
+
+&lt;h3 id=&#34;481-foundations-of-leadership&#34;&gt;481: Foundations of Leadership&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Content: &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Professor Engagement: &lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to the Program: &lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to me: &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I took this course in Winter-2015, along with 402. This is one of those soft skills courses which I suspect might prove its worth in the long run although in the short term it feels like spending way too much money to read a book. Again I question the value of this course in this program and many other students did too. Hence NU has now made this course optional, you can either take this or 475: Project Management. But I question the value of either of these courses, and would have loved to see a course on Bayesian Analysis instead. The professor was not very engaging, and we did not receive grading or feedback in time.&lt;/p&gt;
+
+&lt;h3 id=&#34;402-introduction-to-predictive-analytics&#34;&gt;402: Introduction to Predictive Analytics&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Content: &lt;sup&gt;6&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Professor Engagement: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to the Program: &lt;sup&gt;6&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to me: &lt;sup&gt;6&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I took this course in Winter-2015, along with 481. This was the course that the student advisor recommends you take before any other course, but I took it quite late in the program. This was another poorly designed course. Although the professor was very engaging, the contents were very disconnected and non-cohesive. Survey methodology, dashboard design, and analytics field guide were bundled together and I got the impression of not learning enough of either of the contents. As there is already a data visualization related elective, I would get rid of dashboard design and make it all about experiment design and survey methodology. That would make this course more interesting and engaging and cohesive.&lt;/p&gt;
+
+&lt;h3 id=&#34;450-marketing-analytics&#34;&gt;450: Marketing Analytics&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Content: &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Professor Engagement: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to the Program: &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to me: &lt;sup&gt;6&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I took this course in Winter-2016, alone. This was by far the toughest course for me. I am not sure what lead me to take this elective as marketing analytics is not my domain. I guess I wanted to broaden my horizon a bit, but it felt like I bit more than I can chew. The course straight away jumped in to digital marketing analysis using bayesian techniques. This was sort of a double whammy for me, as I had no experience with either. And once again I wish NU offered a course on Bayesian analysis as part of its core offerings. This course is really tough if you have no exposure to the domain or the technique. I barely got through this one, and contemplated dropping out of the course almost every week.&lt;/p&gt;
+
+&lt;h3 id=&#34;498-capstone&#34;&gt;498: Capstone&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Content: &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Professor Engagement: &lt;sup&gt;10&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to the Program: &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;Overall Value to me: &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;10&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I took this course in Spring-2016, alone. The culmination of the program, the Capstone. This was complete hands on practical work from view point of an analytics consulting firm helping a fictitious bank in building analytics capabilities through out the organization. No coding was involved, mostly analytics related grunt work. Estimations, cost-benefit analysis (CBA), planning and timeline etc. It was a good experience and probably very valuable for someone who wants to work in a consulting capacity. The amount of team work here was very heavy. Almost all submissions were teamwork focused and even individual submissions required team efforts. The biggest challenge here was being punctual in your submission as each subsequent assignment was laid on top of the previous one, so there was no room of being late.&lt;/p&gt;
+
+&lt;h3 id=&#34;summary-of-courses&#34;&gt;Summary of Courses&lt;/h3&gt;
+
+&lt;p&gt;In summary I really enjoyed 401, 410, 412, 435, 450, 475, 481. I am neutral towards 402, 498 and completely hated 317 and 411. Most of the analytics heavy courses were in SAS which again I was not too thrilled about.. In hind sight there were more positives than negatives, and I got to interact with a lot of talented folks from different fields, which was a very rewarding experience. I am really glad that NU has listened to the feedback and revised many courses and also offered many of the courses in R/Python. The only thing missing is a through introductory course on Bayesian Analysis&lt;/p&gt;
+
+&lt;p&gt;My advice to anyone planing on taking the courses is.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Don&amp;rsquo;t take more than two courses at a time.&lt;/li&gt;
+&lt;li&gt;Take the heavy courses 410,411,413,422 (Prev 435) one at a time.&lt;/li&gt;
+&lt;li&gt;Plan about 15-20 hours per week for each course.&lt;/li&gt;
+&lt;li&gt;Augment NU courses with free MOOCs from Coursera/Udacity etc.&lt;/li&gt;
+&lt;li&gt;You can meet and exchange ideas with with some really talented folks in the discussion boards, so don&amp;rsquo;t ignore them.&lt;/li&gt;
+&lt;li&gt;You have about 2 weeks window between each term. Use that to prepare for the upcoming course/s.&lt;/li&gt;
+&lt;li&gt;Brush up or learn some coding chops if you&amp;rsquo;ve never coded before.&lt;/li&gt;
+&lt;li&gt;Concentrate on understanding the concept rather than the tools or techniques.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;post-mspa&#34;&gt;Post-MSPA&lt;/h2&gt;
+
+&lt;p&gt;As I said in the TL;DR section the program has been beneficial to me. I was able to switch to a Data Scientist role within my org after just completing 5 courses. And then switch to a Data Science Lead role at a different organization. Besides the career and monetary benefits, the personal satisfaction of diligently following a plan and executing it successfully is no small matter. I have learned how to better manage my time and multi-task full time job, family and education, which I did not think was possible.&lt;/p&gt;
+
+&lt;p&gt;My domain of operation is information security, and I met just one other cyber guy in the program, which sucks. I would highly recommend more and more infosec pros to educate themselves in the art of data analysis. The program has given me enough understanding of analytical skills that I feel confident in able to tackle analytical problems not just in my domain but other domains too. Domain knowledge/expertise certainly plays a big role, but a lot of analytics skill sets are easily transferable from one domain to another, provided you are willing to learn the new domain.&lt;/p&gt;
+
+&lt;h2 id=&#34;should-you-enroll&#34;&gt;Should you enroll?&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Are you a mid-career person who is looking for a new challenge or something new to learn ?&lt;/li&gt;
+&lt;li&gt;Are you curious about data and would love to know about the many ways in which it can be used?&lt;/li&gt;
+&lt;li&gt;Do you believe that by adding data analysis skills to your repertoire you can contribute more effectively to your organization?&lt;/li&gt;
+&lt;li&gt;Are you looking to boost your career prospects and long term employability?&lt;/li&gt;
+&lt;li&gt;Do you feel that a structured learning environment is better for your educational needs?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I don&amp;rsquo;t need to tell you that if the answer to these questions is yes, then you owe it to yourself to build your analytical skills. Whether you do it through NU&amp;rsquo;s MSPA program or any other means is up to you. I hope I have given you enough food for thought if you are considering NU&amp;rsquo;s MSPA.&lt;/p&gt;
+
+&lt;h2 id=&#34;onwards&#34;&gt;Onwards&lt;/h2&gt;
+
+&lt;p&gt;Learning never stops and time is never enough. This program will give you a good insight into the world of analytics, but there is tons more to learn and explore. For starters I want to revisit some of my Math skills (learned ages ago in high school and under grad), so as to better understand some of the foundations of statistics and machine learning. Revisiting some of my comp-sci fundamentals like data structures and algorithms would go a long way too. I have fairly decent exposure to things like Hadoop, Spark etc and I&amp;rsquo;ve also built up my R and Python skills, but there are always new things happening in this space. I am very much interested in building some domain expertise outside my core domain of information security, especially in digital marketing analytics and risk analytics. Did I mention the need to master Bayesian analysis?&lt;/p&gt;
+
+&lt;p&gt;The list of things to learn is endless but I now have access to resources I need and the confidence to tackle these one by one. If you have read this nearly 5,000 words long essay I congratulate you and thank you for your patience. If you want me to answer any questions I would gladly do so, just reach out to me on Twitter (&lt;a href=&#34;https://twitter.com/bhaskar_vk&#34;&gt;@bhaskar_vk&lt;/a&gt;) or LinkedIn (&lt;a href=&#34;https://www.linkedin.com/in/bhaskarvk&#34;&gt;bhaskarvk&lt;/a&gt;).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Alternative to using legends in ggplot2</title>
+      <link>/2016/03/alternative-to-using-legends-in-ggplot2/</link>
+      <pubDate>Mon, 21 Mar 2016 11:22:02 -0400</pubDate>
+      
+      <guid>/2016/03/alternative-to-using-legends-in-ggplot2/</guid>
+      <description>
+
+&lt;p&gt;Recently I got hold of some regional spending forecast data. I quickly plotted it using ggplot2, and here&amp;rsquo;s the first version of it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.orig-1.png&#34; alt=&#34;Figure 1: First Attempt&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: First Attempt
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;The data is from 2014 and the values from 2015 to 2019 are the forecasted values. For now don&amp;rsquo;t worry about the validity of this data or the lack of margin of error in the forecasted values. Lets just concentrate on the problems with the visual elements of this chart.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-problems&#34;&gt;The Problems&lt;/h3&gt;
+
+&lt;p&gt;There are two problems here&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Most of the data is hugging the x-axis, something you see very often when you have highly skewed data.&lt;/li&gt;
+&lt;li&gt;Way too many categories (regions) which makes it hard to figure out which line is for which region, even with the legend.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A crude approach to fix problem #1 would be to use log scale on y-axis, which believe me is not the way to go especially when you want to present this chart to business execs and not scientific community. For problem #2, I tried using various different color palettes but none gave enough distinction in the hues to be able to distinguish all the ten regions correctly. This is not a problem of the hues. When you have more than 4 or 5 hues it is hard to distinguish each one, especially for line or point plots where the ink to plot ratio is not high (as opposed to say a bar plot).&lt;/p&gt;
+
+&lt;h3 id=&#34;the-solutions&#34;&gt;The Solutions&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s tackle each separately. First we tackle problem #1, that of most data hugging the x-axis. In this case it was a very easy fix, the data is very easily splittable in to two clusters a) &lt;code&gt;spending &amp;lt; 10,000&lt;/code&gt;, and b) &lt;code&gt;spending &amp;gt; 10,000&lt;/code&gt;. I did just that by creating another variable which indicated which group the data belonged to and used &lt;code&gt;facet_grid&lt;/code&gt; to create two charts, but hid the facet strip and text. Here&amp;rsquo;s the result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.orig2-1.png&#34; alt=&#34;Figure 2: Using `facet_wrap` for better data visibility&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: Using &lt;code&gt;facet_wrap&lt;/code&gt; for better data visibility
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;This is much better, the data that was hugging the x-axis has now better visibility. It is &lt;strong&gt;worth noting&lt;/strong&gt; that the chart is in fact two plots, arranged vertically on top of each other, and the y-axis scale is for the bottom chart is 1,000 while that of the top chart is 10,000. This just gives an illusion of a single y-axis. Also worth noting is that we could do this because the data was easily separable. I believe when data is easily separable as is the case here, this approach is a better alternative to using log scale. &lt;a href=&#34;https://twitter.com/hrbrmstr&#34;&gt;Bob Rudis&lt;/a&gt; helped in adding a visual separator where the scale breaks.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt; : Not many people are fans of scale breaking, and I too would advice caution when using such an approach. Perhaps a better alternative is to simply plot the two charts separately.&lt;/p&gt;
+
+&lt;p&gt;Now on to problem #2. What we really want here is a better way to indicate which line belongs to which region. If we can directly label the lines instead of using a legend on the side, then we have our solution for problem #2. After some googling around I found &lt;a href=&#34;https://twitter.com/JonKalodimos/status/636880959191826432&#34;&gt;this Twitter conversation&lt;/a&gt; and a subsequent &lt;a href=&#34;http://rud.is/b/2015/08/27/coloring-and-drawing-outside-the-lines-in-ggplot/&#34;&gt;blog post&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/hrbrmstr&#34;&gt;Bob Rudis&lt;/a&gt;. Hadley suggested using the &lt;code&gt;directlables&lt;/code&gt; package, and Bob used &lt;code&gt;ggpolt2::annotation_custom&lt;/code&gt;. I first went with the &lt;code&gt;directlabels&lt;/code&gt; package but quickly realized that none of the &lt;a href=&#34;http://directlabels.r-forge.r-project.org/docs/lineplot/plots/chemqqmathscore.html&#34;&gt;options&lt;/a&gt; were working out for me. The labels were either overlapping each other or overlapping the data, neither of which was acceptable. So I explored Bob&amp;rsquo;s option, and there too I gave up on &lt;code&gt;ggplot2::annotation_custom&lt;/code&gt; for the same reason, overlapping labels.&lt;/p&gt;
+
+&lt;p&gt;So I came up with an alternative approach, which involved using the &lt;code&gt;ggrepel&lt;/code&gt; package to make sure the labels didn&amp;rsquo;t overlap. Here&amp;rsquo;s the final result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.final-1.png&#34; alt=&#34;Figure 3: Final Version, using `ggrepel`.&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3: Final Version, using &lt;code&gt;ggrepel&lt;/code&gt;.
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;This is even better, not only do we get labels right next to each line but we also get non-overlapping labels. The only thing I wish was an option in the &lt;code&gt;ggrepel&lt;/code&gt; package that would allow repelling in just one direction, i.e. in this case it would be even nicer if I can left align all the labels, but still get vertical separation. Other than that I am happy with the result. They key to obtaining this chart was using &lt;code&gt;ggrepel&lt;/code&gt; and using &lt;code&gt;ggplot2::expand_limit()&lt;/code&gt; function to make sure there was enough room along the x-axis for the labels to not get chopped. By default ggplot2 will leave just a small area around each scale, so I had to use the &lt;code&gt;expand_limit&lt;/code&gt; function to make room for the labels.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-code&#34;&gt;The Code&lt;/h3&gt;
+
+&lt;p&gt;Here is the code for the final plot.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggplot2)
+library(readr)
+library(tidyr)
+library(dplyr)
+library(ggthemes)
+library(ggrepel)
+
+region.forecast &amp;lt;- read_csv(&#39;./region-spending-forecast.csv&#39;)
+# Add a column so we can split the plot into two plots.
+region.forecast$Budget &amp;lt;- ifelse(region.forecast$`2019`&amp;lt;10000,&#39;Low&#39;,&#39;High&#39;)
+
+# Convert wide format data to long format as required by ggplot2
+df.tidy &amp;lt;- region.forecast %&amp;gt;% gather(Year,Spending,-Region,-Budget)
+
+g &amp;lt;- ggplot(df.tidy, aes(x=Year,y=Spending,group=Region,color=Region)) + 
+    # Solid line for actual data
+    geom_line(data=df.tidy %&amp;gt;% filter(Year&amp;lt;2015),
+              linetype=&#39;solid&#39;, size=0.75) +
+    # dashed line for forecast data
+    geom_line(data=df.tidy %&amp;gt;% filter(Year&amp;gt;=2014), 
+              linetype=&#39;dotted&#39;, size=0.75) +
+    # Mark each data point
+    geom_point(shape=8,size=0.75) +
+    # Add labels right after the last value of each series.
+    geom_label_repel(data=df.tidy %&amp;gt;% filter(Year==2019),
+                     aes(label=Region, fill=Region),
+                     nudge_x = 0.5, size=3, color=&#39;white&#39;,
+                     force=1.5, segment.color=&#39;#bbbbbb&#39;) +
+    # Split the plot in to two plots on top of each other
+    facet_grid(Budget ~ ., scales = &#39;free_y&#39;) +
+    scale_y_continuous(labels = scales::comma) + # Add commas to y-axis labels
+    scale_x_discrete() +
+    theme_minimal() +
+    scale_color_tableau() + scale_fill_tableau() + # Tableau Colors
+    theme(strip.text = element_blank(), # Hide facet text
+          legend.position = &#39;none&#39;, # Hide legend
+          panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank())  +
+    expand_limits(x=9) # So that we have enough room along x-axis for labels.
+
+# This is to insert a ↑ as a scale seperation indicator between the two plots.
+library(grid)
+library(gtable)
+library(gridExtra)
+
+gb &amp;lt;- ggplot_build(g)
+gt &amp;lt;- ggplot_gtable(gb)
+gt &amp;lt;- gtable_add_grob(gt, textGrob(label=&amp;quot;↑&amp;quot;, gp=gpar(fontsize=30)), 5, 3,
+                      clip=&amp;quot;on&amp;quot;, name=&amp;quot;separator&amp;quot;)
+gt$heights[[5]] &amp;lt;- unit(30, &amp;quot;pt&amp;quot;)
+grid.arrange(gt)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;final-thoughts&#34;&gt;Final Thoughts&lt;/h3&gt;
+
+&lt;p&gt;There are some noteworthy thoughts here.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I could use &lt;code&gt;facet_grid&lt;/code&gt; because the data was easily splittable, otherwise I would have had to come up with some other clever option for lifting the series data that was hugging the x-axis.&lt;/li&gt;
+&lt;li&gt;Not everyone is a fan of a split sclae in an axis so tread carefully.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggrepel&lt;/code&gt; for now does not allow repelling along a single axis. This makes the label positions less than ideal. The ideal solution is to have the labels vertically aligned and enough separation along the y-axis. But fear not there is already a &lt;a href=&#34;https://github.com/slowkow/ggrepel/issues/25&#34;&gt;feature request&lt;/a&gt; for it.&lt;/li&gt;
+&lt;li&gt;I tried various color schemes, and Tableau colors from the &lt;code&gt;ggthemes&lt;/code&gt; package gave the best hues.&lt;/li&gt;
+&lt;li&gt;You have to specify the scaled data values for &lt;code&gt;expand_limits&lt;/code&gt;. In my case, as I had seven data points, one for each year of 2013 to 2019, so I added room for two more using &lt;code&gt;expand_limits(x=9)&lt;/code&gt; to accomodate the labels.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Re-plotting Russian AirStrikes In Syria</title>
+      <link>/2015/11/re-plotting-russian-airstrikes-in-syria/</link>
+      <pubDate>Tue, 10 Nov 2015 11:56:30 -0500</pubDate>
+      
+      <guid>/2015/11/re-plotting-russian-airstrikes-in-syria/</guid>
+      <description>
+
+&lt;p&gt;My Cartography mentor &lt;a href=&#34;https://twitter.com/hrbrmstr&#34;&gt;Bob Rudis&lt;/a&gt; pointed me to a blog post visualizing &lt;a href=&#34;http://r-datameister.blogspot.com/2015/11/plotting-russian-airstrikes-in-syria.html&#34;&gt;Russian Air Strikes in Syria&lt;/a&gt; and commanded me to redo the static maps to something more interactive and easier to explore.&lt;/p&gt;
+
+&lt;h2 id=&#34;tl-dr-version&#34;&gt;TL;DR Version&lt;/h2&gt;
+
+&lt;p&gt;Interactive Map at &lt;a href=&#34;http://rpubs.com/bhaskarvk/russian-airstrikes-in-syria&#34;&gt;Rpubs&lt;/a&gt; created using Leaflet after scraping data using RSelenium+ PhantomJS + dplyr. You can use the LayerSelector at the Top Right to toggle various Base Tiles. Clicking on any Marker will show details about that Air Strike.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-acquisition&#34;&gt;Data Acquisition&lt;/h2&gt;
+
+&lt;p&gt;The data comes from crowdsourcing of Russian Ministry of Defense&amp;rsquo;s (MOD) Youtube&lt;sup&gt;TM&lt;/sup&gt; channel. The process and the data is described &lt;a href=&#34;https://www.bellingcat.com/news/mena/2015/10/26/what-russias-own-videos-and-maps-reveal-about-who-they-are-bombing-in-syria/&#34;&gt;here&lt;/a&gt; and the data can be found at &lt;a href=&#34;http://russia-strikes-syria.silk.co/&#34;&gt;http://russia-strikes-syria.silk.co/&lt;/a&gt;. The argument is that a majority of the strikes claimed by the Russian MOD to be targeting ISIS held areas are actually targeting non-ISIS rebel areas and as such helping the Asaad regime more than fighting ISIS.&lt;/p&gt;
+
+&lt;p&gt;The original visualization was done by copying the data and putting it in an excel spreadsheet and then mapped using R&amp;rsquo;s &lt;code&gt;ggmap&lt;/code&gt; package. But in the interest of reproducibility I wanted to scrape the data directly from within R. For this I initially tried using &lt;a href=&#34;https://cran.r-project.org/web/packages/rvest/&#34;&gt;rvest&lt;/a&gt; but quickly realized that this was a no go as the table containing the data was dynamically populated using AJAX/Javascript stuff. So I had to turn to RSelenium + PhantomJS as described &lt;a href=&#34;https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Below is the web-scraping code, and the webpage from where this data was scraped can be found &lt;a href=&#34;http://russia-strikes-syria.silk.co/explore/table/collection/strike-id/column/date-uploaded/column/time-in-utc-uploaded/column/accuracy-of-russian-location/column/actual-location-co-ords/column/closest-location-governorate/column/claimed-location/column/claimed-targets/column/closest-location-actual/column/status/column/isis-in-the-area/column/error-type/column/notes/column/checkdesk-link/column/video-url/slice/0/1000&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(RSelenium)
+library(rvest)
+
+pJS &amp;lt;- phantom()
+Sys.sleep(5) # give the binary a moment
+remDr &amp;lt;- remoteDriver(browserName = &#39;phantomjs&#39;)
+remDr$open()
+remDr$navigate(&#39;http://russia-strikes-syria.silk.co/explore/table/collection/strike-id/column/date-uploaded/column/time-in-utc-uploaded/column/accuracy-of-russian-location/column/actual-location-co-ords/column/closest-location-governorate/column/claimed-location/column/claimed-targets/column/closest-location-actual/column/status/column/isis-in-the-area/column/error-type/column/notes/column/checkdesk-link/column/video-url/slice/0/1000&#39;)
+Sys.sleep(2) # Some time for page to load
+events &amp;lt;- read_html(remDr$getPageSource()[[1]]) %&amp;gt;%
+  html_node(xpath= &#39;//*[@id=&amp;quot;canvas&amp;quot;]/div/div[3]/div[2]/div[2]/div[4]/table&#39;) %&amp;gt;%
+  html_table()
+remDr$close()
+pJS$stop() # close the PhantomJS process
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;
+In short the code starts a RSelenium + PhantomJS WebDriver fetches the webpage containing the data. Then the html table is parsed using rvest&amp;rsquo;s &lt;code&gt;html_table()&lt;/code&gt; after the correct table is selected using the proper xpath to the table.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-preparation&#34;&gt;Data Preparation&lt;/h2&gt;
+
+&lt;p&gt;To plot the data correctly I need to perform the following steps.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Filter out data containing invalid Lat/Long coordinates.&lt;/li&gt;
+&lt;li&gt;Split the single column containing Lat/Long in to two columns.&lt;/li&gt;
+&lt;li&gt;Create a new column to be used for Popup Display when a point is clicked on the map.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Thankfully &lt;code&gt;dplyr&lt;/code&gt; and &lt;code&gt;tidyr&lt;/code&gt; are more than capable of doing all this using some basic simple steps shown below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+library(tidyr)
+
+events %&amp;gt;% filter(str_detect(`Actual location co-ords`,
+                             &#39;[0-9]+\\.[0-9]+, *[0-9]+\\.[0-9]+&#39;)) %&amp;gt;%
+  separate(`Actual location co-ords`,c(&#39;lat&#39;,&#39;lon&#39;),
+           sep = &#39;,&#39;, convert = TRUE, remove = TRUE ) %&amp;gt;%
+  mutate(popup = sprintf(&#39;&amp;lt;P&amp;gt;&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Status:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Date Uploaded:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s %s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Claimed Location:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Claimed Targets:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Closest Governorate:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Closest Actual Location:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;ISIS Presence:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Error:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Notes:&amp;lt;/i&amp;gt; %s&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Description:&amp;lt;/i&amp;gt; &amp;lt;a href=&amp;quot;%s&amp;quot;&amp;gt;%s&amp;lt;/a&amp;gt; / &amp;lt;i&amp;gt;Video:&amp;lt;/i&amp;gt; &amp;lt;a href=&amp;quot;%s&amp;quot;&amp;gt;%s&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/P&amp;gt;&#39;,
+                         Airstrikes, Status,
+                         `Date (Uploaded)`, `Time in UTC (Uploaded)`,
+                         `Claimed location`, `Claimed targets`,
+                          `Closest location governorate`, `Closest location (actual)`,
+                         `ISIS in the area?`, `Error type`,
+                         Notes, `Checkdesk link`, Airstrikes,
+                         `Video URL`, Airstrikes
+                         )) -&amp;gt; events
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;filter&lt;/code&gt; function filters out all data points which don&amp;rsquo;t match the regex for the the Lat/Long format. The &lt;code&gt;separate&lt;/code&gt; function splits the &amp;lsquo;Actual location co-ords&amp;rsquo; column in to two columns lat and lon. And finally the &lt;code&gt;mutate&lt;/code&gt; function is used to create the HTML code that will be used to display the popup when this datapoint is clicked on the Map.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-plotting&#34;&gt;Data Plotting&lt;/h2&gt;
+
+&lt;p&gt;Finally for Data Plotting I used &lt;a href=&#34;https://rstudio.github.io/leaflet/&#34;&gt;Leaflet for R&lt;/a&gt; library. You will need to build the library from source as I use some new features in the library that haven&amp;rsquo;t yet made it to CRAN. You can do this using &lt;code&gt;devetool::install_github(&#39;rstudio/leaflet&#39;)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Map consists of following elements&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Multiple Base Tile Maps out of which only one can be active at any given time.&lt;/li&gt;
+&lt;li&gt;A GeoJSON for plotting the various Administrative areas of Syria superimposed on the base map.&lt;/li&gt;
+&lt;li&gt;Markers for the Air Strikes.&lt;/li&gt;
+&lt;li&gt;A Layer Selection option.&lt;/li&gt;
+&lt;li&gt;A mini map to know the global context.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I also needed a way to visually distinguish between VERIFIED and FALSE strikes. Verified being strikes that claimed to have targeted ISIS and actually targeted ISIS or actually have targeted non-ISIS areas and not claimed to have targeted ISIS in short those where the claim and actual targets tally, and FALSE being the ones where there was a discrepancy in either the claimed and actual target or claimed and actual location. I chose to use Blue colored Markers for VERIFIED and Red colored for FALSE.&lt;/p&gt;
+
+&lt;p&gt;The code for plotting is shown below&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(leaflet)
+
+if(!file.exists(&#39;./cities.json&#39;) {
+	# Syrian Cities GeoJSON downloaded from 
+	# http://crisis.net/projects/syria-tracker/cities.json
+	# More Info @ http://blog.crisis.net/choropleth-maps-with-d3/
+	download.file(url=&#39;http://crisis.net/projects/syria-tracker/cities.json&#39;, destfile=&#39;cities.json&#39;)
+}
+cities &amp;lt;- readLines(&#39;./cities.json&#39;, warn =F) %&amp;gt;% paste(collapse=&#39;\n&#39;)
+
+# Leaflet Map + Various Base Tiles
+events %&amp;gt;% leaflet() %&amp;gt;%
+  addTiles(group=&amp;quot;Default&amp;quot;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.PositronNoLabels&#39;,group=&#39;Blank-Canvas&#39;) %&amp;gt;%
+  addProviderTiles(&#39;OpenStreetMap.BlackAndWhite&#39;, group=&amp;quot;OSM-BlackNWhite&amp;quot;) %&amp;gt;%
+  addProviderTiles(&#39;MapQuestOpen.OSM&#39;, group=&#39;MapQuest&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLite&#39;, group=&#39;Stamen-Light&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.WorldStreetMap&#39;,group=&#39;Esri-1&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.DeLorme&#39;,group=&#39;Esri-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.OceanBasemap&#39;,group=&#39;Esri-3&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.NatGeoWorldMap&#39;,group=&#39;NatGeo&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.Positron&#39;,group=&#39;CartoDB-1&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.PositronNoLabels&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerHybrid&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLines&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.DarkMatter&#39;,group=&#39;CartoDB-3&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.DarkMatterNoLabels&#39;,group=&#39;CartoDB-4&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Acetate.basemap&#39;,group=&#39;Acetate&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLabels&#39;,group=&#39;Acetate&#39;) -&amp;gt; eventMap
+
+# Awesome Icons with color depending on Status
+icon &amp;lt;- awesomeIcons(icon = &#39;crosshairs&#39;,
+                     markerColor = ifelse(events$Status == &#39;VERIFIED&#39;,&#39;blue&#39;,&#39;red&#39;),
+                     library = &#39;fa&#39;,
+                     iconColor = &#39;black&#39;)
+
+# Add Markers for AirStrikes and GeoJSON for Syrian Regions                     
+eventMap %&amp;gt;%
+  addAwesomeMarkers(
+    lat=~lat, lng=~lon,
+    label = ~Airstrikes, icon=icon,
+    group = &#39;Air Strikes&#39;,
+    popup = ~popup
+  ) %&amp;gt;%
+  addGeoJSON(cities, weight = 0.7, color = &amp;quot;#00FF00&amp;quot;,
+             stroke=T, fill = F, fillOpacity = 0.1,
+             group=&#39;Syria Regions&#39;) -&amp;gt; eventMap
+
+# Add a Layer Control for toggling Layers/BaseMaps
+eventMap  %&amp;gt;%  addLayersControl(
+  baseGroups = c(&#39;Default&#39;,
+                 &#39;Blank-Canvas&#39;,
+                 &#39;OSM-BlackNWhite&#39;,
+                 &#39;MapQuest&#39;,
+                 &#39;Stamen-Light&#39;,
+                 &#39;Esri-1&#39;,
+                 &#39;Esri-2&#39;,
+                 &#39;Esri-3&#39;,
+                 &#39;NatGeo&#39;,
+                 &#39;CartoDB-1&#39;,
+                 &#39;CartoDB-2&#39;,
+                 &#39;CartoDB-3&#39;,
+                 &#39;CartoDB-4&#39;,
+                 &#39;Acetate&#39;),
+  overlayGroups = c(&amp;quot;Air Strikes&amp;quot;, &amp;quot;Syria Regions&amp;quot;),
+  options = layersControlOptions(collapsed = TRUE)
+) -&amp;gt; eventMap
+
+# Finally Add a Minimap and render the Map
+eventMap %&amp;gt;% addMiniMap()
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;
+And the final map is shown below. This is just a screenshot you can find an interactive version of this at &lt;a href=&#34;http://rpubs.com/bhaskarvk/russian-airstrikes-in-syria&#34;&gt;Rpubs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/Syria.png&#34; alt=&#34;Russian Air Strikes in Syria&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For Web Scraping dynamic data RSelinium + PhantomJS makes a killer combo.&lt;/li&gt;
+&lt;li&gt;R&amp;rsquo;s leaflet library allows for easy creation of interactive maps.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Shiny in a SmartOS zone</title>
+      <link>/2015/10/shiny-in-a-smartos-zone/</link>
+      <pubDate>Sat, 24 Oct 2015 20:22:02 -0400</pubDate>
+      
+      <guid>/2015/10/shiny-in-a-smartos-zone/</guid>
+      <description>&lt;p&gt;My Last &lt;a href=&#34;/2015/10/setting-up-r-on-a-smartos-zone./&#34;&gt;post&lt;/a&gt; showed you how to install R inside a &lt;a href=&#34;http://www.smartos.org&#34;&gt;SmartOS&lt;/a&gt; zone. This post is about installing the &lt;a href=&#34;https://www.rstudio.com/products/shiny/shiny-server/&#34;&gt;shiny server&lt;/a&gt; in the said zone. While setting up R was relatively straight forward, for setting up Shiny server I had to patch some C++ code to make shiny server work on solaris. Which means you don&amp;rsquo;t have to, just follow along.&lt;/p&gt;
+
+&lt;p&gt;First install R in a zone as shown in my earlier &lt;a href=&#34;/2015/10/setting-up-r-on-a-smartos-zone./&#34;&gt;post&lt;/a&gt;. This is very important, unless you have a working R setup you cannot have a functional working Shiny server. Also make sure to allocate enough CPU, memory, and disk-space for your zone.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Install some packages
+pkgin install git-base
+# Install Shiny R package
+Rscript -e &amp;quot;install.packages(c(&#39;shiny&#39;))&amp;quot;
+# Next install the shiny server
+mkdir /opt/src &amp;amp;&amp;amp; cd /opt/src
+git clone https://github.com/rstudio/shiny-server.git
+cd shiny-server/
+# We need a patch for some solaris specific stuff
+wget https://gist.githubusercontent.com/bhaskarvk/6a15083ab9a7997df0a2/raw/5e7fec0dee4c79b828032ab007bf8b6137f735c3/solaris.diff
+git apply solaris.diff &amp;amp;&amp;amp; rm solaris.diff
+mkdir tmp
+cd tmp
+DIR=`pwd`
+PATH=$DIR/../bin:$PATH
+PYTHON=`which PYTHON`
+PYTHON=`which python`
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON=&amp;quot;$PYTHON&amp;quot; ../
+make
+mkdir ../build
+(cd .. &amp;amp;&amp;amp; ./bin/npm --python=&amp;quot;$PYTHON&amp;quot; rebuild)
+(cd .. &amp;amp;&amp;amp; ./bin/node ./ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js --python=&amp;quot;$PYTHON&amp;quot; rebuild)
+# Install the software at the predefined location
+make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This completes installation of shiny server. Next some post installation stuff&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ln -s /usr/local/shiny-server/bin/shiny-server /usr/local/bin
+useradd -m shiny
+mkdir -p /var/log/shiny-server
+mkdir -p /srv/shiny-server
+mkdir -p /var/lib/shiny-server
+chown shiny: /var/log/shiny-server /srv/shiny-server /var/lib/shiny-server
+mkdir -p /etc/shiny-server
+cd /etc/shiny-server
+wget https://raw.githubusercontent.com/rstudio/shiny-server/master/config/default.config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it, Shiny is installed and configured. To start it&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# We run the shiny server as user shiny
+su - shiny
+shiny-server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see something like&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[2015-10-25 01:49:43.019] [INFO] shiny-server - Shiny Server v1.4.1.0 (Node.js v0.10.40)
+[2015-10-25 01:49:43.021] [INFO] shiny-server - Using config file &amp;quot;/etc/shiny-server/shiny-server.conf&amp;quot;
+[2015-10-25 01:49:43.064] [INFO] shiny-server - Starting listener on 0.0.0.0:3838
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Congratulations you now have a running shiny server inside a SmartOS zone. The shiny server installation instructions came from the &lt;a href=&#34;https://github.com/rstudio/shiny-server/wiki/Building-Shiny-Server-from-Source&#34;&gt;official docs&lt;/a&gt;, but I did have to patch some stuff to make it work under solaris. The patch is available on &lt;a href=&#34;https://gist.github.com/bhaskarvk/6a15083ab9a7997df0a2&#34;&gt;gist&lt;/a&gt;. Next I&amp;rsquo;ll try and create a proper start-up script for shiny-server so that it can be controlled via &lt;code&gt;svcadm&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Setting up R on a SmartOS Zone.</title>
+      <link>/2015/10/setting-up-r-on-a-smartos-zone./</link>
+      <pubDate>Sat, 24 Oct 2015 18:49:00 +0000</pubDate>
+      
+      <guid>/2015/10/setting-up-r-on-a-smartos-zone./</guid>
+      <description>&lt;p&gt;Recently I converted a spare beefy laptop (8 cores, 16 GB RAM, 750GB HD) to a &lt;a href=&#34;http://www.smartos.org&#34;&gt;SmartOS&lt;/a&gt; hypervisor. I wanted to play with some bare metal hypervisor / container stuff and ESXi was just not cutting it. I&amp;rsquo;m not a Solaris nerd, but I know enough Unix to find may way around in Linux/*BSDs/Solaris/HP-UX, so it was not a big pain. In fact ZFS is really nice.&lt;/p&gt;
+
+&lt;p&gt;Anyway, this post is about setting up R in a &lt;a href=&#34;https://wiki.smartos.org/display/DOC/Zones&#34;&gt;zone&lt;/a&gt;. It wasn&amp;rsquo;t very difficult to set up R in a zone but it was not completely straight forward as well.&lt;/p&gt;
+
+&lt;p&gt;On the SmartOS host&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Update the list of available images
+imgadm update
+# import the latest base-64 image (15.3.0)
+imgadm import 842e6fa6-6e9b-11e5-8402-1b490459e334
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next create a file &lt;code&gt;zone.json&lt;/code&gt; with the following content in a convenient place.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
+  &amp;quot;alias&amp;quot;: &amp;quot;zone01&amp;quot;,
+  &amp;quot;hostname&amp;quot;: &amp;quot;zone01&amp;quot;,
+  &amp;quot;brand&amp;quot;: &amp;quot;joyent&amp;quot;,
+  &amp;quot;quota&amp;quot;: 10,
+  &amp;quot;max_physical_memory&amp;quot;: 2048,
+  &amp;quot;dataset_uuid&amp;quot;: &amp;quot;842e6fa6-6e9b-11e5-8402-1b490459e334&amp;quot;,
+  &amp;quot;default_gateway&amp;quot;: &amp;quot;10.0.0.1&amp;quot;,
+  &amp;quot;resolvers&amp;quot;: [
+    &amp;quot;8.8.8.8&amp;quot;,
+    &amp;quot;8.8.4.4&amp;quot;
+  ],
+  &amp;quot;nics&amp;quot;: [
+    {
+      &amp;quot;nic_tag&amp;quot;: &amp;quot;stub0&amp;quot;,
+      &amp;quot;ip&amp;quot;: &amp;quot;10.0.0.5&amp;quot;,
+      &amp;quot;netmask&amp;quot;: &amp;quot;255.255.255.0&amp;quot;,
+      &amp;quot;allow_ip_spoofing&amp;quot;: &amp;quot;1&amp;quot;,
+      &amp;quot;gateway&amp;quot;: &amp;quot;10.0.0.1&amp;quot;
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; You&amp;rsquo;ll probably need to change the &lt;code&gt;alias&lt;/code&gt;, &lt;code&gt;hostname&lt;/code&gt;, &lt;code&gt;quota&lt;/code&gt; (disk-space in GB), &lt;code&gt;max_physical_memory&lt;/code&gt;, and networking stuff like &lt;code&gt;gateway&lt;/code&gt; and &lt;code&gt;nics&lt;/code&gt; to match your environment. I had problems running the zone with 1G memory, better give it at least 2 Gigs.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Provision and bring up the zone
+vcadm create -f zone.json
+zlogin &amp;lt;UUID of the new zone&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now inside the zone&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pkgin update # Update pkgsrc
+# Compiler and related stuff
+# I had a hard time compiling R packages with gcc48/gcc49 so
+# I used gcc47 which worked perfectly.
+pkgin install gcc47 gcc47-libs gmake autoconf automake cmake
+# XML stuff
+pkgin install libxml2 libxml libxml++1 libxml++-2 
+pkgin install R R2pkg
+# Setup CRAN Mirror
+# TODO may be https instead of http
+echo &#39;options(repos=structure(c(CRAN=&amp;quot;http://cran.rstudio.com/&amp;quot;)))&#39; &amp;gt; ~/.Rprofile
+# Install Rcpp and devtools, this will pull in a lot of goodies with it
+Rscript -e &amp;quot;install.packages(&#39;Rcpp&#39;,&#39;devtools&#39;)&amp;quot;
+# Install Hadleyverse
+Rscript -e &amp;quot;install.packages(c(&#39;plyr&#39;, &#39;dplyr&#39;, &#39;stringr&#39;, &#39;rvest&#39;, &#39;httr&#39;, &#39;reshape2&#39;, &#39;ggplot2&#39;, &#39;ggmap&#39;, &#39;tidyr&#39;, &#39;lubridate&#39;, &#39;readr&#39;, &#39;testthat&#39;, &#39;roxygen2&#39;))&amp;quot;
+# Some other useful R package
+Rscript -e &amp;quot;install.packages(c(&#39;data.table&#39;, &#39;knitr&#39;, &#39;rmarkdown&#39;))&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that it&amp;rsquo;s your usual R stuff. I&amp;rsquo;m going to convert this zone to a shiny server and will blog about it when done.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Redoing some Bad Data Viz.</title>
+      <link>/2015/09/redoing-some-bad-data-viz./</link>
+      <pubDate>Sat, 12 Sep 2015 17:12:00 +0000</pubDate>
+      
+      <guid>/2015/09/redoing-some-bad-data-viz./</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://pbs.twimg.com/media/COt0Ev0WIAEADUL.png:large&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I saw the above graph in my Twitter feed. This beauty comes from &lt;a href=&#34;https://twitter.com/businessinsider/status/642734996889993216&#34;&gt;Business Insider&lt;/a&gt; and was part of &lt;a href=&#34;http://www.businessinsider.com/misery-index-of-major-global-economies-2015-9&#34;&gt;this&lt;/a&gt; article describing the misery in the world.
+There are so many wrong visualization elements here. So let&amp;rsquo;s see what they are and if we can fix them.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Stacked Bar Chart&lt;/em&gt; are not useful when you have to compare the category which doesn&amp;rsquo;t align on an axis. In this case you can&amp;rsquo;t really compare the inflation values of each country because they don&amp;rsquo;t have a common baseline. Secondly it is very apparent that both the categories that is unemployment and inflation have different range, so the common range of -5 to 25 is not really ideal.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Vertical Labels&lt;/em&gt; Unless your head is attached at 270 degrees to your neck, it is really very hard to read vertical labels.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Legends are Confusing&lt;/em&gt;. Both the values are expressed in percentage, but only the Unemployment label has the % sign. Also notice the space between Unemploy and ment.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;No order to the x-axis labels.&lt;/em&gt; neither alphabetical nor by the value of either inflation nor unemployment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So how do we better this? Business Insider article cited the source of the chart as &lt;a href=&#34;https://www.societegenerale.com/en/home&#34;&gt;Société Générale&amp;rsquo;s&lt;/a&gt; Global Economic Outlook report. I couldn&amp;rsquo;t find the said report or the data for the said chart anywhere on their website. &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook&#34;&gt;CIA World Fact book&lt;/a&gt; also has various indicators for each country, two of which are &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook/rankorder/2092rank.html&#34;&gt;Inflation rate (consumer prices)&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook/rankorder/2129rank.html&#34;&gt;Unemployment rate&lt;/a&gt;. This would be perfect for demonstration purpose, even if the values from the CIA fact book may not be exactly same as that in the chart. Both these pages have a link to download the raw data in a tab separated format (TSV).&lt;/p&gt;
+
+&lt;p&gt;So after downloading the raw data and a few data wrangling in R, here is the result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/BIPlot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now instead of stacked bar chart you have two side-by-side charts. This allows you to compare the Inflation and Unemployment across Countries easily. Secondly each chart gets its own scale for the x-axis, which allows us to better scale the bars.&lt;/li&gt;
+&lt;li&gt;Instead of having you to rotate your head, now the chart is rotated so you can easily read each country label.&lt;/li&gt;
+&lt;li&gt;The x-axis labels are now consistent and both indicate that we&amp;rsquo;re looking at percentage values.&lt;/li&gt;
+&lt;li&gt;The y-axis data is sorted alphabetically as opposed to no order before.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For the interested the R code which produced the graph is shown below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+library(readr)
+library(tidyr)
+library(gridExtra)
+library(ggplot2)
+library(httr)
+
+setwd(&#39;/Users/XYZ/Documents/cia-factbook/rankorder&#39;)
+inf &amp;lt;- read_tsv(&#39;rawdata_2092.txt&#39;, col_names = F)
+uemp &amp;lt;- read_tsv(&#39;rawdata_2129.txt&#39;, col_names = F)
+
+countries &amp;lt;- c(&#39;Switzerland&#39;, &#39;Taiwan&#39;, &#39;Japan&#39;, &#39;Korea, South&#39;, &#39;United States&#39;,
+               &#39;Czech Republic&#39;, &#39;United Kingdom&#39;, &#39;Poland&#39;, &#39;China&#39;, &#39;Germany&#39;,
+               &#39;Netherlands&#39;, &#39;Mexico&#39;, &#39;Australia&#39;, &#39;France&#39;, &#39;Chile&#39;,
+               &#39;European Union&#39;, &#39;Italy&#39;, &#39;Indonesia&#39;, &#39;Brazil&#39;, &#39;Russia&#39;, &#39;Spain&#39;)
+
+df &amp;lt;- inner_join(inf, uemp,by=&#39;X2&#39;)
+df &amp;lt;- df %&amp;gt;% select(X2, X3.x, X3.y) %&amp;gt;%
+  rename(Country=X2, unemployment=X3.y, inflation=X3.x)
+
+df &amp;lt;- df %&amp;gt;% arrange(Country)
+df &amp;lt;- df %&amp;gt;% mutate(unemployment=as.numeric(unemployment),
+                    inflation=as.numeric(inflation),
+                    Country=factor(Country, levels=rev(unique(df$Country)),
+                                   ordered = T))
+
+
+mytheme &amp;lt;- theme_bw() +
+  theme(axis.ticks.y=element_blank()) +
+  theme(panel.border=element_blank()) +
+  theme(panel.grid=element_blank())
+
+gInf &amp;lt;- ggplot(df %&amp;gt;% filter(Country %in% countries),
+       aes(Country, inflation)) +
+  geom_bar(stat=&#39;identity&#39;,fill=&#39;#C29365&#39;) + coord_flip() +
+  xlab(&#39;&#39;) + ylab(&#39;Inflation (%)&#39;) + mytheme
+
+gUemp &amp;lt;- ggplot(df %&amp;gt;% filter(Country %in% countries),
+       aes(Country, unemployment)) +
+  geom_bar(stat=&#39;identity&#39;, fill=&#39;#65ADC2&#39;) + coord_flip() +
+  xlab(&#39;&#39;) + ylab(&#39;Unemployment (%)&#39;) + mytheme +
+  theme(axis.text.y=element_blank())
+grid.arrange(gInf, gUemp, ncol=2)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introduction to NoSQL Databases</title>
+      <link>/2015/06/introduction-to-nosql-databases/</link>
+      <pubDate>Sun, 28 Jun 2015 10:55:00 +0000</pubDate>
+      
+      <guid>/2015/06/introduction-to-nosql-databases/</guid>
+      <description>&lt;p&gt;Recently I was asked to make a small presentation to a Graduate level course on Databases about NoSQL Databases. Here are the slides for the same. The slides go over high level introduction to NoSQL Databases, What they are ? What are some of the characteristics and how they differ from traditional relation databsaes ? Their Pros and Cons and finally some examples of different types of NoSQL DBs.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;
+&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;880f4c0a3e264e598eccb3e631f9833e&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Video of my talk on Elasticsearch at Elastic{ON} 2015</title>
+      <link>/2015/05/video-of-my-talk-on-elasticsearch-at-elasticon-2015/</link>
+      <pubDate>Wed, 27 May 2015 02:01:00 +0000</pubDate>
+      
+      <guid>/2015/05/video-of-my-talk-on-elasticsearch-at-elasticon-2015/</guid>
+      <description>&lt;p&gt;Back in March, 2015 I gave a talk at &lt;a href=&#34;http://www.elasticon.com/&#34;&gt;Elastic{ON}, 2015&lt;/a&gt; on how to scale Elasticsearch for production scale data. Here&amp;rsquo;s a &lt;a href=&#34;https://www.elastic.co/blog/elasticon-video-of-the-week-verizon&#34;&gt;blog post&lt;/a&gt; on it and here&amp;rsquo;s the &lt;a href=&#34;https://www.elastic.co/elasticon/2015/sf/scaling-elasticsearch-for-production-at-verizon&#34;&gt;video&lt;/a&gt; of it. I got a lot of positive feedback from the community on the talk and it was personally a wonderful experience to share our story with the ever growing elasticsearch community. The opportunity to speak at a large user conference was beneficial for me tooa as it allowed me to sharpen my public speaking skills.&lt;/p&gt;
+
+&lt;p&gt;And here&amp;rsquo;s the slide deck of the talk&amp;hellip;&lt;/p&gt;
+
+&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;7ba5e31d097e4181b19ac084bcc07232&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Book Review : Data Driven Security</title>
+      <link>/2015/05/book-review--data-driven-security/</link>
+      <pubDate>Tue, 05 May 2015 11:50:00 +0000</pubDate>
+      
+      <guid>/2015/05/book-review--data-driven-security/</guid>
+      <description>
+
+&lt;p&gt;&lt;link href=&#34;/css/ddsec.css&#34; rel=&#34;stylesheet&#34;&gt;
+&lt;br/&gt;
+&lt;div class=&#39;warning-box&#39;&gt;
+&lt;strong&gt;&lt;em&gt;&amp;nbsp;Disclosure&lt;/em&gt;&lt;/strong&gt;&lt;br/&gt;
+I work with the two authors of this book. In fact one of them is my manager. But a) I don&amp;rsquo;t like to suck up to my colleagues and b) I&amp;rsquo;m sure they don&amp;rsquo;t like being sucked up to either. Despite this if you think my review will be biased then stop reading now. Go watch some cat videos.
+&lt;/div&gt;
+&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://datadrivensecurity.info/book/&#34;&gt;&lt;img src=&#34;http://datadrivensecurity.info/book/theme/images/cover.jpg&#34; alt=&#34;Cover&#34; /&gt;&lt;/a&gt; Data Driven Security is a first of it&amp;rsquo;s kind book that aims to achieve the impossible; To be a book that integrates all 3 dimensions of &amp;lsquo;Data Science&amp;rsquo;, a) Math and Statistical Knowledge, b) Coding/Hacking skills, and c) Domain Knowledge. Domain in this case being the Information Security Domain. If these 3 dimensions are unknown to you, look at the figure on the right..
+&lt;a href=&#34;http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram&#34;&gt;&lt;img src=&#34;http://static1.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=1500w&#34; alt=&#34;DS&#34; /&gt;&lt;/a&gt;
+&lt;br/&gt;&lt;br/&gt;
+Traditionally books available for data science have tackled only one dimension at a time or at best two. This book is unique in that regard as it tackles all 3 dimensions. This is worth mentioning especially when you consider that concepts like statistical and machine learning are not part of traditional InfoSec tools. Traditional InfoSec tools are based around the concept of signature matching, i.e. determining if a threat matches from a set of already known badness such as a virus, malware, network activity, ip address, domain name. This approach is always playing catch up and the good guys are always one step (in fact several steps) behind the bad guys. This is where data driven security comes in. The idea is to use data analysis techniques for security research and build the next generation of InfoSec tools that can spot badness before it is known. A fascinating field, trust me. The challenge of writing on such a subject can not be overstated. The book needs to be approachable by readers coming in from any of the three dimensions. Also each of the three dimensions is so vast and wide that you can find hundreds of books dedicated to just one single dimension. So have the authors been successful in this endeavor ? Read on to find out&amp;hellip;
+&lt;br clear=&#39;both&#39;/&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;at-a-glance&#34;&gt;At a glance&lt;/h2&gt;
+
+&lt;p&gt;The book (ISBN: 978-1-118-79372-5) is published by &lt;a href=&#34;http://www.wiley.com/WileyCDA/WileyTitle/productCd-1118793722.html&#34;&gt;Wiley Publications&lt;/a&gt; in Feb, 2014. Wiley has been publishing some really interesting titles over the past few years in the Data Analysis, Statistics domain. The book is absolutely gorgeous  from cover to cover. The page quality is very high and a lot of effort has gone into making the code and figures look stunning. It is one of the best visually pleasing books I have in my collection (in addition to anything by &lt;a href=&#34;http://www.amazon.com/Stephen-Few/e/B001H6IQ5M&#34;&gt;Stephen Few&lt;/a&gt; and &lt;a href=&#34;http://www.amazon.com/Edward-R.-Tufte/e/B000APET3Y/&#34;&gt;Edward R. Tufte&lt;/a&gt;). All code presented is properly commented, something I seldom find in technical books. There is a ton of code in this book, which is expected as coding is one of the skills in data science. The authors have done a great job presenting code in &lt;a href=&#34;http://python.org&#34;&gt;python&lt;/a&gt; and &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;. Both python and R offer libraries and interactive environments for data analysis and by presenting the code in 2 languages the authors have made the book accessible to wide audience.
+&lt;br/&gt;In addition to the book the authors have a website: &lt;a href=&#34;http://datadrivensecurity.info/book&#34;&gt;datadrivensecurity.info&lt;/a&gt; for the book, a &lt;a href=&#34;http://datadrivensecurity.info/blog/&#34;&gt;blog&lt;/a&gt;  and a &lt;a href=&#34;http://datadrivensecurity.info/podcast/&#34;&gt;podcast&lt;/a&gt; where they discuss all things InfoSec and data science.&lt;/p&gt;
+
+&lt;h2 id=&#34;chapters&#34;&gt;Chapters&lt;/h2&gt;
+
+&lt;h3 id=&#34;chapter-1-the-journey-to-data-driven-security&#34;&gt;Chapter 1: The Journey to Data Driven Security&lt;/h3&gt;
+
+&lt;p&gt;Chapter 1 starts with a brief history of data analysis, from the classical statistical analysis techniques of the Nineteenth and Twentieth century to the modern algorithmic approaches of the Twenty-First century. You have enough anecdotes to convince you of the importance of data analysis in case you are still wondering why analyze data in the first place. The chapter then explores the skill sets required for data analysis: Domain expertise, Data Management, Programming, Statistics and finally Visualization. Each topic is given its due credit and you&amp;rsquo;ll learn how each of these pieces fits in to the mosaic. The chapter rounds off with a very important section &amp;lsquo;Centering on a Question&amp;rsquo;. It is very much possible that your data analysis can lead you to many directions if you don&amp;rsquo;t have a proper research question framed (Your&amp;rsquo;s truly is guilty of this many times over). In short you learn the history of data analysis, skill-sets required for it and the importance of framing the right question(s).&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-2-building-your-analytics-toolbox-a-primer-on-using-r-and-python-for-security-analysis&#34;&gt;Chapter 2: Building Your Analytics Toolbox: A Primer on Using R and Python for Security Analysis&lt;/h3&gt;
+
+&lt;p&gt;Chapter 2 is all about setting up &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; and &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt; development environments for your data analysis. The authors start by explaining their reasons for using Python and R, and more importantly why both (avoiding the situation of having the hammer as your only tool). Next you learn how to set up Python using the &lt;a href=&#34;https://www.enthought.com/products/canopy/&#34;&gt;Canopy&lt;/a&gt; distribution and R using &lt;a href=&#34;http://www.rstudio.com/&#34;&gt;Rstudio&lt;/a&gt;. You also get some sample code to test your respective setups. Next the chapter introduces you to the concept of a data frame; a tabular data structure often used in data analysis. You gee a taste of both R&amp;rsquo;s native data.frame as well as Python&amp;rsquo;s DataFrame from the pandas package. lastly you&amp;rsquo;ll see how to organize your code for a typical analysis project. I recommend you don&amp;rsquo;t skip this chapter even if you&amp;rsquo;re familiar with either Python or R or even both.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-3-learning-the-hello-world-of-security-data-analysis&#34;&gt;Chapter 3: Learning the &amp;ldquo;Hello World&amp;rdquo; of Security Data Analysis&lt;/h3&gt;
+
+&lt;p&gt;Chapter 3 is where things get real. You start by importing AlientVault&amp;rsquo;s IP Reputation database in your Python and R environment. You then get a feel of the data by performing some basic introspection of various fields and their data types and appropriate statistical summaries of them. Next you perform some basic charting using R&amp;rsquo;s &lt;a href=&#34;http://ggplot2.org/&#34;&gt;ggplot2&lt;/a&gt;and Python&amp;rsquo;s &lt;a href=&#34;http://www.matplotlib.org/&#34;&gt;Matplotlib&lt;/a&gt;. Even if you are familiar with basics of exploratory data analysis (EDA) I suggest you don&amp;rsquo;t skip the &amp;lsquo;Homing In on a Question&amp;rsquo; section, this is where you&amp;rsquo;ll learn how to use EDA for answering specifics questions about your data. There are quite a few examples here both in Python and R that use bar charts and &lt;a href=&#34;https://en.wikipedia.org/wiki/Heat_map&#34;&gt;heatmaps&lt;/a&gt; to explore relationships between various fields and derive answers from these relationships.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-4-performing-exploratory-security-data-analysis&#34;&gt;Chapter 4: Performing Exploratory Security Data Analysis&lt;/h3&gt;
+
+&lt;p&gt;Chapter 4 dives into Exploratory Data Analysis (EDA) for InfoSec research. You get the know the the details about IPv4 addresses, and how they can be grouped together using Autonomous System Numbers (ASNs) and why that is useful. You also get to learn how to use a GeoIP service like Maxmind&amp;rsquo;s free &lt;a href=&#34;https://www.maxmind.com/en/geoip2-services-and-databases&#34;&gt;geoip&lt;/a&gt; API for tying an IP address to coordinates on a map. Once you have the geo coordinates you can use charting APIs to plot the IPs on a world map. After that you get to see how to augment IP addresses with other useful attributes such as the &lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_Assigned_Numbers_Authority&#34;&gt;IANA&lt;/a&gt; block information for that IP. &lt;br/&gt;Next the chapter dives into basics of correlation analysis and lays down some core concepts behind correlation analysis. Lastly you get to build some graph data structures and visualize the graph nature of the relationships in IP addresses in the ZueS Botnet. All these techniques are foundations of initial exploratory analysis and although this chapter covers quite a bit of diverse but related concepts both from statistics as well as information security, it does a good job of tying all together. This will be the foundation for the analysis in later chapters.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-5-from-maps-to-regression&#34;&gt;Chapter 5: From Maps to Regression&lt;/h3&gt;
+
+&lt;p&gt;Chapter 5 starts with basic concepts of plotting geographical maps, it walks you through plotting with latitude and longitude data, plotting per country stats using &lt;a href=&#34;https://en.wikipedia.org/wiki/Choropleth_map&#34;&gt;Choropleth&lt;/a&gt; plots, and zooming in on a specific country (USA in this example). Plotting some numbers on a geographical map is pointless unless it enables you to derive some information / insight from that plot. The chapter looks at a potentially interesting data point and then uses box plots to see if the data point is indeed an outlier. Finally the mapping part concludes by showing you how to aggregate the data at county level.&lt;br/&gt;The last part is a quick introduction to regression analysis (There are multitudes of books written on just this one subject). You get to learn how to build regression models and perform analysis based on model parameters. You also see some caveats you need to keep in mind when interpreting regression models. Finally you get to see how to apply regression analysis for seeing if reported alien sightings have any impact on the infection rate of ZeroAccess rootkit. Yes you read that right and the authors are not fools, they chose these 2 variables to prove a point about &lt;a href=&#34;https://en.wikipedia.org/wiki/Multicollinearity&#34;&gt;multicollinearity&lt;/a&gt; a common problem in regression analysis.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-6-visualizing-security-data&#34;&gt;Chapter 6: Visualizing Security Data&lt;/h3&gt;
+
+&lt;p&gt;Chapter 6 is all about a picture speaking louder than a thousand words. Effective visualization is the key foundation of data analysis. The chapter starts with explaining the need for visualization and semi deep-dives into understanding visual perception and why it is important in building effective visualizations. These are topics that deserve their own books let alone chapters, but yet the authors manage to convey the gist of it all in the first few sections of the chapter.&lt;br/&gt;
+The chapter then moves on to specific examples of visualization like bar charts, &lt;a href=&#34;https://en.wikipedia.org/wiki/Bubble_chart&#34;&gt;bubble charts&lt;/a&gt;, &lt;a href=&#34;https://en.wikipedia.org/wiki/Treemapping&#34;&gt;treemaps&lt;/a&gt;, distribution visualization using histogram and density plots. You also get a taste of visualizing time series data. Lastly you get to build a movie from your data. (I kid you not.)&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-7-learning-from-security-breaches&#34;&gt;Chapter 7: Learning from Security Breaches&lt;/h3&gt;
+
+&lt;p&gt;Chapter 7 devotes to the art of examining and analyzing security breaches. The authors introduce you to the &lt;a href=&#34;http://veriscommunity.net/&#34;&gt;Veris Framework&lt;/a&gt; developed by one of the authors for capturing information related to data breaches to be used in Verizon&amp;rsquo;s annual Data Breach Investigations Report (&lt;a href=&#34;http://www.verizonenterprise.com/DBIR/&#34;&gt;DBIR&lt;/a&gt;). Before examining the details of the VERIS f/w the authors explain why it is necessary to analyze data breaches, what sort of research questions can be answered and what are some of the considerations when designing a data collection framework for the same.&lt;br/&gt;Next the authors introduce the veris framework, its various sections, and enumerations used in them. You get to learn how VERIS tracks assets, actors, threats, actions, and how they affect Confidentiality, Integrity, &amp;amp; Availability (CIA triad) of the breached data. You also learn how to code up discovery/response and the subsequent impact of the data breach on the victim organization.&lt;br/&gt;Next you get to play with some real life database which is captured in the VERIS Community DataBase (&lt;a href=&#34;http://vcdb.org/&#34;&gt;VCDB&lt;/a&gt;). VCDB is a project used to capture publicly disclosed data breaches and encode them in the VERIS format. The VERIS format is a JSON specification, and you see code examples of doing basic uni-variate and bi-variate analysis like bar-charts and heatmaps.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-8-breaking-up-with-your-relational-database&#34;&gt;Chapter 8: Breaking Up with Your Relational Database&lt;/h3&gt;
+
+&lt;p&gt;RDBMS , NOSQL and everything in between that&amp;rsquo;s what Chapter 9 is all about. With a quick primer on SQL/RDBMS you get to get your feet wet with &lt;a href=&#34;https://mariadb.org/&#34;&gt;MariaDB&lt;/a&gt; (MySQL fork), you learn how to create a small schema for storing InfoSec entities, as well as difference in terms of speed of a disk backed v/s memory backed storage engine. From RDBMS we move to NOSQL (Not Only SQL and not No SQL). The authors first explore &lt;a href=&#34;http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html&#34;&gt;BerkeleyDB&lt;/a&gt; a very popular key-value datastore. You have sample code in both R and python for interaction with BerkeleyDB. Next the chapter deals with &lt;a href=&#34;http://redis.io&#34;&gt;Redis&lt;/a&gt; a very popular data-structure datastore. You learn about the various data structures supported by Redis and a couple of its advanced features. The authors also tackle Hadoop &amp;amp; MapReduce for processing security data at scale, and also touch base with &lt;a href=&#34;http://www.mongodb.org&#34;&gt;MongoDB&lt;/a&gt; and passing reference to &lt;a href=&#34;http://www.elastic.co&#34;&gt;elasticsearch&lt;/a&gt; and &lt;a href=&#34;http://www.neo4j.com&#34;&gt;Neo4J&lt;/a&gt;. Overall the chapter deals with some very popular RDBMSs and NOSQL databases, and provide you code samples to interact with them in python and R.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-9-demystifying-machine-learning&#34;&gt;Chapter 9:  Demystifying Machine Learning&lt;/h3&gt;
+
+&lt;p&gt;Chapter 9 is all about Machine Learning in the InfoSec domain. Now let&amp;rsquo;s get this straight, ML is a very vast and widely spread topic. There are entire books devoted just to certain aspects of it. But even then the authors have managed to cover enough ground and should definitely pique your interest about ML if you haven&amp;rsquo;t been exposed to it yet. The chapter starts with defining ML, not an easy thing to do. The chapter shows you how to build a model to detect malware from non-malware using classification techniques. Then the chapter deals with model validation techniques/issues, risks of overfitting, feature selection which are some of the common things you do when building a ML model. Next the chapter looks at various supervised and unsupervised learning techniques. Finally you get 3 examples, clustering breach data, multidimensional scaling of victim industries, and hierarchical clustering of victim industries.&lt;br/&gt; It is impossible to do full justice to ML even in a whole book let alone a single chapter, but you still get enough to get you started.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-10-designing-effective-security-dashboards&#34;&gt;Chapter 10: Designing Effective Security Dashboards&lt;/h3&gt;
+
+&lt;p&gt;A &amp;lsquo;Dashboard is not an Automobile&amp;rsquo;. Chapter 10 is about creating effective InfoSec Dashboards. The chapter introduces you to bullet graphs (a creation of &lt;a href=&#34;http://www.perceptualedge.com/about.php&#34;&gt;Stephen Few&lt;/a&gt;) as a much saner and efficient alternative to Gauges and dials. You also see examples of other interesting dashboard visualizations like Sparklines. The authors have some good advice about things to do and don&amp;rsquo;t when designing dashboards.&lt;br/&gt;Next the authors deal with a concrete example of conveying and managing security via Dashboards. The authors stress on the simple and yet extremely effective bar charts, and bullet graphs, as opposed to fancier but confusing UI elements like 3D charts, pie charts etc. To illustrate this point the authors have provided a couple of Dashboard makeover examples.&lt;br/&gt;Finally the authors talk about designing dashboards for InfoSec. Stressing on two simple questions a) What is going on ? &amp;amp; b) So what ?, the authors explain what should and what should not be presented on an InfoSec Dashboard and how most effectively to present it.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-11-building-interactive-security-visualizations&#34;&gt;Chapter 11: Building Interactive Security Visualizations&lt;/h3&gt;
+
+&lt;p&gt;Chapter 11 is all about interactive visualizations, interactive being the keyword. You learn when to move from static to dynamic visualization, and more importantly why. As the authors point out prefer static and go dynamic only if dynamism &lt;strong&gt;augments&lt;/strong&gt; or aids in &lt;strong&gt;exploration&lt;/strong&gt; or &lt;strong&gt;illuminates&lt;/strong&gt; a topic in a way that can&amp;rsquo;t be done using static images. The authors present an example of each of these three cases and discuss the pros and cons of dynamic visualization in these context. Next the authors present ways to create dynamic visualizations using &lt;a href=&#34;https://www.tableau.com/&#34;&gt;Tableau&lt;/a&gt;, a very popular Business Intelligence and Visualization tool, and also using &lt;a href=&#34;http://d3js.org/&#34;&gt;D3.js&lt;/a&gt; a free and open source javascript charting library. As with other chapters you get to tie in this topic in InfoSec by designing an interactive threat explorer using jQuery, vega and opentip.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-12-moving-towards-data-driven-security&#34;&gt;Chapter 12: Moving Towards Data-Driven Security&lt;/h3&gt;
+
+&lt;p&gt;The authors provide their own advice for InfoSec research based on their experience and acumen in Chapter 12. They recommend &amp;lsquo;panning for gold&amp;rsquo; rather than &amp;lsquo;drilling for oil&amp;rsquo;; that is to say not getting bogged down on a specific focus but explore the data and then focus on the questions you want to ask. They offer practical advice on various roles one can play in the InfoSec domain ranging from the Hacker, Coder, Data Munger, Visualizer, Thinker, Statistician to Security Domain Expert. For each role they provide a list of resources to sharpen your skill sets. Lastly they offer tips on moving your entire organization towards data-driven security and building security data teams.&lt;/p&gt;
+
+&lt;h3 id=&#34;appendix&#34;&gt;Appendix&lt;/h3&gt;
+
+&lt;p&gt;Appendix A provides a vast list of web links. From Data Cleansing, Analytics and Visualization tools, to aggregation sites and blogs to follow. There is a ton of material worth checking out and bookmarking here.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion-and-other-thoughts&#34;&gt;Conclusion and Other thoughts&lt;/h2&gt;
+
+&lt;p&gt;So how do I rate this book ? This is a rather difficult question considering that nothing like this has ever been attempted before. Sure there are plenty of books about traditional InfoSec research and tools, and there are even more books on Statistics, and Machine Learning, and Visualization, not to mention gazillions of books on Programming/Coding. But a book that touches all 3 aspects of Data Science is indeed very rare.&lt;br/&gt;
+Having said that I like this book very much, it covers every aspect of Data Science with a focus on InfoSec in just enough detail to give it justice. The code samples are great but more important is the very serious advice the authors have to offer (albeit in a lighter tone). This book is by no means a small achievement, not only in InfoSec books but Data Science books as well. I don&amp;rsquo;t see any reason why this books should not be in your collection if you deal with InfoSec and/or Data Science. Even if your domain is not InfoSec but if you are interested in Data Science I would still highly recommend this book as it will show you how to make Data Science work for your domain using InfoSec as an example.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The 10 commandments for hiring Data Scientists</title>
+      <link>/2015/03/the-10-commandments-for-hiring-data-scientists/</link>
+      <pubDate>Wed, 04 Mar 2015 15:49:00 +0000</pubDate>
+      
+      <guid>/2015/03/the-10-commandments-for-hiring-data-scientists/</guid>
+      <description>
+
+&lt;p&gt;As a Data Scientist (whatever it means), I get a lot of job offers over LinkedIn and other channels. Although I&amp;rsquo;m not actively looking for a job, I still go through them. One just because I&amp;rsquo;m curious to find out what exactly do organizations look for in a Data Scientist, and secondly to amuse myself. This post is about the later part, it amuses me to no end what some people want in a Data Scientist, and I&amp;rsquo;ve made a consolidated list for all the recruiters and organizations who are looking to hire one (or more).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Warning :&lt;/strong&gt; If satire is not your cup of tea (coffee/soda) you should most certainly not refrain from not reading this article.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-1-thou-shalt-not-have-a-freaking-clue-what-data-science-is-all-about&#34;&gt;Rule 1: Thou shalt not have a freaking clue what Data Science is all about.&lt;/h3&gt;
+
+&lt;p&gt;But you should still throw in terms like Artificial Intelligence, deep learning, Neural Networks, SVM (admit it, you don&amp;rsquo;t even know what it stands for). You are not concerned whether the applicant can apply his knowledge to solve the problem at hand, all you really want to know is whether he knows the difference between supervised and unsupervised learning.&lt;br/&gt;
+In short don&amp;rsquo;t worry about what the applicant can do, just worry about how much he can memorize and regurgitate. Oh! and have him describe the Apriori algorithm over the telephonic interview.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-2-thou-shalt-use-a-fishing-net-to-grab-as-many-as-you-can-and-figure-out-what-to-do-with-them-later&#34;&gt;Rule 2: Thou shalt use a fishing net to grab as many as you can, and figure out what to do with them later.&lt;/h3&gt;
+
+&lt;p&gt;Have like 10 or 15 openings for the same post. Be very vague about what it is that you exactly expect these people to do. Better yet have a complete lack of understanding of what your problems are and how you think Data Scientists can help you solve it. Just be sure to mention you have tons of data. Yeah that&amp;rsquo;ll make them bite.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-3-thou-shalt-put-data-scientist-even-if-what-you-really-want-a-code-monkey&#34;&gt;Rule 3: Thou shalt put &amp;lsquo;Data Scientist&amp;rsquo; even if what you really want a code monkey.&lt;/h3&gt;
+
+&lt;p&gt;Well why not? I mean you can&amp;rsquo;t attract developers to work for you with &amp;lsquo;We need you to work 12 hours a day, 7 days a week, 365 days a year&amp;rsquo;. But hey if you just change that position from Software Developer to Data-Scientist, lo and behold the bees come flying to your honeypot. And if they can fix your crappy website css code on the side while doing data science-y stuff it&amp;rsquo;s a win-win.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-4-thou-shalt-never-mention-salary-range-or-benefits&#34;&gt;Rule 4: Thou shalt never mention salary range or benefits.&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s not like Data-Scientists are in hot demand or anything. They should be grateful you even put up a job post for them to see and apply. And who do they think they are demanding top notch compensation for the efforts and handwork they put in acquiring their skills. And if you really think about it, free laundry is all the benefits someone needs anyways.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-5-thou-shalt-not-care-about-the-age-v-s-experience-paradox&#34;&gt;Rule 5: Thou shalt not care about the age v/s experience paradox.&lt;/h3&gt;
+
+&lt;p&gt;We want a PhD. with 10 years of work experience, who&amp;rsquo;s young and has the zeal and energy of someone just out of the college, coz you know we need his skills to make more people click our in-your-face video pop-up ads. Plus we really can&amp;rsquo;t just say under-30 single male (that would get us sued), so we just go with young, energetic, likes to work in a startup environment, doesn&amp;rsquo;t mind staying up late in office (hey free pizza and sodas!).&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-6-thou-shalt-extol-the-virtues-of-working-in-a-startup-in-a-way-that-would-make-a-bangladeshi-garment-factory-owner-blush&#34;&gt;Rule 6: Thou shalt extol the virtues of working in a startup in a way that would make a Bangladeshi garment factory owner blush.&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Long never ending hours at work - CHECK&lt;/li&gt;
+&lt;li&gt;Jack of All trades job duties - CHECK&lt;/li&gt;
+&lt;li&gt;Low pay but promise of Stock Option - CHECK&lt;/li&gt;
+&lt;li&gt;No real usable health care coverage - CHECK&lt;/li&gt;
+&lt;li&gt;Foosball/Ping-Pong table - CHECK&lt;/li&gt;
+&lt;li&gt;Screwing over loyal employees by selling and cashing out - PRICELESS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;rule-7-thine-post-shalt-be-scattered-with-worthless-terms-like-web-scale-big-data-well-funded-startup&#34;&gt;Rule 7: Thine post shalt be scattered with worthless terms like web-scale, big data, well-funded startup.&lt;/h3&gt;
+
+&lt;p&gt;As if terms like &amp;lsquo;leverage&amp;rsquo;, &amp;lsquo;synergy&amp;rsquo; were not enough. Our dear data scientist must know how to work with &amp;lsquo;BIG DATA&amp;rsquo;. The more the meaningless and worthless terms in our job posting the better, it will allow us to hire the crème de la crème of analytics talent.
+Also throw in the fact that all the founders have PhDs in bio-informatics or AI or machine learning etc. coz you know that is so critical to have when it comes to effective leadership.
+&lt;br/&gt;Also when was the last time someone advertised themselves as a &amp;lsquo;piss-poorly funded startup&amp;rsquo;?&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-8-thine-data-scientists-must-know-every-programming-language-under-the-sun-even-the-ones-not-invented-so-far&#34;&gt;Rule 8: Thine Data-Scientists must know every programming language under the sun (even the ones not invented so far).&lt;/h3&gt;
+
+&lt;p&gt;Coz you know programming is where it&amp;rsquo;s at. If you can&amp;rsquo;t code you can&amp;rsquo;t do jack. And what do you mean you only know R or python ? All the cool kids are using Ruby or Node.js. And don&amp;rsquo;t tell us you can&amp;rsquo;t write &lt;strong&gt;enterprise applications&lt;/strong&gt; using Java/J2EE/EJBs.
+Oh! and please do explain in great detail how a Hashtable works. No job interview is complete without it.
+In short if you see an IP address the first thing that should cross your mind is Visual Basic GUI.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-9-hadoop-hadoop-hadoop-wait-i-m-forgetting-something-ah-yes-hadoop&#34;&gt;Rule 9: Hadoop Hadoop Hadoop, wait I&amp;rsquo;m forgetting something, Ah! yes Hadoop.&lt;/h3&gt;
+
+&lt;p&gt;GEORGE: &amp;ldquo;Why don&amp;rsquo;t they have Hadoop in the mix?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;JERRY: &amp;ldquo;What do you need Hadoop for?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;GEORGE: &amp;ldquo;Hadoop is now the number one data crunching framework in America.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;JERRY: &amp;ldquo;You know why? Because people like to say &amp;ldquo;Hadoop.&amp;rdquo; &amp;ldquo;Excuse me, do
+you have any Hadoop?&amp;rdquo; &amp;ldquo;We need more Hadoop.&amp;rdquo; &amp;ldquo;Where is Hadoop? No Hadoop?&amp;rdquo;&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-10-thine-data-scientist-should-be-able-to-code-design-web-apps-be-an-agile-scrum-master-software-architect-project-manager-product-manager-sales-marketing-guru-did-i-mention-a-unicorn&#34;&gt;Rule 10: Thine Data-Scientist should be able to code, design web-apps, be an Agile Scrum master, Software Architect, Project Manager, Product Manager, Sales/Marketing Guru. Did I mention a unicorn ?&lt;/h3&gt;
+
+&lt;p&gt;OK no satire on this one. Just straight up practical advice. Data scientists are not all knowing superhuman beings. Figure out what is it that your organization wants to do with data and hire well trained and decently experienced people who can solve your challenges. If looking for novice employees make sure the job has enough breathing room for them to grow into gradually. And lastly don&amp;rsquo;t go looking for unicorns because a) they don&amp;rsquo;t exist, and b) the best thing they can do is make 6-8 year old girls scream in high pitch.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;footnote :&lt;/em&gt; The difference in percentage of animals harmed in writing this post and percentage of animals that would have been harmed had I not written this post is not statistically significant.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Visualizing India v/s Pakistan One Day International Results</title>
+      <link>/2015/02/visualizing-india-v/s-pakistan-one-day-international-results/</link>
+      <pubDate>Sun, 15 Feb 2015 22:11:00 +0000</pubDate>
+      
+      <guid>/2015/02/visualizing-india-v/s-pakistan-one-day-international-results/</guid>
+      <description>&lt;p&gt;&lt;b&gt;T&lt;/b&gt;his is my small effort to pickup &lt;a href=&#34;https://github.com/hrbrmstr/streamgraph&#34; target=&#34;_blank&#34;&gt;streamgraph&lt;/a&gt;&amp;nbsp;support in R developed by &lt;a href=&#34;https://twitter.com/hrbrmstr&#34; target=&#34;_blank&#34;&gt;Bob Rudis&lt;/a&gt;. (Described &lt;a href=&#34;http://rud.is/b/2015/02/15/introducing-the-streamgraph-htmlwidget-r-pacakge/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;div&gt;What you see is per year aggregations of results of all India v/s Pakistan One day Internationals. I pulled the records from &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_ODI_cricket_matches_played_between_India_and_Pakistan&#34; target=&#34;_blank&#34;&gt;Wikipedia&lt;/a&gt; and used &lt;a href=&#34;https://github.com/hadley/rvest&#34;&gt;rvest&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/hadleywickham&#34; target=&#34;_blank&#34;&gt;Hadley Wickham&lt;/a&gt;.&amp;nbsp;for extracting the results. After that a little data munging using dplyr and lubridate and voilà. 
+
+
+&lt;div class=&#34;separator&#34; style=&#34;clear: both; text-align: center;&#34;&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/IndVsPak&#34; target=&#34;_blank&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;http://3.bp.blogspot.com/-z7OLkFbBD2k/VOFUVBjGnYI/AAAAAAAABsY/fb859QnN9-o/s1600/Screen%2BShot%2B2015-02-15%2Bat%2B9.19.53%2BPM.png&#34; height=&#34;361&#34; width=&#34;640&#34; /&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Blue&amp;rsquo;s are India and Green&amp;rsquo;s are Pakistan in accordance with their team colors. India had an abysmal records against Pakistan right up until mid 90s, but it has picked up quite a bit after that. And of course India has &lt;a href=&#34;https://twitter.com/search?q=%23Ind6Pak0&#34; target=&#34;_blank&#34;&gt;won&lt;/a&gt; all 6 of it&amp;rsquo;s Cricket world cup matches against Pakistan.&lt;/p&gt;
+
+&lt;p&gt;As of today the tally stands at: India 51 wins and Pakistan 72 wins. Below&amp;rsquo;s a detailed breakdown.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;separator&#34; style=&#34;clear: both; text-align: center;&#34;&gt;&lt;a href=&#34;http://2.bp.blogspot.com/-mOD3Pd4hmQQ/VOFcwVv5SpI/AAAAAAAABso/mMhKyqspfSc/s1600/Screen%2BShot%2B2015-02-15%2Bat%2B9.58.01%2BPM.png&#34; imageanchor=&#34;1&#34; style=&#34;margin-left: 1em; margin-right: 1em;&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;http://2.bp.blogspot.com/-mOD3Pd4hmQQ/VOFcwVv5SpI/AAAAAAAABso/mMhKyqspfSc/s1600/Screen%2BShot%2B2015-02-15%2Bat%2B9.58.01%2BPM.png&#34; height=&#34;102&#34; width=&#34;320&#34; /&gt;&lt;/a&gt;&lt;/div&gt;
+Running a&lt;a href=&#34;https://en.wikipedia.org/wiki/Chi-square_test&#34; target=&#34;_blank&#34;&gt; chi-square test&lt;/a&gt; for dependency between the result and the venue didn&amp;rsquo;t find any association between the two, which in layman terms means the results have been unrelated to the venue.&lt;/p&gt;
+
+&lt;p&gt;For the nerds (Oh sorry Data Scientists), the code is shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;/div&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;setwd(&amp;quot;~/code/R/workspaces/cricket&amp;quot;)
+library(stringr)
+library(rvest)
+library(lubridate)
+library(dplyr)
+library(streamgraph)
+
+# Wikipedia is our best go to source
+indvspak &amp;lt;- html(&#39;https://en.wikipedia.org/wiki/List_of_ODI_cricket_matches_played_between_India_and_Pakistan&#39;)
+# Summary table
+results.summary &amp;lt;- indvspak %&amp;gt;% html_node(&#39;.wikitable&#39;) %&amp;gt;% html_table()
+
+# Any dependency btween venue and result ?
+chisq.test(results.summary[2:3,3:5])
+
+# The XPATH expression below was obtained using Chrome&#39;s Element Inspector.
+results &amp;lt;-  indvspak %&amp;gt;%
+  html_node(xpath=&#39;//*[@id=&amp;quot;mw-content-text&amp;quot;]/table[4]&#39;) %&amp;gt;% html_table()
+
+# Sensible headers
+colnames(results) &amp;lt;- c(&#39;MatchNum&#39;,&#39;Date&#39;,&#39;Winner&#39;,&#39;WonBy&#39;,&#39;Venue&#39;,&#39;MoM&#39;)
+
+# Fix Date
+results$Date &amp;lt;- ymd(str_replace(results$Date,&#39;^0([0-9]{4}-[0-9]{2}-[0-9]{2}).*$&#39;,&#39;\\1&#39;))
+# Extract just the year in a new field
+results$year &amp;lt;- year(results$Date)
+
+# So that we get our colors as per team colors
+results$Winner &amp;lt;- factor(results$Winner,levels=c(&#39;India&#39;,&#39;Pakistan&#39;,&#39;No result&#39;),ordered=T)
+
+results %&amp;gt;% select(year,Winner) %&amp;gt;%
+  group_by(year,Winner) %&amp;gt;% tally() %&amp;gt;%
+  streamgraph(&amp;quot;Winner&amp;quot;, &amp;quot;n&amp;quot;, &amp;quot;year&amp;quot;, offset=&amp;quot;zero&amp;quot;, interpolate=&amp;quot;linear&amp;quot;) %&amp;gt;%
+  sg_legend(show=TRUE,
+            label=&amp;quot;Ind v/s Pak One Day International Results : Over the years&amp;quot;) %&amp;gt;%
+  sg_axis_x(1, &amp;quot;year&amp;quot;, &amp;quot;%Y&amp;quot;) %&amp;gt;%
+  sg_colors(&amp;quot;GnBu&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to use Twitter’s Search REST API most effectively.</title>
+      <link>/2015/01/how-to-use-twitters-search-rest-api-most-effectively./</link>
+      <pubDate>Mon, 05 Jan 2015 12:49:00 +0000</pubDate>
+      
+      <guid>/2015/01/how-to-use-twitters-search-rest-api-most-effectively./</guid>
+      <description>
+
+&lt;p&gt;This blog post will discuss various techniques to use Twitter&amp;rsquo;s search REST API most effectively, given the constraints and limits of the said API. I&amp;rsquo;ll be using python for demonstration, but any native API which supports the Twitter REST API will do.&lt;/p&gt;
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Twitter provides the &lt;a href=&#34;https://dev.twitter.com/rest/public/search&#34;&gt;REST search api&lt;/a&gt; for searching tweets from Twitter&amp;rsquo;s search index. This is different than using the &lt;a href=&#34;https://dev.twitter.com/streaming/reference/post/statuses/filter&#34;&gt;streaming filter API&lt;/a&gt;, in that the later is real-time and starts giving you results from the point of query, while the former is retrospective and will give you results from past, up to as far back as the search index goes (usually last 7 days).
+While the streaming API seems like the thing to use when you want to track a certain query in real time, there are situations where you may want to use the regular REST search API. You may also want to combine the two approaches, i.e. start 2 searches, one using the streaming filter API to go forward in time and one using the REST search API to go backwards in time, in order to get some on-going and past context for your search term.&lt;/p&gt;
+
+&lt;p&gt;Either way if the REST Search API is something you want to use, then there are a few limitations you need to be aware of and some techniques you can use to maximize the resources the API gives you. This post will explore approaches to use the REST search API optimally in order to find as much information as fast as possible and yet remain within the constraints of the API. To start with the &lt;a href=&#34;https://dev.twitter.com/rest/public/rate-limiting&#34;&gt;API Rate Limit&lt;/a&gt; page details the limits of various Twitter APIs, and as per the page the limit for the Search API is &lt;strong&gt;180 Requests per 15 mins window&lt;/strong&gt; for per-user authentication.
+Now here&amp;rsquo;s the kicker, most code samples on the internet for the search API use the &lt;a href=&#34;https://dev.twitter.com/oauth/overview/application-owner-access-tokens&#34;&gt;Access Token Auth&lt;/a&gt; method, which is limited to the aforementioned 180 Requests/15 mins limit, and per request you can ask for maximum 100 tweets, giving you a grand total limit of &lt;strong&gt;18,000 tweets/15 mins&lt;/strong&gt;, If you download 18K tweets before 15 mins, you won&amp;rsquo;t be able to get any more results until your 15 min. window expires and you search again. Also you need to be aware of the following limitations of the search API.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Please note that Twitter’s search service and, by extension, the Search API is not meant to be an exhaustive source of Tweets. Not all Tweets will be indexed or made available via the search interface.&lt;/p&gt;
+&lt;footer&gt;
+&lt;cite&gt;&lt;a href=&#34;https://dev.twitter.com/rest/reference/get/search/tweets&#34;&gt;Reference for GET /search/tweets API Endpoint&lt;/a&gt;&lt;/cite&gt;
+&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;and
+&lt;blockquote&gt;
+&lt;p&gt;Before getting involved, it’s important to know that the Search API is focused on relevance and not completeness. This means that some Tweets and users may be missing from search results. If you want to match for completeness you should consider using a Streaming API instead.&lt;/p&gt;
+&lt;footer&gt;
+&lt;cite&gt;&lt;a href=&#34;https://dev.twitter.com/rest/public/search&#34;&gt;The Search API&lt;/a&gt;&lt;/cite&gt;
+&lt;/footer&gt;
+&lt;/blockquote&gt;&lt;/p&gt;
+
+&lt;p&gt;What this means is, using the search API you are not going to get all the tweets that match your search criteria, even if they are present in your desired timeframe. This is an important point to keep in mind when drawing conclusions about the size of the dataset obtained from using the search REST API.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-problem&#34;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;So given this background information, can we do something about the following points ?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Could we query at a rate faster than 18K tweets/15 mins ?&lt;/li&gt;
+&lt;li&gt;Could we maintain a search context across our API rate limit window, so as to avoid getting duplicate results when searching repeatedly over a long period of time ?&lt;/li&gt;
+&lt;li&gt;Could we do something about the fact that not all tweets matching the search criteria will be returned by the API ?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And the answer to all these 3 questions is YES. There wouldn&amp;rsquo;t be a point to this blog post if the answers were no, would there ?&lt;/p&gt;
+
+&lt;h2 id=&#34;the-solution&#34;&gt;The Solution&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ll be using python and the excellent &lt;a href=&#34;http://tweepy.readthedocs.org/en/v3.0.0/&#34;&gt;Tweepy&lt;/a&gt; API for this purpose, but any API in any programming language that supports Twitter&amp;rsquo;s REST APIs will do.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;o start with our first question about being able to search at a rate greater than 18K tweets/15 mins. The solution is to use &lt;a href=&#34;https://dev.twitter.com/oauth/application-only&#34;&gt;Application only Auth&lt;/a&gt; instead of the Access Token Auth. Application only auth has higher limits, precisely up to 450 request/sec and again with a limitation of requesting maximum 100 tweets per request, this gives a rate of &lt;strong&gt;45,000 tweets/15-min&lt;/strong&gt;, which is &lt;strong&gt;2.5 times&lt;/strong&gt; more than the Access Token Limit.&lt;/p&gt;
+
+&lt;p&gt;The code sample below shows how to use App Only Auth using the Tweepy API.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import tweepy
+
+# Replace the API_KEY and API_SECRET with your application&#39;s key and secret.
+auth = tweepy.AppAuthHandler(API_KEY, API_SECRET)
+ 
+api = tweepy.API(auth, wait_on_rate_limit=True,
+				   wait_on_rate_limit_notify=True)
+ 
+if (not api):
+    print (&amp;quot;Can&#39;t Authenticate&amp;quot;)
+    sys.exit(-1)
+ 
+# Continue with rest of code
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The secret is the &lt;code&gt;AppAuthHandler&lt;/code&gt; instead of the more frequent &lt;code&gt;OAuthHandler&lt;/code&gt; which you find being used in lots of code samples. This sets up App-only Auth and gives you higher limits.
+Also as an added bonus notice the &lt;code&gt;wait_on_rate_limit&lt;/code&gt; &amp;amp; &lt;code&gt;wait_on_rate_limit_notify&lt;/code&gt; flags set to true. What this does is make the Tweepy API call auto wait (sleep) when it hits the rate limit and continue upon expiry of the window. This avoids you to have to program this part manually, which as you&amp;rsquo;ll shortly see makes your program much more simple and elegant.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;N&lt;/strong&gt;ext we tackle the second question about maintaining a search context when querying repeatedly over a long time frame. REST APIs by their very nature are stateless, i.e. there is no implicit context maintained by the server in between successive calls to the same API which can tell it what results have been sent to the client so far. So what we need is a way for the client to tell the API server where it is in a search result context, so that the server can then send the next set of results (This is called pagination). The search REST API allows this by accepting two input parameters as part of the API viz. &lt;code&gt;max_id&lt;/code&gt; &amp;amp; &lt;code&gt;since_id&lt;/code&gt; which serve as the upper and lower bounds of the unique IDs that Twitter assigns each tweet. By manipulating these two inputs during successive calls to the search API you can paginate your results.
+Below is a code sample that does just that.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import sys
+import jsonpickle
+import os
+
+searchQuery = &#39;#someHashtag&#39;  # this is what we&#39;re searching for
+maxTweets = 10000000 # Some arbitrary large number
+tweetsPerQry = 100  # this is the max the API permits
+fName = &#39;tweets.txt&#39; # We&#39;ll store the tweets in a text file.
+
+
+# If results from a specific ID onwards are reqd, set since_id to that ID.
+# else default to no lower limit, go as far back as API allows
+sinceId = None
+
+# If results only below a specific ID are, set max_id to that ID.
+# else default to no upper limit, start from the most recent tweet matching the search query.
+max_id = -1L
+
+tweetCount = 0
+print(&amp;quot;Downloading max {0} tweets&amp;quot;.format(maxTweets))
+with open(fName, &#39;w&#39;) as f:
+    while tweetCount &amp;lt; maxTweets:
+        try:
+            if (max_id &amp;lt;= 0):
+                if (not sinceId):
+                    new_tweets = api.search(q=searchQuery, count=tweetsPerQry)
+                else:
+                    new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
+                                            since_id=sinceId)
+            else:
+                if (not sinceId):
+                    new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
+                                            max_id=str(max_id - 1))
+                else:
+                    new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
+                                            max_id=str(max_id - 1),
+                                            since_id=sinceId)
+            if not new_tweets:
+                print(&amp;quot;No more tweets found&amp;quot;)
+                break
+            for tweet in new_tweets:
+                f.write(jsonpickle.encode(tweet._json, unpicklable=False) +
+                        &#39;\n&#39;)
+            tweetCount += len(new_tweets)
+            print(&amp;quot;Downloaded {0} tweets&amp;quot;.format(tweetCount))
+            max_id = new_tweets[-1].id
+        except tweepy.TweepError as e:
+            # Just exit if any error
+            print(&amp;quot;some error : &amp;quot; + str(e))
+            break
+
+print (&amp;quot;Downloaded {0} tweets, Saved to {1}&amp;quot;.format(tweetCount, fName))
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above code will write all the downloaded tweets in a text file. Each line representing a tweet encoded in JSON format. The tweets in the file are in reversed order of the creation timestamp i.e. going from most recent to most farthest. There&amp;rsquo;s probably some room for beautifying the above code, but it works and can download literally millions of tweets at the optimal rate of 45K tweets/15-mins. Just run the code in a background process and it will go back as far as the search API allows until it has exhausted all the results. What&amp;rsquo;s more using the initial values for &lt;code&gt;max_id&lt;/code&gt; and/or &lt;code&gt;since_id&lt;/code&gt; you can fetch results to and from arbitrary IDs. This is really helpful if you want to the program repeatedly to fetch newer results since last run. Just look up the max ID (the ID of the first line) from the previous run and set that to &lt;code&gt;since_id&lt;/code&gt; for the next run. If you&amp;rsquo;ve to stop your program before exhausting all the possible results and rerun it again to fetch the remaining results, you can look up the min ID (the ID of the last line) and pass that as &lt;code&gt;max_id&lt;/code&gt; for the next run to start from that ID and below.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;N&lt;/strong&gt;ow we look at our third question, given the fact that the search results will not contain all possible matching tweets, can we do something about it ? The answer is yes, but it gets a bit tricky. The idea is that; Of the tweets you have fetched there will be quite a lot of retweets, and chances are that some of the original tweets of these retweets are not in the results downloaded. But each retweet also encodes the entire original tweet object in its JSON representation. So if we pick out these original tweets from retweets then we can augment our results by including the missing original tweets in the result set. We can easily do this as each tweet is assigned a unique ID, thus allowing us to use set functions to pick out only the missing tweets.&lt;/p&gt;
+
+&lt;p&gt;This approach is not as complicated as it sounds, and can be easily accomplished in any programming language. I have a working code written in R (not shown here). I leave it as an exercise to the reader to implement it in python or whichever language of his/her choice. From my tests for various search queries , I get anywhere from 2% to 10% more tweets this way, so it&amp;rsquo;s a worthwhile exercise, and it completes your dataset in that you have all the original tweets of every retweet found in your dataset.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I highlighted some of the limitations of Twitter&amp;rsquo;s search REST API; how you can best use it to the fullest allowed rate limit. I also explained approaches to paginate results as well as extending the result set by another 2% to 10% by extracting missing original tweets from the retweets. Using these approaches you should be able to download a whole lot more tweets at a much faster rate.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Technical Notes&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tweepy also has a &lt;code&gt;api.Cursor&lt;/code&gt; &lt;a href=&#34;http://docs.tweepy.org/en/latest/cursor_tutorial.html&#34;&gt;method &lt;/a&gt; which could possibly replace the whole while loop in the second code sample, but it seems the Cursor API suffers from memory leak and will eventually &lt;a href=&#34;https://stackoverflow.com/questions/22469713/managing-tweepy-api-search/23996991#comment37338657_22473254&#34;&gt;crash your program&lt;/a&gt;. Hence my approach is based on modification of &lt;a href=&#34;http://stackoverflow.com/a/22473254&#34;&gt;this&lt;/a&gt; answer on stackoverflow.&lt;/li&gt;
+&lt;li&gt;For extracting the missing original tweets from retweets, think of the following pseudo-code.
+
+&lt;ul&gt;
+&lt;li&gt;Store all downloaded tweets in a set (say set A)&lt;/li&gt;
+&lt;li&gt;From this set filter out the retweets &amp;amp;
+extract the original tweet from these retweets (say set B)&lt;/li&gt;
+&lt;li&gt;Insert in set A all unique tweets from set B that are not already in set A&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Slides from my talk at Elasticsearch DC Meetup Dec 11 &#39;14.</title>
+      <link>/2014/12/slides-from-my-talk-at-elasticsearch-dc-meetup-dec-11-14./</link>
+      <pubDate>Sat, 13 Dec 2014 12:01:00 +0000</pubDate>
+      
+      <guid>/2014/12/slides-from-my-talk-at-elasticsearch-dc-meetup-dec-11-14./</guid>
+      <description>&lt;p&gt;On Dec 11th, 2014 I presented a talk on &amp;lsquo;Scaling Elasticsearch for Production&amp;rsquo; below are the slides,
+and the Video is available too, at &lt;a href=&#34;http://www.elasticsearch.org/videos/washington-d-c-meetup-december-11-2014/&#34;&gt;Elasticsearch Site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;
+&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;98b9c960642d01321a6756c1b6c9bb9b&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Book Review : Data Smart</title>
+      <link>/2014/03/book-review--data-smart/</link>
+      <pubDate>Sat, 29 Mar 2014 20:27:00 +0000</pubDate>
+      
+      <guid>/2014/03/book-review--data-smart/</guid>
+      <description>
+
+&lt;h3 id=&#34;full-five-starts&#34;&gt;Full Five Starts&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/17682206-data-smart&#34; style=&#34;float: left; padding-right: 20px&#34;&gt;&lt;img alt=&#34;Data Smart: Using Data Science to Transform Information into Insight&#34; border=&#34;0&#34; src=&#34;https://d202m5krfqbpi5.cloudfront.net/books/1381288882m/17682206.jpg&#34; /&gt;&lt;br/&gt;Data Smart by&lt;br/&gt;John W. Foreman&lt;/a&gt;
+&lt;strong&gt;T&lt;/strong&gt;rere is no reason why you should not buy this book, if you even are remotely connected with things like &amp;lsquo;Data Science&amp;rsquo;, &amp;lsquo;Analytics&amp;rsquo;, &amp;lsquo;Forecasting&amp;rsquo; etc.I enjoyed all chapters and especially Chapters 4 (Optimization), 6 (Regression), 8 (Forecasting).Seriously buy this book, now.It&amp;rsquo;s very easy read, and yet the author does not merely skimp important concepts, so you get best of both worlds, a good solid foundation and practical implementation.&lt;br&gt;One thing I like is for 90% of the time, the subject matter and the spreadsheet diagrams are on the same set of pages, so you don&amp;rsquo;t have to go back and forth between pages to sync text and images.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Searching, Analyzing &amp; Visualizing Security Feeds</title>
+      <link>/2014/02/searching-analyzing--visualizing-security-feeds/</link>
+      <pubDate>Sat, 22 Feb 2014 16:27:00 +0000</pubDate>
+      
+      <guid>/2014/02/searching-analyzing--visualizing-security-feeds/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;I&lt;/strong&gt;f you work with Computer or Network Security, then terms like &lt;a href=&#34;https://cve.mitre.org/&#34;&gt;CVE&lt;/a&gt;, &lt;a href=&#34;https://cpe.mitre.org/&#34;&gt;CPE&lt;/a&gt;, &lt;a href=&#34;https://cwe.mitre.org/&#34;&gt;CWE&lt;/a&gt;, &lt;a href=&#34;http://nvd.nist.gov/cce/index.cfm&#34;&gt;CCE&lt;/a&gt;, etc. should be very familiar to you. If not, you&amp;rsquo;re in the wrong field :).&lt;/p&gt;
+
+&lt;p&gt;For those who don&amp;rsquo;t work in these fields but are curious about it, these are some of the security related feeds provided by independent organizations such as &lt;a href=&#34;http://www.mitre.org/&#34;&gt;MITRE&lt;/a&gt; or &lt;a href=&#34;http://www.nist.gov/&#34;&gt;NIST&lt;/a&gt; and are part of the &amp;ldquo;&lt;a href=&#34;https://measurablesecurity.mitre.org/&#34;&gt;Making Security Measurable&lt;/a&gt;&amp;rdquo; initiative. These feeds provide meta data about things related to Computer/Network Security such as standard names for platforms/operating-systems/software/hardware, standard names for common vulnerabilities, weakness, configurations. Using these standard names help different vendors identify and tag security vulnerabilities, platforms, etc in a non-ambiguous way.
+Almost any vendor in this space relies on these feeds, and incorporates them in their products in some way or another. We use them too, but &amp;hellip;..&lt;/p&gt;
+
+&lt;p&gt;We have more than one security related products, and each provides a unique take on Computer/Network security, and this is not unique to our way of working. You&amp;rsquo;ll see this pattern in the whole of security industry, organizations having products catering to SIEM (Security Information and Event Management), VM (Vulnerability Management), Log Management, Compliance etc.&lt;/p&gt;
+
+&lt;p&gt;In our case each of these product offerings intake some or all of these feeds (which are provided in XML format), parse the feed and load it in a RDBMS. 
+The problems with this approach are &amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Each product team has it&amp;rsquo;s own code base for parsing these feeds and it&amp;rsquo;s own DB schema for representing these feeds in DB. So a lot of work is duplicated, and there are no standards across products on how to model these feeds in each product.&lt;/li&gt;
+&lt;li&gt;Each Product only takes in a subset of the available feeds, and brings in new feeds if and when needed. So it&amp;rsquo;s a never ending cycle for each new feed. Write parsers, design DB schma, and code the ETL procedures.&lt;/li&gt;
+&lt;li&gt;Due the rather complex nature of these feed formats, and rather limited ability to model such complex structures in a RDBMS, we end up throwing away a lot of information and cherry pick only important attributes such as ID, name, description, title etc. and keep our models simple. &lt;/li&gt;
+&lt;li&gt;And perhaps the most important, no text search capability within or across feeds. These feeds have some very elaborate descriptions , code samples, so full  text search is very critical.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So while this approach works , as you can see it&amp;rsquo;s not very efficient, duplication of work, no standard model across products and limitations of the storage platform result in discarding information that could potentially be useful.&lt;/p&gt;
+
+&lt;p&gt;So what&amp;rsquo;s needed is&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A independent meta store that can handle any and all available feeds.&lt;/li&gt;
+&lt;li&gt;A flexible storage platform not limited by shortcomings of a RDBMS system and in turn can retain almost all available information in the feeds.&lt;/li&gt;
+&lt;li&gt;A very simple REST API for each product to tap in to the meta store.&lt;/li&gt;
+&lt;li&gt;A full text search as well as a field based search interface as part of the REST API.&lt;/li&gt;
+&lt;li&gt;A framework / API for descriptive statistical analysis, exploratory analysis on the information store.&lt;/li&gt;
+&lt;li&gt;A very simple dashboard to visualize these feeds, for birds eye view.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As most of these feeds are published as XMLs , initially I thought of using a &amp;lsquo;XML DB&amp;rsquo; for the job. I have quite a bit of experience with &amp;lsquo;Oracle XMLDB&amp;rsquo;, but although it can offer a much flexible platform for storage, we&amp;rsquo;ll still need to define a proper DB schema based on the underlying XML schema, to take full advantage of &amp;lsquo;XMLDB&amp;rsquo; features, and we&amp;rsquo;ll still need to write our one API layer on top of XMLDB. So the amount of efforts is not reduced significantly. Not to mention any statistical analysis or dashboarding is added effort.&lt;/p&gt;
+
+&lt;p&gt;So what&amp;rsquo;s the alternative for developing such a solution ? &amp;hellip;. &lt;strong&gt;&lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Why ? , because &amp;hellip;..&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ES offers a very flexible storage model, not only is it a full text search product but a very competent storage platform for unstructured or semi-structured data (NoSQL DB if you will).&lt;/li&gt;
+&lt;li&gt;It works very well schema less, and efforts to define a Index Mapping (equivalent to a DB Schema) are very minimal compared to a traditional RDBMS schema designing. So you can work in a mix environment where you define mappings for a key set of attributes and leave the rest for ES&amp;rsquo;s dynamic mapping.&lt;/li&gt;
+&lt;li&gt;Full text search is ES&amp;rsquo;s bread and butter, and it also works well for field based querying/filtering.&lt;/li&gt;
+&lt;li&gt;ES provides statistical APIs (facets in pre-1.0 release, and aggregations in 1.0+ releases) out of box, without us having to write a single piece of code.&lt;/li&gt;
+&lt;li&gt;ES provides &lt;a href=&#34;http://www.elasticsearch.org/overview/kibana/&#34;&gt;kibana&lt;/a&gt; for building dashboards on data stored in ES. Kibana does all the heavy lifting and you can build very intuitive dashboards in a very short amount of time.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So what&amp;rsquo;s need to be done by us ? Well not much really, here&amp;rsquo;s what I&amp;rsquo;ve done so far..&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A simple perl script which can download data feeds (XMLs), convert XML to JSON (trust me with perl this is a breeze, 2 lines of code ), minimal normalization of data if needed and then use elasticsearch perl API to bulk index the feed. (The whole code is about 100 to 120 lines).&lt;/li&gt;
+&lt;li&gt;Define a minimal set of mappings for the feeds. Again the idea is to make heavy use of ES&amp;rsquo; dynamic mappings for most fields and only provide explicit mappings for a select few key attributes.&lt;/li&gt;
+&lt;li&gt;Built kibana dashboards for search as well as summarizing feed data in graphs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In short the coding effort was a very small perl script, es mapping template, and kibana dashboard building, all accomplished in a matter of hours, as opposed to the current approach which requires days/weeks for each new feed we want to work with.&lt;/p&gt;
+
+&lt;p&gt;Overall I&amp;rsquo;m very pleased and satisfied with what has been achieved. Below are some Kibana dashboards I&amp;rsquo;ve build.
+Please note that as nice as Kibana is, what&amp;rsquo;s more important is the full text search capabilities that we get from ES, and a very easy and intuitive REST API, which can be used by any product to tap in to this feed store, that&amp;rsquo;s more important to us. Not to mention the ridiculously small amount of time spent to put this all together. &lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 1: CVEs by Score (Also Adobe Ouch..)&lt;/em&gt;
+&lt;a href=&#34;https://lh3.googleusercontent.com/-zmW5utCjOQU/UwkRPZucr3I/AAAAAAAABcQ/lp82qVehue0/s1440/CVEs_by_score.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CVEs by Score (Also Adobe Ouch..)&#34; &gt;
+    &lt;img src=&#34;http://2.bp.blogspot.com/-zmW5utCjOQU/UwkRPZucr3I/AAAAAAAABcQ/lp82qVehue0/s1600/CVEs_by_score.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 2: CVEs by OS&lt;/em&gt;
+&lt;a href=&#34;http://2.bp.blogspot.com/-WZdr1Sycvy0/UwkROoI2WRI/AAAAAAAABb0/PcrouIMtn-w/s1600/CVEs.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CVEs by OS&#34; &gt;
+    &lt;img src=&#34;http://2.bp.blogspot.com/-WZdr1Sycvy0/UwkROoI2WRI/AAAAAAAABb0/PcrouIMtn-w/s1600/CVEs.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 3: CPEs&lt;/em&gt;
+&lt;a href=&#34;http://4.bp.blogspot.com/-MPTLcLabgZs/UwkROm7ZdiI/AAAAAAAABbw/VSUd2ABfkyI/s1600/CPEs.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CPEs&#34; &gt;
+    &lt;img src=&#34;http://4.bp.blogspot.com/-MPTLcLabgZs/UwkROm7ZdiI/AAAAAAAABbw/VSUd2ABfkyI/s1600/CPEs.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 4: CCEs&lt;/em&gt;
+&lt;a href=&#34;http://2.bp.blogspot.com/-Mj4gMKx6ew4/UwkROi1hMkI/AAAAAAAABb8/bP-OfXcRx2Y/s1600/CCEs.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CCEs&#34; &gt;
+    &lt;img src=&#34;http://2.bp.blogspot.com/-Mj4gMKx6ew4/UwkROi1hMkI/AAAAAAAABb8/bP-OfXcRx2Y/s1600/CCEs.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 5: CWEs&lt;/em&gt;
+&lt;a href=&#34;http://2.bp.blogspot.com/-WqK791vz-us/UwkRPgpTD8I/AAAAAAAABcI/8DJgmphabvk/s1600/CWE.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CWEs&#34; &gt;
+    &lt;img src=&#34;http://2.bp.blogspot.com/-WqK791vz-us/UwkRPgpTD8I/AAAAAAAABcI/8DJgmphabvk/s1600/CWE.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 6: CCEs&lt;/em&gt;
+&lt;a href=&#34;http://3.bp.blogspot.com/-uzvuBrP5V5o/UwkRPsd2TtI/AAAAAAAABcM/4DwqaDjRSzY/s1600/NVDCCEs.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CCEs&#34; &gt;
+    &lt;img src=&#34;http://3.bp.blogspot.com/-uzvuBrP5V5o/UwkRPsd2TtI/AAAAAAAABcM/4DwqaDjRSzY/s1600/NVDCCEs.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

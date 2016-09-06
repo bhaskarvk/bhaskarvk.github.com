@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rstats on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/rstats/</link>
+    <description>Recent content in Rstats on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Tue, 05 May 2015 11:50:00 +0000</lastBuildDate>
+    <atom:link href="/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Book Review : Data Driven Security</title>
+      <link>/2015/05/book-review--data-driven-security/</link>
+      <pubDate>Tue, 05 May 2015 11:50:00 +0000</pubDate>
+      
+      <guid>/2015/05/book-review--data-driven-security/</guid>
+      <description>
+
+&lt;p&gt;&lt;link href=&#34;/css/ddsec.css&#34; rel=&#34;stylesheet&#34;&gt;
+&lt;br/&gt;
+&lt;div class=&#39;warning-box&#39;&gt;
+&lt;strong&gt;&lt;em&gt;&amp;nbsp;Disclosure&lt;/em&gt;&lt;/strong&gt;&lt;br/&gt;
+I work with the two authors of this book. In fact one of them is my manager. But a) I don&amp;rsquo;t like to suck up to my colleagues and b) I&amp;rsquo;m sure they don&amp;rsquo;t like being sucked up to either. Despite this if you think my review will be biased then stop reading now. Go watch some cat videos.
+&lt;/div&gt;
+&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://datadrivensecurity.info/book/&#34;&gt;&lt;img src=&#34;http://datadrivensecurity.info/book/theme/images/cover.jpg&#34; alt=&#34;Cover&#34; /&gt;&lt;/a&gt; Data Driven Security is a first of it&amp;rsquo;s kind book that aims to achieve the impossible; To be a book that integrates all 3 dimensions of &amp;lsquo;Data Science&amp;rsquo;, a) Math and Statistical Knowledge, b) Coding/Hacking skills, and c) Domain Knowledge. Domain in this case being the Information Security Domain. If these 3 dimensions are unknown to you, look at the figure on the right..
+&lt;a href=&#34;http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram&#34;&gt;&lt;img src=&#34;http://static1.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=1500w&#34; alt=&#34;DS&#34; /&gt;&lt;/a&gt;
+&lt;br/&gt;&lt;br/&gt;
+Traditionally books available for data science have tackled only one dimension at a time or at best two. This book is unique in that regard as it tackles all 3 dimensions. This is worth mentioning especially when you consider that concepts like statistical and machine learning are not part of traditional InfoSec tools. Traditional InfoSec tools are based around the concept of signature matching, i.e. determining if a threat matches from a set of already known badness such as a virus, malware, network activity, ip address, domain name. This approach is always playing catch up and the good guys are always one step (in fact several steps) behind the bad guys. This is where data driven security comes in. The idea is to use data analysis techniques for security research and build the next generation of InfoSec tools that can spot badness before it is known. A fascinating field, trust me. The challenge of writing on such a subject can not be overstated. The book needs to be approachable by readers coming in from any of the three dimensions. Also each of the three dimensions is so vast and wide that you can find hundreds of books dedicated to just one single dimension. So have the authors been successful in this endeavor ? Read on to find out&amp;hellip;
+&lt;br clear=&#39;both&#39;/&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;at-a-glance&#34;&gt;At a glance&lt;/h2&gt;
+
+&lt;p&gt;The book (ISBN: 978-1-118-79372-5) is published by &lt;a href=&#34;http://www.wiley.com/WileyCDA/WileyTitle/productCd-1118793722.html&#34;&gt;Wiley Publications&lt;/a&gt; in Feb, 2014. Wiley has been publishing some really interesting titles over the past few years in the Data Analysis, Statistics domain. The book is absolutely gorgeous  from cover to cover. The page quality is very high and a lot of effort has gone into making the code and figures look stunning. It is one of the best visually pleasing books I have in my collection (in addition to anything by &lt;a href=&#34;http://www.amazon.com/Stephen-Few/e/B001H6IQ5M&#34;&gt;Stephen Few&lt;/a&gt; and &lt;a href=&#34;http://www.amazon.com/Edward-R.-Tufte/e/B000APET3Y/&#34;&gt;Edward R. Tufte&lt;/a&gt;). All code presented is properly commented, something I seldom find in technical books. There is a ton of code in this book, which is expected as coding is one of the skills in data science. The authors have done a great job presenting code in &lt;a href=&#34;http://python.org&#34;&gt;python&lt;/a&gt; and &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;. Both python and R offer libraries and interactive environments for data analysis and by presenting the code in 2 languages the authors have made the book accessible to wide audience.
+&lt;br/&gt;In addition to the book the authors have a website: &lt;a href=&#34;http://datadrivensecurity.info/book&#34;&gt;datadrivensecurity.info&lt;/a&gt; for the book, a &lt;a href=&#34;http://datadrivensecurity.info/blog/&#34;&gt;blog&lt;/a&gt;  and a &lt;a href=&#34;http://datadrivensecurity.info/podcast/&#34;&gt;podcast&lt;/a&gt; where they discuss all things InfoSec and data science.&lt;/p&gt;
+
+&lt;h2 id=&#34;chapters&#34;&gt;Chapters&lt;/h2&gt;
+
+&lt;h3 id=&#34;chapter-1-the-journey-to-data-driven-security&#34;&gt;Chapter 1: The Journey to Data Driven Security&lt;/h3&gt;
+
+&lt;p&gt;Chapter 1 starts with a brief history of data analysis, from the classical statistical analysis techniques of the Nineteenth and Twentieth century to the modern algorithmic approaches of the Twenty-First century. You have enough anecdotes to convince you of the importance of data analysis in case you are still wondering why analyze data in the first place. The chapter then explores the skill sets required for data analysis: Domain expertise, Data Management, Programming, Statistics and finally Visualization. Each topic is given its due credit and you&amp;rsquo;ll learn how each of these pieces fits in to the mosaic. The chapter rounds off with a very important section &amp;lsquo;Centering on a Question&amp;rsquo;. It is very much possible that your data analysis can lead you to many directions if you don&amp;rsquo;t have a proper research question framed (Your&amp;rsquo;s truly is guilty of this many times over). In short you learn the history of data analysis, skill-sets required for it and the importance of framing the right question(s).&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-2-building-your-analytics-toolbox-a-primer-on-using-r-and-python-for-security-analysis&#34;&gt;Chapter 2: Building Your Analytics Toolbox: A Primer on Using R and Python for Security Analysis&lt;/h3&gt;
+
+&lt;p&gt;Chapter 2 is all about setting up &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; and &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt; development environments for your data analysis. The authors start by explaining their reasons for using Python and R, and more importantly why both (avoiding the situation of having the hammer as your only tool). Next you learn how to set up Python using the &lt;a href=&#34;https://www.enthought.com/products/canopy/&#34;&gt;Canopy&lt;/a&gt; distribution and R using &lt;a href=&#34;http://www.rstudio.com/&#34;&gt;Rstudio&lt;/a&gt;. You also get some sample code to test your respective setups. Next the chapter introduces you to the concept of a data frame; a tabular data structure often used in data analysis. You gee a taste of both R&amp;rsquo;s native data.frame as well as Python&amp;rsquo;s DataFrame from the pandas package. lastly you&amp;rsquo;ll see how to organize your code for a typical analysis project. I recommend you don&amp;rsquo;t skip this chapter even if you&amp;rsquo;re familiar with either Python or R or even both.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-3-learning-the-hello-world-of-security-data-analysis&#34;&gt;Chapter 3: Learning the &amp;ldquo;Hello World&amp;rdquo; of Security Data Analysis&lt;/h3&gt;
+
+&lt;p&gt;Chapter 3 is where things get real. You start by importing AlientVault&amp;rsquo;s IP Reputation database in your Python and R environment. You then get a feel of the data by performing some basic introspection of various fields and their data types and appropriate statistical summaries of them. Next you perform some basic charting using R&amp;rsquo;s &lt;a href=&#34;http://ggplot2.org/&#34;&gt;ggplot2&lt;/a&gt;and Python&amp;rsquo;s &lt;a href=&#34;http://www.matplotlib.org/&#34;&gt;Matplotlib&lt;/a&gt;. Even if you are familiar with basics of exploratory data analysis (EDA) I suggest you don&amp;rsquo;t skip the &amp;lsquo;Homing In on a Question&amp;rsquo; section, this is where you&amp;rsquo;ll learn how to use EDA for answering specifics questions about your data. There are quite a few examples here both in Python and R that use bar charts and &lt;a href=&#34;https://en.wikipedia.org/wiki/Heat_map&#34;&gt;heatmaps&lt;/a&gt; to explore relationships between various fields and derive answers from these relationships.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-4-performing-exploratory-security-data-analysis&#34;&gt;Chapter 4: Performing Exploratory Security Data Analysis&lt;/h3&gt;
+
+&lt;p&gt;Chapter 4 dives into Exploratory Data Analysis (EDA) for InfoSec research. You get the know the the details about IPv4 addresses, and how they can be grouped together using Autonomous System Numbers (ASNs) and why that is useful. You also get to learn how to use a GeoIP service like Maxmind&amp;rsquo;s free &lt;a href=&#34;https://www.maxmind.com/en/geoip2-services-and-databases&#34;&gt;geoip&lt;/a&gt; API for tying an IP address to coordinates on a map. Once you have the geo coordinates you can use charting APIs to plot the IPs on a world map. After that you get to see how to augment IP addresses with other useful attributes such as the &lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_Assigned_Numbers_Authority&#34;&gt;IANA&lt;/a&gt; block information for that IP. &lt;br/&gt;Next the chapter dives into basics of correlation analysis and lays down some core concepts behind correlation analysis. Lastly you get to build some graph data structures and visualize the graph nature of the relationships in IP addresses in the ZueS Botnet. All these techniques are foundations of initial exploratory analysis and although this chapter covers quite a bit of diverse but related concepts both from statistics as well as information security, it does a good job of tying all together. This will be the foundation for the analysis in later chapters.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-5-from-maps-to-regression&#34;&gt;Chapter 5: From Maps to Regression&lt;/h3&gt;
+
+&lt;p&gt;Chapter 5 starts with basic concepts of plotting geographical maps, it walks you through plotting with latitude and longitude data, plotting per country stats using &lt;a href=&#34;https://en.wikipedia.org/wiki/Choropleth_map&#34;&gt;Choropleth&lt;/a&gt; plots, and zooming in on a specific country (USA in this example). Plotting some numbers on a geographical map is pointless unless it enables you to derive some information / insight from that plot. The chapter looks at a potentially interesting data point and then uses box plots to see if the data point is indeed an outlier. Finally the mapping part concludes by showing you how to aggregate the data at county level.&lt;br/&gt;The last part is a quick introduction to regression analysis (There are multitudes of books written on just this one subject). You get to learn how to build regression models and perform analysis based on model parameters. You also see some caveats you need to keep in mind when interpreting regression models. Finally you get to see how to apply regression analysis for seeing if reported alien sightings have any impact on the infection rate of ZeroAccess rootkit. Yes you read that right and the authors are not fools, they chose these 2 variables to prove a point about &lt;a href=&#34;https://en.wikipedia.org/wiki/Multicollinearity&#34;&gt;multicollinearity&lt;/a&gt; a common problem in regression analysis.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-6-visualizing-security-data&#34;&gt;Chapter 6: Visualizing Security Data&lt;/h3&gt;
+
+&lt;p&gt;Chapter 6 is all about a picture speaking louder than a thousand words. Effective visualization is the key foundation of data analysis. The chapter starts with explaining the need for visualization and semi deep-dives into understanding visual perception and why it is important in building effective visualizations. These are topics that deserve their own books let alone chapters, but yet the authors manage to convey the gist of it all in the first few sections of the chapter.&lt;br/&gt;
+The chapter then moves on to specific examples of visualization like bar charts, &lt;a href=&#34;https://en.wikipedia.org/wiki/Bubble_chart&#34;&gt;bubble charts&lt;/a&gt;, &lt;a href=&#34;https://en.wikipedia.org/wiki/Treemapping&#34;&gt;treemaps&lt;/a&gt;, distribution visualization using histogram and density plots. You also get a taste of visualizing time series data. Lastly you get to build a movie from your data. (I kid you not.)&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-7-learning-from-security-breaches&#34;&gt;Chapter 7: Learning from Security Breaches&lt;/h3&gt;
+
+&lt;p&gt;Chapter 7 devotes to the art of examining and analyzing security breaches. The authors introduce you to the &lt;a href=&#34;http://veriscommunity.net/&#34;&gt;Veris Framework&lt;/a&gt; developed by one of the authors for capturing information related to data breaches to be used in Verizon&amp;rsquo;s annual Data Breach Investigations Report (&lt;a href=&#34;http://www.verizonenterprise.com/DBIR/&#34;&gt;DBIR&lt;/a&gt;). Before examining the details of the VERIS f/w the authors explain why it is necessary to analyze data breaches, what sort of research questions can be answered and what are some of the considerations when designing a data collection framework for the same.&lt;br/&gt;Next the authors introduce the veris framework, its various sections, and enumerations used in them. You get to learn how VERIS tracks assets, actors, threats, actions, and how they affect Confidentiality, Integrity, &amp;amp; Availability (CIA triad) of the breached data. You also learn how to code up discovery/response and the subsequent impact of the data breach on the victim organization.&lt;br/&gt;Next you get to play with some real life database which is captured in the VERIS Community DataBase (&lt;a href=&#34;http://vcdb.org/&#34;&gt;VCDB&lt;/a&gt;). VCDB is a project used to capture publicly disclosed data breaches and encode them in the VERIS format. The VERIS format is a JSON specification, and you see code examples of doing basic uni-variate and bi-variate analysis like bar-charts and heatmaps.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-8-breaking-up-with-your-relational-database&#34;&gt;Chapter 8: Breaking Up with Your Relational Database&lt;/h3&gt;
+
+&lt;p&gt;RDBMS , NOSQL and everything in between that&amp;rsquo;s what Chapter 9 is all about. With a quick primer on SQL/RDBMS you get to get your feet wet with &lt;a href=&#34;https://mariadb.org/&#34;&gt;MariaDB&lt;/a&gt; (MySQL fork), you learn how to create a small schema for storing InfoSec entities, as well as difference in terms of speed of a disk backed v/s memory backed storage engine. From RDBMS we move to NOSQL (Not Only SQL and not No SQL). The authors first explore &lt;a href=&#34;http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html&#34;&gt;BerkeleyDB&lt;/a&gt; a very popular key-value datastore. You have sample code in both R and python for interaction with BerkeleyDB. Next the chapter deals with &lt;a href=&#34;http://redis.io&#34;&gt;Redis&lt;/a&gt; a very popular data-structure datastore. You learn about the various data structures supported by Redis and a couple of its advanced features. The authors also tackle Hadoop &amp;amp; MapReduce for processing security data at scale, and also touch base with &lt;a href=&#34;http://www.mongodb.org&#34;&gt;MongoDB&lt;/a&gt; and passing reference to &lt;a href=&#34;http://www.elastic.co&#34;&gt;elasticsearch&lt;/a&gt; and &lt;a href=&#34;http://www.neo4j.com&#34;&gt;Neo4J&lt;/a&gt;. Overall the chapter deals with some very popular RDBMSs and NOSQL databases, and provide you code samples to interact with them in python and R.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-9-demystifying-machine-learning&#34;&gt;Chapter 9:  Demystifying Machine Learning&lt;/h3&gt;
+
+&lt;p&gt;Chapter 9 is all about Machine Learning in the InfoSec domain. Now let&amp;rsquo;s get this straight, ML is a very vast and widely spread topic. There are entire books devoted just to certain aspects of it. But even then the authors have managed to cover enough ground and should definitely pique your interest about ML if you haven&amp;rsquo;t been exposed to it yet. The chapter starts with defining ML, not an easy thing to do. The chapter shows you how to build a model to detect malware from non-malware using classification techniques. Then the chapter deals with model validation techniques/issues, risks of overfitting, feature selection which are some of the common things you do when building a ML model. Next the chapter looks at various supervised and unsupervised learning techniques. Finally you get 3 examples, clustering breach data, multidimensional scaling of victim industries, and hierarchical clustering of victim industries.&lt;br/&gt; It is impossible to do full justice to ML even in a whole book let alone a single chapter, but you still get enough to get you started.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-10-designing-effective-security-dashboards&#34;&gt;Chapter 10: Designing Effective Security Dashboards&lt;/h3&gt;
+
+&lt;p&gt;A &amp;lsquo;Dashboard is not an Automobile&amp;rsquo;. Chapter 10 is about creating effective InfoSec Dashboards. The chapter introduces you to bullet graphs (a creation of &lt;a href=&#34;http://www.perceptualedge.com/about.php&#34;&gt;Stephen Few&lt;/a&gt;) as a much saner and efficient alternative to Gauges and dials. You also see examples of other interesting dashboard visualizations like Sparklines. The authors have some good advice about things to do and don&amp;rsquo;t when designing dashboards.&lt;br/&gt;Next the authors deal with a concrete example of conveying and managing security via Dashboards. The authors stress on the simple and yet extremely effective bar charts, and bullet graphs, as opposed to fancier but confusing UI elements like 3D charts, pie charts etc. To illustrate this point the authors have provided a couple of Dashboard makeover examples.&lt;br/&gt;Finally the authors talk about designing dashboards for InfoSec. Stressing on two simple questions a) What is going on ? &amp;amp; b) So what ?, the authors explain what should and what should not be presented on an InfoSec Dashboard and how most effectively to present it.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-11-building-interactive-security-visualizations&#34;&gt;Chapter 11: Building Interactive Security Visualizations&lt;/h3&gt;
+
+&lt;p&gt;Chapter 11 is all about interactive visualizations, interactive being the keyword. You learn when to move from static to dynamic visualization, and more importantly why. As the authors point out prefer static and go dynamic only if dynamism &lt;strong&gt;augments&lt;/strong&gt; or aids in &lt;strong&gt;exploration&lt;/strong&gt; or &lt;strong&gt;illuminates&lt;/strong&gt; a topic in a way that can&amp;rsquo;t be done using static images. The authors present an example of each of these three cases and discuss the pros and cons of dynamic visualization in these context. Next the authors present ways to create dynamic visualizations using &lt;a href=&#34;https://www.tableau.com/&#34;&gt;Tableau&lt;/a&gt;, a very popular Business Intelligence and Visualization tool, and also using &lt;a href=&#34;http://d3js.org/&#34;&gt;D3.js&lt;/a&gt; a free and open source javascript charting library. As with other chapters you get to tie in this topic in InfoSec by designing an interactive threat explorer using jQuery, vega and opentip.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-12-moving-towards-data-driven-security&#34;&gt;Chapter 12: Moving Towards Data-Driven Security&lt;/h3&gt;
+
+&lt;p&gt;The authors provide their own advice for InfoSec research based on their experience and acumen in Chapter 12. They recommend &amp;lsquo;panning for gold&amp;rsquo; rather than &amp;lsquo;drilling for oil&amp;rsquo;; that is to say not getting bogged down on a specific focus but explore the data and then focus on the questions you want to ask. They offer practical advice on various roles one can play in the InfoSec domain ranging from the Hacker, Coder, Data Munger, Visualizer, Thinker, Statistician to Security Domain Expert. For each role they provide a list of resources to sharpen your skill sets. Lastly they offer tips on moving your entire organization towards data-driven security and building security data teams.&lt;/p&gt;
+
+&lt;h3 id=&#34;appendix&#34;&gt;Appendix&lt;/h3&gt;
+
+&lt;p&gt;Appendix A provides a vast list of web links. From Data Cleansing, Analytics and Visualization tools, to aggregation sites and blogs to follow. There is a ton of material worth checking out and bookmarking here.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion-and-other-thoughts&#34;&gt;Conclusion and Other thoughts&lt;/h2&gt;
+
+&lt;p&gt;So how do I rate this book ? This is a rather difficult question considering that nothing like this has ever been attempted before. Sure there are plenty of books about traditional InfoSec research and tools, and there are even more books on Statistics, and Machine Learning, and Visualization, not to mention gazillions of books on Programming/Coding. But a book that touches all 3 aspects of Data Science is indeed very rare.&lt;br/&gt;
+Having said that I like this book very much, it covers every aspect of Data Science with a focus on InfoSec in just enough detail to give it justice. The code samples are great but more important is the very serious advice the authors have to offer (albeit in a lighter tone). This book is by no means a small achievement, not only in InfoSec books but Data Science books as well. I don&amp;rsquo;t see any reason why this books should not be in your collection if you deal with InfoSec and/or Data Science. Even if your domain is not InfoSec but if you are interested in Data Science I would still highly recommend this book as it will show you how to make Data Science work for your domain using InfoSec as an example.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Visualizing India v/s Pakistan One Day International Results</title>
+      <link>/2015/02/visualizing-india-v/s-pakistan-one-day-international-results/</link>
+      <pubDate>Sun, 15 Feb 2015 22:11:00 +0000</pubDate>
+      
+      <guid>/2015/02/visualizing-india-v/s-pakistan-one-day-international-results/</guid>
+      <description>&lt;p&gt;&lt;b&gt;T&lt;/b&gt;his is my small effort to pickup &lt;a href=&#34;https://github.com/hrbrmstr/streamgraph&#34; target=&#34;_blank&#34;&gt;streamgraph&lt;/a&gt;&amp;nbsp;support in R developed by &lt;a href=&#34;https://twitter.com/hrbrmstr&#34; target=&#34;_blank&#34;&gt;Bob Rudis&lt;/a&gt;. (Described &lt;a href=&#34;http://rud.is/b/2015/02/15/introducing-the-streamgraph-htmlwidget-r-pacakge/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;div&gt;What you see is per year aggregations of results of all India v/s Pakistan One day Internationals. I pulled the records from &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_ODI_cricket_matches_played_between_India_and_Pakistan&#34; target=&#34;_blank&#34;&gt;Wikipedia&lt;/a&gt; and used &lt;a href=&#34;https://github.com/hadley/rvest&#34;&gt;rvest&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/hadleywickham&#34; target=&#34;_blank&#34;&gt;Hadley Wickham&lt;/a&gt;.&amp;nbsp;for extracting the results. After that a little data munging using dplyr and lubridate and voilà. 
+
+
+&lt;div class=&#34;separator&#34; style=&#34;clear: both; text-align: center;&#34;&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/IndVsPak&#34; target=&#34;_blank&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;http://3.bp.blogspot.com/-z7OLkFbBD2k/VOFUVBjGnYI/AAAAAAAABsY/fb859QnN9-o/s1600/Screen%2BShot%2B2015-02-15%2Bat%2B9.19.53%2BPM.png&#34; height=&#34;361&#34; width=&#34;640&#34; /&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Blue&amp;rsquo;s are India and Green&amp;rsquo;s are Pakistan in accordance with their team colors. India had an abysmal records against Pakistan right up until mid 90s, but it has picked up quite a bit after that. And of course India has &lt;a href=&#34;https://twitter.com/search?q=%23Ind6Pak0&#34; target=&#34;_blank&#34;&gt;won&lt;/a&gt; all 6 of it&amp;rsquo;s Cricket world cup matches against Pakistan.&lt;/p&gt;
+
+&lt;p&gt;As of today the tally stands at: India 51 wins and Pakistan 72 wins. Below&amp;rsquo;s a detailed breakdown.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;separator&#34; style=&#34;clear: both; text-align: center;&#34;&gt;&lt;a href=&#34;http://2.bp.blogspot.com/-mOD3Pd4hmQQ/VOFcwVv5SpI/AAAAAAAABso/mMhKyqspfSc/s1600/Screen%2BShot%2B2015-02-15%2Bat%2B9.58.01%2BPM.png&#34; imageanchor=&#34;1&#34; style=&#34;margin-left: 1em; margin-right: 1em;&#34;&gt;&lt;img border=&#34;0&#34; src=&#34;http://2.bp.blogspot.com/-mOD3Pd4hmQQ/VOFcwVv5SpI/AAAAAAAABso/mMhKyqspfSc/s1600/Screen%2BShot%2B2015-02-15%2Bat%2B9.58.01%2BPM.png&#34; height=&#34;102&#34; width=&#34;320&#34; /&gt;&lt;/a&gt;&lt;/div&gt;
+Running a&lt;a href=&#34;https://en.wikipedia.org/wiki/Chi-square_test&#34; target=&#34;_blank&#34;&gt; chi-square test&lt;/a&gt; for dependency between the result and the venue didn&amp;rsquo;t find any association between the two, which in layman terms means the results have been unrelated to the venue.&lt;/p&gt;
+
+&lt;p&gt;For the nerds (Oh sorry Data Scientists), the code is shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;/div&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;setwd(&amp;quot;~/code/R/workspaces/cricket&amp;quot;)
+library(stringr)
+library(rvest)
+library(lubridate)
+library(dplyr)
+library(streamgraph)
+
+# Wikipedia is our best go to source
+indvspak &amp;lt;- html(&#39;https://en.wikipedia.org/wiki/List_of_ODI_cricket_matches_played_between_India_and_Pakistan&#39;)
+# Summary table
+results.summary &amp;lt;- indvspak %&amp;gt;% html_node(&#39;.wikitable&#39;) %&amp;gt;% html_table()
+
+# Any dependency btween venue and result ?
+chisq.test(results.summary[2:3,3:5])
+
+# The XPATH expression below was obtained using Chrome&#39;s Element Inspector.
+results &amp;lt;-  indvspak %&amp;gt;%
+  html_node(xpath=&#39;//*[@id=&amp;quot;mw-content-text&amp;quot;]/table[4]&#39;) %&amp;gt;% html_table()
+
+# Sensible headers
+colnames(results) &amp;lt;- c(&#39;MatchNum&#39;,&#39;Date&#39;,&#39;Winner&#39;,&#39;WonBy&#39;,&#39;Venue&#39;,&#39;MoM&#39;)
+
+# Fix Date
+results$Date &amp;lt;- ymd(str_replace(results$Date,&#39;^0([0-9]{4}-[0-9]{2}-[0-9]{2}).*$&#39;,&#39;\\1&#39;))
+# Extract just the year in a new field
+results$year &amp;lt;- year(results$Date)
+
+# So that we get our colors as per team colors
+results$Winner &amp;lt;- factor(results$Winner,levels=c(&#39;India&#39;,&#39;Pakistan&#39;,&#39;No result&#39;),ordered=T)
+
+results %&amp;gt;% select(year,Winner) %&amp;gt;%
+  group_by(year,Winner) %&amp;gt;% tally() %&amp;gt;%
+  streamgraph(&amp;quot;Winner&amp;quot;, &amp;quot;n&amp;quot;, &amp;quot;year&amp;quot;, offset=&amp;quot;zero&amp;quot;, interpolate=&amp;quot;linear&amp;quot;) %&amp;gt;%
+  sg_legend(show=TRUE,
+            label=&amp;quot;Ind v/s Pak One Day International Results : Over the years&amp;quot;) %&amp;gt;%
+  sg_axis_x(1, &amp;quot;year&amp;quot;, &amp;quot;%Y&amp;quot;) %&amp;gt;%
+  sg_colors(&amp;quot;GnBu&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing RHadoop on Cloudera CDH 4.3.0</title>
+      <link>/2013/09/installing-rhadoop-on-cloudera-cdh-4.3.0/</link>
+      <pubDate>Mon, 09 Sep 2013 14:34:00 +0000</pubDate>
+      
+      <guid>/2013/09/installing-rhadoop-on-cloudera-cdh-4.3.0/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;hese are my notes for installing RHadoop on a Cloudera CDH 4.3.0 Hadoop Cluster.
+Although the notes are geared towards installing on CDH, they can be used to install RHadoop on any other Hadoop distro.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;he default installation instructionsas per RHadoop wiki tell you to install the &amp;lsquo;R&amp;rsquo; package from the &lt;a href=&#34;https://fedoraproject.org/wiki/EPEL&#34;&gt;EPEL Repo&lt;/a&gt;. The problem with that is &amp;lsquo;R&amp;rsquo; pulls in &amp;lsquo;R-core-devel&amp;rsquo; package, and that pulls in all sort of &amp;lsquo;build tools&amp;rsquo; including the gcc compiler and and a host of other library &amp;lsquo;dev&amp;rsquo; packages.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;his is a big issue for us, as we&amp;rsquo;re not allowed to have compilers installed on our Production boxes, which if you think about it, is a logical thing to do, considering the security requirements of a production environment.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;W&lt;/strong&gt;ith some efforts I was able to install RHadoop w/o having to install R-core-devel package on our hadoop cluster and these are the notes of that installation.
+To be able to install RHadoop on a CDH cluster, w/o having to install &amp;lsquo;R-core-devel&amp;rsquo; package, you need to setup a so called &amp;lsquo;build box&amp;rsquo;, where you&amp;rsquo;ll install everything and push it on to the hadoop cluster.&lt;/p&gt;
+
+&lt;p&gt;Set up a &amp;ldquo;build box&amp;rdquo;, with the same exact OS version, JDK, and Hadoop Version as that of your Hadoop Cluster. We need Hadoop installed to compile RHadoop packages, but we&amp;rsquo;re not going to make this box a part of the hadoop cluster.&lt;/p&gt;
+
+&lt;p&gt;On all boxes, i.e. each Hadoop Node as well as the &amp;lsquo;build box&amp;rsquo; , first setup EPEL yum repository as per instructions on &lt;a href=&#34;https://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F&#34;&gt;EPEL Wiki&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# As root user  
+yum -y --enablerepo=epel install R-core 
+#If your system doesn&#39;t allow &#39;root&#39; logins, use &#39;sudo yum ...&#39; instead 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then only on the build box&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# As root user 
+# If your system doesn&#39;t allow &#39;root&#39; logins, use &#39;sudo bash -l&#39; instead 
+# to start a root shell and do the next 4 steps 
+yum -y --enablerepo=epel install R 
+export JAVA_HOME=&amp;lt;JDK Base Dir&amp;gt; 
+export PATH=$JAVA_HOME/bin:$PATH 
+R CMD javareconf 
+
+# everything below can be done as a non-root user.
+cat &amp;gt; ~/.Rprofile &amp;lt;&amp;lt;THE_END 
+options(repos=structure(c(CRAN=&amp;quot;&amp;lt;CRAN Mirror Closest to you&amp;gt;&amp;quot;)))
+THE_END 
+
+cat &amp;gt; ~/.Renviron &amp;lt;&amp;lt; THE_END 
+R_LIBS_USER=&amp;quot;/opt/R/library&amp;quot; 
+HADOOP_HOME=&amp;quot;&amp;lt;BASE DIRECTORY OF HADOOP&amp;gt;&amp;quot; 
+HADOOP_CMD=&amp;quot;&amp;lt;Full PATH of the &#39;hadoop&#39; Command&amp;gt;&amp;quot;
+HADOOP_STREAMING=&amp;quot;&amp;lt;Full Path to Hadoop Streaming Jar File&amp;gt;&amp;quot;
+LD_LIBRARY_PATH=&amp;quot;${LD_LIBRARY_PATH}:&amp;lt;Path to Hadoop Native Lib dir&amp;gt;&amp;quot; 
+JAVA_HOME=&amp;quot;&amp;lt;Path to JDK&amp;gt;&amp;quot; 
+R_JAVA_LD_LIBRARY_PATH=&amp;quot;${JAVA_HOME}/lib/amd64/server&amp;quot; 
+THE_END 
+
+Rscript -e &amp;quot;install.packages(c(&#39;Rcpp&#39;, &#39;RJSONIO&#39;, &#39;itertools&#39;, &#39;digest&#39;));&amp;quot; 
+Rscript -e &amp;quot;install.packages(c(&#39;functional&#39;, &#39;stringr&#39;, &#39;plyr&#39;));&amp;quot; 
+Rscript -e &#39;install.packages(&amp;quot;rJava&amp;quot;);&#39; 
+Rscript -e &#39;install.packages(&amp;quot;reshape2&amp;quot;);&#39; 
+Rscript -e &#39;install.packages(&amp;quot;bitops&amp;quot;);&#39; 
+#Download rhdfs rmr2 from RHadoop Github page. 
+R CMD INSTALL rhdfs_1.0.5.tar.gz R CMD INSTALL rmr2_2.0.0.tar.gz 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;his should install all the required &amp;lsquo;R&amp;rsquo; packages along with &amp;lsquo;rhdfs&amp;rsquo; and &amp;lsquo;rmr2&amp;rsquo; under /opt/R/library directory on the &amp;lsquo;build&amp;rsquo; box. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;fter this simply scp/rsync the &lt;code&gt;$HOME/.Renviron&lt;/code&gt; file, and
+&lt;code&gt;/opt/R&lt;/code&gt; directory to each hadoop node in the cluster. The &lt;code&gt;.Renviron&lt;/code&gt; file needs to be in the home directory of every user who&amp;rsquo;s going to run a &amp;lsquo;R&amp;rsquo; map-reduce job.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;his should setup RHadoop on your Hadoop Cluster without having to install compiler toolchains on each Hadoop Node.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

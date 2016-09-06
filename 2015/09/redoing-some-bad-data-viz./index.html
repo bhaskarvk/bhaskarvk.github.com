@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Redoing some Bad Data Viz.</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="generator" content="Hugo 0.16" />
+		<link href="" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
+		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" rel="stylesheet"/>
+    
+		
+		
+	</head>
+	<body>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Redoing some Bad Data Viz.</div>
+		<div id="wrapper">
+
+			
+			<div class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="/"><p class="navbar-brand">Bhaskar Karambelkar&#39;s Blog</p></a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						
+						<li><a href="/about/">About Me </a></li>
+						
+						<li><a href="/">Home </a></li>
+						
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<a href="/"><img class="sidebar-logo" src="/images/profile.jpg" /></a>
+					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3></h3></li>
+					<hr />
+					
+						<li><a href="/about/">About Me </a></li>
+					
+						<li><a href="/">Home </a></li>
+					
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+					
+                    <hr/>
+					<div id="social-wrapper">
+						<li> <a target="_blank" data-toggle="tooltip" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk"><i class="fa fa-linkedin"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Twitter" href="https://www.twitter.com/bhaskar_vk"><i class="fa fa-twitter-square"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Github" href="https://github.com/bhaskarvk"><i class="fa fa-github-square"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="StackOverflow" href="https://stackoverflow.com/users/507484"><i class="fa fa-stack-overflow"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="Keybase" href="https://www.keybase.io/bhaskarvk"><i class="fa fa-key"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="SlideShare" href="//www.slideshare.net/bhaskar_vk"><i class="fa fa-slideshare"></i></a> </li>
+						<li> <a target="_blank" data-toggle="tooltip" title="RSS Feed" href="/index.xml"><i class="fa fa-rss"></i></a></li>
+                    </div>
+                    <hr/>
+				</ul>
+			</div>
+
+			<div class="container">
+
+<div id="article">
+	<div class="article-title">Redoing some Bad Data Viz.</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2015-09-12</small></p> <hr/>
+  <div class="post">
+		<p><img src="https://pbs.twimg.com/media/COt0Ev0WIAEADUL.png:large" alt="" /></p>
+
+<p>I saw the above graph in my Twitter feed. This beauty comes from <a href="https://twitter.com/businessinsider/status/642734996889993216">Business Insider</a> and was part of <a href="http://www.businessinsider.com/misery-index-of-major-global-economies-2015-9">this</a> article describing the misery in the world.
+There are so many wrong visualization elements here. So let&rsquo;s see what they are and if we can fix them.</p>
+
+<ul>
+<li><em>Stacked Bar Chart</em> are not useful when you have to compare the category which doesn&rsquo;t align on an axis. In this case you can&rsquo;t really compare the inflation values of each country because they don&rsquo;t have a common baseline. Secondly it is very apparent that both the categories that is unemployment and inflation have different range, so the common range of -5 to 25 is not really ideal.</li>
+<li><em>Vertical Labels</em> Unless your head is attached at 270 degrees to your neck, it is really very hard to read vertical labels.</li>
+<li><em>Legends are Confusing</em>. Both the values are expressed in percentage, but only the Unemployment label has the % sign. Also notice the space between Unemploy and ment.</li>
+<li><em>No order to the x-axis labels.</em> neither alphabetical nor by the value of either inflation nor unemployment.</li>
+</ul>
+
+<p>So how do we better this? Business Insider article cited the source of the chart as <a href="https://www.societegenerale.com/en/home">Société Générale&rsquo;s</a> Global Economic Outlook report. I couldn&rsquo;t find the said report or the data for the said chart anywhere on their website. <a href="https://www.cia.gov/library/publications/the-world-factbook">CIA World Fact book</a> also has various indicators for each country, two of which are <a href="https://www.cia.gov/library/publications/the-world-factbook/rankorder/2092rank.html">Inflation rate (consumer prices)</a> &amp; <a href="https://www.cia.gov/library/publications/the-world-factbook/rankorder/2129rank.html">Unemployment rate</a>. This would be perfect for demonstration purpose, even if the values from the CIA fact book may not be exactly same as that in the chart. Both these pages have a link to download the raw data in a tab separated format (TSV).</p>
+
+<p>So after downloading the raw data and a few data wrangling in R, here is the result.</p>
+
+<p><img src="/images/BIPlot.png" alt="" /></p>
+
+<p>Note</p>
+
+<ul>
+<li>Now instead of stacked bar chart you have two side-by-side charts. This allows you to compare the Inflation and Unemployment across Countries easily. Secondly each chart gets its own scale for the x-axis, which allows us to better scale the bars.</li>
+<li>Instead of having you to rotate your head, now the chart is rotated so you can easily read each country label.</li>
+<li>The x-axis labels are now consistent and both indicate that we&rsquo;re looking at percentage values.</li>
+<li>The y-axis data is sorted alphabetically as opposed to no order before.</li>
+</ul>
+
+<p>For the interested the R code which produced the graph is shown below.</p>
+
+<pre><code class="language-r">library(dplyr)
+library(readr)
+library(tidyr)
+library(gridExtra)
+library(ggplot2)
+library(httr)
+
+setwd('/Users/XYZ/Documents/cia-factbook/rankorder')
+inf &lt;- read_tsv('rawdata_2092.txt', col_names = F)
+uemp &lt;- read_tsv('rawdata_2129.txt', col_names = F)
+
+countries &lt;- c('Switzerland', 'Taiwan', 'Japan', 'Korea, South', 'United States',
+               'Czech Republic', 'United Kingdom', 'Poland', 'China', 'Germany',
+               'Netherlands', 'Mexico', 'Australia', 'France', 'Chile',
+               'European Union', 'Italy', 'Indonesia', 'Brazil', 'Russia', 'Spain')
+
+df &lt;- inner_join(inf, uemp,by='X2')
+df &lt;- df %&gt;% select(X2, X3.x, X3.y) %&gt;%
+  rename(Country=X2, unemployment=X3.y, inflation=X3.x)
+
+df &lt;- df %&gt;% arrange(Country)
+df &lt;- df %&gt;% mutate(unemployment=as.numeric(unemployment),
+                    inflation=as.numeric(inflation),
+                    Country=factor(Country, levels=rev(unique(df$Country)),
+                                   ordered = T))
+
+
+mytheme &lt;- theme_bw() +
+  theme(axis.ticks.y=element_blank()) +
+  theme(panel.border=element_blank()) +
+  theme(panel.grid=element_blank())
+
+gInf &lt;- ggplot(df %&gt;% filter(Country %in% countries),
+       aes(Country, inflation)) +
+  geom_bar(stat='identity',fill='#C29365') + coord_flip() +
+  xlab('') + ylab('Inflation (%)') + mytheme
+
+gUemp &lt;- ggplot(df %&gt;% filter(Country %in% countries),
+       aes(Country, unemployment)) +
+  geom_bar(stat='identity', fill='#65ADC2') + coord_flip() +
+  xlab('') + ylab('Unemployment (%)') + mytheme +
+  theme(axis.text.y=element_blank())
+grid.arrange(gInf, gUemp, ncol=2)
+</code></pre>
+
+  </div>
+</div>
+
+<a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<ul class="pager">
+   &nbsp;<li class="previous"><a href="/2015/10/setting-up-r-on-a-smartos-zone./"> Setting up R on a SmartOS Zone.</a></li>
+   &nbsp;<li class="next"><a href="/2015/06/introduction-to-nosql-databases/"> Introduction to NoSQL Databases</a></li>
+</ul>
+
+				<footer>
+                    <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
+				</footer>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/hc.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/r.min.js"></script>
+        <script>
+          hljs.initHighlightingOnLoad();
+        </script>
+		
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+			var u="//apps.karambelkar.info/pk/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 1]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+		
+	</body>
+</html>
+

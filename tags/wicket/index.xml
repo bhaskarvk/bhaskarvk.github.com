@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wicket on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/wicket/</link>
+    <description>Recent content in Wicket on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Mon, 26 May 2008 20:30:00 +0000</lastBuildDate>
+    <atom:link href="/tags/wicket/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Wicket&#39;s Date &amp; Time Components and Client-Server Timezones</title>
+      <link>/2008/05/wickets-date--time-components-and-client-server-timezones/</link>
+      <pubDate>Mon, 26 May 2008 20:30:00 +0000</pubDate>
+      
+      <guid>/2008/05/wickets-date--time-components-and-client-server-timezones/</guid>
+      <description>
+
+&lt;h2 id=&#34;the-problem&#34;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;In a typical web application, it is often necessary to work with multiple Timezones on the Client side. On the server side you may wish to store the data in one single &amp;ldquo;Timezone&amp;rdquo; preferably &amp;ldquo;GMT&amp;rdquo;, but it hardly makes sense to display and accept dates in GMT, as this places the onus on the user to translate time in his local timezone, to GMT before entering the time information, and vice-verse for interpreting any dates shown in the Web application.&lt;/p&gt;
+
+&lt;p&gt;What is required is for the web application to show and display date and times in the User&amp;rsquo;s timezone, and do all the necessary conversions while transmitting the date/time information between the User and the Back end. &lt;a href=&#34;http://wicket.apache.org/&#34; title=&#34;wicket framework&#34;&gt;wicket framework&lt;/a&gt; makes this extremely simple to implement.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-solution&#34;&gt;The Solution&lt;/h2&gt;
+
+&lt;p&gt;Wicket provides built in support to detect the Client&amp;rsquo;s Timezone and also provides necessary IO components as well as display components that transparently convert date/time data between the Server&amp;rsquo;s Timezone and the Client&amp;rsquo;s Timezone. What&amp;rsquo;s more you can also provide the Client an option to explicitly specify a Timezone and the said wicket components will use this user supplied Timezone instead of the User&amp;rsquo;s default Timezone.&lt;/p&gt;
+
+&lt;p&gt;Here I briefly describe how you can achieve seamless conversion of date/time wicket components between server and client Timezones.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-application-class&#34;&gt;The Application class&lt;/h3&gt;
+
+&lt;p&gt;We start with the Application class. In order for wicket to determine the Client&amp;rsquo;s Timezone, it needs to do a small redirect to an internal page that gathers information about the Client&amp;rsquo;s browser, that amongst other things includes the Client&amp;rsquo;s Timezone. &lt;strong&gt;Note&lt;/strong&gt; For this to work , the browser must be Javascript enabled, but even if the user&amp;rsquo;s browser has disabled Javascript you can easily fallback to the Server&amp;rsquo;s Timezone in such a case.
+For the internal page to gather browser information, we need to add some code in the &lt;code&gt;Application.init()&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import org.apache.wicket.Application;
+
+public class MyApplication extends Application {
+   @Override
+   public void init() {
+        getRequestCycleSettings().setGaterExtendedBroserInfo(true);
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The highlighted code is where the magic happens. Well not exactly. All the &amp;ldquo;setGatherExtendedBrowserInfo(true)&amp;rdquo; call does, is instructs Wicket to temporarily redirect an incoming request to an internal Wicket page, that will gather the extended browser info.
+Of course this will not happen for any wicket Page, but has to be specifically coded in the Page class.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-page-class&#34;&gt;The Page class&lt;/h3&gt;
+
+&lt;p&gt;Even after setting the proper setting in the Application class, our work is not done. We need to tell wicket when to collect the browser&amp;rsquo;s information.&lt;/p&gt;
+
+&lt;p&gt;Typically to acchive a consistent look for your application, you would use &lt;a href=&#34;http://cwiki.apache.org/WICKET/markup-inheritance.html&#34; title=&#34;markup inheritance&#34;&gt;markup inheritance&lt;/a&gt;, by having all your wicket Pages inherit from a BasePage.
+So considering this, the code we need is best placed in the BasePage of your application. This way the redirect for gathering extended browser info. happens regardless of the URL used to enter the application. It can be via the Home Page or a Bookmarked page, as
+long as all your wicket pages extend from your &amp;ldquo;BasePage&amp;rdquo; , you can be sure that wicket will discover
+the client&amp;rsquo;s Timezone (provided javascript is enabled).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class BasePage extends WebPage {
+
+   // we will use this to show the client what timezone are we using for this session.
+   private Timezone timezone ;
+
+   public BasePage() {
+
+       //trigger the redirect to an intermediate page which will obtain the timezone info for us.
+       getSession.getClientInfo();
+
+       add(new Label(&amp;quot;timezone&amp;quot;,new PropertyModel(BasePage.this,&amp;quot;timezone.displayName&amp;quot;));
+
+       // add date/time components from wicket-datetime project.
+   }
+
+   public Timezone getTimezone() {
+       if(timezone == null) {
+           timezone =
+               ((WebClientInfo)getSession().getClientInfo()).getProperties().getTimezone();
+       }
+       // fallback to server&#39;s timezone if we can&#39;t determine the client&#39;s timezone.
+       if(timezone == null) {
+           timezone = Timezone.getDefault();
+       }
+       return timezone;
+   }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the corresponding BasePage.html file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!-- somewhere in a convenient location --&amp;gt;
+&amp;lt;span&amp;gt;America/NewYork&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the constructor of &amp;lsquo;BasePage&amp;rsquo; class, we trigger the redirect to the intermediate page, for obtaining the client browser&amp;rsquo;s properties, using the &amp;lsquo;getSession().getClinetInfo()&amp;rsquo; call.
+It is very important to have this call, otherwise wicket will not determine the client browser&amp;rsquo;s properties, one of which is the client m/c&amp;rsquo;s timezone.
+Adding the timezone information in a wicket label is not strictly necessary, but it serves a purpose, without this the user will be unsure whether the date/time shown is in his local timezone or the server timezone. Of course as an alternative you can explictly display the timezone in each date/time textfiled/label.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-date-time-components&#34;&gt;The Date/Time Components&lt;/h3&gt;
+
+&lt;p&gt;Now for some wicket magic, after the client&amp;rsquo;s Timezone has been determined, we can now use any input/label components from the wicket-datetime project, and safely rely on them to do the automatic Timezone conversions between server and client.
+e.g.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;org.apache.wicket.datetime.markup.html.form.DateTextField&lt;/li&gt;
+&lt;li&gt;org.apache.wicket.datetime.markup.html.basic.DateLabel&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The DateTextField is an INPUT component which will translate the user inputted date/time values, from the client timezone to the server&amp;rsquo;s timezone.
+The DateLabel is a display LABEL that will display a date/time value from the server, after converting it into the client&amp;rsquo;s timezone.&lt;/p&gt;
+
+&lt;p&gt;Thus using wicket you can greatly simplify working with client timezones, by coding only a few lines in about 2 Java files.&lt;/p&gt;
+
+&lt;h2 id=&#34;other-thoughts&#34;&gt;Other thoughts&lt;/h2&gt;
+
+&lt;p&gt;One thing to stress, is that wicket&amp;rsquo;s ability to correctly determine the clinet&amp;rsquo;s timezone depends on 2 things, one is the requirement that &amp;lsquo;javascript&amp;rsquo; be turned on, in the client browser and secondly on the timezone offset provided by the javascript API. So it may not always work in every situation. But from my experience it works correctly most of the time.&lt;/p&gt;
+
+&lt;p&gt;In my next post I&amp;rsquo;ll examine how to convert the &amp;lsquo;timezone&amp;rsquo; label in our example, in to a drop down select box, that will give the user an option to select the timezone he wants to see the date/time contents in.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

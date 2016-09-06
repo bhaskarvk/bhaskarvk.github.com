@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2016-06-16T18:30:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2016/06/my-thoughts-on-northwestern-universitys-mspa/</loc>
+    <lastmod>2016-06-16T18:30:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2016/03/alternative-to-using-legends-in-ggplot2/</loc>
+    <lastmod>2016-03-21T11:22:02-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/11/re-plotting-russian-airstrikes-in-syria/</loc>
+    <lastmod>2015-11-10T11:56:30-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/10/shiny-in-a-smartos-zone/</loc>
+    <lastmod>2015-10-24T20:22:02-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/10/setting-up-r-on-a-smartos-zone./</loc>
+    <lastmod>2015-10-24T18:49:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/09/redoing-some-bad-data-viz./</loc>
+    <lastmod>2015-09-12T17:12:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/06/introduction-to-nosql-databases/</loc>
+    <lastmod>2015-06-28T10:55:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/05/video-of-my-talk-on-elasticsearch-at-elasticon-2015/</loc>
+    <lastmod>2015-05-27T02:01:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/05/book-review--data-driven-security/</loc>
+    <lastmod>2015-05-05T11:50:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/03/the-10-commandments-for-hiring-data-scientists/</loc>
+    <lastmod>2015-03-04T15:49:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/02/visualizing-india-v/s-pakistan-one-day-international-results/</loc>
+    <lastmod>2015-02-15T22:11:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/01/how-to-use-twitters-search-rest-api-most-effectively./</loc>
+    <lastmod>2015-01-05T12:49:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2014/12/slides-from-my-talk-at-elasticsearch-dc-meetup-dec-11-14./</loc>
+    <lastmod>2014-12-13T12:01:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2014/03/book-review--data-smart/</loc>
+    <lastmod>2014-03-29T20:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2014/02/searching-analyzing--visualizing-security-feeds/</loc>
+    <lastmod>2014-02-22T16:27:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2013/09/installing-rhadoop-on-cloudera-cdh-4.3.0/</loc>
+    <lastmod>2013-09-09T14:34:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2013/04/elasticsearch-book/</loc>
+    <lastmod>2013-04-30T17:16:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2012/12/installing-freebsd-under-virtualbox/</loc>
+    <lastmod>2012-12-26T13:16:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2012/06/java-1.7-collections---uml-class-diagrams/</loc>
+    <lastmod>2012-06-05T18:19:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2012/05/freebsd/</loc>
+    <lastmod>2012-05-31T10:34:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2011/01/google-cr-48-my-impressions---part-ii-chromium-os/</loc>
+    <lastmod>2011-01-12T21:36:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2010/12/google-cr-48-my-impressions---part-1-hardware/</loc>
+    <lastmod>2010-12-25T15:07:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2009/03/ancestral-home/</loc>
+    <lastmod>2009-03-08T14:25:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2009/02/beautiful-konkan/</loc>
+    <lastmod>2009-02-22T08:26:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2008/05/wickets-date--time-components-and-client-server-timezones/</loc>
+    <lastmod>2008-05-26T20:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2008/05/some-useful-java-system-properties/</loc>
+    <lastmod>2008-05-22T17:55:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2007/06/new-features-in-vim-7/</loc>
+    <lastmod>2007-06-14T14:45:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2007/06/maven-best-practices-use-dependency-management-for-multi-module-projects./</loc>
+    <lastmod>2007-06-13T12:45:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2007/06/prototyping-lamp-with-wamp/</loc>
+    <lastmod>2007-06-12T19:35:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2007/06/bash-shell-tricks/</loc>
+    <lastmod>2007-06-12T19:26:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>1999-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+</urlset>

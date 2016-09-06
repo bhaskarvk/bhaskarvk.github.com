@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dataviz on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/dataviz/</link>
+    <description>Recent content in Dataviz on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Tue, 10 Nov 2015 11:56:30 -0500</lastBuildDate>
+    <atom:link href="/tags/dataviz/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Re-plotting Russian AirStrikes In Syria</title>
+      <link>/2015/11/re-plotting-russian-airstrikes-in-syria/</link>
+      <pubDate>Tue, 10 Nov 2015 11:56:30 -0500</pubDate>
+      
+      <guid>/2015/11/re-plotting-russian-airstrikes-in-syria/</guid>
+      <description>
+
+&lt;p&gt;My Cartography mentor &lt;a href=&#34;https://twitter.com/hrbrmstr&#34;&gt;Bob Rudis&lt;/a&gt; pointed me to a blog post visualizing &lt;a href=&#34;http://r-datameister.blogspot.com/2015/11/plotting-russian-airstrikes-in-syria.html&#34;&gt;Russian Air Strikes in Syria&lt;/a&gt; and commanded me to redo the static maps to something more interactive and easier to explore.&lt;/p&gt;
+
+&lt;h2 id=&#34;tl-dr-version&#34;&gt;TL;DR Version&lt;/h2&gt;
+
+&lt;p&gt;Interactive Map at &lt;a href=&#34;http://rpubs.com/bhaskarvk/russian-airstrikes-in-syria&#34;&gt;Rpubs&lt;/a&gt; created using Leaflet after scraping data using RSelenium+ PhantomJS + dplyr. You can use the LayerSelector at the Top Right to toggle various Base Tiles. Clicking on any Marker will show details about that Air Strike.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-acquisition&#34;&gt;Data Acquisition&lt;/h2&gt;
+
+&lt;p&gt;The data comes from crowdsourcing of Russian Ministry of Defense&amp;rsquo;s (MOD) Youtube&lt;sup&gt;TM&lt;/sup&gt; channel. The process and the data is described &lt;a href=&#34;https://www.bellingcat.com/news/mena/2015/10/26/what-russias-own-videos-and-maps-reveal-about-who-they-are-bombing-in-syria/&#34;&gt;here&lt;/a&gt; and the data can be found at &lt;a href=&#34;http://russia-strikes-syria.silk.co/&#34;&gt;http://russia-strikes-syria.silk.co/&lt;/a&gt;. The argument is that a majority of the strikes claimed by the Russian MOD to be targeting ISIS held areas are actually targeting non-ISIS rebel areas and as such helping the Asaad regime more than fighting ISIS.&lt;/p&gt;
+
+&lt;p&gt;The original visualization was done by copying the data and putting it in an excel spreadsheet and then mapped using R&amp;rsquo;s &lt;code&gt;ggmap&lt;/code&gt; package. But in the interest of reproducibility I wanted to scrape the data directly from within R. For this I initially tried using &lt;a href=&#34;https://cran.r-project.org/web/packages/rvest/&#34;&gt;rvest&lt;/a&gt; but quickly realized that this was a no go as the table containing the data was dynamically populated using AJAX/Javascript stuff. So I had to turn to RSelenium + PhantomJS as described &lt;a href=&#34;https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Below is the web-scraping code, and the webpage from where this data was scraped can be found &lt;a href=&#34;http://russia-strikes-syria.silk.co/explore/table/collection/strike-id/column/date-uploaded/column/time-in-utc-uploaded/column/accuracy-of-russian-location/column/actual-location-co-ords/column/closest-location-governorate/column/claimed-location/column/claimed-targets/column/closest-location-actual/column/status/column/isis-in-the-area/column/error-type/column/notes/column/checkdesk-link/column/video-url/slice/0/1000&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(RSelenium)
+library(rvest)
+
+pJS &amp;lt;- phantom()
+Sys.sleep(5) # give the binary a moment
+remDr &amp;lt;- remoteDriver(browserName = &#39;phantomjs&#39;)
+remDr$open()
+remDr$navigate(&#39;http://russia-strikes-syria.silk.co/explore/table/collection/strike-id/column/date-uploaded/column/time-in-utc-uploaded/column/accuracy-of-russian-location/column/actual-location-co-ords/column/closest-location-governorate/column/claimed-location/column/claimed-targets/column/closest-location-actual/column/status/column/isis-in-the-area/column/error-type/column/notes/column/checkdesk-link/column/video-url/slice/0/1000&#39;)
+Sys.sleep(2) # Some time for page to load
+events &amp;lt;- read_html(remDr$getPageSource()[[1]]) %&amp;gt;%
+  html_node(xpath= &#39;//*[@id=&amp;quot;canvas&amp;quot;]/div/div[3]/div[2]/div[2]/div[4]/table&#39;) %&amp;gt;%
+  html_table()
+remDr$close()
+pJS$stop() # close the PhantomJS process
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;
+In short the code starts a RSelenium + PhantomJS WebDriver fetches the webpage containing the data. Then the html table is parsed using rvest&amp;rsquo;s &lt;code&gt;html_table()&lt;/code&gt; after the correct table is selected using the proper xpath to the table.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-preparation&#34;&gt;Data Preparation&lt;/h2&gt;
+
+&lt;p&gt;To plot the data correctly I need to perform the following steps.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Filter out data containing invalid Lat/Long coordinates.&lt;/li&gt;
+&lt;li&gt;Split the single column containing Lat/Long in to two columns.&lt;/li&gt;
+&lt;li&gt;Create a new column to be used for Popup Display when a point is clicked on the map.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Thankfully &lt;code&gt;dplyr&lt;/code&gt; and &lt;code&gt;tidyr&lt;/code&gt; are more than capable of doing all this using some basic simple steps shown below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+library(tidyr)
+
+events %&amp;gt;% filter(str_detect(`Actual location co-ords`,
+                             &#39;[0-9]+\\.[0-9]+, *[0-9]+\\.[0-9]+&#39;)) %&amp;gt;%
+  separate(`Actual location co-ords`,c(&#39;lat&#39;,&#39;lon&#39;),
+           sep = &#39;,&#39;, convert = TRUE, remove = TRUE ) %&amp;gt;%
+  mutate(popup = sprintf(&#39;&amp;lt;P&amp;gt;&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Status:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Date Uploaded:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s %s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Claimed Location:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Claimed Targets:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Closest Governorate:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Closest Actual Location:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;ISIS Presence:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Error:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Notes:&amp;lt;/i&amp;gt; %s&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Description:&amp;lt;/i&amp;gt; &amp;lt;a href=&amp;quot;%s&amp;quot;&amp;gt;%s&amp;lt;/a&amp;gt; / &amp;lt;i&amp;gt;Video:&amp;lt;/i&amp;gt; &amp;lt;a href=&amp;quot;%s&amp;quot;&amp;gt;%s&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/P&amp;gt;&#39;,
+                         Airstrikes, Status,
+                         `Date (Uploaded)`, `Time in UTC (Uploaded)`,
+                         `Claimed location`, `Claimed targets`,
+                          `Closest location governorate`, `Closest location (actual)`,
+                         `ISIS in the area?`, `Error type`,
+                         Notes, `Checkdesk link`, Airstrikes,
+                         `Video URL`, Airstrikes
+                         )) -&amp;gt; events
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;filter&lt;/code&gt; function filters out all data points which don&amp;rsquo;t match the regex for the the Lat/Long format. The &lt;code&gt;separate&lt;/code&gt; function splits the &amp;lsquo;Actual location co-ords&amp;rsquo; column in to two columns lat and lon. And finally the &lt;code&gt;mutate&lt;/code&gt; function is used to create the HTML code that will be used to display the popup when this datapoint is clicked on the Map.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-plotting&#34;&gt;Data Plotting&lt;/h2&gt;
+
+&lt;p&gt;Finally for Data Plotting I used &lt;a href=&#34;https://rstudio.github.io/leaflet/&#34;&gt;Leaflet for R&lt;/a&gt; library. You will need to build the library from source as I use some new features in the library that haven&amp;rsquo;t yet made it to CRAN. You can do this using &lt;code&gt;devetool::install_github(&#39;rstudio/leaflet&#39;)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Map consists of following elements&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Multiple Base Tile Maps out of which only one can be active at any given time.&lt;/li&gt;
+&lt;li&gt;A GeoJSON for plotting the various Administrative areas of Syria superimposed on the base map.&lt;/li&gt;
+&lt;li&gt;Markers for the Air Strikes.&lt;/li&gt;
+&lt;li&gt;A Layer Selection option.&lt;/li&gt;
+&lt;li&gt;A mini map to know the global context.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I also needed a way to visually distinguish between VERIFIED and FALSE strikes. Verified being strikes that claimed to have targeted ISIS and actually targeted ISIS or actually have targeted non-ISIS areas and not claimed to have targeted ISIS in short those where the claim and actual targets tally, and FALSE being the ones where there was a discrepancy in either the claimed and actual target or claimed and actual location. I chose to use Blue colored Markers for VERIFIED and Red colored for FALSE.&lt;/p&gt;
+
+&lt;p&gt;The code for plotting is shown below&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(leaflet)
+
+if(!file.exists(&#39;./cities.json&#39;) {
+	# Syrian Cities GeoJSON downloaded from 
+	# http://crisis.net/projects/syria-tracker/cities.json
+	# More Info @ http://blog.crisis.net/choropleth-maps-with-d3/
+	download.file(url=&#39;http://crisis.net/projects/syria-tracker/cities.json&#39;, destfile=&#39;cities.json&#39;)
+}
+cities &amp;lt;- readLines(&#39;./cities.json&#39;, warn =F) %&amp;gt;% paste(collapse=&#39;\n&#39;)
+
+# Leaflet Map + Various Base Tiles
+events %&amp;gt;% leaflet() %&amp;gt;%
+  addTiles(group=&amp;quot;Default&amp;quot;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.PositronNoLabels&#39;,group=&#39;Blank-Canvas&#39;) %&amp;gt;%
+  addProviderTiles(&#39;OpenStreetMap.BlackAndWhite&#39;, group=&amp;quot;OSM-BlackNWhite&amp;quot;) %&amp;gt;%
+  addProviderTiles(&#39;MapQuestOpen.OSM&#39;, group=&#39;MapQuest&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLite&#39;, group=&#39;Stamen-Light&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.WorldStreetMap&#39;,group=&#39;Esri-1&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.DeLorme&#39;,group=&#39;Esri-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.OceanBasemap&#39;,group=&#39;Esri-3&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.NatGeoWorldMap&#39;,group=&#39;NatGeo&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.Positron&#39;,group=&#39;CartoDB-1&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.PositronNoLabels&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerHybrid&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLines&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.DarkMatter&#39;,group=&#39;CartoDB-3&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.DarkMatterNoLabels&#39;,group=&#39;CartoDB-4&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Acetate.basemap&#39;,group=&#39;Acetate&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLabels&#39;,group=&#39;Acetate&#39;) -&amp;gt; eventMap
+
+# Awesome Icons with color depending on Status
+icon &amp;lt;- awesomeIcons(icon = &#39;crosshairs&#39;,
+                     markerColor = ifelse(events$Status == &#39;VERIFIED&#39;,&#39;blue&#39;,&#39;red&#39;),
+                     library = &#39;fa&#39;,
+                     iconColor = &#39;black&#39;)
+
+# Add Markers for AirStrikes and GeoJSON for Syrian Regions                     
+eventMap %&amp;gt;%
+  addAwesomeMarkers(
+    lat=~lat, lng=~lon,
+    label = ~Airstrikes, icon=icon,
+    group = &#39;Air Strikes&#39;,
+    popup = ~popup
+  ) %&amp;gt;%
+  addGeoJSON(cities, weight = 0.7, color = &amp;quot;#00FF00&amp;quot;,
+             stroke=T, fill = F, fillOpacity = 0.1,
+             group=&#39;Syria Regions&#39;) -&amp;gt; eventMap
+
+# Add a Layer Control for toggling Layers/BaseMaps
+eventMap  %&amp;gt;%  addLayersControl(
+  baseGroups = c(&#39;Default&#39;,
+                 &#39;Blank-Canvas&#39;,
+                 &#39;OSM-BlackNWhite&#39;,
+                 &#39;MapQuest&#39;,
+                 &#39;Stamen-Light&#39;,
+                 &#39;Esri-1&#39;,
+                 &#39;Esri-2&#39;,
+                 &#39;Esri-3&#39;,
+                 &#39;NatGeo&#39;,
+                 &#39;CartoDB-1&#39;,
+                 &#39;CartoDB-2&#39;,
+                 &#39;CartoDB-3&#39;,
+                 &#39;CartoDB-4&#39;,
+                 &#39;Acetate&#39;),
+  overlayGroups = c(&amp;quot;Air Strikes&amp;quot;, &amp;quot;Syria Regions&amp;quot;),
+  options = layersControlOptions(collapsed = TRUE)
+) -&amp;gt; eventMap
+
+# Finally Add a Minimap and render the Map
+eventMap %&amp;gt;% addMiniMap()
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;
+And the final map is shown below. This is just a screenshot you can find an interactive version of this at &lt;a href=&#34;http://rpubs.com/bhaskarvk/russian-airstrikes-in-syria&#34;&gt;Rpubs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/Syria.png&#34; alt=&#34;Russian Air Strikes in Syria&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For Web Scraping dynamic data RSelinium + PhantomJS makes a killer combo.&lt;/li&gt;
+&lt;li&gt;R&amp;rsquo;s leaflet library allows for easy creation of interactive maps.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Redoing some Bad Data Viz.</title>
+      <link>/2015/09/redoing-some-bad-data-viz./</link>
+      <pubDate>Sat, 12 Sep 2015 17:12:00 +0000</pubDate>
+      
+      <guid>/2015/09/redoing-some-bad-data-viz./</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://pbs.twimg.com/media/COt0Ev0WIAEADUL.png:large&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I saw the above graph in my Twitter feed. This beauty comes from &lt;a href=&#34;https://twitter.com/businessinsider/status/642734996889993216&#34;&gt;Business Insider&lt;/a&gt; and was part of &lt;a href=&#34;http://www.businessinsider.com/misery-index-of-major-global-economies-2015-9&#34;&gt;this&lt;/a&gt; article describing the misery in the world.
+There are so many wrong visualization elements here. So let&amp;rsquo;s see what they are and if we can fix them.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Stacked Bar Chart&lt;/em&gt; are not useful when you have to compare the category which doesn&amp;rsquo;t align on an axis. In this case you can&amp;rsquo;t really compare the inflation values of each country because they don&amp;rsquo;t have a common baseline. Secondly it is very apparent that both the categories that is unemployment and inflation have different range, so the common range of -5 to 25 is not really ideal.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Vertical Labels&lt;/em&gt; Unless your head is attached at 270 degrees to your neck, it is really very hard to read vertical labels.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Legends are Confusing&lt;/em&gt;. Both the values are expressed in percentage, but only the Unemployment label has the % sign. Also notice the space between Unemploy and ment.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;No order to the x-axis labels.&lt;/em&gt; neither alphabetical nor by the value of either inflation nor unemployment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So how do we better this? Business Insider article cited the source of the chart as &lt;a href=&#34;https://www.societegenerale.com/en/home&#34;&gt;Société Générale&amp;rsquo;s&lt;/a&gt; Global Economic Outlook report. I couldn&amp;rsquo;t find the said report or the data for the said chart anywhere on their website. &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook&#34;&gt;CIA World Fact book&lt;/a&gt; also has various indicators for each country, two of which are &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook/rankorder/2092rank.html&#34;&gt;Inflation rate (consumer prices)&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook/rankorder/2129rank.html&#34;&gt;Unemployment rate&lt;/a&gt;. This would be perfect for demonstration purpose, even if the values from the CIA fact book may not be exactly same as that in the chart. Both these pages have a link to download the raw data in a tab separated format (TSV).&lt;/p&gt;
+
+&lt;p&gt;So after downloading the raw data and a few data wrangling in R, here is the result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/BIPlot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now instead of stacked bar chart you have two side-by-side charts. This allows you to compare the Inflation and Unemployment across Countries easily. Secondly each chart gets its own scale for the x-axis, which allows us to better scale the bars.&lt;/li&gt;
+&lt;li&gt;Instead of having you to rotate your head, now the chart is rotated so you can easily read each country label.&lt;/li&gt;
+&lt;li&gt;The x-axis labels are now consistent and both indicate that we&amp;rsquo;re looking at percentage values.&lt;/li&gt;
+&lt;li&gt;The y-axis data is sorted alphabetically as opposed to no order before.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For the interested the R code which produced the graph is shown below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+library(readr)
+library(tidyr)
+library(gridExtra)
+library(ggplot2)
+library(httr)
+
+setwd(&#39;/Users/XYZ/Documents/cia-factbook/rankorder&#39;)
+inf &amp;lt;- read_tsv(&#39;rawdata_2092.txt&#39;, col_names = F)
+uemp &amp;lt;- read_tsv(&#39;rawdata_2129.txt&#39;, col_names = F)
+
+countries &amp;lt;- c(&#39;Switzerland&#39;, &#39;Taiwan&#39;, &#39;Japan&#39;, &#39;Korea, South&#39;, &#39;United States&#39;,
+               &#39;Czech Republic&#39;, &#39;United Kingdom&#39;, &#39;Poland&#39;, &#39;China&#39;, &#39;Germany&#39;,
+               &#39;Netherlands&#39;, &#39;Mexico&#39;, &#39;Australia&#39;, &#39;France&#39;, &#39;Chile&#39;,
+               &#39;European Union&#39;, &#39;Italy&#39;, &#39;Indonesia&#39;, &#39;Brazil&#39;, &#39;Russia&#39;, &#39;Spain&#39;)
+
+df &amp;lt;- inner_join(inf, uemp,by=&#39;X2&#39;)
+df &amp;lt;- df %&amp;gt;% select(X2, X3.x, X3.y) %&amp;gt;%
+  rename(Country=X2, unemployment=X3.y, inflation=X3.x)
+
+df &amp;lt;- df %&amp;gt;% arrange(Country)
+df &amp;lt;- df %&amp;gt;% mutate(unemployment=as.numeric(unemployment),
+                    inflation=as.numeric(inflation),
+                    Country=factor(Country, levels=rev(unique(df$Country)),
+                                   ordered = T))
+
+
+mytheme &amp;lt;- theme_bw() +
+  theme(axis.ticks.y=element_blank()) +
+  theme(panel.border=element_blank()) +
+  theme(panel.grid=element_blank())
+
+gInf &amp;lt;- ggplot(df %&amp;gt;% filter(Country %in% countries),
+       aes(Country, inflation)) +
+  geom_bar(stat=&#39;identity&#39;,fill=&#39;#C29365&#39;) + coord_flip() +
+  xlab(&#39;&#39;) + ylab(&#39;Inflation (%)&#39;) + mytheme
+
+gUemp &amp;lt;- ggplot(df %&amp;gt;% filter(Country %in% countries),
+       aes(Country, unemployment)) +
+  geom_bar(stat=&#39;identity&#39;, fill=&#39;#65ADC2&#39;) + coord_flip() +
+  xlab(&#39;&#39;) + ylab(&#39;Unemployment (%)&#39;) + mytheme +
+  theme(axis.text.y=element_blank())
+grid.arrange(gInf, gUemp, ncol=2)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

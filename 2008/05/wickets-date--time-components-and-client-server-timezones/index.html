@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Wicket&#39;s Date &amp; Time Components and Client-Server Timezones</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="generator" content="Hugo 0.16" />
+		<link href="" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
+		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" rel="stylesheet"/>
+    
+		
+		
+	</head>
+	<body>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Wicket&#39;s Date &amp; Time Components and Client-Server Timezones</div>
+		<div id="wrapper">
+
+			
+			<div class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="/"><p class="navbar-brand">Bhaskar Karambelkar&#39;s Blog</p></a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						
+						<li><a href="/about/">About Me </a></li>
+						
+						<li><a href="/">Home </a></li>
+						
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<a href="/"><img class="sidebar-logo" src="/images/profile.jpg" /></a>
+					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3></h3></li>
+					<hr />
+					
+						<li><a href="/about/">About Me </a></li>
+					
+						<li><a href="/">Home </a></li>
+					
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+					
+                    <hr/>
+					<div id="social-wrapper">
+						<li> <a target="_blank" data-toggle="tooltip" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk"><i class="fa fa-linkedin"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Twitter" href="https://www.twitter.com/bhaskar_vk"><i class="fa fa-twitter-square"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Github" href="https://github.com/bhaskarvk"><i class="fa fa-github-square"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="StackOverflow" href="https://stackoverflow.com/users/507484"><i class="fa fa-stack-overflow"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="Keybase" href="https://www.keybase.io/bhaskarvk"><i class="fa fa-key"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="SlideShare" href="//www.slideshare.net/bhaskar_vk"><i class="fa fa-slideshare"></i></a> </li>
+						<li> <a target="_blank" data-toggle="tooltip" title="RSS Feed" href="/index.xml"><i class="fa fa-rss"></i></a></li>
+                    </div>
+                    <hr/>
+				</ul>
+			</div>
+
+			<div class="container">
+
+<div id="article">
+	<div class="article-title">Wicket&#39;s Date &amp; Time Components and Client-Server Timezones</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2008-05-26</small></p> <hr/>
+  <div class="post">
+		
+
+<h2 id="the-problem">The problem</h2>
+
+<p>In a typical web application, it is often necessary to work with multiple Timezones on the Client side. On the server side you may wish to store the data in one single &ldquo;Timezone&rdquo; preferably &ldquo;GMT&rdquo;, but it hardly makes sense to display and accept dates in GMT, as this places the onus on the user to translate time in his local timezone, to GMT before entering the time information, and vice-verse for interpreting any dates shown in the Web application.</p>
+
+<p>What is required is for the web application to show and display date and times in the User&rsquo;s timezone, and do all the necessary conversions while transmitting the date/time information between the User and the Back end. <a href="http://wicket.apache.org/" title="wicket framework">wicket framework</a> makes this extremely simple to implement.</p>
+
+<h2 id="the-solution">The Solution</h2>
+
+<p>Wicket provides built in support to detect the Client&rsquo;s Timezone and also provides necessary IO components as well as display components that transparently convert date/time data between the Server&rsquo;s Timezone and the Client&rsquo;s Timezone. What&rsquo;s more you can also provide the Client an option to explicitly specify a Timezone and the said wicket components will use this user supplied Timezone instead of the User&rsquo;s default Timezone.</p>
+
+<p>Here I briefly describe how you can achieve seamless conversion of date/time wicket components between server and client Timezones.</p>
+
+<h3 id="the-application-class">The Application class</h3>
+
+<p>We start with the Application class. In order for wicket to determine the Client&rsquo;s Timezone, it needs to do a small redirect to an internal page that gathers information about the Client&rsquo;s browser, that amongst other things includes the Client&rsquo;s Timezone. <strong>Note</strong> For this to work , the browser must be Javascript enabled, but even if the user&rsquo;s browser has disabled Javascript you can easily fallback to the Server&rsquo;s Timezone in such a case.
+For the internal page to gather browser information, we need to add some code in the <code>Application.init()</code> method.</p>
+
+<pre><code class="language-java">import org.apache.wicket.Application;
+
+public class MyApplication extends Application {
+   @Override
+   public void init() {
+        getRequestCycleSettings().setGaterExtendedBroserInfo(true);
+   }
+}
+</code></pre>
+
+<p>The highlighted code is where the magic happens. Well not exactly. All the &ldquo;setGatherExtendedBrowserInfo(true)&rdquo; call does, is instructs Wicket to temporarily redirect an incoming request to an internal Wicket page, that will gather the extended browser info.
+Of course this will not happen for any wicket Page, but has to be specifically coded in the Page class.</p>
+
+<h3 id="the-page-class">The Page class</h3>
+
+<p>Even after setting the proper setting in the Application class, our work is not done. We need to tell wicket when to collect the browser&rsquo;s information.</p>
+
+<p>Typically to acchive a consistent look for your application, you would use <a href="http://cwiki.apache.org/WICKET/markup-inheritance.html" title="markup inheritance">markup inheritance</a>, by having all your wicket Pages inherit from a BasePage.
+So considering this, the code we need is best placed in the BasePage of your application. This way the redirect for gathering extended browser info. happens regardless of the URL used to enter the application. It can be via the Home Page or a Bookmarked page, as
+long as all your wicket pages extend from your &ldquo;BasePage&rdquo; , you can be sure that wicket will discover
+the client&rsquo;s Timezone (provided javascript is enabled).</p>
+
+<pre><code class="language-java">public class BasePage extends WebPage {
+
+   // we will use this to show the client what timezone are we using for this session.
+   private Timezone timezone ;
+
+   public BasePage() {
+
+       //trigger the redirect to an intermediate page which will obtain the timezone info for us.
+       getSession.getClientInfo();
+
+       add(new Label(&quot;timezone&quot;,new PropertyModel(BasePage.this,&quot;timezone.displayName&quot;));
+
+       // add date/time components from wicket-datetime project.
+   }
+
+   public Timezone getTimezone() {
+       if(timezone == null) {
+           timezone =
+               ((WebClientInfo)getSession().getClientInfo()).getProperties().getTimezone();
+       }
+       // fallback to server's timezone if we can't determine the client's timezone.
+       if(timezone == null) {
+           timezone = Timezone.getDefault();
+       }
+       return timezone;
+   }
+
+}
+</code></pre>
+
+<p>And the corresponding BasePage.html file</p>
+
+<pre><code class="language-html">&lt;!-- somewhere in a convenient location --&gt;
+&lt;span&gt;America/NewYork&lt;/span&gt;
+</code></pre>
+
+<p>In the constructor of &lsquo;BasePage&rsquo; class, we trigger the redirect to the intermediate page, for obtaining the client browser&rsquo;s properties, using the &lsquo;getSession().getClinetInfo()&rsquo; call.
+It is very important to have this call, otherwise wicket will not determine the client browser&rsquo;s properties, one of which is the client m/c&rsquo;s timezone.
+Adding the timezone information in a wicket label is not strictly necessary, but it serves a purpose, without this the user will be unsure whether the date/time shown is in his local timezone or the server timezone. Of course as an alternative you can explictly display the timezone in each date/time textfiled/label.</p>
+
+<h3 id="the-date-time-components">The Date/Time Components</h3>
+
+<p>Now for some wicket magic, after the client&rsquo;s Timezone has been determined, we can now use any input/label components from the wicket-datetime project, and safely rely on them to do the automatic Timezone conversions between server and client.
+e.g.</p>
+
+<ul>
+<li>org.apache.wicket.datetime.markup.html.form.DateTextField</li>
+<li>org.apache.wicket.datetime.markup.html.basic.DateLabel</li>
+</ul>
+
+<p>The DateTextField is an INPUT component which will translate the user inputted date/time values, from the client timezone to the server&rsquo;s timezone.
+The DateLabel is a display LABEL that will display a date/time value from the server, after converting it into the client&rsquo;s timezone.</p>
+
+<p>Thus using wicket you can greatly simplify working with client timezones, by coding only a few lines in about 2 Java files.</p>
+
+<h2 id="other-thoughts">Other thoughts</h2>
+
+<p>One thing to stress, is that wicket&rsquo;s ability to correctly determine the clinet&rsquo;s timezone depends on 2 things, one is the requirement that &lsquo;javascript&rsquo; be turned on, in the client browser and secondly on the timezone offset provided by the javascript API. So it may not always work in every situation. But from my experience it works correctly most of the time.</p>
+
+<p>In my next post I&rsquo;ll examine how to convert the &lsquo;timezone&rsquo; label in our example, in to a drop down select box, that will give the user an option to select the timezone he wants to see the date/time contents in.</p>
+
+  </div>
+</div>
+
+<a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<ul class="pager">
+   &nbsp;<li class="previous"><a href="/2009/02/beautiful-konkan/"> Beautiful Konkan</a></li>
+   &nbsp;<li class="next"><a href="/2008/05/some-useful-java-system-properties/"> Some useful Java System Properties</a></li>
+</ul>
+
+				<footer>
+                    <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
+				</footer>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/hc.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/r.min.js"></script>
+        <script>
+          hljs.initHighlightingOnLoad();
+        </script>
+		
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+			var u="//apps.karambelkar.info/pk/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 1]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+		
+	</body>
+</html>
+

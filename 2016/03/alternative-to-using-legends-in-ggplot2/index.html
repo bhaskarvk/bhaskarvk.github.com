@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Alternative to using legends in ggplot2</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="generator" content="Hugo 0.16" />
+		<link href="" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
+		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" rel="stylesheet"/>
+    
+		
+		
+	</head>
+	<body>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Alternative to using legends in ggplot2</div>
+		<div id="wrapper">
+
+			
+			<div class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="/"><p class="navbar-brand">Bhaskar Karambelkar&#39;s Blog</p></a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						
+						<li><a href="/about/">About Me </a></li>
+						
+						<li><a href="/">Home </a></li>
+						
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<a href="/"><img class="sidebar-logo" src="/images/profile.jpg" /></a>
+					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3></h3></li>
+					<hr />
+					
+						<li><a href="/about/">About Me </a></li>
+					
+						<li><a href="/">Home </a></li>
+					
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+					
+                    <hr/>
+					<div id="social-wrapper">
+						<li> <a target="_blank" data-toggle="tooltip" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk"><i class="fa fa-linkedin"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Twitter" href="https://www.twitter.com/bhaskar_vk"><i class="fa fa-twitter-square"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Github" href="https://github.com/bhaskarvk"><i class="fa fa-github-square"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="StackOverflow" href="https://stackoverflow.com/users/507484"><i class="fa fa-stack-overflow"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="Keybase" href="https://www.keybase.io/bhaskarvk"><i class="fa fa-key"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="SlideShare" href="//www.slideshare.net/bhaskar_vk"><i class="fa fa-slideshare"></i></a> </li>
+						<li> <a target="_blank" data-toggle="tooltip" title="RSS Feed" href="/index.xml"><i class="fa fa-rss"></i></a></li>
+                    </div>
+                    <hr/>
+				</ul>
+			</div>
+
+			<div class="container">
+
+<div id="article">
+	<div class="article-title">Alternative to using legends in ggplot2</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2016-03-21</small></p> <hr/>
+  <div class="post">
+		
+
+<p>Recently I got hold of some regional spending forecast data. I quickly plotted it using ggplot2, and here&rsquo;s the first version of it.</p>
+
+<p><img src="/images/region-forecast-blog_files/figure-markdown_github/svg.orig-1.png" alt="Figure 1: First Attempt" width="960" />
+<p class="caption">
+Figure 1: First Attempt
+</p></p>
+
+<p><br/>The data is from 2014 and the values from 2015 to 2019 are the forecasted values. For now don&rsquo;t worry about the validity of this data or the lack of margin of error in the forecasted values. Lets just concentrate on the problems with the visual elements of this chart.</p>
+
+<h3 id="the-problems">The Problems</h3>
+
+<p>There are two problems here&hellip;</p>
+
+<ul>
+<li>Most of the data is hugging the x-axis, something you see very often when you have highly skewed data.</li>
+<li>Way too many categories (regions) which makes it hard to figure out which line is for which region, even with the legend.</li>
+</ul>
+
+<p>A crude approach to fix problem #1 would be to use log scale on y-axis, which believe me is not the way to go especially when you want to present this chart to business execs and not scientific community. For problem #2, I tried using various different color palettes but none gave enough distinction in the hues to be able to distinguish all the ten regions correctly. This is not a problem of the hues. When you have more than 4 or 5 hues it is hard to distinguish each one, especially for line or point plots where the ink to plot ratio is not high (as opposed to say a bar plot).</p>
+
+<h3 id="the-solutions">The Solutions</h3>
+
+<p>Let&rsquo;s tackle each separately. First we tackle problem #1, that of most data hugging the x-axis. In this case it was a very easy fix, the data is very easily splittable in to two clusters a) <code>spending &lt; 10,000</code>, and b) <code>spending &gt; 10,000</code>. I did just that by creating another variable which indicated which group the data belonged to and used <code>facet_grid</code> to create two charts, but hid the facet strip and text. Here&rsquo;s the result.</p>
+
+<p><img src="/images/region-forecast-blog_files/figure-markdown_github/svg.orig2-1.png" alt="Figure 2: Using `facet_wrap` for better data visibility" width="960" />
+<p class="caption">
+Figure 2: Using <code>facet_wrap</code> for better data visibility
+</p></p>
+
+<p>This is much better, the data that was hugging the x-axis has now better visibility. It is <strong>worth noting</strong> that the chart is in fact two plots, arranged vertically on top of each other, and the y-axis scale is for the bottom chart is 1,000 while that of the top chart is 10,000. This just gives an illusion of a single y-axis. Also worth noting is that we could do this because the data was easily separable. I believe when data is easily separable as is the case here, this approach is a better alternative to using log scale. <a href="https://twitter.com/hrbrmstr">Bob Rudis</a> helped in adding a visual separator where the scale breaks.</p>
+
+<p><strong>WARNING</strong> : Not many people are fans of scale breaking, and I too would advice caution when using such an approach. Perhaps a better alternative is to simply plot the two charts separately.</p>
+
+<p>Now on to problem #2. What we really want here is a better way to indicate which line belongs to which region. If we can directly label the lines instead of using a legend on the side, then we have our solution for problem #2. After some googling around I found <a href="https://twitter.com/JonKalodimos/status/636880959191826432">this Twitter conversation</a> and a subsequent <a href="http://rud.is/b/2015/08/27/coloring-and-drawing-outside-the-lines-in-ggplot/">blog post</a> by <a href="https://twitter.com/hrbrmstr">Bob Rudis</a>. Hadley suggested using the <code>directlables</code> package, and Bob used <code>ggpolt2::annotation_custom</code>. I first went with the <code>directlabels</code> package but quickly realized that none of the <a href="http://directlabels.r-forge.r-project.org/docs/lineplot/plots/chemqqmathscore.html">options</a> were working out for me. The labels were either overlapping each other or overlapping the data, neither of which was acceptable. So I explored Bob&rsquo;s option, and there too I gave up on <code>ggplot2::annotation_custom</code> for the same reason, overlapping labels.</p>
+
+<p>So I came up with an alternative approach, which involved using the <code>ggrepel</code> package to make sure the labels didn&rsquo;t overlap. Here&rsquo;s the final result.</p>
+
+<p><img src="/images/region-forecast-blog_files/figure-markdown_github/svg.final-1.png" alt="Figure 3: Final Version, using `ggrepel`." width="960" />
+<p class="caption">
+Figure 3: Final Version, using <code>ggrepel</code>.
+</p></p>
+
+<p>This is even better, not only do we get labels right next to each line but we also get non-overlapping labels. The only thing I wish was an option in the <code>ggrepel</code> package that would allow repelling in just one direction, i.e. in this case it would be even nicer if I can left align all the labels, but still get vertical separation. Other than that I am happy with the result. They key to obtaining this chart was using <code>ggrepel</code> and using <code>ggplot2::expand_limit()</code> function to make sure there was enough room along the x-axis for the labels to not get chopped. By default ggplot2 will leave just a small area around each scale, so I had to use the <code>expand_limit</code> function to make room for the labels.</p>
+
+<h3 id="the-code">The Code</h3>
+
+<p>Here is the code for the final plot.</p>
+
+<pre><code class="language-r">library(ggplot2)
+library(readr)
+library(tidyr)
+library(dplyr)
+library(ggthemes)
+library(ggrepel)
+
+region.forecast &lt;- read_csv('./region-spending-forecast.csv')
+# Add a column so we can split the plot into two plots.
+region.forecast$Budget &lt;- ifelse(region.forecast$`2019`&lt;10000,'Low','High')
+
+# Convert wide format data to long format as required by ggplot2
+df.tidy &lt;- region.forecast %&gt;% gather(Year,Spending,-Region,-Budget)
+
+g &lt;- ggplot(df.tidy, aes(x=Year,y=Spending,group=Region,color=Region)) + 
+    # Solid line for actual data
+    geom_line(data=df.tidy %&gt;% filter(Year&lt;2015),
+              linetype='solid', size=0.75) +
+    # dashed line for forecast data
+    geom_line(data=df.tidy %&gt;% filter(Year&gt;=2014), 
+              linetype='dotted', size=0.75) +
+    # Mark each data point
+    geom_point(shape=8,size=0.75) +
+    # Add labels right after the last value of each series.
+    geom_label_repel(data=df.tidy %&gt;% filter(Year==2019),
+                     aes(label=Region, fill=Region),
+                     nudge_x = 0.5, size=3, color='white',
+                     force=1.5, segment.color='#bbbbbb') +
+    # Split the plot in to two plots on top of each other
+    facet_grid(Budget ~ ., scales = 'free_y') +
+    scale_y_continuous(labels = scales::comma) + # Add commas to y-axis labels
+    scale_x_discrete() +
+    theme_minimal() +
+    scale_color_tableau() + scale_fill_tableau() + # Tableau Colors
+    theme(strip.text = element_blank(), # Hide facet text
+          legend.position = 'none', # Hide legend
+          panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank())  +
+    expand_limits(x=9) # So that we have enough room along x-axis for labels.
+
+# This is to insert a ↑ as a scale seperation indicator between the two plots.
+library(grid)
+library(gtable)
+library(gridExtra)
+
+gb &lt;- ggplot_build(g)
+gt &lt;- ggplot_gtable(gb)
+gt &lt;- gtable_add_grob(gt, textGrob(label=&quot;↑&quot;, gp=gpar(fontsize=30)), 5, 3,
+                      clip=&quot;on&quot;, name=&quot;separator&quot;)
+gt$heights[[5]] &lt;- unit(30, &quot;pt&quot;)
+grid.arrange(gt)
+</code></pre>
+
+<h3 id="final-thoughts">Final Thoughts</h3>
+
+<p>There are some noteworthy thoughts here.</p>
+
+<ul>
+<li>I could use <code>facet_grid</code> because the data was easily splittable, otherwise I would have had to come up with some other clever option for lifting the series data that was hugging the x-axis.</li>
+<li>Not everyone is a fan of a split sclae in an axis so tread carefully.</li>
+<li><code>ggrepel</code> for now does not allow repelling along a single axis. This makes the label positions less than ideal. The ideal solution is to have the labels vertically aligned and enough separation along the y-axis. But fear not there is already a <a href="https://github.com/slowkow/ggrepel/issues/25">feature request</a> for it.</li>
+<li>I tried various color schemes, and Tableau colors from the <code>ggthemes</code> package gave the best hues.</li>
+<li>You have to specify the scaled data values for <code>expand_limits</code>. In my case, as I had seven data points, one for each year of 2013 to 2019, so I added room for two more using <code>expand_limits(x=9)</code> to accomodate the labels.</li>
+</ul>
+
+  </div>
+</div>
+
+<a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<ul class="pager">
+   &nbsp;<li class="previous"><a href="/2016/06/my-thoughts-on-northwestern-universitys-mspa/"> My Thoughts on Northwestern University&#39;s MSPA</a></li>
+   &nbsp;<li class="next"><a href="/2015/11/re-plotting-russian-airstrikes-in-syria/"> Re-plotting Russian AirStrikes In Syria</a></li>
+</ul>
+
+				<footer>
+                    <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
+				</footer>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/hc.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/r.min.js"></script>
+        <script>
+          hljs.initHighlightingOnLoad();
+        </script>
+		
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+			var u="//apps.karambelkar.info/pk/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 1]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+		
+	</body>
+</html>
+

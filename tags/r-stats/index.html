@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>R Stats</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="generator" content="Hugo 0.16" />
+		<link href="/tags/r-stats/index.xml" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="/tags/r-stats/index.xml" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
+		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" rel="stylesheet"/>
+    
+		
+		
+	</head>
+	<body>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> R Stats</div>
+		<div id="wrapper">
+
+			
+			<div class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="/"><p class="navbar-brand">Bhaskar Karambelkar&#39;s Blog</p></a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						
+						<li><a href="/about/">About Me </a></li>
+						
+						<li><a href="/">Home </a></li>
+						
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<a href="/"><img class="sidebar-logo" src="/images/profile.jpg" /></a>
+					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3></h3></li>
+					<hr />
+					
+						<li><a href="/about/">About Me </a></li>
+					
+						<li><a href="/">Home </a></li>
+					
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+					
+                    <hr/>
+					<div id="social-wrapper">
+						<li> <a target="_blank" data-toggle="tooltip" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk"><i class="fa fa-linkedin"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Twitter" href="https://www.twitter.com/bhaskar_vk"><i class="fa fa-twitter-square"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Github" href="https://github.com/bhaskarvk"><i class="fa fa-github-square"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="StackOverflow" href="https://stackoverflow.com/users/507484"><i class="fa fa-stack-overflow"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="Keybase" href="https://www.keybase.io/bhaskarvk"><i class="fa fa-key"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="SlideShare" href="//www.slideshare.net/bhaskar_vk"><i class="fa fa-slideshare"></i></a> </li>
+						<li> <a target="_blank" data-toggle="tooltip" title="RSS Feed" href="/index.xml"><i class="fa fa-rss"></i></a></li>
+                    </div>
+                    <hr/>
+				</ul>
+			</div>
+
+			<div class="container">
+
+<div id="article">
+  <h1>R Stats</h1><br/>
+  <ul class="posts">
+  
+    <li><span><h4><a href="/2016/03/alternative-to-using-legends-in-ggplot2/">Alternative to using legends in ggplot2</a><time class="pull-right post-list">Mon, Mar 21, 2016</h4></time></span></span>
+  <div class="summary">
+    Recently I got hold of some regional spending forecast data. I quickly plotted it using ggplot2, and here&rsquo;s the first version of it. Figure 1: First Attempt The data is from 2014 and the values from 2015 to 2019 are the forecasted values. For now don&rsquo;t worry about the validity of this data or the lack of margin of error in the forecasted values. Lets just concentrate on the problems with the visual elements of this chart.
+  </div>
+  <div class="read-more-link">
+    <a href="/2016/03/alternative-to-using-legends-in-ggplot2/">Read More…</a>
+  </div>
+    </li>
+  
+    <li><span><h4><a href="/2015/11/re-plotting-russian-airstrikes-in-syria/">Re-plotting Russian AirStrikes In Syria</a><time class="pull-right post-list">Tue, Nov 10, 2015</h4></time></span></span>
+  <div class="summary">
+    My Cartography mentor Bob Rudis pointed me to a blog post visualizing Russian Air Strikes in Syria and commanded me to redo the static maps to something more interactive and easier to explore. TL;DR Version Interactive Map at Rpubs created using Leaflet after scraping data using RSelenium+ PhantomJS + dplyr. You can use the LayerSelector at the Top Right to toggle various Base Tiles. Clicking on any Marker will show details about that Air Strike.
+  </div>
+  <div class="read-more-link">
+    <a href="/2015/11/re-plotting-russian-airstrikes-in-syria/">Read More…</a>
+  </div>
+    </li>
+  
+    <li><span><h4><a href="/2015/10/shiny-in-a-smartos-zone/">Shiny in a SmartOS zone</a><time class="pull-right post-list">Sat, Oct 24, 2015</h4></time></span></span>
+  <div class="summary">
+    My Last post showed you how to install R inside a SmartOS zone. This post is about installing the shiny server in the said zone. While setting up R was relatively straight forward, for setting up Shiny server I had to patch some C++ code to make shiny server work on solaris. Which means you don&rsquo;t have to, just follow along. First install R in a zone as shown in my earlier post.
+  </div>
+  <div class="read-more-link">
+    <a href="/2015/10/shiny-in-a-smartos-zone/">Read More…</a>
+  </div>
+    </li>
+  
+    <li><span><h4><a href="/2015/10/setting-up-r-on-a-smartos-zone./">Setting up R on a SmartOS Zone.</a><time class="pull-right post-list">Sat, Oct 24, 2015</h4></time></span></span>
+  <div class="summary">
+    Recently I converted a spare beefy laptop (8 cores, 16 GB RAM, 750GB HD) to a SmartOS hypervisor. I wanted to play with some bare metal hypervisor / container stuff and ESXi was just not cutting it. I&rsquo;m not a Solaris nerd, but I know enough Unix to find may way around in Linux/*BSDs/Solaris/HP-UX, so it was not a big pain. In fact ZFS is really nice. Anyway, this post is about setting up R in a zone.
+  </div>
+  <div class="read-more-link">
+    <a href="/2015/10/setting-up-r-on-a-smartos-zone./">Read More…</a>
+  </div>
+    </li>
+  
+    <li><span><h4><a href="/2015/09/redoing-some-bad-data-viz./">Redoing some Bad Data Viz.</a><time class="pull-right post-list">Sat, Sep 12, 2015</h4></time></span></span>
+  <div class="summary">
+    I saw the above graph in my Twitter feed. This beauty comes from Business Insider and was part of this article describing the misery in the world. There are so many wrong visualization elements here. So let&rsquo;s see what they are and if we can fix them. Stacked Bar Chart are not useful when you have to compare the category which doesn&rsquo;t align on an axis. In this case you can&rsquo;t really compare the inflation values of each country because they don&rsquo;t have a common baseline.
+  </div>
+  <div class="read-more-link">
+    <a href="/2015/09/redoing-some-bad-data-viz./">Read More…</a>
+  </div>
+    </li>
+  
+</ul>
+
+    
+				<footer>
+                    <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
+				</footer>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/hc.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/r.min.js"></script>
+        <script>
+          hljs.initHighlightingOnLoad();
+        </script>
+		
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+			var u="//apps.karambelkar.info/pk/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 1]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+		
+	</body>
+</html>
+

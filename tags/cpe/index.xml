@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cpe on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/cpe/</link>
+    <description>Recent content in Cpe on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Sat, 22 Feb 2014 16:27:00 +0000</lastBuildDate>
+    <atom:link href="/tags/cpe/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Searching, Analyzing &amp; Visualizing Security Feeds</title>
+      <link>/2014/02/searching-analyzing--visualizing-security-feeds/</link>
+      <pubDate>Sat, 22 Feb 2014 16:27:00 +0000</pubDate>
+      
+      <guid>/2014/02/searching-analyzing--visualizing-security-feeds/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;I&lt;/strong&gt;f you work with Computer or Network Security, then terms like &lt;a href=&#34;https://cve.mitre.org/&#34;&gt;CVE&lt;/a&gt;, &lt;a href=&#34;https://cpe.mitre.org/&#34;&gt;CPE&lt;/a&gt;, &lt;a href=&#34;https://cwe.mitre.org/&#34;&gt;CWE&lt;/a&gt;, &lt;a href=&#34;http://nvd.nist.gov/cce/index.cfm&#34;&gt;CCE&lt;/a&gt;, etc. should be very familiar to you. If not, you&amp;rsquo;re in the wrong field :).&lt;/p&gt;
+
+&lt;p&gt;For those who don&amp;rsquo;t work in these fields but are curious about it, these are some of the security related feeds provided by independent organizations such as &lt;a href=&#34;http://www.mitre.org/&#34;&gt;MITRE&lt;/a&gt; or &lt;a href=&#34;http://www.nist.gov/&#34;&gt;NIST&lt;/a&gt; and are part of the &amp;ldquo;&lt;a href=&#34;https://measurablesecurity.mitre.org/&#34;&gt;Making Security Measurable&lt;/a&gt;&amp;rdquo; initiative. These feeds provide meta data about things related to Computer/Network Security such as standard names for platforms/operating-systems/software/hardware, standard names for common vulnerabilities, weakness, configurations. Using these standard names help different vendors identify and tag security vulnerabilities, platforms, etc in a non-ambiguous way.
+Almost any vendor in this space relies on these feeds, and incorporates them in their products in some way or another. We use them too, but &amp;hellip;..&lt;/p&gt;
+
+&lt;p&gt;We have more than one security related products, and each provides a unique take on Computer/Network security, and this is not unique to our way of working. You&amp;rsquo;ll see this pattern in the whole of security industry, organizations having products catering to SIEM (Security Information and Event Management), VM (Vulnerability Management), Log Management, Compliance etc.&lt;/p&gt;
+
+&lt;p&gt;In our case each of these product offerings intake some or all of these feeds (which are provided in XML format), parse the feed and load it in a RDBMS. 
+The problems with this approach are &amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Each product team has it&amp;rsquo;s own code base for parsing these feeds and it&amp;rsquo;s own DB schema for representing these feeds in DB. So a lot of work is duplicated, and there are no standards across products on how to model these feeds in each product.&lt;/li&gt;
+&lt;li&gt;Each Product only takes in a subset of the available feeds, and brings in new feeds if and when needed. So it&amp;rsquo;s a never ending cycle for each new feed. Write parsers, design DB schma, and code the ETL procedures.&lt;/li&gt;
+&lt;li&gt;Due the rather complex nature of these feed formats, and rather limited ability to model such complex structures in a RDBMS, we end up throwing away a lot of information and cherry pick only important attributes such as ID, name, description, title etc. and keep our models simple. &lt;/li&gt;
+&lt;li&gt;And perhaps the most important, no text search capability within or across feeds. These feeds have some very elaborate descriptions , code samples, so full  text search is very critical.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So while this approach works , as you can see it&amp;rsquo;s not very efficient, duplication of work, no standard model across products and limitations of the storage platform result in discarding information that could potentially be useful.&lt;/p&gt;
+
+&lt;p&gt;So what&amp;rsquo;s needed is&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A independent meta store that can handle any and all available feeds.&lt;/li&gt;
+&lt;li&gt;A flexible storage platform not limited by shortcomings of a RDBMS system and in turn can retain almost all available information in the feeds.&lt;/li&gt;
+&lt;li&gt;A very simple REST API for each product to tap in to the meta store.&lt;/li&gt;
+&lt;li&gt;A full text search as well as a field based search interface as part of the REST API.&lt;/li&gt;
+&lt;li&gt;A framework / API for descriptive statistical analysis, exploratory analysis on the information store.&lt;/li&gt;
+&lt;li&gt;A very simple dashboard to visualize these feeds, for birds eye view.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As most of these feeds are published as XMLs , initially I thought of using a &amp;lsquo;XML DB&amp;rsquo; for the job. I have quite a bit of experience with &amp;lsquo;Oracle XMLDB&amp;rsquo;, but although it can offer a much flexible platform for storage, we&amp;rsquo;ll still need to define a proper DB schema based on the underlying XML schema, to take full advantage of &amp;lsquo;XMLDB&amp;rsquo; features, and we&amp;rsquo;ll still need to write our one API layer on top of XMLDB. So the amount of efforts is not reduced significantly. Not to mention any statistical analysis or dashboarding is added effort.&lt;/p&gt;
+
+&lt;p&gt;So what&amp;rsquo;s the alternative for developing such a solution ? &amp;hellip;. &lt;strong&gt;&lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;ElasticSearch&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Why ? , because &amp;hellip;..&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ES offers a very flexible storage model, not only is it a full text search product but a very competent storage platform for unstructured or semi-structured data (NoSQL DB if you will).&lt;/li&gt;
+&lt;li&gt;It works very well schema less, and efforts to define a Index Mapping (equivalent to a DB Schema) are very minimal compared to a traditional RDBMS schema designing. So you can work in a mix environment where you define mappings for a key set of attributes and leave the rest for ES&amp;rsquo;s dynamic mapping.&lt;/li&gt;
+&lt;li&gt;Full text search is ES&amp;rsquo;s bread and butter, and it also works well for field based querying/filtering.&lt;/li&gt;
+&lt;li&gt;ES provides statistical APIs (facets in pre-1.0 release, and aggregations in 1.0+ releases) out of box, without us having to write a single piece of code.&lt;/li&gt;
+&lt;li&gt;ES provides &lt;a href=&#34;http://www.elasticsearch.org/overview/kibana/&#34;&gt;kibana&lt;/a&gt; for building dashboards on data stored in ES. Kibana does all the heavy lifting and you can build very intuitive dashboards in a very short amount of time.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So what&amp;rsquo;s need to be done by us ? Well not much really, here&amp;rsquo;s what I&amp;rsquo;ve done so far..&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A simple perl script which can download data feeds (XMLs), convert XML to JSON (trust me with perl this is a breeze, 2 lines of code ), minimal normalization of data if needed and then use elasticsearch perl API to bulk index the feed. (The whole code is about 100 to 120 lines).&lt;/li&gt;
+&lt;li&gt;Define a minimal set of mappings for the feeds. Again the idea is to make heavy use of ES&amp;rsquo; dynamic mappings for most fields and only provide explicit mappings for a select few key attributes.&lt;/li&gt;
+&lt;li&gt;Built kibana dashboards for search as well as summarizing feed data in graphs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In short the coding effort was a very small perl script, es mapping template, and kibana dashboard building, all accomplished in a matter of hours, as opposed to the current approach which requires days/weeks for each new feed we want to work with.&lt;/p&gt;
+
+&lt;p&gt;Overall I&amp;rsquo;m very pleased and satisfied with what has been achieved. Below are some Kibana dashboards I&amp;rsquo;ve build.
+Please note that as nice as Kibana is, what&amp;rsquo;s more important is the full text search capabilities that we get from ES, and a very easy and intuitive REST API, which can be used by any product to tap in to this feed store, that&amp;rsquo;s more important to us. Not to mention the ridiculously small amount of time spent to put this all together. &lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 1: CVEs by Score (Also Adobe Ouch..)&lt;/em&gt;
+&lt;a href=&#34;https://lh3.googleusercontent.com/-zmW5utCjOQU/UwkRPZucr3I/AAAAAAAABcQ/lp82qVehue0/s1440/CVEs_by_score.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CVEs by Score (Also Adobe Ouch..)&#34; &gt;
+    &lt;img src=&#34;http://2.bp.blogspot.com/-zmW5utCjOQU/UwkRPZucr3I/AAAAAAAABcQ/lp82qVehue0/s1600/CVEs_by_score.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 2: CVEs by OS&lt;/em&gt;
+&lt;a href=&#34;http://2.bp.blogspot.com/-WZdr1Sycvy0/UwkROoI2WRI/AAAAAAAABb0/PcrouIMtn-w/s1600/CVEs.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CVEs by OS&#34; &gt;
+    &lt;img src=&#34;http://2.bp.blogspot.com/-WZdr1Sycvy0/UwkROoI2WRI/AAAAAAAABb0/PcrouIMtn-w/s1600/CVEs.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 3: CPEs&lt;/em&gt;
+&lt;a href=&#34;http://4.bp.blogspot.com/-MPTLcLabgZs/UwkROm7ZdiI/AAAAAAAABbw/VSUd2ABfkyI/s1600/CPEs.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CPEs&#34; &gt;
+    &lt;img src=&#34;http://4.bp.blogspot.com/-MPTLcLabgZs/UwkROm7ZdiI/AAAAAAAABbw/VSUd2ABfkyI/s1600/CPEs.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 4: CCEs&lt;/em&gt;
+&lt;a href=&#34;http://2.bp.blogspot.com/-Mj4gMKx6ew4/UwkROi1hMkI/AAAAAAAABb8/bP-OfXcRx2Y/s1600/CCEs.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CCEs&#34; &gt;
+    &lt;img src=&#34;http://2.bp.blogspot.com/-Mj4gMKx6ew4/UwkROi1hMkI/AAAAAAAABb8/bP-OfXcRx2Y/s1600/CCEs.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 5: CWEs&lt;/em&gt;
+&lt;a href=&#34;http://2.bp.blogspot.com/-WqK791vz-us/UwkRPgpTD8I/AAAAAAAABcI/8DJgmphabvk/s1600/CWE.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CWEs&#34; &gt;
+    &lt;img src=&#34;http://2.bp.blogspot.com/-WqK791vz-us/UwkRPgpTD8I/AAAAAAAABcI/8DJgmphabvk/s1600/CWE.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Figure 6: CCEs&lt;/em&gt;
+&lt;a href=&#34;http://3.bp.blogspot.com/-uzvuBrP5V5o/UwkRPsd2TtI/AAAAAAAABcM/4DwqaDjRSzY/s1600/NVDCCEs.png&#34; data-lightbox=&#34;MITRE&#34; data-title=&#34; CCEs&#34; &gt;
+    &lt;img src=&#34;http://3.bp.blogspot.com/-uzvuBrP5V5o/UwkRPsd2TtI/AAAAAAAABcM/4DwqaDjRSzY/s1600/NVDCCEs.png&#34; /&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

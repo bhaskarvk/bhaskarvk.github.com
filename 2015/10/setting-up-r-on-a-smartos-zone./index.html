@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Setting up R on a SmartOS Zone.</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="generator" content="Hugo 0.16" />
+		<link href="" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
+		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" rel="stylesheet"/>
+    
+		
+		
+	</head>
+	<body>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Setting up R on a SmartOS Zone.</div>
+		<div id="wrapper">
+
+			
+			<div class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="/"><p class="navbar-brand">Bhaskar Karambelkar&#39;s Blog</p></a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						
+						<li><a href="/about/">About Me </a></li>
+						
+						<li><a href="/">Home </a></li>
+						
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<a href="/"><img class="sidebar-logo" src="/images/profile.jpg" /></a>
+					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3></h3></li>
+					<hr />
+					
+						<li><a href="/about/">About Me </a></li>
+					
+						<li><a href="/">Home </a></li>
+					
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+					
+                    <hr/>
+					<div id="social-wrapper">
+						<li> <a target="_blank" data-toggle="tooltip" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk"><i class="fa fa-linkedin"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Twitter" href="https://www.twitter.com/bhaskar_vk"><i class="fa fa-twitter-square"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Github" href="https://github.com/bhaskarvk"><i class="fa fa-github-square"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="StackOverflow" href="https://stackoverflow.com/users/507484"><i class="fa fa-stack-overflow"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="Keybase" href="https://www.keybase.io/bhaskarvk"><i class="fa fa-key"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="SlideShare" href="//www.slideshare.net/bhaskar_vk"><i class="fa fa-slideshare"></i></a> </li>
+						<li> <a target="_blank" data-toggle="tooltip" title="RSS Feed" href="/index.xml"><i class="fa fa-rss"></i></a></li>
+                    </div>
+                    <hr/>
+				</ul>
+			</div>
+
+			<div class="container">
+
+<div id="article">
+	<div class="article-title">Setting up R on a SmartOS Zone.</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2015-10-24</small></p> <hr/>
+  <div class="post">
+		<p>Recently I converted a spare beefy laptop (8 cores, 16 GB RAM, 750GB HD) to a <a href="http://www.smartos.org">SmartOS</a> hypervisor. I wanted to play with some bare metal hypervisor / container stuff and ESXi was just not cutting it. I&rsquo;m not a Solaris nerd, but I know enough Unix to find may way around in Linux/*BSDs/Solaris/HP-UX, so it was not a big pain. In fact ZFS is really nice.</p>
+
+<p>Anyway, this post is about setting up R in a <a href="https://wiki.smartos.org/display/DOC/Zones">zone</a>. It wasn&rsquo;t very difficult to set up R in a zone but it was not completely straight forward as well.</p>
+
+<p>On the SmartOS host</p>
+
+<pre><code class="language-bash"># Update the list of available images
+imgadm update
+# import the latest base-64 image (15.3.0)
+imgadm import 842e6fa6-6e9b-11e5-8402-1b490459e334
+</code></pre>
+
+<p>Next create a file <code>zone.json</code> with the following content in a convenient place.</p>
+
+<pre><code class="language-javascript">{
+  &quot;alias&quot;: &quot;zone01&quot;,
+  &quot;hostname&quot;: &quot;zone01&quot;,
+  &quot;brand&quot;: &quot;joyent&quot;,
+  &quot;quota&quot;: 10,
+  &quot;max_physical_memory&quot;: 2048,
+  &quot;dataset_uuid&quot;: &quot;842e6fa6-6e9b-11e5-8402-1b490459e334&quot;,
+  &quot;default_gateway&quot;: &quot;10.0.0.1&quot;,
+  &quot;resolvers&quot;: [
+    &quot;8.8.8.8&quot;,
+    &quot;8.8.4.4&quot;
+  ],
+  &quot;nics&quot;: [
+    {
+      &quot;nic_tag&quot;: &quot;stub0&quot;,
+      &quot;ip&quot;: &quot;10.0.0.5&quot;,
+      &quot;netmask&quot;: &quot;255.255.255.0&quot;,
+      &quot;allow_ip_spoofing&quot;: &quot;1&quot;,
+      &quot;gateway&quot;: &quot;10.0.0.1&quot;
+    }
+  ]
+}
+</code></pre>
+
+<p><strong>Note</strong> You&rsquo;ll probably need to change the <code>alias</code>, <code>hostname</code>, <code>quota</code> (disk-space in GB), <code>max_physical_memory</code>, and networking stuff like <code>gateway</code> and <code>nics</code> to match your environment. I had problems running the zone with 1G memory, better give it at least 2 Gigs.</p>
+
+<pre><code class="language-bash"># Provision and bring up the zone
+vcadm create -f zone.json
+zlogin &lt;UUID of the new zone&gt;
+</code></pre>
+
+<p>Now inside the zone</p>
+
+<pre><code class="language-bash">pkgin update # Update pkgsrc
+# Compiler and related stuff
+# I had a hard time compiling R packages with gcc48/gcc49 so
+# I used gcc47 which worked perfectly.
+pkgin install gcc47 gcc47-libs gmake autoconf automake cmake
+# XML stuff
+pkgin install libxml2 libxml libxml++1 libxml++-2 
+pkgin install R R2pkg
+# Setup CRAN Mirror
+# TODO may be https instead of http
+echo 'options(repos=structure(c(CRAN=&quot;http://cran.rstudio.com/&quot;)))' &gt; ~/.Rprofile
+# Install Rcpp and devtools, this will pull in a lot of goodies with it
+Rscript -e &quot;install.packages('Rcpp','devtools')&quot;
+# Install Hadleyverse
+Rscript -e &quot;install.packages(c('plyr', 'dplyr', 'stringr', 'rvest', 'httr', 'reshape2', 'ggplot2', 'ggmap', 'tidyr', 'lubridate', 'readr', 'testthat', 'roxygen2'))&quot;
+# Some other useful R package
+Rscript -e &quot;install.packages(c('data.table', 'knitr', 'rmarkdown'))&quot;
+</code></pre>
+
+<p>After that it&rsquo;s your usual R stuff. I&rsquo;m going to convert this zone to a shiny server and will blog about it when done.</p>
+
+  </div>
+</div>
+
+<a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<ul class="pager">
+   &nbsp;<li class="previous"><a href="/2015/10/shiny-in-a-smartos-zone/"> Shiny in a SmartOS zone</a></li>
+   &nbsp;<li class="next"><a href="/2015/09/redoing-some-bad-data-viz./"> Redoing some Bad Data Viz.</a></li>
+</ul>
+
+				<footer>
+                    <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
+				</footer>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/hc.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/r.min.js"></script>
+        <script>
+          hljs.initHighlightingOnLoad();
+        </script>
+		
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+			var u="//apps.karambelkar.info/pk/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 1]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+		
+	</body>
+</html>
+

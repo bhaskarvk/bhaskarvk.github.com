@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Maven best practices: Use dependency management for multi module projects.</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="generator" content="Hugo 0.16" />
+		<link href="" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
+		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" rel="stylesheet"/>
+    
+		
+		
+	</head>
+	<body>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Maven best practices: Use dependency management for multi module projects.</div>
+		<div id="wrapper">
+
+			
+			<div class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="/"><p class="navbar-brand">Bhaskar Karambelkar&#39;s Blog</p></a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						
+						<li><a href="/about/">About Me </a></li>
+						
+						<li><a href="/">Home </a></li>
+						
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<a href="/"><img class="sidebar-logo" src="/images/profile.jpg" /></a>
+					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3></h3></li>
+					<hr />
+					
+						<li><a href="/about/">About Me </a></li>
+					
+						<li><a href="/">Home </a></li>
+					
+						<li><a href="//photos.karambelkar.info">Photography </a></li>
+					
+                    <hr/>
+					<div id="social-wrapper">
+						<li> <a target="_blank" data-toggle="tooltip" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk"><i class="fa fa-linkedin"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Twitter" href="https://www.twitter.com/bhaskar_vk"><i class="fa fa-twitter-square"></i></a></li>
+						<li> <a target="_blank" data-toggle="tooltip" title="Github" href="https://github.com/bhaskarvk"><i class="fa fa-github-square"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="StackOverflow" href="https://stackoverflow.com/users/507484"><i class="fa fa-stack-overflow"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="Keybase" href="https://www.keybase.io/bhaskarvk"><i class="fa fa-key"></i></a> </li>
+                        <li> <a target="_blank" data-toggle="tooltip" title="SlideShare" href="//www.slideshare.net/bhaskar_vk"><i class="fa fa-slideshare"></i></a> </li>
+						<li> <a target="_blank" data-toggle="tooltip" title="RSS Feed" href="/index.xml"><i class="fa fa-rss"></i></a></li>
+                    </div>
+                    <hr/>
+				</ul>
+			</div>
+
+			<div class="container">
+
+<div id="article">
+	<div class="article-title">Maven best practices: Use dependency management for multi module projects.</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-06-13</small></p> <hr/>
+  <div class="post">
+		<p>Do you struggle to maintain a common configuration for dependencies (version #, type etc.),
+between various modules of your multi-module maven 2.x project ?</p>
+
+<p>There is a very easy way to control all your dependency related configurations from the parent &lsquo;pom&rsquo; project.
+Instead of specifying the same kind of configuration for dependencies over and over, in various modules, just
+specify them once inside the <strong><code>&lt;dependencyManagement&gt;</code></strong> node of the parent pom.xml.</p>
+
+<p>What ever configurations are done in the &lsquo;dependencyManagement&rsquo; section of the parent pom.xml,
+are automatically inherited by the child projects.
+Typical configurations include a version number of the dependency artifact, a list of transitive dependencies
+to exclude, when including this dependency, the default scope of the dependency, etc.
+Infact when properly configured, any sub project needs to specify only the group-id and artifact-id of a required
+dependency, everything else is inherited from the parent pom.xml.</p>
+
+<p>Just think about it for a second, a clear simple way to have the same version of log4j jars in all your sub modules,
+A clear way to have junit.jar scope set to &lsquo;test&rsquo; in all sub projects. And when you need to change the version
+of a dependency, you just need to do it in one place, and bam. every child project now referes to the newer version
+of your dependency.</p>
+
+<p>Here&rsquo;s a code sniplet of &lsquo;dependencyManagement&rsquo; block in one of my parent pom.xml</p>
+
+<pre><code class="language-xml">&lt;project....&gt;
+  ......
+  &lt;packaging&gt;pom&lt;/packaging&gt;
+  ............
+  &lt;dependencymanagement&gt;
+     &lt;dependencies&gt;
+         &lt;dependency&gt;
+               &lt;groupid&gt;commons-logging&lt;/groupid&gt;
+               &lt;artifactid&gt;commons-logging&lt;/artifactid&gt;
+               &lt;version&gt;${commons.logging.version}&lt;/version&gt;
+               &lt;exclusions&gt;
+                   &lt;exclusion&gt;
+                       &lt;groupid&gt;log4j&lt;/groupid&gt;
+                       &lt;artifactid&gt;log4j&lt;/artifactid&gt;
+                   &lt;/exclusion&gt;
+                   &lt;exclusion&gt;
+                       &lt;groupid&gt;logkit&lt;/groupid&gt;
+                       &lt;artifactid&gt;logkit&lt;/artifactid&gt;
+                   &lt;/exclusion&gt;
+                   &lt;exclusion&gt;
+                       &lt;groupid&gt;avalon-framework&lt;/groupid&gt;
+                       &lt;artifactid&gt;avalon-framework&lt;/artifactid&gt;
+                   &lt;/exclusion&gt;
+                   &lt;exclusion&gt;
+                       &lt;groupid&gt;javax.servlet&lt;/groupid&gt;
+                       &lt;artifactid&gt;servlet-api&lt;/artifactid&gt;
+                   &lt;/exclusion&gt;
+               &lt;/exclusions&gt;
+           &lt;/dependency&gt;
+          ..........
+       &lt;/dependencies&gt;
+  &lt;/dependencymanagement&gt;
+  &lt;properties&gt;
+     &lt;commons.logging.version&gt;1.1&lt;/commons.logging.version&gt;
+  &lt;/properties&gt;
+&lt;/project....&gt;
+</code></pre>
+
+<p>As you can see, I have 2 things here, I have specified a default version that all subsequent children projects will inherit,
+and I have also specified a bunch of transitive dependencies that I want to exclude from this dependency.</p>
+
+<p>Now all a child project needs to do is</p>
+
+<pre><code class="language-xml">&lt;project&gt;
+···&lt;packaging&gt;jar&lt;/packaging&gt;
+···&lt;dependencies&gt;
+···      &lt;dependency&gt;
+               &lt;groupid&gt;commons-logging&lt;/groupid&gt;
+               &lt;artifactid&gt;commons-logging&lt;/artifactid&gt;
+······&lt;/dependency&gt;
+···.....
+···&lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+
+<p>Everything else is inherited from the parent, and when commons-logging is out with a new version, that I need to use
+I need to change the version # in just one place.</p>
+
+<p><strong>WARNING</strong> Beware that any dependency specified in &lsquo;dependencyManagement&rsquo; section is not an
+actual dependency on either the parent project nor the child project, unless it is explicitly specified as one, in the regular
+&lsquo;dependencies&rsquo; block.
+So in short dependencyManagement is a place to configure all possible dependencies that your
+sub-projects may have, but not a place to actually state a dependency. e.g. for the above configuration, a child project
+will not have a dependency on commons-logging unless it includes it in its pom.xml.</p>
+
+<p>Another thing to keep in mind, is that many IDEs that have the ability to work with maven projects (Eclipse, Netbeans etc),
+might not give you this functionality of managing dependencies from &lsquo;dependencyManagement&rsquo; block
+, so you may have to do this part by hand.
+In my case, where I use Netbean 6.0 IDE, the IDE picks up correct dependency
+attributes from the parent pom, only if the files already have the stuff setup before opening the project. If I add a dependency
+inside the pom.xml of an open parent project, and then refer to it in a open child project, the maven plugin gets confused, and
+refuses to recognize the child project as a valid maven project. The only solution in that case is to restart the IDE :(.</p>
+
+<p>Hope you have found this little piece of information helpful.</p>
+
+  </div>
+</div>
+
+<a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<ul class="pager">
+   &nbsp;<li class="previous"><a href="/2007/06/new-features-in-vim-7/"> New Features in Vim 7</a></li>
+   &nbsp;<li class="next"><a href="/2007/06/prototyping-lamp-with-wamp/"> Prototyping LAMP with WAMP</a></li>
+</ul>
+
+				<footer>
+                    <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
+				</footer>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/js/hc.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/r.min.js"></script>
+        <script>
+          hljs.initHighlightingOnLoad();
+        </script>
+		
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+			var u="//apps.karambelkar.info/pk/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 1]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+		
+	</body>
+</html>
+

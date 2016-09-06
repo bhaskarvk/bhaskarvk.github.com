@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ggplot2 on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/ggplot2/</link>
+    <description>Recent content in Ggplot2 on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Mon, 21 Mar 2016 11:22:02 -0400</lastBuildDate>
+    <atom:link href="/tags/ggplot2/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Alternative to using legends in ggplot2</title>
+      <link>/2016/03/alternative-to-using-legends-in-ggplot2/</link>
+      <pubDate>Mon, 21 Mar 2016 11:22:02 -0400</pubDate>
+      
+      <guid>/2016/03/alternative-to-using-legends-in-ggplot2/</guid>
+      <description>
+
+&lt;p&gt;Recently I got hold of some regional spending forecast data. I quickly plotted it using ggplot2, and here&amp;rsquo;s the first version of it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.orig-1.png&#34; alt=&#34;Figure 1: First Attempt&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: First Attempt
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;The data is from 2014 and the values from 2015 to 2019 are the forecasted values. For now don&amp;rsquo;t worry about the validity of this data or the lack of margin of error in the forecasted values. Lets just concentrate on the problems with the visual elements of this chart.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-problems&#34;&gt;The Problems&lt;/h3&gt;
+
+&lt;p&gt;There are two problems here&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Most of the data is hugging the x-axis, something you see very often when you have highly skewed data.&lt;/li&gt;
+&lt;li&gt;Way too many categories (regions) which makes it hard to figure out which line is for which region, even with the legend.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A crude approach to fix problem #1 would be to use log scale on y-axis, which believe me is not the way to go especially when you want to present this chart to business execs and not scientific community. For problem #2, I tried using various different color palettes but none gave enough distinction in the hues to be able to distinguish all the ten regions correctly. This is not a problem of the hues. When you have more than 4 or 5 hues it is hard to distinguish each one, especially for line or point plots where the ink to plot ratio is not high (as opposed to say a bar plot).&lt;/p&gt;
+
+&lt;h3 id=&#34;the-solutions&#34;&gt;The Solutions&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s tackle each separately. First we tackle problem #1, that of most data hugging the x-axis. In this case it was a very easy fix, the data is very easily splittable in to two clusters a) &lt;code&gt;spending &amp;lt; 10,000&lt;/code&gt;, and b) &lt;code&gt;spending &amp;gt; 10,000&lt;/code&gt;. I did just that by creating another variable which indicated which group the data belonged to and used &lt;code&gt;facet_grid&lt;/code&gt; to create two charts, but hid the facet strip and text. Here&amp;rsquo;s the result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.orig2-1.png&#34; alt=&#34;Figure 2: Using `facet_wrap` for better data visibility&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: Using &lt;code&gt;facet_wrap&lt;/code&gt; for better data visibility
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;This is much better, the data that was hugging the x-axis has now better visibility. It is &lt;strong&gt;worth noting&lt;/strong&gt; that the chart is in fact two plots, arranged vertically on top of each other, and the y-axis scale is for the bottom chart is 1,000 while that of the top chart is 10,000. This just gives an illusion of a single y-axis. Also worth noting is that we could do this because the data was easily separable. I believe when data is easily separable as is the case here, this approach is a better alternative to using log scale. &lt;a href=&#34;https://twitter.com/hrbrmstr&#34;&gt;Bob Rudis&lt;/a&gt; helped in adding a visual separator where the scale breaks.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt; : Not many people are fans of scale breaking, and I too would advice caution when using such an approach. Perhaps a better alternative is to simply plot the two charts separately.&lt;/p&gt;
+
+&lt;p&gt;Now on to problem #2. What we really want here is a better way to indicate which line belongs to which region. If we can directly label the lines instead of using a legend on the side, then we have our solution for problem #2. After some googling around I found &lt;a href=&#34;https://twitter.com/JonKalodimos/status/636880959191826432&#34;&gt;this Twitter conversation&lt;/a&gt; and a subsequent &lt;a href=&#34;http://rud.is/b/2015/08/27/coloring-and-drawing-outside-the-lines-in-ggplot/&#34;&gt;blog post&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/hrbrmstr&#34;&gt;Bob Rudis&lt;/a&gt;. Hadley suggested using the &lt;code&gt;directlables&lt;/code&gt; package, and Bob used &lt;code&gt;ggpolt2::annotation_custom&lt;/code&gt;. I first went with the &lt;code&gt;directlabels&lt;/code&gt; package but quickly realized that none of the &lt;a href=&#34;http://directlabels.r-forge.r-project.org/docs/lineplot/plots/chemqqmathscore.html&#34;&gt;options&lt;/a&gt; were working out for me. The labels were either overlapping each other or overlapping the data, neither of which was acceptable. So I explored Bob&amp;rsquo;s option, and there too I gave up on &lt;code&gt;ggplot2::annotation_custom&lt;/code&gt; for the same reason, overlapping labels.&lt;/p&gt;
+
+&lt;p&gt;So I came up with an alternative approach, which involved using the &lt;code&gt;ggrepel&lt;/code&gt; package to make sure the labels didn&amp;rsquo;t overlap. Here&amp;rsquo;s the final result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.final-1.png&#34; alt=&#34;Figure 3: Final Version, using `ggrepel`.&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3: Final Version, using &lt;code&gt;ggrepel&lt;/code&gt;.
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;This is even better, not only do we get labels right next to each line but we also get non-overlapping labels. The only thing I wish was an option in the &lt;code&gt;ggrepel&lt;/code&gt; package that would allow repelling in just one direction, i.e. in this case it would be even nicer if I can left align all the labels, but still get vertical separation. Other than that I am happy with the result. They key to obtaining this chart was using &lt;code&gt;ggrepel&lt;/code&gt; and using &lt;code&gt;ggplot2::expand_limit()&lt;/code&gt; function to make sure there was enough room along the x-axis for the labels to not get chopped. By default ggplot2 will leave just a small area around each scale, so I had to use the &lt;code&gt;expand_limit&lt;/code&gt; function to make room for the labels.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-code&#34;&gt;The Code&lt;/h3&gt;
+
+&lt;p&gt;Here is the code for the final plot.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggplot2)
+library(readr)
+library(tidyr)
+library(dplyr)
+library(ggthemes)
+library(ggrepel)
+
+region.forecast &amp;lt;- read_csv(&#39;./region-spending-forecast.csv&#39;)
+# Add a column so we can split the plot into two plots.
+region.forecast$Budget &amp;lt;- ifelse(region.forecast$`2019`&amp;lt;10000,&#39;Low&#39;,&#39;High&#39;)
+
+# Convert wide format data to long format as required by ggplot2
+df.tidy &amp;lt;- region.forecast %&amp;gt;% gather(Year,Spending,-Region,-Budget)
+
+g &amp;lt;- ggplot(df.tidy, aes(x=Year,y=Spending,group=Region,color=Region)) + 
+    # Solid line for actual data
+    geom_line(data=df.tidy %&amp;gt;% filter(Year&amp;lt;2015),
+              linetype=&#39;solid&#39;, size=0.75) +
+    # dashed line for forecast data
+    geom_line(data=df.tidy %&amp;gt;% filter(Year&amp;gt;=2014), 
+              linetype=&#39;dotted&#39;, size=0.75) +
+    # Mark each data point
+    geom_point(shape=8,size=0.75) +
+    # Add labels right after the last value of each series.
+    geom_label_repel(data=df.tidy %&amp;gt;% filter(Year==2019),
+                     aes(label=Region, fill=Region),
+                     nudge_x = 0.5, size=3, color=&#39;white&#39;,
+                     force=1.5, segment.color=&#39;#bbbbbb&#39;) +
+    # Split the plot in to two plots on top of each other
+    facet_grid(Budget ~ ., scales = &#39;free_y&#39;) +
+    scale_y_continuous(labels = scales::comma) + # Add commas to y-axis labels
+    scale_x_discrete() +
+    theme_minimal() +
+    scale_color_tableau() + scale_fill_tableau() + # Tableau Colors
+    theme(strip.text = element_blank(), # Hide facet text
+          legend.position = &#39;none&#39;, # Hide legend
+          panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank())  +
+    expand_limits(x=9) # So that we have enough room along x-axis for labels.
+
+# This is to insert a ↑ as a scale seperation indicator between the two plots.
+library(grid)
+library(gtable)
+library(gridExtra)
+
+gb &amp;lt;- ggplot_build(g)
+gt &amp;lt;- ggplot_gtable(gb)
+gt &amp;lt;- gtable_add_grob(gt, textGrob(label=&amp;quot;↑&amp;quot;, gp=gpar(fontsize=30)), 5, 3,
+                      clip=&amp;quot;on&amp;quot;, name=&amp;quot;separator&amp;quot;)
+gt$heights[[5]] &amp;lt;- unit(30, &amp;quot;pt&amp;quot;)
+grid.arrange(gt)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;final-thoughts&#34;&gt;Final Thoughts&lt;/h3&gt;
+
+&lt;p&gt;There are some noteworthy thoughts here.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I could use &lt;code&gt;facet_grid&lt;/code&gt; because the data was easily splittable, otherwise I would have had to come up with some other clever option for lifting the series data that was hugging the x-axis.&lt;/li&gt;
+&lt;li&gt;Not everyone is a fan of a split sclae in an axis so tread carefully.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggrepel&lt;/code&gt; for now does not allow repelling along a single axis. This makes the label positions less than ideal. The ideal solution is to have the labels vertically aligned and enough separation along the y-axis. But fear not there is already a &lt;a href=&#34;https://github.com/slowkow/ggrepel/issues/25&#34;&gt;feature request&lt;/a&gt; for it.&lt;/li&gt;
+&lt;li&gt;I tried various color schemes, and Tableau colors from the &lt;code&gt;ggthemes&lt;/code&gt; package gave the best hues.&lt;/li&gt;
+&lt;li&gt;You have to specify the scaled data values for &lt;code&gt;expand_limits&lt;/code&gt;. In my case, as I had seven data points, one for each year of 2013 to 2019, so I added room for two more using &lt;code&gt;expand_limits(x=9)&lt;/code&gt; to accomodate the labels.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

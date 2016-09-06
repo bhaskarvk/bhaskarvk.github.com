@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shiny on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/shiny/</link>
+    <description>Recent content in Shiny on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
+    <lastBuildDate>Sat, 24 Oct 2015 20:22:02 -0400</lastBuildDate>
+    <atom:link href="/tags/shiny/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Shiny in a SmartOS zone</title>
+      <link>/2015/10/shiny-in-a-smartos-zone/</link>
+      <pubDate>Sat, 24 Oct 2015 20:22:02 -0400</pubDate>
+      
+      <guid>/2015/10/shiny-in-a-smartos-zone/</guid>
+      <description>&lt;p&gt;My Last &lt;a href=&#34;/2015/10/setting-up-r-on-a-smartos-zone./&#34;&gt;post&lt;/a&gt; showed you how to install R inside a &lt;a href=&#34;http://www.smartos.org&#34;&gt;SmartOS&lt;/a&gt; zone. This post is about installing the &lt;a href=&#34;https://www.rstudio.com/products/shiny/shiny-server/&#34;&gt;shiny server&lt;/a&gt; in the said zone. While setting up R was relatively straight forward, for setting up Shiny server I had to patch some C++ code to make shiny server work on solaris. Which means you don&amp;rsquo;t have to, just follow along.&lt;/p&gt;
+
+&lt;p&gt;First install R in a zone as shown in my earlier &lt;a href=&#34;/2015/10/setting-up-r-on-a-smartos-zone./&#34;&gt;post&lt;/a&gt;. This is very important, unless you have a working R setup you cannot have a functional working Shiny server. Also make sure to allocate enough CPU, memory, and disk-space for your zone.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Install some packages
+pkgin install git-base
+# Install Shiny R package
+Rscript -e &amp;quot;install.packages(c(&#39;shiny&#39;))&amp;quot;
+# Next install the shiny server
+mkdir /opt/src &amp;amp;&amp;amp; cd /opt/src
+git clone https://github.com/rstudio/shiny-server.git
+cd shiny-server/
+# We need a patch for some solaris specific stuff
+wget https://gist.githubusercontent.com/bhaskarvk/6a15083ab9a7997df0a2/raw/5e7fec0dee4c79b828032ab007bf8b6137f735c3/solaris.diff
+git apply solaris.diff &amp;amp;&amp;amp; rm solaris.diff
+mkdir tmp
+cd tmp
+DIR=`pwd`
+PATH=$DIR/../bin:$PATH
+PYTHON=`which PYTHON`
+PYTHON=`which python`
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON=&amp;quot;$PYTHON&amp;quot; ../
+make
+mkdir ../build
+(cd .. &amp;amp;&amp;amp; ./bin/npm --python=&amp;quot;$PYTHON&amp;quot; rebuild)
+(cd .. &amp;amp;&amp;amp; ./bin/node ./ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js --python=&amp;quot;$PYTHON&amp;quot; rebuild)
+# Install the software at the predefined location
+make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This completes installation of shiny server. Next some post installation stuff&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ln -s /usr/local/shiny-server/bin/shiny-server /usr/local/bin
+useradd -m shiny
+mkdir -p /var/log/shiny-server
+mkdir -p /srv/shiny-server
+mkdir -p /var/lib/shiny-server
+chown shiny: /var/log/shiny-server /srv/shiny-server /var/lib/shiny-server
+mkdir -p /etc/shiny-server
+cd /etc/shiny-server
+wget https://raw.githubusercontent.com/rstudio/shiny-server/master/config/default.config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it, Shiny is installed and configured. To start it&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# We run the shiny server as user shiny
+su - shiny
+shiny-server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see something like&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[2015-10-25 01:49:43.019] [INFO] shiny-server - Shiny Server v1.4.1.0 (Node.js v0.10.40)
+[2015-10-25 01:49:43.021] [INFO] shiny-server - Using config file &amp;quot;/etc/shiny-server/shiny-server.conf&amp;quot;
+[2015-10-25 01:49:43.064] [INFO] shiny-server - Starting listener on 0.0.0.0:3838
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Congratulations you now have a running shiny server inside a SmartOS zone. The shiny server installation instructions came from the &lt;a href=&#34;https://github.com/rstudio/shiny-server/wiki/Building-Shiny-Server-from-Source&#34;&gt;official docs&lt;/a&gt;, but I did have to patch some stuff to make it work under solaris. The patch is available on &lt;a href=&#34;https://gist.github.com/bhaskarvk/6a15083ab9a7997df0a2&#34;&gt;gist&lt;/a&gt;. Next I&amp;rsquo;ll try and create a proper start-up script for shiny-server so that it can be controlled via &lt;code&gt;svcadm&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
