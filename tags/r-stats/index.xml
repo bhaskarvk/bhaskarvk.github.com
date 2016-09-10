@@ -7,8 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
-    <lastBuildDate>Mon, 21 Mar 2016 11:22:02 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 10 Sep 2016 16:44:02 -0400</lastBuildDate>
     <atom:link href="/tags/r-stats/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Leaflet Diary: Prologue</title>
+      <link>/2016/09/leaflet-diary-prologue/</link>
+      <pubDate>Sat, 10 Sep 2016 16:44:02 -0400</pubDate>
+      
+      <guid>/2016/09/leaflet-diary-prologue/</guid>
+      <description>&lt;p&gt;Sometime in Sep./Oct. 2015 I was working on a research effort that required building some web and print maps. Not a whole lot of GIS analysis but simply plotting some data on map for better representation. I had joined the project mid-way and the first editions of the maps were screen shots of Google Maps&lt;sup&gt;TM&lt;/sup&gt;. Needless to say the were aesthetically hideous and not interactive. So I set about to find a better alternative to mapping and stumbled on &lt;a href=&#34;https://www.github.com/rstudio/leaflet&#34;&gt;leaflet&lt;/a&gt; for R by &lt;a href=&#34;http://www.rstudio.com/&#34;&gt;RStudio&lt;/a&gt;. This looked perfect for getting started. I had not much GIS know-how but it was well documented and so I started using it.&lt;/p&gt;
+
+&lt;p&gt;As I progressed I noticed that the original javascript library &lt;a href=&#34;http://www.leafletjs.com&#34;&gt;leaflet&lt;/a&gt; provided a lot of &lt;a href=&#34;http://leafletjs.com/plugins&#34;&gt;plugins&lt;/a&gt; but most of them were not available in the R package. So this was a challenge, and being a good open-source netizen I proceeded to adding support for some plugins in the R package. This resulted in two pull requests (PRs) on the leaflet repo &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/181&#34;&gt;PR-181&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/184&#34;&gt;PR-184&lt;/a&gt;, which I&amp;rsquo;m happy to say were accepted and merged into the master branch.&lt;/p&gt;
+
+&lt;p&gt;Fast forward 9 months, and I&amp;rsquo;m happy to announce that I am officially contracting with RStudio to add even more features to the leaflet package. I&amp;rsquo;ll be blogging about my coding adventures under &amp;lsquo;Leaflet Diary&amp;rsquo; series on this blog post. In each subsequent blog post I&amp;rsquo;ll add my progress as well as thoughts on features/performance of the changes going in. You can track my changes at &lt;a href=&#34;https://www.github.com/bhaskarvk&#34;&gt;my fork&lt;/a&gt; of the package.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Alternative to using legends in ggplot2</title>

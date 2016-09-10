@@ -2,12 +2,12 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Rstats</title>
+		<title>Leaflet Diary: Prologue</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<meta name="generator" content="Hugo 0.16" />
-		<link href="/tags/rstats/index.xml" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
-		<link href="/tags/rstats/index.xml" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
 		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
 		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
@@ -18,7 +18,7 @@
 		
 	</head>
 	<body>
-		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Rstats</div>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Leaflet Diary: Prologue</div>
 		<div id="wrapper">
 
 			
@@ -77,48 +77,26 @@
 			<div class="container">
 
 <div id="article">
-  <h1>Rstats</h1><br/>
-  <ul class="posts">
+	<div class="article-title">Leaflet Diary: Prologue</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2016-09-10</small></p> <hr/>
+  <div class="post">
+		<p>Sometime in Sep./Oct. 2015 I was working on a research effort that required building some web and print maps. Not a whole lot of GIS analysis but simply plotting some data on map for better representation. I had joined the project mid-way and the first editions of the maps were screen shots of Google Maps<sup>TM</sup>. Needless to say the were aesthetically hideous and not interactive. So I set about to find a better alternative to mapping and stumbled on <a href="https://www.github.com/rstudio/leaflet">leaflet</a> for R by <a href="http://www.rstudio.com/">RStudio</a>. This looked perfect for getting started. I had not much GIS know-how but it was well documented and so I started using it.</p>
+
+<p>As I progressed I noticed that the original javascript library <a href="http://www.leafletjs.com">leaflet</a> provided a lot of <a href="http://leafletjs.com/plugins">plugins</a> but most of them were not available in the R package. So this was a challenge, and being a good open-source netizen I proceeded to adding support for some plugins in the R package. This resulted in two pull requests (PRs) on the leaflet repo <a href="https://github.com/rstudio/leaflet/pull/181">PR-181</a> &amp; <a href="https://github.com/rstudio/leaflet/pull/184">PR-184</a>, which I&rsquo;m happy to say were accepted and merged into the master branch.</p>
+
+<p>Fast forward 9 months, and I&rsquo;m happy to announce that I am officially contracting with RStudio to add even more features to the leaflet package. I&rsquo;ll be blogging about my coding adventures under &lsquo;Leaflet Diary&rsquo; series on this blog post. In each subsequent blog post I&rsquo;ll add my progress as well as thoughts on features/performance of the changes going in. You can track my changes at <a href="https://www.github.com/bhaskarvk">my fork</a> of the package.</p>
+
+  </div>
+</div>
+
+<a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<ul class="pager">
   
-    <li><span><h4><a href="/2016/09/leaflet-diary-prologue/">Leaflet Diary: Prologue</a><time class="pull-right post-list">Sat, Sep 10, 2016</h4></time></span></span>
-  <div class="summary">
-    Sometime in Sep./Oct. 2015 I was working on a research effort that required building some web and print maps. Not a whole lot of GIS analysis but simply plotting some data on map for better representation. I had joined the project mid-way and the first editions of the maps were screen shots of Google MapsTM. Needless to say the were aesthetically hideous and not interactive. So I set about to find a better alternative to mapping and stumbled on leaflet for R by RStudio.
-  </div>
-  <div class="read-more-link">
-    <a href="/2016/09/leaflet-diary-prologue/">Read More…</a>
-  </div>
-    </li>
-  
-    <li><span><h4><a href="/2015/05/book-review--data-driven-security/">Book Review : Data Driven Security</a><time class="pull-right post-list">Tue, May 5, 2015</h4></time></span></span>
-  <div class="summary">
-    &nbsp;Disclosure I work with the two authors of this book. In fact one of them is my manager. But a) I don&rsquo;t like to suck up to my colleagues and b) I&rsquo;m sure they don&rsquo;t like being sucked up to either. Despite this if you think my review will be biased then stop reading now. Go watch some cat videos. Data Driven Security is a first of it&rsquo;s kind book that aims to achieve the impossible; To be a book that integrates all 3 dimensions of &lsquo;Data Science&rsquo;, a) Math and Statistical Knowledge, b) Coding/Hacking skills, and c) Domain Knowledge.
-  </div>
-  <div class="read-more-link">
-    <a href="/2015/05/book-review--data-driven-security/">Read More…</a>
-  </div>
-    </li>
-  
-    <li><span><h4><a href="/2015/02/visualizing-india-v/s-pakistan-one-day-international-results/">Visualizing India v/s Pakistan One Day International Results</a><time class="pull-right post-list">Sun, Feb 15, 2015</h4></time></span></span>
-  <div class="summary">
-    This is my small effort to pickup streamgraph&nbsp;support in R developed by Bob Rudis. (Described here). What you see is per year aggregations of results of all India v/s Pakistan One day Internationals. I pulled the records from Wikipedia and used rvest by Hadley Wickham.&nbsp;for extracting the results. After that a little data munging using dplyr and lubridate and voilà. Blue&rsquo;s are India and Green&rsquo;s are Pakistan in accordance with their team colors.
-  </div>
-  <div class="read-more-link">
-    <a href="/2015/02/visualizing-india-v/s-pakistan-one-day-international-results/">Read More…</a>
-  </div>
-    </li>
-  
-    <li><span><h4><a href="/2013/09/installing-rhadoop-on-cloudera-cdh-4.3.0/">Installing RHadoop on Cloudera CDH 4.3.0</a><time class="pull-right post-list">Mon, Sep 9, 2013</h4></time></span></span>
-  <div class="summary">
-    These are my notes for installing RHadoop on a Cloudera CDH 4.3.0 Hadoop Cluster. Although the notes are geared towards installing on CDH, they can be used to install RHadoop on any other Hadoop distro. The default installation instructionsas per RHadoop wiki tell you to install the &lsquo;R&rsquo; package from the EPEL Repo. The problem with that is &lsquo;R&rsquo; pulls in &lsquo;R-core-devel&rsquo; package, and that pulls in all sort of &lsquo;build tools&rsquo; including the gcc compiler and and a host of other library &lsquo;dev&rsquo; packages.
-  </div>
-  <div class="read-more-link">
-    <a href="/2013/09/installing-rhadoop-on-cloudera-cdh-4.3.0/">Read More…</a>
-  </div>
-    </li>
-  
+   &nbsp;<li class="next"><a href="/2016/06/my-thoughts-on-northwestern-universitys-mspa/"> My Thoughts on Northwestern University&#39;s MSPA</a></li>
 </ul>
 
-    
 				<footer>
                     <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
 				</footer>
