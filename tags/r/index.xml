@@ -34,7 +34,7 @@
 
 &lt;p&gt;You can try out the new stuff today by building the Leaflet package from source using &lt;code&gt;devtools::install_github(&#39;rstudio/leaflet&#39;)&lt;/code&gt;. For a full list of changes see the &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293&#34;&gt;pull request #293&lt;/a&gt;. Also the &lt;a href=&#34;https://github.com/rstudio/leaflet/tree/master/inst/examples&#34;&gt;examples&lt;/a&gt; folder has lots of new examples. You can see working sample code at my &lt;a href=&#34;http://rpubs.com/bhaskarvk/&#34;&gt;Rpubs&lt;/a&gt; page.&lt;/p&gt;
 
-&lt;h2 id=&#34;for-those-who-love-to-read&#34;&gt;For those who love to read.&lt;/h2&gt;
+&lt;h2 id=&#34;detailed-version&#34;&gt;Detailed Version&lt;/h2&gt;
 
 &lt;h3 id=&#34;leaflet-providers-plugin&#34;&gt;Leaflet Providers Plugin&lt;/h3&gt;
 
