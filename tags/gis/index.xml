@@ -7,8 +7,125 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
-    <lastBuildDate>Sat, 10 Sep 2016 16:44:02 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 19 Sep 2016 21:00:00 -0400</lastBuildDate>
     <atom:link href="/tags/gis/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Leaflet Diary: Chapter 1, Plugins Galore</title>
+      <link>/2016/09/leaflet-diary-chapter-1-plugins-galore/</link>
+      <pubDate>Mon, 19 Sep 2016 21:00:00 -0400</pubDate>
+      
+      <guid>/2016/09/leaflet-diary-chapter-1-plugins-galore/</guid>
+      <description>
+
+&lt;p&gt;This is the second blog entry in my series &amp;lsquo;Leaflet-Diary&amp;rsquo;, the &lt;a href=&#34;../leaflet-diary-prologue/&#34;&gt;first entry&lt;/a&gt; was nothing more than me announcing to the world that I&amp;rsquo;m contracting with &lt;a href=&#34;http://www.rstudio.com&#34;&gt;RStudio&lt;/a&gt; for adding new features to the &lt;a href=&#34;https://rstudio.github.io/leaflet/&#34;&gt;Leaflet&lt;/a&gt; package.&lt;/p&gt;
+
+&lt;p&gt;This one is about what has been done so far and what&amp;rsquo;s cooking. My plan of attack was, before adding any new features or fixing any bugs upgrade the Leaflet javascript library and existing plugins to their respective latest stable versions. The reasoning being, Leaflet javascript (henceforth LeafletJS) in the current R package is version 0.7.3. The current stable version of LeafletJS is 0.7.7. (LeafletJS 1.0 is not yet production ready.) The 0.7.7 version has seen a lot of fixes and performance improvements over 0.7.3, not to mention 0.7.3 was released way back in &lt;a href=&#34;https://github.com/Leaflet/Leaflet/releases/tag/v0.7.3&#34;&gt;May, 23 2014&lt;/a&gt;. Similarly the various plugins that were bundled with the R package (see below) were also quite old and their respective current stable versions have seen similar performance and feature improvements. So it made sense to bring everything in the R package up to date. And that is exactly what I&amp;rsquo;ve been doing for the last 2 weeks (including weekends).&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve broken down my task in two phases, phase 1: upgrade plugins (now complete) and phase 2: upgrade LeafletJS (in progress). The reason I upgraded the plugins before LeafletJS was simply because I was more familiar with the plugin handling code than the core Leaflet code. There was a risk of some upgraded plugins not working under 0.7.3 and requiring 0.7.7, but I was willing to take that risk.&lt;/p&gt;
+
+&lt;h2 id=&#34;tl-dr-version&#34;&gt;TL;DR Version&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All existing plugins have been upgraded to their respective latest versions.&lt;/li&gt;
+&lt;li&gt;R counterparts to any missing or new features of these plugins have also been added.&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;ve introduced additional functionality in some plugins not available before.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can try out the new stuff today by building the Leaflet package from source using &lt;code&gt;devtools::install_github(&#39;rstudio/leaflet&#39;)&lt;/code&gt;. For a full list of changes see the &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293&#34;&gt;pull request #293&lt;/a&gt;. Also the &lt;a href=&#34;https://github.com/rstudio/leaflet/tree/master/inst/examples&#34;&gt;examples&lt;/a&gt; folder has lots of new examples. You can see working sample code at my &lt;a href=&#34;http://rpubs.com/bhaskarvk/&#34;&gt;Rpubs&lt;/a&gt; page.&lt;/p&gt;
+
+&lt;h2 id=&#34;for-those-who-love-to-read&#34;&gt;For those who love to read.&lt;/h2&gt;
+
+&lt;h3 id=&#34;leaflet-providers-plugin&#34;&gt;Leaflet Providers Plugin&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/leaflet-extras/leaflet-providers&#34;&gt;Leaflet Providers&lt;/a&gt; plugin, which provides a convenient way to add existing free tile providers has been upgraded (See commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/bcd9adf459727a88fa04a29d5c348ca4a3db8efe&#34;&gt;bcd9adf&lt;/a&gt; for details). Of noteworthy, was the removal of MapQuest provider (Issue &lt;a href=&#34;https://github.com/leaflet-extras/leaflet-providers/issues/219&#34;&gt;#219&lt;/a&gt;) due to MapQuest closing free access. After upgrading this plugin I saw a chance to improve the R part. Instead of having to provide the provider name in the &lt;code&gt;addProviderTiles&lt;/code&gt; call, I created a R list called &lt;code&gt;providers&lt;/code&gt; pre-populated with Names of existing providers and base-map variants if any.&lt;/p&gt;
+
+&lt;p&gt;So now instead of&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;leaflet() %&amp;gt;% addProviderTiles(&amp;quot;Stamen.Toner&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;you can do&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;leaflet() %&amp;gt;% addProviderTiles(providers$Stamen.Toner)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At first this looks like more typing, but a) you can put RStudio&amp;rsquo;s auto-complete to work for you and, b) you don&amp;rsquo;t have to remember all the providers and their variants, and there are roughly 110 of them (I checked). For a complete example of this along with code see my &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-providers&#34;&gt;Rpubs: leaflet-providers&lt;/a&gt; entry.&lt;/p&gt;
+
+&lt;h3 id=&#34;leaflet-label-plugin&#34;&gt;Leaflet.Label Plugin&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/Leaflet/Leaflet.label&#34;&gt;Leaflet.Label&lt;/a&gt; plugin allows you to add static or on-hover labels to your markers, polylines, and polygons. This plugin was upgraded to the latest version (See commits &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/ca2f5a593d7183387eb06fa3b056b6a66ecaef02&#34;&gt;ca2f5a5&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/8b5dd82d4b7519fce798e17d507b34a8a6561107&#34;&gt;8bddd82&lt;/a&gt;). In addition I also merged two pull requests on the original plugin repo and introduced some new features of my own. Now with the new version you get&amp;hellip;&lt;/p&gt;
+
+&lt;table border=&#34;0&#34;&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;image src=&#34;http://i.imgur.com/HgMzgkt.png&#34;/&gt;
+             &lt;br/&gt;Label&#39;s w/o box.
+        &lt;/td&gt;
+        &lt;td&gt;
+            &lt;image src=&#34;http://i.imgur.com/lQBFnOl.png&#34;/&gt;
+            &lt;br/&gt;Customizable text size.
+        &lt;/td&gt;
+        &lt;td rowspan=&#34;2&#34;&gt;
+            &lt;image src=&#34;http://i.imgur.com/H6yVmHv.png&#34;/&gt;
+            &lt;br/&gt;Directional Labels.
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;image src=&#34;http://i.imgur.com/2OaHN2R.png&#34;/&gt;
+            &lt;br/&gt;Stylized labels.
+            
+        &lt;/td&gt;
+        &lt;td&gt;
+            &lt;image src=&#34;http://i.imgur.com/htDjAtW.png&#34;/&gt;
+            &lt;br/&gt;Markers w/o the icon.
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;I believe these new features make the plugin even more useful for your interactive mapping needs. See this &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-labels&#34;&gt;Rpubs: Leaflet-Label&lt;/a&gt; entry for details and code samples.&lt;/p&gt;
+
+&lt;h3 id=&#34;leaflet-omnivore-plugin&#34;&gt;Leaflet-Omnivore Plugin&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/mapbox/leaflet-omnivore&#34;&gt;Leaflet-Omnivore&lt;/a&gt; plugin by &lt;a href=&#34;http://www.mapbox.com&#34;&gt;Mapbox&lt;/a&gt; allows you to overlay GeoJSON, TopoJSON, WKT, KML, GPX files on the Leaflet map. I have upgraded this plugin to the latest version (See commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/5abd3f4bfefedd476421f0f7a473537c6ec3eefd&#34;&gt;5abd3f4&lt;/a&gt;). I didn&amp;rsquo;t see much changed w.r.t. the older plugin, but staying current is always a better option. For now even if the plugin is upgraded I haven&amp;rsquo;t yet added the R API to add WKT/KML/GPX files. There is a need to support these file formats in the R package via more idiomatic R APIs. The current approach to add GeoJSON/TopoJSON is also not the most ideal one. So stay tuned for more updates on this.&lt;/p&gt;
+
+&lt;p&gt;For what it&amp;rsquo;s worth do check out my example of handling GeoJSON using the &lt;a href=&#34;https://github.com/ropensci/geojsonio&#34;&gt;geojsonio&lt;/a&gt; package over at &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-geojson&#34;&gt;Rpubs: leaflet-geojson&lt;/a&gt;. I like this approach more than the omnivore plugin based approach because it&amp;rsquo;s much easy to add markers/polylines/polygons and style them using data with this approach than  leaflet native approach.&lt;/p&gt;
+
+&lt;h3 id=&#34;leaflet-measure-plugin&#34;&gt;Leaflet Measure Plugin&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/ljagis/leaflet-measure&#34;&gt;Leaflet Measure&lt;/a&gt; is a very useful plugin that enables you to add a controller on your map which can be used to measure distances between points or areas of a polygon. I upgraded it to the latest version (See commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/c58926f7a2fc8e93abdd5393a1e1feba42666932&#34;&gt;c58926f&lt;/a&gt;). The new version supports localization in certain locales, which goes nicely with OpenStreetMaps (OSM) base-map layer which uses localized labels.
+e.g. below you see the plugin displaying the options and text in German.&lt;/p&gt;
+
+&lt;p&gt;&lt;image src=&#34;http://i.imgur.com/VD5RU42.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;For details see my &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-measure&#34;&gt;Rpubs: leaflet-measure&lt;/a&gt; entry.&lt;/p&gt;
+
+&lt;h3 id=&#34;minimap-plugin&#34;&gt;MiniMap Plugin&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/Norkart/Leaflet-MiniMap&#34;&gt;Minimap plugin&lt;/a&gt; was by far the most fun and most challenging to work on. I had implemented a rudimentary example of it a while ago, but it had a fixed base-map. What I wanted was an ability to sync the mini-map&amp;rsquo;s tile layer with the base-map&amp;rsquo;s. And there&amp;rsquo;s a restriction in LeafletJS in that no two map&amp;rsquo;s can share layers. Finally I was able to achieve it albeit using some native Javascript code. And solving that problem also allowed me to solve another interesting use case of showing markers in both base-map and mini-map. See commits &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/8eb9daaa5a9b4ea1f16f1510f6d9cefdb78f01ae&#34;&gt;8eb9daa&lt;/a&gt;, &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/d5250ca3f7190457d9f6b2e67ddc9721371838cd&#34;&gt;d5250ca&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/f392477238406a837f4a3b2c540a283a114de309&#34;&gt;f3924772&lt;/a&gt;
+Here&amp;rsquo;s a sample of what can be done now.&lt;br/&gt;&lt;br/&gt;
+&lt;image src=&#34;http://i.imgur.com/AXUKIdk.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;For a full list of possibilities check out my &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-minimap&#34;&gt;Rpubs: Minimap&lt;/a&gt; entry.&lt;/p&gt;
+
+&lt;h3 id=&#34;simple-graticule-graticule-plugins&#34;&gt;Simple-Graticule &amp;amp; Graticule Plugins&lt;/h3&gt;
+
+&lt;p&gt;I had implemented the &lt;a href=&#34;https://github.com/ablakey/Leaflet.SimpleGraticule&#34;&gt;Simple Graticule&lt;/a&gt; plugin, but when I did upgrade it this time, I realized that it is meant only for &lt;a href=&#34;http://leafletjs.com/examples/crs-simple/crs-simple.html&#34;&gt;L.CRS.Simple&lt;/a&gt;, but there is a proper &lt;a href=&#34;https://github.com/turban/Leaflet.Graticule&#34;&gt;Graticule&lt;/a&gt; plugin too, so I included it in this round too. See commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/727dd479baa174d57c7072dcdac4b29017538ad1&#34;&gt;727dd47&lt;/a&gt; for details.&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-graticule&#34;&gt;Rpubs: Graticule&lt;/a&gt; and &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-simplegraticule&#34;&gt;Rpubs: Simple Graticule&lt;/a&gt; entries for code samples.&lt;/p&gt;
+
+&lt;h3 id=&#34;marker-clusters-plugin&#34;&gt;Marker Clusters Plugin&lt;/h3&gt;
+
+&lt;p&gt;Finally we come to my favorite of all, the &lt;a href=&#34;https://github.com/Leaflet/Leaflet.markercluster&#34;&gt;Marker Cluster&lt;/a&gt; plugin. This plugin was way overdue for an upgrade and I found two very useful sub-plugins, the &lt;a href=&#34;https://github.com/ghybs/Leaflet.MarkerCluster.LayerSupport&#34;&gt;layer support&lt;/a&gt; sub-plugin &amp;amp; the &lt;a href=&#34;https://github.com/ghybs/Leaflet.MarkerCluster.Freezable&#34;&gt;freezable&lt;/a&gt; sub-plugin. The former makes marker clustering work along with layers and layer-controllers, so you can add your markers to different layers and show/hide these layers using a layer controller and the marker cluster plugin will update it&amp;rsquo;s clusters accordingly. The later allows you to freeze/unfreeze clustering at a specific zoom level. I believe these were worth additions to what is an already very useful plugin. For the code curious see commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/b6c980d5ade6729af0f4e7712397a114cb8dd30d&#34;&gt;b6c980&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For code samples and some spiffy clustering check out the &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-marker-clusterming&#34;&gt;Rpubs: Marker Cluster&lt;/a&gt; entry.&lt;/p&gt;
+
+&lt;h2 id=&#34;end-of-phase-1&#34;&gt;End of Phase 1&lt;/h2&gt;
+
+&lt;p&gt;This concludes my two weeks of development. For most part the coding was grunt work and involved taking what has already been built in Javascript and making it available in R. The challenge was to make the new stuff available in as idiomatic way as possible to R. I did have to scratch my head a few times, especially with the mini-map syncing with base-map examples. In addition to these changes, I have also added two new plugins but they are not merged in the code base yet. More on them in the next post. If you like what you see or have comments/questions/critiques don&amp;rsquo;t hesitate to contact me via &lt;a href=&#34;https://twitter.com/bhaskar_vk&#34;&gt;Twitter&lt;/a&gt; or open an issue over at &lt;a href=&#34;https://github.com/rstudio/leaflet/issues&#34;&gt;Github&lt;/a&gt;. In the mean time happy mapping.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Leaflet Diary: Prologue</title>
@@ -16,11 +133,21 @@
       <pubDate>Sat, 10 Sep 2016 16:44:02 -0400</pubDate>
       
       <guid>/2016/09/leaflet-diary-prologue/</guid>
-      <description>&lt;p&gt;Sometime in Sep./Oct. 2015 I was working on a research effort that required building some web and print maps. Not a whole lot of GIS analysis but simply plotting some data on map for better representation. I had joined the project mid-way and the first editions of the maps were screen shots of Google Maps&lt;sup&gt;TM&lt;/sup&gt;. Needless to say the were aesthetically hideous and not interactive. So I set about to find a better alternative to mapping and stumbled on &lt;a href=&#34;https://www.github.com/rstudio/leaflet&#34;&gt;leaflet&lt;/a&gt; for R by &lt;a href=&#34;http://www.rstudio.com/&#34;&gt;RStudio&lt;/a&gt;. This looked perfect for getting started. I had not much GIS know-how but it was well documented and so I started using it.&lt;/p&gt;
+      <description>
+
+&lt;p&gt;Sometime in Sep./Oct. 2015 I was working on a research effort that required building some web and print maps. Not a whole lot of GIS analysis but simply plotting some data on map for better representation. I had joined the project mid-way and the first editions of the maps were screen shots of Google Maps&lt;sup&gt;TM&lt;/sup&gt;. Needless to say the were aesthetically hideous and not interactive. So I set about to find a better alternative to mapping and stumbled on &lt;a href=&#34;https://www.github.com/rstudio/leaflet&#34;&gt;leaflet&lt;/a&gt; for R by &lt;a href=&#34;http://www.rstudio.com/&#34;&gt;RStudio&lt;/a&gt;. This looked perfect for getting started. I had not much GIS know-how but it was well documented and so I started using it.&lt;/p&gt;
 
 &lt;p&gt;As I progressed I noticed that the original javascript library &lt;a href=&#34;http://www.leafletjs.com&#34;&gt;leaflet&lt;/a&gt; provided a lot of &lt;a href=&#34;http://leafletjs.com/plugins&#34;&gt;plugins&lt;/a&gt; but most of them were not available in the R package. So this was a challenge, and being a good open-source netizen I proceeded to adding support for some plugins in the R package. This resulted in two pull requests (PRs) on the leaflet repo &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/181&#34;&gt;PR-181&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/184&#34;&gt;PR-184&lt;/a&gt;, which I&amp;rsquo;m happy to say were accepted and merged into the master branch.&lt;/p&gt;
 
 &lt;p&gt;Fast forward 9 months, and I&amp;rsquo;m happy to announce that I am officially contracting with RStudio to add even more features to the leaflet package. I&amp;rsquo;ll be blogging about my coding adventures under &amp;lsquo;Leaflet Diary&amp;rsquo; series on this blog post. In each subsequent blog post I&amp;rsquo;ll add my progress as well as thoughts on features/performance of the changes going in. You can track my changes at &lt;a href=&#34;https://www.github.com/bhaskarvk&#34;&gt;my fork&lt;/a&gt; of the package.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;series-posts&#34;&gt;Series Posts&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;2016-09-19 &lt;a href=&#34;../leaflet-diary-chapter-1-plugins-galore/&#34;&gt;Chapter 1: Plugins Galore&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
     </item>
     
