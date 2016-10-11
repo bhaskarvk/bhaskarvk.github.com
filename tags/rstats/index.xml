@@ -7,8 +7,83 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
-    <lastBuildDate>Mon, 19 Sep 2016 21:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 10 Oct 2016 21:00:00 -0400</lastBuildDate>
     <atom:link href="/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Leaflet Diary: Chapter 2, Projections and then some</title>
+      <link>/2016/10/leaflet-diary-chapter-2-projections-and-then-some/</link>
+      <pubDate>Mon, 10 Oct 2016 21:00:00 -0400</pubDate>
+      
+      <guid>/2016/10/leaflet-diary-chapter-2-projections-and-then-some/</guid>
+      <description>
+
+&lt;p&gt;This is the third blog entry in my series &amp;lsquo;&lt;a href=&#34;/2016/09/leaflet-diary-prologue/&#34;&gt;Leaflet-Diary&lt;/a&gt;&amp;rsquo;. In my last post &lt;a href=&#34;/2016/09/leaflet-diary-chapter-1-plugins-galore/&#34;&gt;Chapter 1: Plugins galore&lt;/a&gt;, I talked about upgrading existing plugins and adding any missing functionality to those plugins.
+This one is about phase II, where I&amp;rsquo;ve added two extremely powerful features, custom projection support and custom buttons/toolbars and also upgraded Leaflet JS to 0.7.7.&lt;/p&gt;
+
+&lt;h2 id=&#34;tl-dr-version&#34;&gt;TL;DR Version&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Leaflet Javascript has been upgraded from 0.7.3 to 0.7.7, which is the latest release on the 0.7.x branch.&lt;/li&gt;
+&lt;li&gt;Support for adding custom buttons/toolbars using the &lt;a href=&#34;https://github.com/CliffCloud/Leaflet.EasyButton/&#34;&gt;Leaflet.EasyButton&lt;/a&gt; plugin.&lt;/li&gt;
+&lt;li&gt;Support for custom projections using &lt;a href=&#34;https://github.com/kartena/Proj4Leaflet/&#34;&gt;Proj4Leaflet&lt;/a&gt; plugin.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can try out the new stuff today by building the Leaflet package from source using &lt;code&gt;devtools::install_github(&#39;rstudio/leaflet&#39;)&lt;/code&gt;. For a full list of changes see the &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/298&#34;&gt;pull request #298&lt;/a&gt;. Also the &lt;a href=&#34;https://github.com/rstudio/leaflet/tree/master/inst/examples&#34;&gt;examples&lt;/a&gt; folder has lots of new examples. You can see working sample code at my &lt;a href=&#34;http://rpubs.com/bhaskarvk/&#34;&gt;Rpubs&lt;/a&gt; page.&lt;/p&gt;
+
+&lt;h2 id=&#34;detailed-version&#34;&gt;Detailed Version&lt;/h2&gt;
+
+&lt;h3 id=&#34;leaflet-0-7-7&#34;&gt;Leaflet 0.7.7&lt;/h3&gt;
+
+&lt;p&gt;The Leaflet Javascript included with the package was ver. &lt;a href=&#34;https://github.com/Leaflet/Leaflet/releases/tag/v0.7.3&#34;&gt;0.7.3&lt;/a&gt; released on May, 23rd 2014. A lot has happened since then. The 0.7 branch latest version is now &lt;a href=&#34;https://github.com/Leaflet/Leaflet/releases/tag/v0.7.7&#34;&gt;0.7.7&lt;/a&gt;, and now leaflet js is at ver &lt;a href=&#34;https://github.com/Leaflet/Leaflet/releases/tag/v1.0.1&#34;&gt;1.0.1&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Leaflet 1.x is a major version upgrade, which has some backward compatibility issues with 0.7.x branch. So instead of jumping straight to 1.x I decided to first upgrade to 0.7.7. This ensures compatibility with existing code but yet gives us all the benefits of the latest release. The 0.7.7 upgrade was part of commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/298/commits/3f4720aa4ef1b3ec8b5ecd75c3294b5d756312e9&#34;&gt;3f4720a&lt;/a&gt;, and while I was at it I also upgraded jQuery from 1.11.1 to 1.12.4.&lt;/p&gt;
+
+&lt;h3 id=&#34;custom-buttons-and-toolbars&#34;&gt;Custom Buttons and Toolbars&lt;/h3&gt;
+
+&lt;p&gt;There are quite a few plugins listed on the leaflet site for &lt;a href=&#34;http://leafletjs.com/plugins#user-interface&#34;&gt;user interface&lt;/a&gt; add-ons. So it was a bit intimidating deciding which plugin to adopt for allowing users to define some custom buttons/toolbars. Finally I settled on the &lt;a href=&#34;https://github.com/CliffCloud/Leaflet.EasyButton/&#34;&gt;Leaflet.EasyButton&lt;/a&gt; plugin as it allows maximum flexibility in terms of adding your own buttons and toolbars and defining your own actions for them.&lt;/p&gt;
+
+&lt;p&gt;To give a small example, here is a code that allows you to reset the map view to &lt;code&gt;[0, 0, 0]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(leaflet)
+leaflet() %&amp;gt;% addTiles() %&amp;gt;%
+	addEasyButton(easyButton(
+    	icon = &#39;ion-arrow-shrink&#39;,
+    	title = &#39;Reset View&#39;,
+    	onClick = JS(&amp;quot;
+    		function(btn, map){ map.setView([0,0],0); }&amp;quot;)
+  	)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There&amp;rsquo;s a lot more you can do with the EasyButtons plugins, and you can check out more examples at my &lt;a href=&#34;http://rpubs.com/bhaskarvk/easybutton&#34;&gt;Rpubs: EasyButtons&lt;/a&gt; page.&lt;/p&gt;
+
+&lt;h3 id=&#34;projections&#34;&gt;Projections&lt;/h3&gt;
+
+&lt;p&gt;I now come to one of the most important features added to the leaflet package, projections support. If you are unsure about what projections are, I suggest staring from the &lt;a href=&#34;https://en.wikipedia.org/wiki/Map_projection&#34;&gt;Wikipedia entry&lt;/a&gt; on the subject, and there is always the &lt;a href=&#34;https://xkcd.com/977/&#34;&gt;XKCD Comic&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The projections support comes courtesy of the &lt;a href=&#34;https://github.com/kartena/Proj4Leaflet&#34;&gt;Proj4Leaflet&lt;/a&gt;  plugin which provides the glue between leaflet and &lt;a href=&#34;https://github.com/proj4js/proj4js&#34;&gt;Proj4JS&lt;/a&gt;. With this addition you can now specify custom projections in your leaflet maps. Adding projections support to the leaflet package was more of a technical challenge than anything else, but with help from &lt;a href=&#34;https://twitter.com/TimSalabim3&#34;&gt;Tim Salabim&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/mdsumner&#34;&gt;Michael Summer&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/timelyportfolio&#34;&gt;Kent Russel&lt;/a&gt;, and Rstudio&amp;rsquo;s very own &lt;a href=&#34;https://twitter.com/jcheng&#34;&gt;Joe Cheng&lt;/a&gt; we finally had success. Once the technical aspect was sorted out the challenge was making the R API straightforward and as idiomatic as possible, here again Joe&amp;rsquo;s experience was very helpful. This was truly a team effort. I got a lot of feedback and pointers from the R and GIS community both on Twitter and Github as I was baking in support for projections, which allowed me to solidify the code quite a bit.&lt;/p&gt;
+
+&lt;p&gt;I have quite a few examples for using custom projections on my Rpubs pages.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/proj4leaflet&#34;&gt;Proj4Leaflet Demo&lt;/a&gt;: This is a good starting point.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/epsg-28992&#34;&gt;Tiles with projections&lt;/a&gt;: Shows you how to use non spherical mercator tiles.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-polarmaps&#34;&gt;Polar Maps&lt;/a&gt;: Shows how to use leaflet for Arctic and Antarctic regions.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a nice view of Antarctica in it&amp;rsquo;s native &lt;a href=&#34;http://spatialreference.org/ref/epsg/wgs-84-antarctic-polar-stereographic/&#34;&gt;EPSG:3031&lt;/a&gt; projection.
+&lt;img src=&#34;http://i.imgur.com/igDUoKy.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Projections are a somewhat advanced concept and most web mapping users will not really need them. You should be mostly fine with the default &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_Mercator&#34;&gt;spherical mercator&lt;/a&gt; projection. Before using projections be sure to read this &lt;a href=&#34;https://github.com/bhaskarvk/leaflet/issues/16#issuecomment-249369147&#34;&gt;note&lt;/a&gt; where I have discussed some inner working of the projections support and some limitations.&lt;/p&gt;
+
+&lt;h2 id=&#34;end-of-phase-2&#34;&gt;End of Phase 2&lt;/h2&gt;
+
+&lt;p&gt;This marks the end of Phase 2 in my leaflet development. In next phase I&amp;rsquo;ll show you how you can augment the leaflet package by developing your own plugins and some examples that I have been working on.
+If you like what you see or have comments/questions/critiques don&amp;rsquo;t hesitate to contact me via &lt;a href=&#34;https://twitter.com/bhaskar_vk&#34;&gt;Twitter&lt;/a&gt; or open an issue over at &lt;a href=&#34;https://github.com/rstudio/leaflet/issues&#34;&gt;Github&lt;/a&gt;. In the mean time happy mapping.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Leaflet Diary: Chapter 1, Plugins Galore</title>
@@ -147,6 +222,7 @@ Here&amp;rsquo;s a sample of what can be done now.&lt;br/&gt;&lt;br/&gt;
 
 &lt;ol&gt;
 &lt;li&gt;2016-09-19 &lt;a href=&#34;../leaflet-diary-chapter-1-plugins-galore/&#34;&gt;Chapter 1: Plugins Galore&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2016-10-10 &lt;a href=&#34;/2016/10/leaflet-diary-chapter-2-projections-and-then-some/&#34;&gt;Chapter 2: Projections and then some&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
