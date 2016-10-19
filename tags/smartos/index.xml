@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Smartos on Bhaskar Karambelkar&#39;s Blog</title>
-    <link>/tags/smartos/</link>
-    <description>Recent content in Smartos on Bhaskar Karambelkar&#39;s Blog</description>
+    <title>Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/smartos/index.xml</link>
+    <description>Recent content on Bhaskar Karambelkar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
-    <lastBuildDate>Sat, 24 Oct 2015 20:22:02 -0400</lastBuildDate>
     <atom:link href="/tags/smartos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>

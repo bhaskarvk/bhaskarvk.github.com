@@ -2,12 +2,12 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>404 Page not found</title>
+		<title>Leaflet Diary: Chapter 3, Making Leaflet Extensible</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<meta name="generator" content="Hugo 0.17" />
-		<link href="/404.html/index.xml" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
-		<link href="/404.html/index.xml" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+		<link href="" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
 		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
 		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
@@ -18,7 +18,7 @@
 		
 	</head>
 	<body>
-		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> 404 Page not found</div>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Leaflet Diary: Chapter 3, Making Leaflet Extensible</div>
 		<div id="wrapper">
 
 			
@@ -76,10 +76,48 @@
 
 			<div class="container">
 
-<section class="row not-found">
-  <h1 class="col-md-4 col-md-offset-4">404</h1>
-  <div class="col-md-4 col-md-offset-4">That page doesn't exist!</div>
-</section>
+<div id="article">
+	<div class="article-title">Leaflet Diary: Chapter 3, Making Leaflet Extensible</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2016-10-17</small></p> <hr/>
+  <div class="post">
+		
+
+<p>This is the fourth blog entry in my series &lsquo;<a href="/2016/09/leaflet-diary-prologue/">Leaflet-Diary</a>&rsquo;. In my last post <a href="/2016/10/leaflet-diary-chapter-2-projections-and-then-some/">Chapter 2: Projections and then some</a>, I talked projections, easy button support and upgrading leaflet to 0.7.7.
+This one is about phase III, making the Leaflet package extensible and allowing for users to integrate many more <a href="https://leafletjs.com/plugins">Leaflet plugins</a>.</p>
+
+<h2 id="tl-dr-version">TL;DR Version</h2>
+
+<ul>
+<li>Some bugs were squashed.</li>
+<li>Leaflet package is now extensible. You can write your own R package that augment core leaflet functionality by incorporating various <a href="http://leafletjs.com/plugins">plugins</a>.</li>
+<li>A new R package <a href="https://www.github.com/bhaskarvk/leaflet.extras">leaflet.extras</a> has been created to extend the leaflet package.</li>
+</ul>
+
+<h2 id="detailed-version">Detailed Version</h2>
+
+<h3 id="making-leaflet-extensible">Making Leaflet extensible</h3>
+
+<p>One of the strengths of the leaflet javascript library is the plugins eco-system it supports, and it is not fair to the R community to not be able to take advantage of this. The leaflet R package already integrates some plugins, but there are literally hundreds of plugins. It is not feasible to incorporate all of them in the R package. However with the work that went into this phase it is now possible to extend the leaflet package and incorporate as many plugins as you want. Most of the work went into opening up some of internal functions of the leaflet package as well as tidying them up a bit.</p>
+
+<h3 id="leaflet-extras">Leaflet.extras</h3>
+
+<p>I created a new R package <a href="https://www.github.com/bhaskarvk/leaflet.extras">leaflet.extras</a> where I have integrated more plugins and continue to do so. This will be the future direction for the leaflet package, the core package will only see bug fixes, performance improvements etc. and any new plugins will be developed in external packages.</p>
+
+<h2 id="end-of-phase-3">End of Phase 3</h2>
+
+<p>This marks the end of Phase 3 in my leaflet development. If you like what you see or have comments/questions/critiques don&rsquo;t hesitate to contact me via <a href="https://twitter.com/bhaskar_vk">Twitter</a> or open an issue over at <a href="https://github.com/rstudio/leaflet/issues">Github</a>. In the mean time happy mapping.</p>
+
+  </div>
+</div>
+
+<a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<ul class="pager">
+  
+   &nbsp;<li class="next"><a href="/2016/10/leaflet-diary-chapter-2-projections-and-then-some/"> Leaflet Diary: Chapter 2, Projections and then some</a></li>
+</ul>
+
 				<footer>
                     <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
 				</footer>
@@ -114,5 +152,4 @@
 		
 	</body>
 </html>
-
 

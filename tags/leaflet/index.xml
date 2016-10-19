@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Leaflet on Bhaskar Karambelkar&#39;s Blog</title>
-    <link>/tags/leaflet/</link>
-    <description>Recent content in Leaflet on Bhaskar Karambelkar&#39;s Blog</description>
+    <title>Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/leaflet/index.xml</link>
+    <description>Recent content on Bhaskar Karambelkar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
-    <lastBuildDate>Mon, 10 Oct 2016 21:00:00 -0400</lastBuildDate>
     <atom:link href="/tags/leaflet/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Leaflet Diary: Chapter 3, Making Leaflet Extensible</title>
+      <link>/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/</link>
+      <pubDate>Mon, 17 Oct 2016 22:00:00 -0400</pubDate>
+      
+      <guid>/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/</guid>
+      <description>
+
+&lt;p&gt;This is the fourth blog entry in my series &amp;lsquo;&lt;a href=&#34;/2016/09/leaflet-diary-prologue/&#34;&gt;Leaflet-Diary&lt;/a&gt;&amp;rsquo;. In my last post &lt;a href=&#34;/2016/10/leaflet-diary-chapter-2-projections-and-then-some/&#34;&gt;Chapter 2: Projections and then some&lt;/a&gt;, I talked projections, easy button support and upgrading leaflet to 0.7.7.
+This one is about phase III, making the Leaflet package extensible and allowing for users to integrate many more &lt;a href=&#34;https://leafletjs.com/plugins&#34;&gt;Leaflet plugins&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;tl-dr-version&#34;&gt;TL;DR Version&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Some bugs were squashed.&lt;/li&gt;
+&lt;li&gt;Leaflet package is now extensible. You can write your own R package that augment core leaflet functionality by incorporating various &lt;a href=&#34;http://leafletjs.com/plugins&#34;&gt;plugins&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A new R package &lt;a href=&#34;https://www.github.com/bhaskarvk/leaflet.extras&#34;&gt;leaflet.extras&lt;/a&gt; has been created to extend the leaflet package.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;detailed-version&#34;&gt;Detailed Version&lt;/h2&gt;
+
+&lt;h3 id=&#34;making-leaflet-extensible&#34;&gt;Making Leaflet extensible&lt;/h3&gt;
+
+&lt;p&gt;One of the strengths of the leaflet javascript library is the plugins eco-system it supports, and it is not fair to the R community to not be able to take advantage of this. The leaflet R package already integrates some plugins, but there are literally hundreds of plugins. It is not feasible to incorporate all of them in the R package. However with the work that went into this phase it is now possible to extend the leaflet package and incorporate as many plugins as you want. Most of the work went into opening up some of internal functions of the leaflet package as well as tidying them up a bit.&lt;/p&gt;
+
+&lt;h3 id=&#34;leaflet-extras&#34;&gt;Leaflet.extras&lt;/h3&gt;
+
+&lt;p&gt;I created a new R package &lt;a href=&#34;https://www.github.com/bhaskarvk/leaflet.extras&#34;&gt;leaflet.extras&lt;/a&gt; where I have integrated more plugins and continue to do so. This will be the future direction for the leaflet package, the core package will only see bug fixes, performance improvements etc. and any new plugins will be developed in external packages.&lt;/p&gt;
+
+&lt;h2 id=&#34;end-of-phase-3&#34;&gt;End of Phase 3&lt;/h2&gt;
+
+&lt;p&gt;This marks the end of Phase 3 in my leaflet development. If you like what you see or have comments/questions/critiques don&amp;rsquo;t hesitate to contact me via &lt;a href=&#34;https://twitter.com/bhaskar_vk&#34;&gt;Twitter&lt;/a&gt; or open an issue over at &lt;a href=&#34;https://github.com/rstudio/leaflet/issues&#34;&gt;Github&lt;/a&gt;. In the mean time happy mapping.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Leaflet Diary: Chapter 2, Projections and then some</title>
@@ -223,6 +257,7 @@ Here&amp;rsquo;s a sample of what can be done now.&lt;br/&gt;&lt;br/&gt;
 &lt;ol&gt;
 &lt;li&gt;2016-09-19 &lt;a href=&#34;../leaflet-diary-chapter-1-plugins-galore/&#34;&gt;Chapter 1: Plugins Galore&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2016-10-10 &lt;a href=&#34;/2016/10/leaflet-diary-chapter-2-projections-and-then-some/&#34;&gt;Chapter 2: Projections and then some&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2016-10-19 &lt;a href=&#34;/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/&#34;&gt;Chapter 3: Making Leaflet extensible&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
