@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Leaflet Diary: Chapter 3, Making Leaflet Extensible</title>
+		<title>GDAL 2 On Mac with Homebrew</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<meta name="generator" content="Hugo 0.17" />
@@ -18,7 +18,7 @@
 		
 	</head>
 	<body>
-		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Leaflet Diary: Chapter 3, Making Leaflet Extensible</div>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> GDAL 2 On Mac with Homebrew</div>
 		<div id="wrapper">
 
 			
@@ -77,35 +77,54 @@
 			<div class="container">
 
 <div id="article">
-	<div class="article-title">Leaflet Diary: Chapter 3, Making Leaflet Extensible</div>
-  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2016-10-17</small></p> <hr/>
+	<div class="article-title">GDAL 2 On Mac with Homebrew</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2016-10-20</small></p> <hr/>
   <div class="post">
 		
 
-<p>This is the fourth blog entry in my series &lsquo;<a href="/2016/09/leaflet-diary-prologue/">Leaflet-Diary</a>&rsquo;. In my last post <a href="/2016/10/leaflet-diary-chapter-2-projections-and-then-some/">Chapter 2: Projections and then some</a>, I talked projections, easy button support and upgrading leaflet to 0.7.7.
-This one is about phase III, making the Leaflet package extensible and allowing for users to integrate many more <a href="https://leafletjs.com/plugins">Leaflet plugins</a>.</p>
+<p>This post is a small about upgrading to <a href="https://trac.osgeo.org/gdal/wiki/Release/2.1.1-News">gdal 2.1.1</a> on a Mac using homebrew.</p>
 
-<h2 id="tl-dr-version">TL;DR Version</h2>
+<h2 id="assumptions">Assumptions</h2>
 
 <ul>
-<li>Some bugs were squashed.</li>
-<li>Leaflet package is now extensible. You can write your own R package that augment core leaflet functionality by incorporating various <a href="http://leafletjs.com/plugins">plugins</a>.</li>
-<li>A new R package <a href="https://www.github.com/bhaskarvk/leaflet.extras">leaflet.extras</a> has been created to extend the leaflet package.</li>
+<li>You have homebrew installed and setup.</li>
+<li>You already have gdal 1.x installed via homebrew&rsquo;s default &lsquo;gdal&rsquo; formula.</li>
 </ul>
 
-<h2 id="detailed-version">Detailed Version</h2>
+<h2 id="install-gdal-2-1-1">Install gdal 2.1.1</h2>
 
-<h3 id="making-leaflet-extensible">Making Leaflet extensible</h3>
+<ul>
+<li><p>Unlink gdal 1.x using<br/><code>brew unlink gdal</code><br/></p></li>
 
-<p>One of the strengths of the leaflet javascript library is the plugins eco-system it supports, and it is not fair to the R community to not be able to take advantage of this. The leaflet R package already integrates some plugins, but there are literally hundreds of plugins. It is not feasible to incorporate all of them in the R package. However with the work that went into this phase it is now possible to extend the leaflet package and incorporate as many plugins as you want. Most of the work went into opening up some of internal functions of the leaflet package as well as tidying them up a bit.</p>
+<li><p>Tap into <a href="https://github.com/OSGeo/homebrew-osgeo4mac">osgeo4mac</a> <br/><code>brew tap osgeo/osgeo4mac &amp;&amp; brew tap repair</code><br/></p></li>
 
-<h3 id="leaflet-extras">Leaflet.extras</h3>
+<li><p>Install gdal2.<br/></p></li>
+</ul>
 
-<p>I created a new R package <a href="https://www.github.com/bhaskarvk/leaflet.extras">leaflet.extras</a> where I have integrated more plugins and continue to do so. This will be the future direction for the leaflet package, the core package will only see bug fixes, performance improvements etc. and any new plugins will be developed in external packages.</p>
+<pre><code class="language-sh">brew install gdal2 --with-armadillo \
+  --with-complete --with-libkml --with-unsupported
+</code></pre>
 
-<h2 id="end-of-phase-3">End of Phase 3</h2>
+<ul>
+<li><p>Link gdal2<br/><code>brew link --force gdal2</code></p></li>
 
-<p>This marks the end of Phase 3 in my leaflet development. If you like what you see or have comments/questions/critiques don&rsquo;t hesitate to contact me via <a href="https://twitter.com/bhaskar_vk">Twitter</a> or open an issue over at <a href="https://github.com/rstudio/leaflet/issues">Github</a>. In the mean time happy mapping.</p>
+<li><p>Verify</p></li>
+</ul>
+
+<pre><code class="language-sh">
+$&gt; gdal-config --version
+2.1.1
+
+$&gt; gdal-config --libs
+-L/usr/local/Cellar/gdal2/2.1.1/lib -lgdal
+
+$&gt; gdal-config --cflags
+-I/usr/local/Cellar/gdal2/2.1.1/include
+</code></pre>
+
+<h2 id="post-install">Post Install</h2>
+
+<p>If you are using R for geo-spatial stuff, be sure to reinstall the <code>rgdal</code> library. Also you can now install <a href="https://github.com/edzer/sfr">sf</a> in R using <code>devtools::install_github('edzer/sfr')</code>.</p>
 
   </div>
 </div>
@@ -114,8 +133,8 @@ This one is about phase III, making the Leaflet package extensible and allowing 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 <ul class="pager">
-   &nbsp;<li class="previous"><a href="/2016/10/gdal-2-on-mac-with-homebrew/"> GDAL 2 On Mac with Homebrew</a></li>
-   &nbsp;<li class="next"><a href="/2016/10/leaflet-diary-chapter-2-projections-and-then-some/"> Leaflet Diary: Chapter 2, Projections and then some</a></li>
+  
+   &nbsp;<li class="next"><a href="/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/"> Leaflet Diary: Chapter 3, Making Leaflet Extensible</a></li>
 </ul>
 
 				<footer>

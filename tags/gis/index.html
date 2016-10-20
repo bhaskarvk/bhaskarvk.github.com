@@ -80,6 +80,19 @@
   <h1>Gis</h1><br/>
   <ul class="posts">
   
+    <li><span><h4><a href="/2016/10/gdal-2-on-mac-with-homebrew/">GDAL 2 On Mac with Homebrew</a><time class="pull-right post-list">Thu, Oct 20, 2016</h4></time></span></span>
+  <div class="summary">
+    This post is a small about upgrading to gdal 2.1.1 on a Mac using homebrew.
+Assumptions  You have homebrew installed and setup. You already have gdal 1.x installed via homebrew&rsquo;s default &lsquo;gdal&rsquo; formula.  Install gdal 2.1.1  Unlink gdal 1.x usingbrew unlink gdal
+ Tap into osgeo4mac brew tap osgeo/osgeo4mac &amp;&amp; brew tap repair
+ Install gdal2.
+  brew install gdal2 --with-armadillo \ --with-complete --with-libkml --with-unsupported   Link gdal2brew link --force gdal2
+  </div>
+  <div class="read-more-link">
+    <a href="/2016/10/gdal-2-on-mac-with-homebrew/">Read More…</a>
+  </div>
+    </li>
+  
     <li><span><h4><a href="/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/">Leaflet Diary: Chapter 3, Making Leaflet Extensible</a><time class="pull-right post-list">Mon, Oct 17, 2016</h4></time></span></span>
   <div class="summary">
     This is the fourth blog entry in my series &lsquo;Leaflet-Diary&rsquo;. In my last post Chapter 2: Projections and then some, I talked projections, easy button support and upgrading leaflet to 0.7.7. This one is about phase III, making the Leaflet package extensible and allowing for users to integrate many more Leaflet plugins.

@@ -10,6 +10,60 @@
     <atom:link href="/tags/gis/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>GDAL 2 On Mac with Homebrew</title>
+      <link>/2016/10/gdal-2-on-mac-with-homebrew/</link>
+      <pubDate>Thu, 20 Oct 2016 17:34:35 -0400</pubDate>
+      
+      <guid>/2016/10/gdal-2-on-mac-with-homebrew/</guid>
+      <description>
+
+&lt;p&gt;This post is a small about upgrading to &lt;a href=&#34;https://trac.osgeo.org/gdal/wiki/Release/2.1.1-News&#34;&gt;gdal 2.1.1&lt;/a&gt; on a Mac using homebrew.&lt;/p&gt;
+
+&lt;h2 id=&#34;assumptions&#34;&gt;Assumptions&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You have homebrew installed and setup.&lt;/li&gt;
+&lt;li&gt;You already have gdal 1.x installed via homebrew&amp;rsquo;s default &amp;lsquo;gdal&amp;rsquo; formula.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;install-gdal-2-1-1&#34;&gt;Install gdal 2.1.1&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Unlink gdal 1.x using&lt;br/&gt;&lt;code&gt;brew unlink gdal&lt;/code&gt;&lt;br/&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Tap into &lt;a href=&#34;https://github.com/OSGeo/homebrew-osgeo4mac&#34;&gt;osgeo4mac&lt;/a&gt; &lt;br/&gt;&lt;code&gt;brew tap osgeo/osgeo4mac &amp;amp;&amp;amp; brew tap repair&lt;/code&gt;&lt;br/&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install gdal2.&lt;br/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew install gdal2 --with-armadillo \
+  --with-complete --with-libkml --with-unsupported
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Link gdal2&lt;br/&gt;&lt;code&gt;brew link --force gdal2&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Verify&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
+$&amp;gt; gdal-config --version
+2.1.1
+
+$&amp;gt; gdal-config --libs
+-L/usr/local/Cellar/gdal2/2.1.1/lib -lgdal
+
+$&amp;gt; gdal-config --cflags
+-I/usr/local/Cellar/gdal2/2.1.1/include
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;post-install&#34;&gt;Post Install&lt;/h2&gt;
+
+&lt;p&gt;If you are using R for geo-spatial stuff, be sure to reinstall the &lt;code&gt;rgdal&lt;/code&gt; library. Also you can now install &lt;a href=&#34;https://github.com/edzer/sfr&#34;&gt;sf&lt;/a&gt; in R using &lt;code&gt;devtools::install_github(&#39;edzer/sfr&#39;)&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Leaflet Diary: Chapter 3, Making Leaflet Extensible</title>
       <link>/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/</link>
       <pubDate>Mon, 17 Oct 2016 22:00:00 -0400</pubDate>
