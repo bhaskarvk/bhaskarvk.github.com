@@ -17,7 +17,7 @@
       <guid>/2016/10/gdal-2-on-mac-with-homebrew/</guid>
       <description>
 
-&lt;p&gt;This post is a small about upgrading to &lt;a href=&#34;https://trac.osgeo.org/gdal/wiki/Release/2.1.1-News&#34;&gt;gdal 2.1.1&lt;/a&gt; on a Mac using homebrew.&lt;/p&gt;
+&lt;p&gt;This is a small post about upgrading to &lt;a href=&#34;https://trac.osgeo.org/gdal/wiki/Release/2.1.1-News&#34;&gt;gdal 2.1.1&lt;/a&gt; on a Mac using homebrew.&lt;/p&gt;
 
 &lt;h2 id=&#34;assumptions&#34;&gt;Assumptions&lt;/h2&gt;
 
@@ -31,7 +31,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Unlink gdal 1.x using&lt;br/&gt;&lt;code&gt;brew unlink gdal&lt;/code&gt;&lt;br/&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Tap into &lt;a href=&#34;https://github.com/OSGeo/homebrew-osgeo4mac&#34;&gt;osgeo4mac&lt;/a&gt; &lt;br/&gt;&lt;code&gt;brew tap osgeo/osgeo4mac &amp;amp;&amp;amp; brew tap repair&lt;/code&gt;&lt;br/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Tap into &lt;a href=&#34;https://github.com/OSGeo/homebrew-osgeo4mac&#34;&gt;osgeo4mac&lt;/a&gt; &lt;br/&gt;&lt;code&gt;brew tap osgeo/osgeo4mac &amp;amp;&amp;amp; brew tap --repair&lt;/code&gt;&lt;br/&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Install gdal2.&lt;br/&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
