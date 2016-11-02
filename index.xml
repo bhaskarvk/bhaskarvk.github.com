@@ -7,8 +7,52 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Bhaskar V. Karambelkar</copyright>
-    <lastBuildDate>Thu, 20 Oct 2016 17:34:35 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 02 Nov 2016 17:00:00 -0400</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Leaflet Diary: Chapter 4, Towards Version 1.1</title>
+      <link>/2016/11/leaflet-diary-chapter-4-towards-version-1.1/</link>
+      <pubDate>Wed, 02 Nov 2016 17:00:00 -0400</pubDate>
+      
+      <guid>/2016/11/leaflet-diary-chapter-4-towards-version-1.1/</guid>
+      <description>
+
+&lt;p&gt;This is the fifth blog entry in my series &amp;lsquo;&lt;a href=&#34;/2016/09/leaflet-diary-prologue/&#34;&gt;Leaflet-Diary&lt;/a&gt;&amp;rsquo;. In my last post &lt;a href=&#34;/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/&#34;&gt;Chapter 3, Making Leaflet Extensible&lt;/a&gt;, I talked about changes that were made to the Leaflet package to make it extensible.
+This one is about phase IV, making the Leaflet package ready for a CRAN version upgrade.&lt;/p&gt;
+
+&lt;h2 id=&#34;tl-dr-version&#34;&gt;TL;DR Version&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A major issue related to missing or incomplete data was fixed.&lt;/li&gt;
+&lt;li&gt;Shapes (Polylines/Polygons/Circles/Rectangles) can now be easily highlighted on mouse over.&lt;/li&gt;
+&lt;li&gt;Leaflet Documentation has been updated.&lt;/li&gt;
+&lt;li&gt;Fingers crossed for 1.1 CRAN release.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;detailed-version&#34;&gt;Detailed Version&lt;/h2&gt;
+
+&lt;h3 id=&#34;missing-data&#34;&gt;Missing Data&lt;/h3&gt;
+
+&lt;p&gt;Leaflet had issues handing entirely empty data (A Spatial object with no geometries), or even data with missing values for latitude/longitude. You can see all the &lt;a href=&#34;https://github.com/rstudio/leaflet/issues/304&#34;&gt;issues&lt;/a&gt; on Github. Good news is all these issues have been resolved. Now Leaflet will handle empty and missing data more gracefully, issuing errors or warnings correctly.&lt;/p&gt;
+
+&lt;h3 id=&#34;highlight-shapes&#34;&gt;Highlight Shapes&lt;/h3&gt;
+
+&lt;p&gt;A very common use case when dealing with shapes is to be able to highlight them when the mouse hovers over. This was possible earlier using some ugly hacks, but now you have a very straight forward interface to do just that. Check out my &lt;a href=&#34;http://rpubs.com/bhaskarvk/polygon-highlight&#34;&gt;Rpubs: Highlight Polygons&lt;/a&gt; example page. &lt;strong&gt;NOTE&lt;/strong&gt; This option is not yet available for addGeoJSON and addTopoJSON functions.&lt;/p&gt;
+
+&lt;h3 id=&#34;documentation&#34;&gt;Documentation&lt;/h3&gt;
+
+&lt;p&gt;Leaflet documentation has been updated and we also have  detailed example pages that deep dive into leaflet features. To get a feel of how the documentation might look like check out &lt;a href=&#34;https://bhaskarvk.github.io/leaflet/&#34;&gt;this&lt;/a&gt; link. &lt;strong&gt;WARNING&lt;/strong&gt; This is unpolished work and the final version will be a lot more polished than this one.&lt;/p&gt;
+
+&lt;h2 id=&#34;end-of-phase-3&#34;&gt;End of Phase 3&lt;/h2&gt;
+
+&lt;p&gt;This marks the end of Phase 4 in my leaflet development and my contracting gig with RStudio. The last eight weeks were absolutely crazy, and I hope all the long hours I put in will benefit the R GIS community even in little ways. If you like what you see or have comments/questions/critiques don&amp;rsquo;t hesitate to contact me via &lt;a href=&#34;https://twitter.com/bhaskar_vk&#34;&gt;Twitter&lt;/a&gt; or open an issue over at &lt;a href=&#34;https://github.com/rstudio/leaflet/issues&#34;&gt;Github&lt;/a&gt;. In the mean time happy mapping.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-next&#34;&gt;What Next?&lt;/h2&gt;
+
+&lt;p&gt;Even if my contracting gig with Rstudio is over, I haven&amp;rsquo;t quit leaflet development. In fact I am only just getting started, so stay tuned for more developments.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>GDAL 2 On Mac with Homebrew</title>
@@ -313,6 +357,7 @@ Here&amp;rsquo;s a sample of what can be done now.&lt;br/&gt;&lt;br/&gt;
 &lt;li&gt;2016-09-19 &lt;a href=&#34;../leaflet-diary-chapter-1-plugins-galore/&#34;&gt;Chapter 1: Plugins Galore&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2016-10-10 &lt;a href=&#34;/2016/10/leaflet-diary-chapter-2-projections-and-then-some/&#34;&gt;Chapter 2: Projections and then some&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2016-10-19 &lt;a href=&#34;/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/&#34;&gt;Chapter 3: Making Leaflet extensible&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2016-11-02 &lt;a href=&#34;/2016/11/leaflet-diary-chapter-4-towards-version-1.1/&#34;&gt;Chapter 4: Towards Version 1.1&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -1208,83 +1253,6 @@ The chapter then moves on to specific examples of visualization like bar charts,
 
 &lt;p&gt;So how do I rate this book ? This is a rather difficult question considering that nothing like this has ever been attempted before. Sure there are plenty of books about traditional InfoSec research and tools, and there are even more books on Statistics, and Machine Learning, and Visualization, not to mention gazillions of books on Programming/Coding. But a book that touches all 3 aspects of Data Science is indeed very rare.&lt;br/&gt;
 Having said that I like this book very much, it covers every aspect of Data Science with a focus on InfoSec in just enough detail to give it justice. The code samples are great but more important is the very serious advice the authors have to offer (albeit in a lighter tone). This book is by no means a small achievement, not only in InfoSec books but Data Science books as well. I don&amp;rsquo;t see any reason why this books should not be in your collection if you deal with InfoSec and/or Data Science. Even if your domain is not InfoSec but if you are interested in Data Science I would still highly recommend this book as it will show you how to make Data Science work for your domain using InfoSec as an example.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The 10 commandments for hiring Data Scientists</title>
-      <link>/2015/03/the-10-commandments-for-hiring-data-scientists/</link>
-      <pubDate>Wed, 04 Mar 2015 15:49:00 +0000</pubDate>
-      
-      <guid>/2015/03/the-10-commandments-for-hiring-data-scientists/</guid>
-      <description>
-
-&lt;p&gt;As a Data Scientist (whatever it means), I get a lot of job offers over LinkedIn and other channels. Although I&amp;rsquo;m not actively looking for a job, I still go through them. One just because I&amp;rsquo;m curious to find out what exactly do organizations look for in a Data Scientist, and secondly to amuse myself. This post is about the later part, it amuses me to no end what some people want in a Data Scientist, and I&amp;rsquo;ve made a consolidated list for all the recruiters and organizations who are looking to hire one (or more).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Warning :&lt;/strong&gt; If satire is not your cup of tea (coffee/soda) you should most certainly not refrain from not reading this article.&lt;/p&gt;
-
-&lt;h3 id=&#34;rule-1-thou-shalt-not-have-a-freaking-clue-what-data-science-is-all-about&#34;&gt;Rule 1: Thou shalt not have a freaking clue what Data Science is all about.&lt;/h3&gt;
-
-&lt;p&gt;But you should still throw in terms like Artificial Intelligence, deep learning, Neural Networks, SVM (admit it, you don&amp;rsquo;t even know what it stands for). You are not concerned whether the applicant can apply his knowledge to solve the problem at hand, all you really want to know is whether he knows the difference between supervised and unsupervised learning.&lt;br/&gt;
-In short don&amp;rsquo;t worry about what the applicant can do, just worry about how much he can memorize and regurgitate. Oh! and have him describe the Apriori algorithm over the telephonic interview.&lt;/p&gt;
-
-&lt;h3 id=&#34;rule-2-thou-shalt-use-a-fishing-net-to-grab-as-many-as-you-can-and-figure-out-what-to-do-with-them-later&#34;&gt;Rule 2: Thou shalt use a fishing net to grab as many as you can, and figure out what to do with them later.&lt;/h3&gt;
-
-&lt;p&gt;Have like 10 or 15 openings for the same post. Be very vague about what it is that you exactly expect these people to do. Better yet have a complete lack of understanding of what your problems are and how you think Data Scientists can help you solve it. Just be sure to mention you have tons of data. Yeah that&amp;rsquo;ll make them bite.&lt;/p&gt;
-
-&lt;h3 id=&#34;rule-3-thou-shalt-put-data-scientist-even-if-what-you-really-want-a-code-monkey&#34;&gt;Rule 3: Thou shalt put &amp;lsquo;Data Scientist&amp;rsquo; even if what you really want a code monkey.&lt;/h3&gt;
-
-&lt;p&gt;Well why not? I mean you can&amp;rsquo;t attract developers to work for you with &amp;lsquo;We need you to work 12 hours a day, 7 days a week, 365 days a year&amp;rsquo;. But hey if you just change that position from Software Developer to Data-Scientist, lo and behold the bees come flying to your honeypot. And if they can fix your crappy website css code on the side while doing data science-y stuff it&amp;rsquo;s a win-win.&lt;/p&gt;
-
-&lt;h3 id=&#34;rule-4-thou-shalt-never-mention-salary-range-or-benefits&#34;&gt;Rule 4: Thou shalt never mention salary range or benefits.&lt;/h3&gt;
-
-&lt;p&gt;It&amp;rsquo;s not like Data-Scientists are in hot demand or anything. They should be grateful you even put up a job post for them to see and apply. And who do they think they are demanding top notch compensation for the efforts and handwork they put in acquiring their skills. And if you really think about it, free laundry is all the benefits someone needs anyways.&lt;/p&gt;
-
-&lt;h3 id=&#34;rule-5-thou-shalt-not-care-about-the-age-v-s-experience-paradox&#34;&gt;Rule 5: Thou shalt not care about the age v/s experience paradox.&lt;/h3&gt;
-
-&lt;p&gt;We want a PhD. with 10 years of work experience, who&amp;rsquo;s young and has the zeal and energy of someone just out of the college, coz you know we need his skills to make more people click our in-your-face video pop-up ads. Plus we really can&amp;rsquo;t just say under-30 single male (that would get us sued), so we just go with young, energetic, likes to work in a startup environment, doesn&amp;rsquo;t mind staying up late in office (hey free pizza and sodas!).&lt;/p&gt;
-
-&lt;h3 id=&#34;rule-6-thou-shalt-extol-the-virtues-of-working-in-a-startup-in-a-way-that-would-make-a-bangladeshi-garment-factory-owner-blush&#34;&gt;Rule 6: Thou shalt extol the virtues of working in a startup in a way that would make a Bangladeshi garment factory owner blush.&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Long never ending hours at work - CHECK&lt;/li&gt;
-&lt;li&gt;Jack of All trades job duties - CHECK&lt;/li&gt;
-&lt;li&gt;Low pay but promise of Stock Option - CHECK&lt;/li&gt;
-&lt;li&gt;No real usable health care coverage - CHECK&lt;/li&gt;
-&lt;li&gt;Foosball/Ping-Pong table - CHECK&lt;/li&gt;
-&lt;li&gt;Screwing over loyal employees by selling and cashing out - PRICELESS&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;rule-7-thine-post-shalt-be-scattered-with-worthless-terms-like-web-scale-big-data-well-funded-startup&#34;&gt;Rule 7: Thine post shalt be scattered with worthless terms like web-scale, big data, well-funded startup.&lt;/h3&gt;
-
-&lt;p&gt;As if terms like &amp;lsquo;leverage&amp;rsquo;, &amp;lsquo;synergy&amp;rsquo; were not enough. Our dear data scientist must know how to work with &amp;lsquo;BIG DATA&amp;rsquo;. The more the meaningless and worthless terms in our job posting the better, it will allow us to hire the crème de la crème of analytics talent.
-Also throw in the fact that all the founders have PhDs in bio-informatics or AI or machine learning etc. coz you know that is so critical to have when it comes to effective leadership.
-&lt;br/&gt;Also when was the last time someone advertised themselves as a &amp;lsquo;piss-poorly funded startup&amp;rsquo;?&lt;/p&gt;
-
-&lt;h3 id=&#34;rule-8-thine-data-scientists-must-know-every-programming-language-under-the-sun-even-the-ones-not-invented-so-far&#34;&gt;Rule 8: Thine Data-Scientists must know every programming language under the sun (even the ones not invented so far).&lt;/h3&gt;
-
-&lt;p&gt;Coz you know programming is where it&amp;rsquo;s at. If you can&amp;rsquo;t code you can&amp;rsquo;t do jack. And what do you mean you only know R or python ? All the cool kids are using Ruby or Node.js. And don&amp;rsquo;t tell us you can&amp;rsquo;t write &lt;strong&gt;enterprise applications&lt;/strong&gt; using Java/J2EE/EJBs.
-Oh! and please do explain in great detail how a Hashtable works. No job interview is complete without it.
-In short if you see an IP address the first thing that should cross your mind is Visual Basic GUI.&lt;/p&gt;
-
-&lt;h3 id=&#34;rule-9-hadoop-hadoop-hadoop-wait-i-m-forgetting-something-ah-yes-hadoop&#34;&gt;Rule 9: Hadoop Hadoop Hadoop, wait I&amp;rsquo;m forgetting something, Ah! yes Hadoop.&lt;/h3&gt;
-
-&lt;p&gt;GEORGE: &amp;ldquo;Why don&amp;rsquo;t they have Hadoop in the mix?&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;JERRY: &amp;ldquo;What do you need Hadoop for?&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;GEORGE: &amp;ldquo;Hadoop is now the number one data crunching framework in America.&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;JERRY: &amp;ldquo;You know why? Because people like to say &amp;ldquo;Hadoop.&amp;rdquo; &amp;ldquo;Excuse me, do
-you have any Hadoop?&amp;rdquo; &amp;ldquo;We need more Hadoop.&amp;rdquo; &amp;ldquo;Where is Hadoop? No Hadoop?&amp;rdquo;&lt;/p&gt;
-
-&lt;h3 id=&#34;rule-10-thine-data-scientist-should-be-able-to-code-design-web-apps-be-an-agile-scrum-master-software-architect-project-manager-product-manager-sales-marketing-guru-did-i-mention-a-unicorn&#34;&gt;Rule 10: Thine Data-Scientist should be able to code, design web-apps, be an Agile Scrum master, Software Architect, Project Manager, Product Manager, Sales/Marketing Guru. Did I mention a unicorn ?&lt;/h3&gt;
-
-&lt;p&gt;OK no satire on this one. Just straight up practical advice. Data scientists are not all knowing superhuman beings. Figure out what is it that your organization wants to do with data and hire well trained and decently experienced people who can solve your challenges. If looking for novice employees make sure the job has enough breathing room for them to grow into gradually. And lastly don&amp;rsquo;t go looking for unicorns because a) they don&amp;rsquo;t exist, and b) the best thing they can do is make 6-8 year old girls scream in high pitch.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;em&gt;footnote :&lt;/em&gt; The difference in percentage of animals harmed in writing this post and percentage of animals that would have been harmed had I not written this post is not statistically significant.&lt;/p&gt;
 </description>
     </item>
     

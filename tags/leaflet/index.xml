@@ -10,6 +10,50 @@
     <atom:link href="/tags/leaflet/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Leaflet Diary: Chapter 4, Towards Version 1.1</title>
+      <link>/2016/11/leaflet-diary-chapter-4-towards-version-1.1/</link>
+      <pubDate>Wed, 02 Nov 2016 17:00:00 -0400</pubDate>
+      
+      <guid>/2016/11/leaflet-diary-chapter-4-towards-version-1.1/</guid>
+      <description>
+
+&lt;p&gt;This is the fifth blog entry in my series &amp;lsquo;&lt;a href=&#34;/2016/09/leaflet-diary-prologue/&#34;&gt;Leaflet-Diary&lt;/a&gt;&amp;rsquo;. In my last post &lt;a href=&#34;/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/&#34;&gt;Chapter 3, Making Leaflet Extensible&lt;/a&gt;, I talked about changes that were made to the Leaflet package to make it extensible.
+This one is about phase IV, making the Leaflet package ready for a CRAN version upgrade.&lt;/p&gt;
+
+&lt;h2 id=&#34;tl-dr-version&#34;&gt;TL;DR Version&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A major issue related to missing or incomplete data was fixed.&lt;/li&gt;
+&lt;li&gt;Shapes (Polylines/Polygons/Circles/Rectangles) can now be easily highlighted on mouse over.&lt;/li&gt;
+&lt;li&gt;Leaflet Documentation has been updated.&lt;/li&gt;
+&lt;li&gt;Fingers crossed for 1.1 CRAN release.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;detailed-version&#34;&gt;Detailed Version&lt;/h2&gt;
+
+&lt;h3 id=&#34;missing-data&#34;&gt;Missing Data&lt;/h3&gt;
+
+&lt;p&gt;Leaflet had issues handing entirely empty data (A Spatial object with no geometries), or even data with missing values for latitude/longitude. You can see all the &lt;a href=&#34;https://github.com/rstudio/leaflet/issues/304&#34;&gt;issues&lt;/a&gt; on Github. Good news is all these issues have been resolved. Now Leaflet will handle empty and missing data more gracefully, issuing errors or warnings correctly.&lt;/p&gt;
+
+&lt;h3 id=&#34;highlight-shapes&#34;&gt;Highlight Shapes&lt;/h3&gt;
+
+&lt;p&gt;A very common use case when dealing with shapes is to be able to highlight them when the mouse hovers over. This was possible earlier using some ugly hacks, but now you have a very straight forward interface to do just that. Check out my &lt;a href=&#34;http://rpubs.com/bhaskarvk/polygon-highlight&#34;&gt;Rpubs: Highlight Polygons&lt;/a&gt; example page. &lt;strong&gt;NOTE&lt;/strong&gt; This option is not yet available for addGeoJSON and addTopoJSON functions.&lt;/p&gt;
+
+&lt;h3 id=&#34;documentation&#34;&gt;Documentation&lt;/h3&gt;
+
+&lt;p&gt;Leaflet documentation has been updated and we also have  detailed example pages that deep dive into leaflet features. To get a feel of how the documentation might look like check out &lt;a href=&#34;https://bhaskarvk.github.io/leaflet/&#34;&gt;this&lt;/a&gt; link. &lt;strong&gt;WARNING&lt;/strong&gt; This is unpolished work and the final version will be a lot more polished than this one.&lt;/p&gt;
+
+&lt;h2 id=&#34;end-of-phase-3&#34;&gt;End of Phase 3&lt;/h2&gt;
+
+&lt;p&gt;This marks the end of Phase 4 in my leaflet development and my contracting gig with RStudio. The last eight weeks were absolutely crazy, and I hope all the long hours I put in will benefit the R GIS community even in little ways. If you like what you see or have comments/questions/critiques don&amp;rsquo;t hesitate to contact me via &lt;a href=&#34;https://twitter.com/bhaskar_vk&#34;&gt;Twitter&lt;/a&gt; or open an issue over at &lt;a href=&#34;https://github.com/rstudio/leaflet/issues&#34;&gt;Github&lt;/a&gt;. In the mean time happy mapping.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-next&#34;&gt;What Next?&lt;/h2&gt;
+
+&lt;p&gt;Even if my contracting gig with Rstudio is over, I haven&amp;rsquo;t quit leaflet development. In fact I am only just getting started, so stay tuned for more developments.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Leaflet Diary: Chapter 3, Making Leaflet Extensible</title>
       <link>/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/</link>
       <pubDate>Mon, 17 Oct 2016 22:00:00 -0400</pubDate>
@@ -258,6 +302,7 @@ Here&amp;rsquo;s a sample of what can be done now.&lt;br/&gt;&lt;br/&gt;
 &lt;li&gt;2016-09-19 &lt;a href=&#34;../leaflet-diary-chapter-1-plugins-galore/&#34;&gt;Chapter 1: Plugins Galore&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2016-10-10 &lt;a href=&#34;/2016/10/leaflet-diary-chapter-2-projections-and-then-some/&#34;&gt;Chapter 2: Projections and then some&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2016-10-19 &lt;a href=&#34;/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/&#34;&gt;Chapter 3: Making Leaflet extensible&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2016-11-02 &lt;a href=&#34;/2016/11/leaflet-diary-chapter-4-towards-version-1.1/&#34;&gt;Chapter 4: Towards Version 1.1&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
