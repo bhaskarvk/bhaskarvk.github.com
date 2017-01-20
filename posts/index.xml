@@ -72,6 +72,547 @@
     </item>
     
     <item>
+      <title>Setup OSX for R</title>
+      <link>/2017/01/setup-osx-for-r/</link>
+      <pubDate>Thu, 19 Jan 2017 20:44:23 -0500</pubDate>
+      
+      <guid>/2017/01/setup-osx-for-r/</guid>
+      <description>&lt;p&gt;This is a rather details documentation of my OSX setup for R usage using homebrew. You can get away with a lot less than what I have installed below, but this is fairly comprehensive and I have also given some steps to verify installation of various packages.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;github-api-token&#34;&gt;Github API Token&lt;/h3&gt;
+
+&lt;p&gt;Get a github account and setup an API token as described &lt;a href=&#34;https://help.github.com/articles/creating-an-access-token-for-command-line-use/&#34;&gt;here&lt;/a&gt;. This helps you avoid hitting Github API limits when using homebrew.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &#39;export HOMEBREW_GITHUB_API_TOKEN=&amp;quot;your_new_token&amp;quot;&#39; &amp;gt;&amp;gt; $HOME/.bash_profile
+. $HOME/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;install-homebrew-and-tap-some-taps&#34;&gt;Install Homebrew and tap some taps&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/usr/bin/ruby -e \
+	&amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
+brew analytics off # full on paranoid mode
+brew tap caskroom/cask # GUI apps
+brew tap caskroom/fonts # fonts
+brew tap homebrew/science
+brew tap homebrew/completions
+brew tap homebrew/services
+brew tap homebrew/versions
+brew tap osgeo/osgeo4mac # If you need Geospatial stuff
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;bash&#34;&gt;Bash&lt;/h3&gt;
+
+&lt;p&gt;Install Bash and verify&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install bash bash-completion2
+/usr/local/bin/bash --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;GNU bash, version 4.3.46(1)-release (x86_64-apple-darwin15.5.0)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Setup bash along with some utility functions. Primarily we setup &lt;code&gt;brewPkg&lt;/code&gt; bash function which will not only install homebrew packages but also log the output for debugging purposes if so desired.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+sudo sh -c &#39;echo &amp;quot;/usr/local/bin/bash&amp;quot; &amp;gt;&amp;gt; /etc/shells&#39;
+
+mkdir -p $HOME/Library/Logs/Homebrew/$USER
+
+echo &#39;
+if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+  . $(brew --prefix)/share/bash-completion/bash_completion
+fi
+
+brewPkg() {
+  pkg=$1
+  shift
+  (
+    brew install ${pkg} $*  2&amp;gt;&amp;amp;1 |
+    	tee $HOME/Library/Logs/Homebrew/$USER/${pkg}-$(date +&amp;quot;%F_%H%M&amp;quot;).txt
+  )
+}
+
+brewSrcPkg() {
+  pkg=$1
+  shift
+  (
+    brew install --build-from-source  ${pkg} $*  2&amp;gt;&amp;amp;1 |
+    	tee $HOME/Library/Logs/Homebrew/$USER/${pkg}-$(date +&amp;quot;%F_%H%M&amp;quot;).txt
+  )
+}
+
+brewSrcPkgWgcc() {
+  pkg=$1
+  shift
+  (
+    export CC=gcc-6
+    export CXX=g++-6
+    export HOMEBREW_CC=gcc-6
+    export HOMEBREW_CXX=g++-6
+    brew install --build-from-source  ${pkg} $*  2&amp;gt;&amp;amp;1 |
+    	tee $HOME/Library/Logs/Homebrew/$USER/${pkg}-$(date +&amp;quot;%F_%H%M&amp;quot;).txt
+  )
+}
+
+&#39; &amp;gt;&amp;gt;  ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Load the new bash shell, so we can use all the auto-complete goodies. Or simply close and restart the Terminal App.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/usr/local/bin/bash -l
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;gcc-compiler-and-autotools&#34;&gt;GCC Compiler and Autotools&lt;/h3&gt;
+
+&lt;p&gt;Install gcc, without multilib so that &lt;a href=&#34;http://stackoverflow.com/questions/29057437/compile-openmp-programs-with-gcc-compiler-on-os-x-yosemite&#34;&gt;OpenMP works&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg gcc --without-multilib
+/usr/local/bin/gcc-6 --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;gcc-6 (Homebrew gcc 6.1.0 --without-multilib) 6.1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/usr/local/bin/gfortran --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;GNU Fortran (Homebrew gcc 6.1.0 --without-multilib) 6.1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Setup aliases for homebrew&amp;rsquo;s gcc&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd /usr/local/bin
+ln -s gcov-6 gcov
+ln -s gcc-6 gcc
+ln -s g++-6 g++
+ln -s cpp-6 cpp
+ln -s c++-6 c++
+cd -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Install ccache to speed up compilation&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg ccache
+/usr/local/bin/ccache --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;ccache version 3.2.7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Install autotools, pkg-config, and cmake&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg cmake pkg-config autoconf automake
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Let&amp;rsquo;s make sure OpenMP is working as expected.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; omp-test.c &amp;lt;&amp;lt;&amp;quot;END&amp;quot;
+#include &amp;lt;omp.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+int main() {
+    #pragma omp parallel
+    printf(&amp;quot;Hello from thread %d, nthreads %d\n&amp;quot;, omp_get_thread_num(), omp_get_num_threads());
+}
+END
+gcc-6 -fopenmp -o omp-test omp-test.c 
+./omp-test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;You should see something similar but not exactly the same.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Hello from thread 1, nthreads 8
+Hello from thread 6, nthreads 8
+Hello from thread 4, nthreads 8
+Hello from thread 2, nthreads 8
+Hello from thread 5, nthreads 8
+Hello from thread 0, nthreads 8
+Hello from thread 3, nthreads 8
+Hello from thread 7, nthreads 8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;misc-libs&#34;&gt;Misc libs&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg freetype fontconfig  pixman gettext
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ssl-ssh-libs&#34;&gt;SSL/SSH Libs&lt;/h3&gt;
+
+&lt;p&gt;Setup and verify openssl and libressl.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg  openssl
+/usr/local/opt/openssl/bin/openssl version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;OpenSSL 1.0.2h  3 May 2016
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg  libressl
+/usr/local/opt/libressl/bin/openssl version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;LibreSSL 2.3.6
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg libssh2
+```	
+
+#### wget and curl
+
+```bash
+brewPkg wget
+/usr/local/bin/wget --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;GNU Wget 1.18 built on darwin15.6.0.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg curl
+/usr/local/opt/curl/bin/curl-config --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;libcurl 7.50.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;gpg&#34;&gt;GPG&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg gpg2 --with-readline
+/usr/local/bin/gpg2 --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;gpg (GnuPG) 2.0.30
+libgcrypt 1.7.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg gpgme
+/usr/local/bin/gpgme-config --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;1.6.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;java&#34;&gt;Java&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install java
+java -version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;java version &amp;quot;1.8.0_102&amp;quot;
+Java(TM) SE Runtime Environment (build 1.8.0_102-b14)
+Java HotSpot(TM) 64-Bit Server VM (build 25.102-b14, mixed mode)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;x-server&#34;&gt;X-server&lt;/h3&gt;
+
+&lt;p&gt;We need an X-Server. This takes a lot of time so be patient.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install xquartz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;python&#34;&gt;Python&lt;/h3&gt;
+
+&lt;p&gt;Install python2&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg python
+pip install --upgrade pip setuptools
+/usr/local/bin/python -V
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Python 2.7.12
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Install Python3&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg python3
+pip3 install --upgrade pip setuptools wheel
+/usr/local/bin/python3 -V
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Python 3.5.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;git&#34;&gt;Git&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg git --with-blk-sha1 --with-gettext \
+	--with-pcre --with-persistent-https
+/usr/local/bin/git --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;git version 2.9.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;boost-libs-w-dependencies&#34;&gt;Boost libs w/ dependencies&lt;/h3&gt;
+
+&lt;p&gt;Install icu4c library for Unicode and globalization&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg icu4c
+/usr/local/opt/icu4c/bin/icu-config --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;57.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Install libxml2, libiconv, and libxslt.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg libxml2 libiconv libxslt
+brew link libxml2 --force
+/usr/local/bin/xml2-config --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;2.9.4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Install boost. Ignore the warning at the end.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg boost --with-icu4c --with-mpi --without-single
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Boost is a beast of a library, so we need some quick programs to test whether it has installed successfully.
+Shamelessly copied/adapted from the &lt;a href=&#34;https://tabreziqbal.wordpress.com/2006/03/16/how-to-test-c-boost-installation/&#34;&gt;Intertubes&lt;/a&gt;. Ignore the warning messages spewed by the compiler.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; first.cpp &amp;lt;&amp;lt;END
+#include&amp;lt;iostream&amp;gt;
+#include&amp;lt;boost/any.hpp&amp;gt;
+int main()
+{
+	boost::any a(5);
+	a = 1.61803;
+	std::cout &amp;lt;&amp;lt; boost::any_cast&amp;lt;double&amp;gt;(a) &amp;lt;&amp;lt; std::endl;
+}
+END
+clang++ -o first first.cpp
+./first
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;1.61803
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; second.cpp &amp;lt;&amp;lt;END
+#include&amp;lt;iostream&amp;gt;
+#include &amp;lt;boost/filesystem.hpp&amp;gt;
+int main() 
+{
+	boost::filesystem::path full_path( boost::filesystem::current_path() );
+	if ( boost::filesystem::exists( &amp;quot;second.cpp&amp;quot; ) )
+	{
+		std::cout &amp;lt;&amp;lt; &amp;quot;Found second.cpp file in &amp;quot; &amp;lt;&amp;lt; full_path &amp;lt;&amp;lt; std::endl;
+	} else {
+		std::cerr &amp;lt;&amp;lt; &amp;quot;Argh!, Something not working&amp;quot; &amp;lt;&amp;lt; std::endl;
+		return 1;
+	}
+}
+END
+clang++ -o second second.cpp \
+	-lboost_filesystem-mt -lboost_system-mt
+./second
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Found second.cpp file in &amp;quot;/Users/brewmaster&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;latex-support&#34;&gt;Latex Support&lt;/h3&gt;
+
+&lt;p&gt;Take a Coffee break and then some, because this is a huge one.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install mactex
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;r&#34;&gt;R&lt;/h3&gt;
+
+&lt;p&gt;&lt;br/&gt;Install libsvg, librsvg, and cairo.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg cairo 
+brewPkg libsvg
+brewPkg librsvg
+brewPkg pandoc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Openblas for speedier linear algebra in R.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg openblas --with-openmp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Test openblas. Shamelessly copied from &lt;a href=&#34;https://github.com/xianyi/OpenBLAS/wiki/User-Manual#code-examples&#34;&gt;Intertubes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; test-openblas.c &amp;lt;&amp;lt;&amp;quot;END&amp;quot;
+#include &amp;lt;cblas.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+
+void main()
+{
+  int i=0;
+  double A[6] = {1.0,2.0,1.0,-3.0,4.0,-1.0};         
+  double B[6] = {1.0,2.0,1.0,-3.0,4.0,-1.0};  
+  double C[9] = {.5,.5,.5,.5,.5,.5,.5,.5,.5}; 
+  cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans,
+  	3,3,2,1,A, 3, B, 3,2,C,3);
+
+  for(i=0; i&amp;lt;9; i++)
+    printf(&amp;quot;%lf &amp;quot;, C[i]);
+  printf(&amp;quot;\n&amp;quot;);
+}
+END
+
+clang -L/usr/local/opt/openblas/lib \
+	-I/usr/local/opt/openblas/include \
+	-lopenblas -lpthread \
+	-o test-openblas test-openblas.c
+	
+./test-openblas 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;11.000000 -9.000000 5.000000 -9.000000 21.000000 -1.000000 5.000000 -1.000000 3.000000 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Eigen and Armadillo for Rcpp and v8 for &lt;a href=&#34;https://github.com/jeroenooms/V8&#34;&gt;R+v8&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg eigen
+brewPkg armadillo --with-hdf5
+brewPkg v8-315
+brew link v8-315 --force
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Test Armadillo&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd /usr/local/opt/armadillo/examples/
+clang++   -O2   -o example1  example1.cpp  -larmadillo -framework Accelerate
+./example1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;You should see something like below and lot more.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Armadillo version: 7.200.2 (Plutocratic Climate Change Denialist)
+A.n_rows: 2
+A.n_cols: 3
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Test v8&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &#39;quit()&#39; | v8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;V8 version 3.15.11.18 [sample shell]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Finally install R itself, and also setup R to use Apple&amp;rsquo;s &lt;code&gt;clang&lt;/code&gt; compiler. We can also setup R to use &lt;code&gt;gcc&lt;/code&gt; compiler to take advantage of &lt;code&gt;openmp&lt;/code&gt; support, but I&amp;rsquo;ve noticed that not all R packages compile correctly when using GCC.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg r --with-openblas --with-pango
+# for rJava to work.
+R CMD javareconf \
+	JAVA_CPPFLAGS=-I/System/Library/Frameworks/JavaVM.framework/Headers
+
+# Setup $HOME/.r/Makevars file to properly link against homebrew packages.
+mkdir $HOME/.r
+cat &amp;gt; $HOME/.r/Makevars &amp;lt;&amp;lt; END
+CC=ccache clang
+CXX=ccache clang++
+SHLIB_CXXLD=ccache clang++
+FC=gfortran-6
+F77=gfortran-6
+MAKE=make -j8
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig
+PKG_LIBS += -L/usr/local/opt/icu4c/lib -L/usr/local/lib
+END
+
+
+# Also setup a R_LIBS_USER directory to install R packages locally.
+mkdir -p $HOME/Library/R/3.x/library
+cat &amp;gt; $HOME/.Renviron &amp;lt;&amp;lt;END
+export R_LIBS_USER=$HOME/Library/R/3.x/library
+END
+
+# add same stuff to .bash_profile
+cat $HOME/.Renviron &amp;gt;&amp;gt; $HOME/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;gis-stuff&#34;&gt;GIS Stuff&lt;/h3&gt;
+
+&lt;p&gt;Mostly PostGIS + Geo libs.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg postgresql
+brewPkg geos
+brewPkg proj
+brewPkg gdal2 \
+	--with-armadillo --with-complete --with-libkml \
+	--with-opencl --with-postgresql --with-unsupported
+brewPkg postgis --with-gui
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;other-programming-languages&#34;&gt;Other Programming Languages&lt;/h3&gt;
+
+&lt;p&gt;Some other programming languages I use occasionally.&lt;/p&gt;
+
+&lt;h4 id=&#34;node-js&#34;&gt;Node.js&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg node
+brewPkg phantomjs casperjs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;scala&#34;&gt;Scala&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install scala
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;golang&#34;&gt;golang&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install golang
+cat &amp;gt;&amp;gt; $HOME/.bash_profile &amp;lt;&amp;lt;END
+export GOPATH=$HOME/golang
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+END
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;other-interesting-stuff&#34;&gt;Other Interesting Stuff&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg imagemagick --with-fontconfig --with-ghostscript \
+	--with-librsvg --with-openmp --with-pango --with-webp
+brewPkg vim --with-python3 --with-client-server \
+	--with-lua --with-luajit --with-override-system-vi
+
+brewPkg macvim --with-python3 --with-client-server \
+	--with-lua --with-luajit --with-override-system-vim
+
+brewPkg jq # json processing
+
+brew cask install font-hack font-fira-code #extra fonts
+
+brewPkg mlpack # Fast Machine Learning
+brewPkg protobuf --devel # Google&#39;s Protocol Buffer Library
+brewPkg gsl # GNU Scientific Library
+brewPkg libyaml # YAML Support
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;gui-apps&#34;&gt;GUI Apps&lt;/h3&gt;
+
+&lt;p&gt;Apps related to Securing your Mac.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install blockblock knockknock \
+	dhs taskexplorer kextviewr
+brew cask install suspicious-package
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Quicklook Plugins for Developers.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install qlcolorcode qlstephen qlmarkdown \
+	quicklook-json qlprettypatch quicklook-csv betterzipql \
+	qlimagesize webpquicklook
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;These are some GUI apps I use. Pick and chose as you like. They are not necessarily related to R or even development.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install google-chrome chrome-devtools firefox iterm2 seil \
+ slate keepassx free-mind itsycal flux caffeine alfred beardedspice \
+ macdown mysqlworkbench osxfuse smcfancontrol torbrowser vagrant\
+ vagrant-manager vlc cog yed slack owncloud 
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
       <title>Leaflet Diary: Chapter 4, Towards Version 1.1</title>
       <link>/2016/11/leaflet-diary-chapter-4-towards-version-1.1/</link>
       <pubDate>Wed, 02 Nov 2016 17:00:00 -0400</pubDate>
@@ -1210,21 +1751,6 @@ grid.arrange(gInf, gUemp, ncol=2)
 &lt;p&gt;&amp;nbsp;
 &lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;880f4c0a3e264e598eccb3e631f9833e&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
 &lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Video of my talk on Elasticsearch at Elastic{ON} 2015</title>
-      <link>/2015/05/video-of-my-talk-on-elasticsearch-at-elasticon-2015/</link>
-      <pubDate>Wed, 27 May 2015 02:01:00 +0000</pubDate>
-      
-      <guid>/2015/05/video-of-my-talk-on-elasticsearch-at-elasticon-2015/</guid>
-      <description>&lt;p&gt;Back in March, 2015 I gave a talk at &lt;a href=&#34;http://www.elasticon.com/&#34;&gt;Elastic{ON}, 2015&lt;/a&gt; on how to scale Elasticsearch for production scale data. Here&amp;rsquo;s a &lt;a href=&#34;https://www.elastic.co/blog/elasticon-video-of-the-week-verizon&#34;&gt;blog post&lt;/a&gt; on it and here&amp;rsquo;s the &lt;a href=&#34;https://www.elastic.co/elasticon/2015/sf/scaling-elasticsearch-for-production-at-verizon&#34;&gt;video&lt;/a&gt; of it. I got a lot of positive feedback from the community on the talk and it was personally a wonderful experience to share our story with the ever growing elasticsearch community. The opportunity to speak at a large user conference was beneficial for me tooa as it allowed me to sharpen my public speaking skills.&lt;/p&gt;
-
-&lt;p&gt;And here&amp;rsquo;s the slide deck of the talk&amp;hellip;&lt;/p&gt;
-
-&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;7ba5e31d097e4181b19ac084bcc07232&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-
 </description>
     </item>
     
