@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>About Me</title>
+		<title>RStudio IDE Shortcuts learned at Rstudio::conf 2017</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<meta name="generator" content="Hugo 0.17" />
@@ -18,7 +18,7 @@
 		
 	</head>
 	<body>
-		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> About Me</div>
+		<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> RStudio IDE Shortcuts learned at Rstudio::conf 2017</div>
 		<div id="wrapper">
 
 			
@@ -77,27 +77,62 @@
 			<div class="container">
 
 <div id="article">
-	<div class="article-title">About Me</div>
-  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 1999-01-01</small></p> <hr/>
+	<div class="article-title">RStudio IDE Shortcuts learned at Rstudio::conf 2017</div>
+  <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2017-01-19</small></p> <hr/>
   <div class="post">
-		<p>More Information on my About.me page linked below.</p>
+		<p>I made this doc to aggregate all the keyboard shortcuts from Kevin Ushey&rsquo;s talk: <em>What’s New in the IDE?</em> at <a href="https://www.rstudio.com/conference/">RStudio::conf</a> 2017 in one place. Everything is lifted from his <a href="https://rawgit.com/kevinushey/2017-rstudio-conf/master/slides.html">slides</a>. If you find this one page summary useful thank him not me.</p>
 
-<table border="0" cellpadding="0" cellspacing="0">
-    <tbody>
-        <tr>
-            <td align="left" valign="top" style="width:107px;line-height:1;vertical-align:top">
-                <img alt="--" width="0" height="0" style="display:block;width:0;height:0;overflow:hidden">
-                <div><img src="https://d3mod6n032mdiz.cloudfront.net/thumb2/b/h/a/bhaskar_karambelkar/bhaskar_karambelkar-105x70.jpg" alt="" width="105" height="70" style="margin:0;padding:0;display:block;border:1px solid #eeeeee"></div>
-            </td>
-            <td style="width:10px;font-size:0px;">&nbsp;</td>
-            <td align="left" valign="bottom" style="width:auto;line-height:1;padding:0px;padding-bottom:3px;vertical-align:bottom">
-                <div style="margin:0;font-size:18px;font-weight:bold;color:#333333;font-family:proxima-nova-1,Proxima-Nova, Helvetica, Arial, Sans-Serif">Bhaskar Karambelkar</div>
-                <div style="margin:0;margin-top:1px;font-size:12px;color:#2b82ad;font-family:proxima-nova-1,Proxima-Nova, Helvetica, Arial, Sans-Serif"><img alt="https://" width="0" height="0" style="display:block;width:0;height:0;overflow:hidden"><a href='//about.me/bhaskar_karambelkar'>about.me/bhaskar_karambelkar</a></div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<p></p>
 
+<h3 id="auto-completion">Auto-Completion</h3>
+
+<ul>
+<li><p><code>Ctrl+Space</code> or <code>Tab</code>, the former will also work on new lines.</p></li>
+
+<li><p>Supports fuzzy matching. e.g. <code>tiarlv</code> will match <code>thisisaratherlongvariable</code>.</p></li>
+
+<li><p>symbols can or cannot be present in the target completion.</p></li>
+
+<li><p>scans file for auto-completion candidates, not just global environment.</p></li>
+
+<li><p>filename completion searches recursively in sub directories and completes with full path name.</p></li>
+
+<li><p>works correctly inside <code>Sys.getenv()</code>, <code>Sys.setenv()</code>, <code>options()</code>, <code>getOptions()</code>, <code>attr()</code>.</p></li>
+</ul>
+
+<h3 id="other-shortcuts">Other Shortcuts</h3>
+
+<ul>
+<li><p><code>Ctrl + .</code>: Fuzzy find files <strong>This will change your life, I promise!</strong></p></li>
+
+<li><p><code>Ctrl + Shift + F</code>: Find in files</p></li>
+
+<li><p><code>Ctrl + Enter</code>: Execute <strong>statement</strong> under cursor, possibly spanning multiple lines.</p></li>
+
+<li><p><code>Ctrl + Alt + Shift + M</code>: Rename in scope. Refactoring FTW!</p></li>
+
+<li><p><code>Ctrl + Shift + A</code>: Reformat selection.</p></li>
+
+<li><p><code>Ctrl + Alt + Up/Down</code> or <code>Alt + mouse click-n-drag</code>: Multiple cursors.</p></li>
+
+<li><p><code>Alt + -</code>: Inserts the  omnipresent <code>&lt;-</code>.</p></li>
+
+<li><p><code>Crtl + Shift + M</code>: Inserts <em>une pipe</em> (<code>%&gt;%</code>).</p></li>
+
+<li><p><code>Ctrl + Shift + 0</code>: Toggles document overview.</p></li>
+
+<li><p><code>Ctrl + Shift + I</code>: Inserts R code chunk. <code>```</code>.</p></li>
+
+<li><p><code>Crtl + Shift + Enter</code>: Runs a whole R code chunk in Rmarkdown.</p></li>
+
+<li><p><code>Ctrl + PgUp/PgDn</code>: Go Chunk Up/Down.</p></li>
+
+<li><p><code>Ctrl + 1/2</code>: Transfer focus between editor/console.</p></li>
+
+<li><p><code>Ctrl + Shift + 1/2</code>: Zooms editor/console.</p></li>
+
+<li><p><code>Alt + Shift + K</code>: Show keyboard shortcuts.</p></li>
+</ul>
   </div>
 </div>
 
@@ -105,8 +140,8 @@
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 <ul class="pager">
-   &nbsp;<li class="previous"><a href="/2007/06/bash-shell-tricks/"> Bash Shell Tricks</a></li>
-   &nbsp;<li class="next"><a href="/1/01/"> </a></li>
+  
+   &nbsp;<li class="next"><a href="/2016/11/leaflet-diary-chapter-4-towards-version-1.1/"> Leaflet Diary: Chapter 4, Towards Version 1.1</a></li>
 </ul>
 
 				<footer>

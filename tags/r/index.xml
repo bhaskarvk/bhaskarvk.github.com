@@ -10,6 +10,67 @@
     <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>RStudio IDE Shortcuts learned at Rstudio::conf 2017</title>
+      <link>/2017/01/rstudio-ide-shortcuts-learned-at-rstudioconf-2017/</link>
+      <pubDate>Thu, 19 Jan 2017 20:44:23 -0500</pubDate>
+      
+      <guid>/2017/01/rstudio-ide-shortcuts-learned-at-rstudioconf-2017/</guid>
+      <description>&lt;p&gt;I made this doc to aggregate all the keyboard shortcuts from Kevin Ushey&amp;rsquo;s talk: &lt;em&gt;What’s New in the IDE?&lt;/em&gt; at &lt;a href=&#34;https://www.rstudio.com/conference/&#34;&gt;RStudio::conf&lt;/a&gt; 2017 in one place. Everything is lifted from his &lt;a href=&#34;https://rawgit.com/kevinushey/2017-rstudio-conf/master/slides.html&#34;&gt;slides&lt;/a&gt;. If you find this one page summary useful thank him not me.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;auto-completion&#34;&gt;Auto-Completion&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl+Space&lt;/code&gt; or &lt;code&gt;Tab&lt;/code&gt;, the former will also work on new lines.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Supports fuzzy matching. e.g. &lt;code&gt;tiarlv&lt;/code&gt; will match &lt;code&gt;thisisaratherlongvariable&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;symbols can or cannot be present in the target completion.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;scans file for auto-completion candidates, not just global environment.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;filename completion searches recursively in sub directories and completes with full path name.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;works correctly inside &lt;code&gt;Sys.getenv()&lt;/code&gt;, &lt;code&gt;Sys.setenv()&lt;/code&gt;, &lt;code&gt;options()&lt;/code&gt;, &lt;code&gt;getOptions()&lt;/code&gt;, &lt;code&gt;attr()&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;other-shortcuts&#34;&gt;Other Shortcuts&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + .&lt;/code&gt;: Fuzzy find files &lt;strong&gt;This will change your life, I promise!&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Shift + F&lt;/code&gt;: Find in files&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Enter&lt;/code&gt;: Execute &lt;strong&gt;statement&lt;/strong&gt; under cursor, possibly spanning multiple lines.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Alt + Shift + M&lt;/code&gt;: Rename in scope. Refactoring FTW!&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Shift + A&lt;/code&gt;: Reformat selection.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Alt + Up/Down&lt;/code&gt; or &lt;code&gt;Alt + mouse click-n-drag&lt;/code&gt;: Multiple cursors.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Alt + -&lt;/code&gt;: Inserts the  omnipresent &lt;code&gt;&amp;lt;-&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Crtl + Shift + M&lt;/code&gt;: Inserts &lt;em&gt;une pipe&lt;/em&gt; (&lt;code&gt;%&amp;gt;%&lt;/code&gt;).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Shift + 0&lt;/code&gt;: Toggles document overview.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Shift + I&lt;/code&gt;: Inserts R code chunk. &lt;code&gt;```&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Crtl + Shift + Enter&lt;/code&gt;: Runs a whole R code chunk in Rmarkdown.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + PgUp/PgDn&lt;/code&gt;: Go Chunk Up/Down.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + 1/2&lt;/code&gt;: Transfer focus between editor/console.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Shift + 1/2&lt;/code&gt;: Zooms editor/console.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Alt + Shift + K&lt;/code&gt;: Show keyboard shortcuts.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>Leaflet Diary: Chapter 4, Towards Version 1.1</title>
       <link>/2016/11/leaflet-diary-chapter-4-towards-version-1.1/</link>
       <pubDate>Wed, 02 Nov 2016 17:00:00 -0400</pubDate>
