@@ -5,14 +5,15 @@
 		<title>Twitter</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
-		<meta name="generator" content="Hugo 0.16" />
+		<meta name="generator" content="Hugo 0.18.1" />
 		<link href="/tags/twitter/index.xml" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
 		<link href="/tags/twitter/index.xml" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
-		<link href="/css/bootstrap-solarized-light.css" rel="stylesheet">
-		<link href="/css/hc-new.css" type="text/css"  rel="stylesheet">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/solarized_dark.min.css" rel="stylesheet"/>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<link href="/css/bootstrap-solarized-light.css" type="text/css"  rel="stylesheet">
+		<link href="/css/hc.css" type="text/css"  rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/solarized-dark.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" rel="stylesheet"/>
     
 		
 		
@@ -36,11 +37,11 @@
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 						
-						<li><a href="/about/">About Me </a></li>
+						<li><a href="/about/">about me </a></li>
 						
-						<li><a href="/">Home </a></li>
+						<li><a href="/">home </a></li>
 						
-						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						<li><a href="//photos.karambelkar.info">photography </a></li>
 						
 						</ul>
 					</div>
@@ -51,14 +52,14 @@
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
 					<a href="/"><img class="sidebar-logo" src="/images/profile.jpg" /></a>
-					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3></h3></li>
+					<li class="sidebar-brand"><a href="/"><h1 class="brand">Bhaskar Karambelkar&#39;s Blog</h1></a><h3>Data Scientist among other things</h3></li>
 					<hr />
 					
-						<li><a href="/about/">About Me </a></li>
+						<li><a href="/about/">about me </a></li>
 					
-						<li><a href="/">Home </a></li>
+						<li><a href="/">home </a></li>
 					
-						<li><a href="//photos.karambelkar.info">Photography </a></li>
+						<li><a href="//photos.karambelkar.info">photography </a></li>
 					
                     <hr/>
 					<div id="social-wrapper">
@@ -82,7 +83,8 @@
   
     <li><span><h4><a href="/2015/01/how-to-use-twitters-search-rest-api-most-effectively./">How to use Twitter’s Search REST API most effectively.</a><time class="pull-right post-list">Mon, Jan 5, 2015</h4></time></span></span>
   <div class="summary">
-    This blog post will discuss various techniques to use Twitter&rsquo;s search REST API most effectively, given the constraints and limits of the said API. I&rsquo;ll be using python for demonstration, but any native API which supports the Twitter REST API will do. Introduction Twitter provides the REST search api for searching tweets from Twitter&rsquo;s search index. This is different than using the streaming filter API, in that the later is real-time and starts giving you results from the point of query, while the former is retrospective and will give you results from past, up to as far back as the search index goes (usually last 7 days).
+    This blog post will discuss various techniques to use Twitter&rsquo;s search REST API most effectively, given the constraints and limits of the said API. I&rsquo;ll be using python for demonstration, but any native API which supports the Twitter REST API will do.
+Introduction Twitter provides the REST search api for searching tweets from Twitter&rsquo;s search index. This is different than using the streaming filter API, in that the later is real-time and starts giving you results from the point of query, while the former is retrospective and will give you results from past, up to as far back as the search index goes (usually last 7 days).
   </div>
   <div class="read-more-link">
     <a href="/2015/01/how-to-use-twitters-search-rest-api-most-effectively./">Read More…</a>
@@ -93,21 +95,22 @@
 
     
 				<footer>
-                    <p class="text-muted credit">&copy; 2015 Bhaskar V. Karambelkar. All rights reserved.</p>
+                    <p class="text-muted credit">&copy; 2007-2017 Bhaskar V. Karambelkar. All rights reserved.</p>
 				</footer>
 			</div>
 		</div>
 		
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
 		<script type="text/javascript" src="/js/hc.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/r.min.js"></script>
-        <script>
-          hljs.initHighlightingOnLoad();
-        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
 		
 		<script type="text/javascript">
 		  var _paq = _paq || [];
