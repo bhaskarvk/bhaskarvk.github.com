@@ -10,6 +10,82 @@
     <atom:link href="/tags/r-stats/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Leaflet Diary: Chapter 5, Leaflet 1.1 and Beyond</title>
+      <link>/2017/02/leaflet-diary-chapter-5-leaflet-1.1-and-beyond/</link>
+      <pubDate>Fri, 24 Feb 2017 17:00:00 -0400</pubDate>
+      
+      <guid>/2017/02/leaflet-diary-chapter-5-leaflet-1.1-and-beyond/</guid>
+      <description>
+
+&lt;p&gt;This is the sixth blog entry in my series &lt;a href=&#34;/2016/09/leaflet-diary-prologue/&#34;&gt;Leaflet-Diary&lt;/a&gt;. In my last post: &lt;a href=&#34;/2016/11/leaflet-diary-chapter-4-towards-version-1.1/&#34;&gt;Chapter 4, Towards Leaflet 1.1&lt;/a&gt;, I talked about changes that were made to the Leaflet package to make it extensible.
+This one is about the release of version 1.1 and what&amp;rsquo;s coming in the months ahead.&lt;/p&gt;
+
+&lt;h2 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Leaflet 1.1.0 has finally been released and available via CRAN. It contains a ton of new features, enhancements, and bug fixes.&lt;/li&gt;
+&lt;li&gt;Next iteration of changes will start soon.&lt;/li&gt;
+&lt;li&gt;Leaflet.extras is coming along nicely and should also be available on CRAN in the near future.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;long-read&#34;&gt;Long Read&lt;/h2&gt;
+
+&lt;h3 id=&#34;version-1-1&#34;&gt;Version 1.1&lt;/h3&gt;
+
+&lt;p&gt;After almost a full year of development and with contributions from many people, Leaflet 1.1.0 was &lt;a href=&#34;https://blog.rstudio.org/2017/02/22/leaflet-1-1-0/&#34;&gt;released&lt;/a&gt; on &lt;a href=&#34;https://cran.r-project.org/package=leaflet&#34;&gt;CRAN&lt;/a&gt;. Although RStudio folks were really nice to mention my humble contribution, I can personally tell you that this was a combination of contributions from a lot of folks. A truly team effort of many people involved in improving the GIS visualization capabilities in R.&lt;/p&gt;
+
+&lt;p&gt;Here I will elaborate on the RStudio &lt;a href=&#34;https://blog.rstudio.org/2017/02/22/leaflet-1-1-0/&#34;&gt;blog post&lt;/a&gt;  highlighting some of the major features available in leaflet 1.1.0. If you have followed the past posts of &lt;a href=&#34;/2016/09/leaflet-diary-prologue/&#34;&gt;Leaflet Diary&lt;/a&gt; you might be familiar with most of the following items.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Leaflet JS lib upgraded from 0.7.3 to 0.7.7, and respective plugins upgraded too. Leaflet 0.7.7 will be the last release in 0.7.x series of the Javascript library.&lt;/li&gt;
+&lt;li&gt;Support for custom projections via the &lt;code&gt;leafletCRS&lt;/code&gt; class. To see this in action check out some of the examples I have uploaded to Rpubs.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/proj4leaflet&#34;&gt;Introductory post&lt;/a&gt; about Proj4Leaflet support.&lt;/li&gt;
+&lt;li&gt;Slightly advanced use case of &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-polarmaps&#34;&gt;polar projections&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Non geographic data plotting using &lt;code&gt;L.CRS.Simple&lt;/code&gt;; &lt;a href=&#34;http://rpubs.com/bhaskarvk/tilegramsR&#34;&gt;Tilegrams in R&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Support for &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-labels&#34;&gt;labels&lt;/a&gt; on mouse over.&lt;/li&gt;
+&lt;li&gt;Mutually compatible marker clustering and grouping. See fourth example in this &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-marker-clusterming&#34;&gt;Rpubs page&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Auto-completable &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-providers&#34;&gt;3&lt;sup&gt;rd&lt;/sup&gt; party tiles provider list&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Support for adding &lt;a href=&#34;http://rpubs.com/bhaskarvk/easybutton&#34;&gt;custom Javascript buttons and toolbars&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Ability to &lt;a href=&#34;http://rpubs.com/bhaskarvk/polygon-highlight&#34;&gt;highlight shapes&lt;/a&gt; on mouse over.&lt;/li&gt;
+&lt;li&gt;Support for more &lt;a href=&#34;https://rstudio.github.io/leaflet/markers.html#awesome-icons&#34;&gt;customized markers&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Support for &lt;a href=&#34;https://cran.r-project.org/package=sf&#34;&gt;sf&lt;/a&gt; objects in addition to &lt;code&gt;sp&lt;/code&gt; objects. &lt;code&gt;sf&lt;/code&gt; is the successor and in many ways a better alternative to &lt;code&gt;sp&lt;/code&gt; for storing/processing spatial data in R.&lt;/li&gt;
+&lt;li&gt;Support for &lt;a href=&#34;https://cran.r-project.org/package=crosstalk&#34;&gt;crosstalk&lt;/a&gt; from cross-widget communication. This allows your leaflet widget to interact with other widgets on the page.&lt;/li&gt;
+&lt;li&gt;With version 1.1.0 leaflet will handle missing data more gracefully. It will either warn or error out when data is missing depending on whether it can or cannot proceed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As you can see a lot of effort and time was put in to making Leaflet 1.1.0 as bug free and as feature rich as possible by everyone involved.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s Next?&lt;/h3&gt;
+
+&lt;p&gt;Although it is still too early to determine what&amp;rsquo;s next for leaflet, one thing we are all excited about is the release of version 1.x of the Leaflet Javascript library. At this point I am evaluating how much of an effort it will be to upgrade the R package to use the 1.x version of the JS lib. But rest assured that the new JS version not only comes with a lot of bug fixes, but also some major performance improvements and some interesting features. So stay tuned for future development.&lt;/p&gt;
+
+&lt;h3 id=&#34;leaflet-extras&#34;&gt;Leaflet Extras&lt;/h3&gt;
+
+&lt;p&gt;My own add-on package to leaflet, &lt;a href=&#34;https://github.com/bhaskarvk/leaflet.extras&#34;&gt;leaflet-extras&lt;/a&gt; is coming along nicely. If you haven&amp;rsquo;t checked it out yet, I highly encourage you to do so. One of the advantage of the Leaflet JavaScript library is that it is very extensible and provides a ton of plugins that enhance the capabilities of the base library. We have already integrated some of these plugins in to the leaflet R package. But we cannot incorporate all the plugins and we need to keep the leaflet R package relatively stable. With that in mind we made the R package extensible, and &lt;code&gt;leaflet.extras&lt;/code&gt; is an add-on R package that provides enhanced functionality using a lot of 3&lt;sup&gt;rd&lt;/sup&gt; plugins. For those unfamiliar with &lt;code&gt;leaflet.extras&lt;/code&gt; here is a small list of feature set it supports.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Enhanced and extended support for GeoJSON, TopoJSON, GPX, KML file formats.&lt;/li&gt;
+&lt;li&gt;Automatic choropleths with bi-directional legend highlighting.&lt;/li&gt;
+&lt;li&gt;Heatmaps&lt;/li&gt;
+&lt;li&gt;More customized icons.&lt;/li&gt;
+&lt;li&gt;Support for drawing shaped and markers on the map and interacting with them in Shiny.&lt;/li&gt;
+&lt;li&gt;Search GeoJSON and markers on the map. Geolocate using OSM Nominatim API.&lt;/li&gt;
+&lt;li&gt;Support for time dimension. (Coming soon).&lt;/li&gt;
+&lt;li&gt;Miscellaneous features like tile caching, suspend map during scrolling, GPS locator.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you work with ESRI products like ArcGIS/ArcMap etc. Also check out my other add-on package &lt;a href=&#34;https://github.com/bhaskarvk/leaflet.esri&#34;&gt;leaflet.esri&lt;/a&gt;. More on this in a separate blog post.&lt;/p&gt;
+
+&lt;h2 id=&#34;final-word&#34;&gt;Final Word&lt;/h2&gt;
+
+&lt;p&gt;2017 promises to bring a lot of exciting features to geospatial data analysis and visualization using R. A lot of interested parties and experts in this domain are involved in the process. If you want to follow I suggest you check out &lt;a href=&#34;https://github.com/r-spatial/&#34;&gt;r-spatial&lt;/a&gt; and its related products/blogs. Also the folks over at ROpenSci are doing some fantastic work in providing a lot of packages for &lt;a href=&#34;https://ropensci.org/packages/#geospatial&#34;&gt;geospatial analysis&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>RStudio IDE Shortcuts learned at Rstudio::conf 2017</title>
       <link>/2017/01/rstudio-ide-shortcuts-learned-at-rstudioconf-2017/</link>
       <pubDate>Thu, 19 Jan 2017 20:44:23 -0500</pubDate>
@@ -959,6 +1035,7 @@ Here&amp;rsquo;s a sample of what can be done now.&lt;br/&gt;&lt;br/&gt;
 &lt;li&gt;2016-10-10 &lt;a href=&#34;/2016/10/leaflet-diary-chapter-2-projections-and-then-some/&#34;&gt;Chapter 2: Projections and then some&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2016-10-19 &lt;a href=&#34;/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/&#34;&gt;Chapter 3: Making Leaflet extensible&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2016-11-02 &lt;a href=&#34;/2016/11/leaflet-diary-chapter-4-towards-version-1.1/&#34;&gt;Chapter 4: Towards Version 1.1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-02-17 &lt;a href=&#34;/2017/02/leaflet-diary-chapter-5-leaflet-1.1-and-beyond/&#34;&gt;Chapter 5, Leaflet 1.1 and Beyond&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

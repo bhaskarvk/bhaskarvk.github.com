@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>/2017/02/leaflet-diary-chapter-5-leaflet-1.1-and-beyond/</loc>
+    <lastmod>2017-02-24T17:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2017/01/rstudio-ide-shortcuts-learned-at-rstudioconf-2017/</loc>
     <lastmod>2017-01-19T20:44:23-05:00</lastmod>
   </url>
@@ -216,7 +221,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2017-01-19T20:44:23-05:00</lastmod>
+    <lastmod>2017-02-24T17:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -330,7 +335,7 @@
   
   <url>
     <loc>/tags/gis/</loc>
-    <lastmod>2016-11-02T17:00:00-04:00</lastmod>
+    <lastmod>2017-02-24T17:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -384,13 +389,13 @@
   
   <url>
     <loc>/tags/leaflet/</loc>
-    <lastmod>2016-11-02T17:00:00-04:00</lastmod>
+    <lastmod>2017-02-24T17:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/leaflet-diary/</loc>
-    <lastmod>2016-11-02T17:00:00-04:00</lastmod>
+    <lastmod>2017-02-24T17:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -456,7 +461,7 @@
   
   <url>
     <loc>/posts/</loc>
-    <lastmod>2017-01-19T20:44:23-05:00</lastmod>
+    <lastmod>2017-02-24T17:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -474,13 +479,13 @@
   
   <url>
     <loc>/tags/r/</loc>
-    <lastmod>2017-01-19T20:44:23-05:00</lastmod>
+    <lastmod>2017-02-24T17:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/r-stats/</loc>
-    <lastmod>2017-01-19T20:44:23-05:00</lastmod>
+    <lastmod>2017-02-24T17:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -498,7 +503,7 @@
   
   <url>
     <loc>/tags/rstats/</loc>
-    <lastmod>2017-01-19T20:44:23-05:00</lastmod>
+    <lastmod>2017-02-24T17:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
