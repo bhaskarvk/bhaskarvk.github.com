@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/index.xml" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+<link href="/index.xml" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+
+  <title>
+    
+    
+       Wicket&#39;s Date &amp; Time Components and Client-Server Timezones 
+    
+  </title>
+  <link rel="canonical" href="/2008/05/wickets-date--time-components-and-client-server-timezones/">
+  
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css"
+    integrity="sha256-nXC6R0O+3ez3B440sqRACd9wvr4A1cHmzr1K+2bINzk=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" integrity="sha256-iU/Wh1HMAs/NgpurDAu14e7S3FkllcJ5aPnpPDdnO6c=" crossorigin="anonymous" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/androidstudio.min.css" integrity="sha256-rEVnyeMfkKzmBwocdeeiqGOu1M/ttUHB7K0meKIwqvw=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css" />
+
+
+<link rel="shortcut icon"
+
+    href="/img/favicon.ico"
+>
+
+
+
+</head>
+
+<a data-balloon="Back to Top" data-balloon-pos="left" id="back-to-top"><i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true"></i></a>
+
+<body lang="en-US">
+    <div class="container">
+        <section class="header row">
+            <div class="columns twelve">
+                <h1>
+                    <div class="name">Bhaskar Karambelkar&#39;s Blog</div>
+                </h1>
+                <nav>
+                    <ul>
+                        
+                        <li><a class="button" href="/"><i class='fa fa-home fa-2x'></i><span class="text">&nbsp;Home</span></a></li>
+                        
+                        <li><a class="button" href="/tags/"><i class='fa fa-tags fa-2x'></i><span class="text">&nbsp;Tags</span></a></li>
+                        
+                        <li><a class="button" href="/series/"><i class='fa fa-folder-open fa-2x'></i><span class="text">&nbsp;Series</span></a></li>
+                        
+                        <li><a class="button" href="/about/"><i class='fa fa-info-circle fa-2x'></i><span class="text">&nbsp;About</span></a></li>
+                        
+                        <li><a class="button" href="http://photos.karambelkar.info"><i class='fa fa-camera-retro fa-2x'></i><span class="text">&nbsp;Photography</span></a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+</section>
+<section class="row content">
+    <div class="columns twelve">
+        <div class="title-container">
+            <h1 class="page-heading">
+    
+        Wicket&#39;s Date &amp; Time Components and Client-Server Timezones
+    
+</h1>
+
+            <p class="meta">&nbsp;<i class="fa fa-calendar-o"></i> Mon May 26 2008 20:30:00 UTC</p>
+            <p id="tags"><small>Tags: </small>
+                
+                    <a class="tag-button" href="//tags/wicket">wicket</a>
+                
+                    <a class="tag-button" href="//tags/java">java</a>
+                
+            </p>
+            <hr/>
+        </div>
+        
+        <div id="toc" class="table-of-contents">
+            <strong>Table of Contents</strong>
+            <hr class="top"/>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#the-problem">The problem</a></li>
+<li><a href="#the-solution">The Solution</a>
+<ul>
+<li><a href="#the-application-class">The Application class</a></li>
+<li><a href="#the-page-class">The Page class</a></li>
+<li><a href="#the-date-time-components">The Date/Time Components</a></li>
+</ul></li>
+<li><a href="#other-thoughts">Other thoughts</a></li>
+</ul>
+</nav>
+            <hr class="bottom"/>
+        </div>
+        
+        <div class="page-content">
+            
+
+<h1 id="the-problem">The problem</h1>
+
+<p>In a typical web application, it is often necessary to work with multiple Timezones on the Client side. On the server side you may wish to store the data in one single &ldquo;Timezone&rdquo; preferably &ldquo;GMT&rdquo;, but it hardly makes sense to display and accept dates in GMT, as this places the onus on the user to translate time in his local timezone, to GMT before entering the time information, and vice-verse for interpreting any dates shown in the Web application.</p>
+
+<p>What is required is for the web application to show and display date and times in the User&rsquo;s timezone, and do all the necessary conversions while transmitting the date/time information between the User and the Back end. <a href="http://wicket.apache.org/" title="wicket framework" target="_blank">wicket framework</a> makes this extremely simple to implement.</p>
+
+<h1 id="the-solution">The Solution</h1>
+
+<p>Wicket provides built in support to detect the Client&rsquo;s Timezone and also provides necessary IO components as well as display components that transparently convert date/time data between the Server&rsquo;s Timezone and the Client&rsquo;s Timezone. What&rsquo;s more you can also provide the Client an option to explicitly specify a Timezone and the said wicket components will use this user supplied Timezone instead of the User&rsquo;s default Timezone.</p>
+
+<p>Here I briefly describe how you can achieve seamless conversion of date/time wicket components between server and client Timezones.</p>
+
+<h2 id="the-application-class">The Application class</h2>
+
+<p>We start with the Application class. In order for wicket to determine the Client&rsquo;s Timezone, it needs to do a small redirect to an internal page that gathers information about the Client&rsquo;s browser, that amongst other things includes the Client&rsquo;s Timezone. <strong>Note</strong> For this to work , the browser must be Javascript enabled, but even if the user&rsquo;s browser has disabled Javascript you can easily fallback to the Server&rsquo;s Timezone in such a case.
+For the internal page to gather browser information, we need to add some code in the <code>Application.init()</code> method.</p>
+
+<pre><code class="language-java">import org.apache.wicket.Application;
+
+public class MyApplication extends Application {
+   @Override
+   public void init() {
+        getRequestCycleSettings().setGaterExtendedBroserInfo(true);
+   }
+}
+</code></pre>
+
+<p>The highlighted code is where the magic happens. Well not exactly. All the &ldquo;setGatherExtendedBrowserInfo(true)&rdquo; call does, is instructs Wicket to temporarily redirect an incoming request to an internal Wicket page, that will gather the extended browser info.
+Of course this will not happen for any wicket Page, but has to be specifically coded in the Page class.</p>
+
+<h2 id="the-page-class">The Page class</h2>
+
+<p>Even after setting the proper setting in the Application class, our work is not done. We need to tell wicket when to collect the browser&rsquo;s information.</p>
+
+<p>Typically to acchive a consistent look for your application, you would use <a href="http://cwiki.apache.org/WICKET/markup-inheritance.html" title="markup inheritance" target="_blank">markup inheritance</a>, by having all your wicket Pages inherit from a BasePage.
+So considering this, the code we need is best placed in the BasePage of your application. This way the redirect for gathering extended browser info. happens regardless of the URL used to enter the application. It can be via the Home Page or a Bookmarked page, as
+long as all your wicket pages extend from your &ldquo;BasePage&rdquo; , you can be sure that wicket will discover
+the client&rsquo;s Timezone (provided javascript is enabled).</p>
+
+<pre><code class="language-java">public class BasePage extends WebPage {
+
+   // we will use this to show the client what timezone are we using for this session.
+   private Timezone timezone ;
+
+   public BasePage() {
+
+       //trigger the redirect to an intermediate page which will obtain the timezone info for us.
+       getSession.getClientInfo();
+
+       add(new Label(&quot;timezone&quot;,new PropertyModel(BasePage.this,&quot;timezone.displayName&quot;));
+
+       // add date/time components from wicket-datetime project.
+   }
+
+   public Timezone getTimezone() {
+       if(timezone == null) {
+           timezone =
+               ((WebClientInfo)getSession().getClientInfo()).getProperties().getTimezone();
+       }
+       // fallback to server's timezone if we can't determine the client's timezone.
+       if(timezone == null) {
+           timezone = Timezone.getDefault();
+       }
+       return timezone;
+   }
+
+}
+</code></pre>
+
+<p>And the corresponding BasePage.html file</p>
+
+<pre><code class="language-html">&lt;!-- somewhere in a convenient location --&gt;
+&lt;span&gt;America/NewYork&lt;/span&gt;
+</code></pre>
+
+<p>In the constructor of &lsquo;BasePage&rsquo; class, we trigger the redirect to the intermediate page, for obtaining the client browser&rsquo;s properties, using the &lsquo;getSession().getClinetInfo()&rsquo; call.
+It is very important to have this call, otherwise wicket will not determine the client browser&rsquo;s properties, one of which is the client m/c&rsquo;s timezone.
+Adding the timezone information in a wicket label is not strictly necessary, but it serves a purpose, without this the user will be unsure whether the date/time shown is in his local timezone or the server timezone. Of course as an alternative you can explictly display the timezone in each date/time textfiled/label.</p>
+
+<h2 id="the-date-time-components">The Date/Time Components</h2>
+
+<p>Now for some wicket magic, after the client&rsquo;s Timezone has been determined, we can now use any input/label components from the wicket-datetime project, and safely rely on them to do the automatic Timezone conversions between server and client.
+e.g.</p>
+
+<ul>
+<li>org.apache.wicket.datetime.markup.html.form.DateTextField</li>
+<li>org.apache.wicket.datetime.markup.html.basic.DateLabel</li>
+</ul>
+
+<p>The DateTextField is an INPUT component which will translate the user inputted date/time values, from the client timezone to the server&rsquo;s timezone.
+The DateLabel is a display LABEL that will display a date/time value from the server, after converting it into the client&rsquo;s timezone.</p>
+
+<p>Thus using wicket you can greatly simplify working with client timezones, by coding only a few lines in about 2 Java files.</p>
+
+<h1 id="other-thoughts">Other thoughts</h1>
+
+<p>One thing to stress, is that wicket&rsquo;s ability to correctly determine the clinet&rsquo;s timezone depends on 2 things, one is the requirement that &lsquo;javascript&rsquo; be turned on, in the client browser and secondly on the timezone offset provided by the javascript API. So it may not always work in every situation. But from my experience it works correctly most of the time.</p>
+
+<p>In my next post I&rsquo;ll examine how to convert the &lsquo;timezone&rsquo; label in our example, in to a drop down select box, that will give the user an option to select the timezone he wants to see the date/time contents in.</p>
+
+        </div>
+    </div>
+</section>
+
+<div class="row pager">
+    <div class="twelve columns">
+        
+        <a data-balloon="Previous Post" data-balloon-pos="right" class="button button-primary" href="/2009/02/beautiful-konkan/">
+            <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
+            <span class="text">Beautiful Konkan</span>
+        </a>
+        &nbsp;
+        
+        <a data-balloon="Next Post" data-balloon-pos="left" class="u-pull-right button button-primary" href="/2008/05/some-useful-java-system-properties/">
+          <span class="text">Some useful Java System Properties</span>
+          <i class="fa fa-angle-double-right fa-2x" aria-hidden="true"></i>
+      </a> 
+    </div>
+</div>
+
+<section class="icons row content">
+    <div class="columns twelve">
+
+        
+        <a target="_blank" data-balloon="LinkedIN" data-balloon-pos="up" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk">
+            <i class="fa fa-linkedin fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Twitter" data-balloon-pos="up" title="Twitter" href="https://www.twitter.com/bhaskar_vk">
+            <i class="fa fa-twitter fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Github" data-balloon-pos="up" title="Github" href="https://github.com/bhaskarvk">
+            <i class="fa fa-github-square fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Stack Overflow" data-balloon-pos="up" title="StackOverflow" href="https://stackoverflow.com/users/507484">
+            <i class="fa fa-stack-overflow fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Keybase" data-balloon-pos="up" title="Keybase" href="https://www.keybase.io/bhaskarvk">
+            <i class="fa fa-key fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Slideshare" data-balloon-pos="up" title="SlideShare" href="https://www.slideshare.net/bhaskar_vk">
+            <i class="fa fa-slideshare fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Reddit" data-balloon-pos="up" title="Reddit" href="https://www.reddit.com/user/bhaskarvk">
+            <i class="fa fa-reddit-alien fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Medium" data-balloon-pos="up" title="Medium" href="https://medium.com/@bhaskar_vk">
+            <i class="fa fa-medium fa-2x"></i>
+        </a>
+        
+        <a class="u-pull-right" target="_blank" data-balloon="HOME" data-balloon-pos="up" title="Home " href="/">
+            <i class="fa fa-home fa-2x"></i>
+        </a>
+        <a class="u-pull-right" target="_blank" data-balloon="RSS Feed" data-balloon-pos="up" title="RSS Feed" href="/index.xml">
+            <i class="fa fa-rss fa-2x"></i>&nbsp;</a>
+    </div>
+</section>
+
+<section class="copyright row">
+    <div class="columns twelve">
+        © 2007-2017 Bhaskar V. Karambelkar. All rights reserved.
+    </div>
+</section>
+
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="/js/back-to-top.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"
+  integrity="sha256-D0J9D4igaYyVX/Y78Tr0yoDJsy8hi14hCEdFDakBp08=" crossorigin="anonymous"></script>
+<script>
+  ;(function () {
+    var bLazy = new Blazy();
+  })();
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.js"
+  integrity="sha256-UHui95L8O0BJv4LHVBXQYWAQnTp+ftM9UOKTQtdurbQ=" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"
+  integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"
+  integrity="sha256-XrZQp+ZMfovqr6Hb2M6okHvSEYaB/+Xbx7toWmOOZUM=" crossorigin="anonymous"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+  var u="//apps.karambelkar.info/pk/";
+  _paq.push(['setTrackerUrl', u+'piwik.php']);
+  _paq.push(['setSiteId', 1]);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+
+
+
+
+</body>
+
+</html>

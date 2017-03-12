@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/index.xml" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+<link href="/index.xml" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+
+  <title>
+    
+    
+       Installing RHadoop on Cloudera CDH 4.3.0 
+    
+  </title>
+  <link rel="canonical" href="/2013/09/installing-rhadoop-on-cloudera-cdh-4.3.0/">
+  
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css"
+    integrity="sha256-nXC6R0O+3ez3B440sqRACd9wvr4A1cHmzr1K+2bINzk=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" integrity="sha256-iU/Wh1HMAs/NgpurDAu14e7S3FkllcJ5aPnpPDdnO6c=" crossorigin="anonymous" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/androidstudio.min.css" integrity="sha256-rEVnyeMfkKzmBwocdeeiqGOu1M/ttUHB7K0meKIwqvw=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css" />
+
+
+<link rel="shortcut icon"
+
+    href="/img/favicon.ico"
+>
+
+
+
+</head>
+
+<a data-balloon="Back to Top" data-balloon-pos="left" id="back-to-top"><i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true"></i></a>
+
+<body lang="en-US">
+    <div class="container">
+        <section class="header row">
+            <div class="columns twelve">
+                <h1>
+                    <div class="name">Bhaskar Karambelkar&#39;s Blog</div>
+                </h1>
+                <nav>
+                    <ul>
+                        
+                        <li><a class="button" href="/"><i class='fa fa-home fa-2x'></i><span class="text">&nbsp;Home</span></a></li>
+                        
+                        <li><a class="button" href="/tags/"><i class='fa fa-tags fa-2x'></i><span class="text">&nbsp;Tags</span></a></li>
+                        
+                        <li><a class="button" href="/series/"><i class='fa fa-folder-open fa-2x'></i><span class="text">&nbsp;Series</span></a></li>
+                        
+                        <li><a class="button" href="/about/"><i class='fa fa-info-circle fa-2x'></i><span class="text">&nbsp;About</span></a></li>
+                        
+                        <li><a class="button" href="http://photos.karambelkar.info"><i class='fa fa-camera-retro fa-2x'></i><span class="text">&nbsp;Photography</span></a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+</section>
+<section class="row content">
+    <div class="columns twelve">
+        <div class="title-container">
+            <h1 class="page-heading">
+    
+        Installing RHadoop on Cloudera CDH 4.3.0
+    
+</h1>
+
+            <p class="meta">&nbsp;<i class="fa fa-calendar-o"></i> Mon Sep 9 2013 14:34:00 UTC</p>
+            <p id="tags"><small>Tags: </small>
+                
+                    <a class="tag-button" href="//tags/hadoop">hadoop</a>
+                
+                    <a class="tag-button" href="//tags/cloudera">cloudera</a>
+                
+                    <a class="tag-button" href="//tags/rhadoop">rhadoop</a>
+                
+                    <a class="tag-button" href="//tags/rstats">rstats</a>
+                
+            </p>
+            <hr/>
+        </div>
+        
+        <div class="page-content">
+            <p><strong>T</strong>hese are my notes for installing RHadoop on a Cloudera CDH 4.3.0 Hadoop Cluster.
+Although the notes are geared towards installing on CDH, they can be used to install RHadoop on any other Hadoop distro.</p>
+
+<p><strong>T</strong>he default installation instructionsas per RHadoop wiki tell you to install the &lsquo;R&rsquo; package from the <a href="https://fedoraproject.org/wiki/EPEL" target="_blank">EPEL Repo</a>. The problem with that is &lsquo;R&rsquo; pulls in &lsquo;R-core-devel&rsquo; package, and that pulls in all sort of &lsquo;build tools&rsquo; including the gcc compiler and and a host of other library &lsquo;dev&rsquo; packages.</p>
+
+<p><strong>T</strong>his is a big issue for us, as we&rsquo;re not allowed to have compilers installed on our Production boxes, which if you think about it, is a logical thing to do, considering the security requirements of a production environment.</p>
+
+<p><strong>W</strong>ith some efforts I was able to install RHadoop w/o having to install R-core-devel package on our hadoop cluster and these are the notes of that installation.
+To be able to install RHadoop on a CDH cluster, w/o having to install &lsquo;R-core-devel&rsquo; package, you need to setup a so called &lsquo;build box&rsquo;, where you&rsquo;ll install everything and push it on to the hadoop cluster.</p>
+
+<p>Set up a &ldquo;build box&rdquo;, with the same exact OS version, JDK, and Hadoop Version as that of your Hadoop Cluster. We need Hadoop installed to compile RHadoop packages, but we&rsquo;re not going to make this box a part of the hadoop cluster.</p>
+
+<p>On all boxes, i.e. each Hadoop Node as well as the &lsquo;build box&rsquo; , first setup EPEL yum repository as per instructions on <a href="https://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F" target="_blank">EPEL Wiki</a>.</p>
+
+<pre><code class="language-bash"># As root user  
+yum -y --enablerepo=epel install R-core 
+#If your system doesn't allow 'root' logins, use 'sudo yum ...' instead 
+</code></pre>
+
+<p>Then only on the build box</p>
+
+<pre><code class="language-bash"># As root user 
+# If your system doesn't allow 'root' logins, use 'sudo bash -l' instead 
+# to start a root shell and do the next 4 steps 
+yum -y --enablerepo=epel install R 
+export JAVA_HOME=&lt;JDK Base Dir&gt; 
+export PATH=$JAVA_HOME/bin:$PATH 
+R CMD javareconf 
+
+# everything below can be done as a non-root user.
+cat &gt; ~/.Rprofile &lt;&lt;THE_END 
+options(repos=structure(c(CRAN=&quot;&lt;CRAN Mirror Closest to you&gt;&quot;)))
+THE_END 
+
+cat &gt; ~/.Renviron &lt;&lt; THE_END 
+R_LIBS_USER=&quot;/opt/R/library&quot; 
+HADOOP_HOME=&quot;&lt;BASE DIRECTORY OF HADOOP&gt;&quot; 
+HADOOP_CMD=&quot;&lt;Full PATH of the 'hadoop' Command&gt;&quot;
+HADOOP_STREAMING=&quot;&lt;Full Path to Hadoop Streaming Jar File&gt;&quot;
+LD_LIBRARY_PATH=&quot;${LD_LIBRARY_PATH}:&lt;Path to Hadoop Native Lib dir&gt;&quot; 
+JAVA_HOME=&quot;&lt;Path to JDK&gt;&quot; 
+R_JAVA_LD_LIBRARY_PATH=&quot;${JAVA_HOME}/lib/amd64/server&quot; 
+THE_END 
+
+Rscript -e &quot;install.packages(c('Rcpp', 'RJSONIO', 'itertools', 'digest'));&quot; 
+Rscript -e &quot;install.packages(c('functional', 'stringr', 'plyr'));&quot; 
+Rscript -e 'install.packages(&quot;rJava&quot;);' 
+Rscript -e 'install.packages(&quot;reshape2&quot;);' 
+Rscript -e 'install.packages(&quot;bitops&quot;);' 
+#Download rhdfs rmr2 from RHadoop Github page. 
+R CMD INSTALL rhdfs_1.0.5.tar.gz R CMD INSTALL rmr2_2.0.0.tar.gz 
+</code></pre>
+
+<p><strong>T</strong>his should install all the required &lsquo;R&rsquo; packages along with &lsquo;rhdfs&rsquo; and &lsquo;rmr2&rsquo; under /opt/R/library directory on the &lsquo;build&rsquo; box. </p>
+
+<p><strong>A</strong>fter this simply scp/rsync the <code>$HOME/.Renviron</code> file, and
+<code>/opt/R</code> directory to each hadoop node in the cluster. The <code>.Renviron</code> file needs to be in the home directory of every user who&rsquo;s going to run a &lsquo;R&rsquo; map-reduce job.</p>
+
+<p><strong>T</strong>his should setup RHadoop on your Hadoop Cluster without having to install compiler toolchains on each Hadoop Node.</p>
+
+        </div>
+    </div>
+</section>
+
+<div class="row pager">
+    <div class="twelve columns">
+        
+        <a data-balloon="Previous Post" data-balloon-pos="right" class="button button-primary" href="/2014/02/searching-analyzing--visualizing-security-feeds/">
+            <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
+            <span class="text">Searching, Analyzing &amp; Visualizing Security Feeds</span>
+        </a>
+        &nbsp;
+        
+        <a data-balloon="Next Post" data-balloon-pos="left" class="u-pull-right button button-primary" href="/2013/04/elasticsearch-book/">
+          <span class="text">Elasticsearch Book</span>
+          <i class="fa fa-angle-double-right fa-2x" aria-hidden="true"></i>
+      </a> 
+    </div>
+</div>
+
+<section class="icons row content">
+    <div class="columns twelve">
+
+        
+        <a target="_blank" data-balloon="LinkedIN" data-balloon-pos="up" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk">
+            <i class="fa fa-linkedin fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Twitter" data-balloon-pos="up" title="Twitter" href="https://www.twitter.com/bhaskar_vk">
+            <i class="fa fa-twitter fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Github" data-balloon-pos="up" title="Github" href="https://github.com/bhaskarvk">
+            <i class="fa fa-github-square fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Stack Overflow" data-balloon-pos="up" title="StackOverflow" href="https://stackoverflow.com/users/507484">
+            <i class="fa fa-stack-overflow fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Keybase" data-balloon-pos="up" title="Keybase" href="https://www.keybase.io/bhaskarvk">
+            <i class="fa fa-key fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Slideshare" data-balloon-pos="up" title="SlideShare" href="https://www.slideshare.net/bhaskar_vk">
+            <i class="fa fa-slideshare fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Reddit" data-balloon-pos="up" title="Reddit" href="https://www.reddit.com/user/bhaskarvk">
+            <i class="fa fa-reddit-alien fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Medium" data-balloon-pos="up" title="Medium" href="https://medium.com/@bhaskar_vk">
+            <i class="fa fa-medium fa-2x"></i>
+        </a>
+        
+        <a class="u-pull-right" target="_blank" data-balloon="HOME" data-balloon-pos="up" title="Home " href="/">
+            <i class="fa fa-home fa-2x"></i>
+        </a>
+        <a class="u-pull-right" target="_blank" data-balloon="RSS Feed" data-balloon-pos="up" title="RSS Feed" href="/index.xml">
+            <i class="fa fa-rss fa-2x"></i>&nbsp;</a>
+    </div>
+</section>
+
+<section class="copyright row">
+    <div class="columns twelve">
+        © 2007-2017 Bhaskar V. Karambelkar. All rights reserved.
+    </div>
+</section>
+
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="/js/back-to-top.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"
+  integrity="sha256-D0J9D4igaYyVX/Y78Tr0yoDJsy8hi14hCEdFDakBp08=" crossorigin="anonymous"></script>
+<script>
+  ;(function () {
+    var bLazy = new Blazy();
+  })();
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.js"
+  integrity="sha256-UHui95L8O0BJv4LHVBXQYWAQnTp+ftM9UOKTQtdurbQ=" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"
+  integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"
+  integrity="sha256-XrZQp+ZMfovqr6Hb2M6okHvSEYaB/+Xbx7toWmOOZUM=" crossorigin="anonymous"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+  var u="//apps.karambelkar.info/pk/";
+  _paq.push(['setTrackerUrl', u+'piwik.php']);
+  _paq.push(['setSiteId', 1]);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cartography on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/cartography/index.xml</link>
+    <description>Recent content in Cartography on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>© 2007-2017 Bhaskar V. Karambelkar. All rights reserved.</copyright>
+    <atom:link href="/tags/cartography/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Re-plotting Russian AirStrikes In Syria</title>
+      <link>/2015/11/re-plotting-russian-airstrikes-in-syria/</link>
+      <pubDate>Tue, 10 Nov 2015 11:56:30 -0500</pubDate>
+      
+      <guid>/2015/11/re-plotting-russian-airstrikes-in-syria/</guid>
+      <description>&lt;p&gt;My Cartography mentor &lt;a href=&#34;https://twitter.com/hrbrmstr&#34; target=&#34;_blank&#34;&gt;Bob Rudis&lt;/a&gt; pointed me to a blog post visualizing &lt;a href=&#34;http://r-datameister.blogspot.com/2015/11/plotting-russian-airstrikes-in-syria.html&#34; target=&#34;_blank&#34;&gt;Russian Air Strikes in Syria&lt;/a&gt; and commanded me to redo the static maps to something more interactive and easier to explore.
+&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;p&gt;Interactive Map at &lt;a href=&#34;http://rpubs.com/bhaskarvk/russian-airstrikes-in-syria&#34; target=&#34;_blank&#34;&gt;Rpubs&lt;/a&gt; created using Leaflet after scraping data using RSelenium+ PhantomJS + dplyr. You can use the LayerSelector at the Top Right to toggle various Base Tiles. Clicking on any Marker will show details about that Air Strike.&lt;/p&gt;
+
+&lt;h1 id=&#34;long-read&#34;&gt;Long Read&lt;/h1&gt;
+
+&lt;h2 id=&#34;data-acquisition&#34;&gt;Data Acquisition&lt;/h2&gt;
+
+&lt;p&gt;The data comes from crowdsourcing of Russian Ministry of Defense&amp;rsquo;s (MOD) Youtube&lt;sup&gt;TM&lt;/sup&gt; channel. The process and the data is described &lt;a href=&#34;https://www.bellingcat.com/news/mena/2015/10/26/what-russias-own-videos-and-maps-reveal-about-who-they-are-bombing-in-syria/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt; and the data can be found at &lt;a href=&#34;http://russia-strikes-syria.silk.co/&#34; target=&#34;_blank&#34;&gt;http://russia-strikes-syria.silk.co/&lt;/a&gt;. The argument is that a majority of the strikes claimed by the Russian MOD to be targeting ISIS held areas are actually targeting non-ISIS rebel areas and as such helping the Asaad regime more than fighting ISIS.&lt;/p&gt;
+
+&lt;p&gt;The original visualization was done by copying the data and putting it in an excel spreadsheet and then mapped using R&amp;rsquo;s &lt;code&gt;ggmap&lt;/code&gt; package. But in the interest of reproducibility I wanted to scrape the data directly from within R. For this I initially tried using &lt;a href=&#34;https://cran.r-project.org/web/packages/rvest/&#34; target=&#34;_blank&#34;&gt;rvest&lt;/a&gt; but quickly realized that this was a no go as the table containing the data was dynamically populated using AJAX/Javascript stuff. So I had to turn to RSelenium + PhantomJS as described &lt;a href=&#34;https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Below is the web-scraping code, and the webpage from where this data was scraped can be found &lt;a href=&#34;http://russia-strikes-syria.silk.co/explore/table/collection/strike-id/column/date-uploaded/column/time-in-utc-uploaded/column/accuracy-of-russian-location/column/actual-location-co-ords/column/closest-location-governorate/column/claimed-location/column/claimed-targets/column/closest-location-actual/column/status/column/isis-in-the-area/column/error-type/column/notes/column/checkdesk-link/column/video-url/slice/0/1000&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(RSelenium)
+library(rvest)
+
+pJS &amp;lt;- phantom()
+Sys.sleep(5) # give the binary a moment
+remDr &amp;lt;- remoteDriver(browserName = &#39;phantomjs&#39;)
+remDr$open()
+remDr$navigate(&#39;http://russia-strikes-syria.silk.co/explore/table/collection/strike-id/column/date-uploaded/column/time-in-utc-uploaded/column/accuracy-of-russian-location/column/actual-location-co-ords/column/closest-location-governorate/column/claimed-location/column/claimed-targets/column/closest-location-actual/column/status/column/isis-in-the-area/column/error-type/column/notes/column/checkdesk-link/column/video-url/slice/0/1000&#39;)
+Sys.sleep(2) # Some time for page to load
+events &amp;lt;- read_html(remDr$getPageSource()[[1]]) %&amp;gt;%
+  html_node(xpath= &#39;//*[@id=&amp;quot;canvas&amp;quot;]/div/div[3]/div[2]/div[2]/div[4]/table&#39;) %&amp;gt;%
+  html_table()
+remDr$close()
+pJS$stop() # close the PhantomJS process
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;
+In short the code starts a RSelenium + PhantomJS WebDriver fetches the webpage containing the data. Then the html table is parsed using rvest&amp;rsquo;s &lt;code&gt;html_table()&lt;/code&gt; after the correct table is selected using the proper xpath to the table.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-preparation&#34;&gt;Data Preparation&lt;/h2&gt;
+
+&lt;p&gt;To plot the data correctly I need to perform the following steps.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Filter out data containing invalid Lat/Long coordinates.&lt;/li&gt;
+&lt;li&gt;Split the single column containing Lat/Long in to two columns.&lt;/li&gt;
+&lt;li&gt;Create a new column to be used for Popup Display when a point is clicked on the map.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Thankfully &lt;code&gt;dplyr&lt;/code&gt; and &lt;code&gt;tidyr&lt;/code&gt; are more than capable of doing all this using some basic simple steps shown below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+library(tidyr)
+
+events %&amp;gt;% filter(str_detect(`Actual location co-ords`,
+                             &#39;[0-9]+\\.[0-9]+, *[0-9]+\\.[0-9]+&#39;)) %&amp;gt;%
+  separate(`Actual location co-ords`,c(&#39;lat&#39;,&#39;lon&#39;),
+           sep = &#39;,&#39;, convert = TRUE, remove = TRUE ) %&amp;gt;%
+  mutate(popup = sprintf(&#39;
+    &amp;lt;P&amp;gt;&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Status:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Date Uploaded:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s %s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Claimed Location:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Claimed Targets:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Closest Governorate:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Closest Actual Location:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;ISIS Presence:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Error:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Notes:&amp;lt;/i&amp;gt; %s&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Description:&amp;lt;/i&amp;gt; &amp;lt;a href=&amp;quot;%s&amp;quot;&amp;gt;%s&amp;lt;/a&amp;gt; / &amp;lt;i&amp;gt;Video:&amp;lt;/i&amp;gt; &amp;lt;a href=&amp;quot;%s&amp;quot;&amp;gt;%s&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/P&amp;gt;&#39;,
+    Airstrikes, Status,
+    `Date (Uploaded)`, `Time in UTC (Uploaded)`,
+    `Claimed location`, `Claimed targets`,
+    `Closest location governorate`, `Closest location (actual)`,
+    `ISIS in the area?`, `Error type`,
+    Notes, `Checkdesk link`, Airstrikes,
+    `Video URL`, Airstrikes
+    )) -&amp;gt; events
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;filter&lt;/code&gt; function filters out all data points which don&amp;rsquo;t match the regex for the the Lat/Long format. The &lt;code&gt;separate&lt;/code&gt; function splits the &amp;lsquo;Actual location co-ords&amp;rsquo; column in to two columns lat and lon. And finally the &lt;code&gt;mutate&lt;/code&gt; function is used to create the HTML code that will be used to display the popup when this datapoint is clicked on the Map.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-plotting&#34;&gt;Data Plotting&lt;/h2&gt;
+
+&lt;p&gt;Finally for Data Plotting I used &lt;a href=&#34;https://rstudio.github.io/leaflet/&#34; target=&#34;_blank&#34;&gt;Leaflet for R&lt;/a&gt; library. You will need to build the library from source as I use some new features in the library that haven&amp;rsquo;t yet made it to CRAN. You can do this using &lt;code&gt;devetool::install_github(&#39;rstudio/leaflet&#39;)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Map consists of following elements&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Multiple Base Tile Maps out of which only one can be active at any given time.&lt;/li&gt;
+&lt;li&gt;A GeoJSON for plotting the various Administrative areas of Syria superimposed on the base map.&lt;/li&gt;
+&lt;li&gt;Markers for the Air Strikes.&lt;/li&gt;
+&lt;li&gt;A Layer Selection option.&lt;/li&gt;
+&lt;li&gt;A mini map to know the global context.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I also needed a way to visually distinguish between VERIFIED and FALSE strikes. Verified being strikes that claimed to have targeted ISIS and actually targeted ISIS or actually have targeted non-ISIS areas and not claimed to have targeted ISIS in short those where the claim and actual targets tally, and FALSE being the ones where there was a discrepancy in either the claimed and actual target or claimed and actual location. I chose to use Blue colored Markers for VERIFIED and Red colored for FALSE.&lt;/p&gt;
+
+&lt;p&gt;The code for plotting is shown below&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(leaflet)
+
+if(!file.exists(&#39;./cities.json&#39;) {
+	# Syrian Cities GeoJSON downloaded from
+	# http://crisis.net/projects/syria-tracker/cities.json
+	# More Info @ http://blog.crisis.net/choropleth-maps-with-d3/
+	download.file(url=&#39;http://crisis.net/projects/syria-tracker/cities.json&#39;, destfile=&#39;cities.json&#39;)
+}
+cities &amp;lt;- readLines(&#39;./cities.json&#39;, warn =F) %&amp;gt;% paste(collapse=&#39;\n&#39;)
+
+# Leaflet Map + Various Base Tiles
+events %&amp;gt;% leaflet() %&amp;gt;%
+  addTiles(group=&amp;quot;Default&amp;quot;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.PositronNoLabels&#39;,group=&#39;Blank-Canvas&#39;) %&amp;gt;%
+  addProviderTiles(&#39;OpenStreetMap.BlackAndWhite&#39;, group=&amp;quot;OSM-BlackNWhite&amp;quot;) %&amp;gt;%
+  addProviderTiles(&#39;MapQuestOpen.OSM&#39;, group=&#39;MapQuest&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLite&#39;, group=&#39;Stamen-Light&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.WorldStreetMap&#39;,group=&#39;Esri-1&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.DeLorme&#39;,group=&#39;Esri-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.OceanBasemap&#39;,group=&#39;Esri-3&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.NatGeoWorldMap&#39;,group=&#39;NatGeo&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.Positron&#39;,group=&#39;CartoDB-1&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.PositronNoLabels&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerHybrid&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLines&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.DarkMatter&#39;,group=&#39;CartoDB-3&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.DarkMatterNoLabels&#39;,group=&#39;CartoDB-4&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Acetate.basemap&#39;,group=&#39;Acetate&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLabels&#39;,group=&#39;Acetate&#39;) -&amp;gt; eventMap
+
+# Awesome Icons with color depending on Status
+icon &amp;lt;- awesomeIcons(icon = &#39;crosshairs&#39;,
+                     markerColor = ifelse(events$Status == &#39;VERIFIED&#39;,&#39;blue&#39;,&#39;red&#39;),
+                     library = &#39;fa&#39;,
+                     iconColor = &#39;black&#39;)
+
+# Add Markers for AirStrikes and GeoJSON for Syrian Regions
+eventMap %&amp;gt;%
+  addAwesomeMarkers(
+    lat=~lat, lng=~lon,
+    label = ~Airstrikes, icon=icon,
+    group = &#39;Air Strikes&#39;,
+    popup = ~popup
+  ) %&amp;gt;%
+  addGeoJSON(cities, weight = 0.7, color = &amp;quot;#00FF00&amp;quot;,
+             stroke=T, fill = F, fillOpacity = 0.1,
+             group=&#39;Syria Regions&#39;) -&amp;gt; eventMap
+
+# Add a Layer Control for toggling Layers/BaseMaps
+eventMap  %&amp;gt;%  addLayersControl(
+  baseGroups = c(&#39;Default&#39;,
+                 &#39;Blank-Canvas&#39;,
+                 &#39;OSM-BlackNWhite&#39;,
+                 &#39;MapQuest&#39;,
+                 &#39;Stamen-Light&#39;,
+                 &#39;Esri-1&#39;,
+                 &#39;Esri-2&#39;,
+                 &#39;Esri-3&#39;,
+                 &#39;NatGeo&#39;,
+                 &#39;CartoDB-1&#39;,
+                 &#39;CartoDB-2&#39;,
+                 &#39;CartoDB-3&#39;,
+                 &#39;CartoDB-4&#39;,
+                 &#39;Acetate&#39;),
+  overlayGroups = c(&amp;quot;Air Strikes&amp;quot;, &amp;quot;Syria Regions&amp;quot;),
+  options = layersControlOptions(collapsed = TRUE)
+) -&amp;gt; eventMap
+
+# Finally Add a Minimap and render the Map
+eventMap %&amp;gt;% addMiniMap()
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;
+And the final map is shown below.&lt;/p&gt;
+
+&lt;iframe class=&#34;b-lazy&#34;  data-src=&#34;https://rstudio-pubs-static.s3.amazonaws.com/124776_4236f220adb94d12b4eecc77575e9076.html&#34; 
+  width=&#34;90%&#34; 
+  height=&#34;350px&#34; &gt;
+ &lt;p&gt;Your browser does not support iframes.&lt;/p&gt;
+&lt;/iframe&gt;
+
+&lt;p&gt;Or access it at &lt;a href=&#34;http://rpubs.com/bhaskarvk/russian-airstrikes-in-syria&#34; target=&#34;_blank&#34;&gt;Rpubs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For Web Scraping dynamic data RSelinium + PhantomJS makes a killer combo.&lt;/li&gt;
+&lt;li&gt;R&amp;rsquo;s leaflet library allows for easy creation of interactive maps.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

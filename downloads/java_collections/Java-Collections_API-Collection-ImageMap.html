@@ -1,0 +1,282 @@
+<html>
+<head><title>Java Collections  API</title>
+<style type="text/css">
+.tooltip {
+  font-size:10pt;
+  background-color:#FFFFCC;
+  border:1px solid black;
+  padding:2px
+}
+</style>
+<style type="text/css">
+.tooltip {
+  position:absolute;
+  display:none
+}
+</style>
+</head>
+<body>
+
+<script type="text/javascript">
+tooltip = null;
+document.onmousemove = updateTooltip;
+function updateTooltip(e) {
+try {
+if (document.all) {
+if (document.documentElement && document.documentElement.scrollTop) { // Explorer 6 Strict
+x = document.documentElement.scrollLeft + window.event.x;
+y = document.documentElement.scrollTop + window.event.y;
+}
+else { // all other Explorers
+x = document.body.scrollLeft + window.event.x;
+y = document.body.scrollTop + window.event.y;
+}
+}
+else {
+x = e.pageX;
+y = e.pageY;
+}
+if (tooltip != null) {
+o = 20;
+var sx, sy;
+if (self.pageYOffset) { // all except Explorer
+sx = self.pageXOffset;
+sy = self.pageYOffset;
+}
+else if (document.documentElement && document.documentElement.scrollTop) { // Explorer 6 Strict
+sx = document.documentElement.scrollLeft;
+sy = document.documentElement.scrollTop;
+}
+else if (document.body) { // all other Explorers
+sx = document.body.scrollLeft;
+sy = document.body.scrollTop;
+}
+t = y + o + tooltip.offsetHeight;
+w = sy + document.body.clientHeight;
+if (t > w) {
+y = y - o - tooltip.offsetHeight;
+}
+else {
+y = y + o;
+}
+t = x + o + tooltip.offsetWidth;
+w = sx + document.body.clientWidth;
+if (t > w) {
+x = x - o - tooltip.offsetWidth;
+}
+else {
+x = x + o;
+}
+if ((tooltip.style.top == '' || tooltip.style.top == 0) && (tooltip.style.left == '' || tooltip.style.left == 0))
+{
+tooltip.style.width = tooltip.offsetWidth + 'px';
+tooltip.style.height = tooltip.offsetHeight + 'px';
+}
+tooltip.style.left = x + "px";
+tooltip.style.top = y + "px";
+}
+} catch (error) { error = null; }
+}
+function showTooltip(id) {
+try {
+tooltip = document.getElementById(id);
+tooltip.style.display = "block";
+} catch (error) { error = null; }
+}
+function hideTooltip() {
+try {
+tooltip.style.display = "none";
+} catch (error) { error = null; }
+}
+</script>
+
+<div class="tooltip" id="n0">QUEUE</div>
+<div class="tooltip" id="n1">A collection designed for holding elements before processing.<br>Besides basic Collection operations, queues provide additional insertion,<br>extraction, and inspection operations.</div>
+<div class="tooltip" id="n2">A Queue with operations that wait for the queue to become nonempty<br>when retrieving an element and that wait for space to become available<br>in the queue when storing an element.</div>
+<div class="tooltip" id="n3">A double ended queue, supporting element insertion and removal at both ends.<br>Extends the Queue interface.</div>
+<div class="tooltip" id="n4">A Deque with operations that wait for the deque to become nonempty<br>when retrieving an element and wait for space to become available<br>in the deque when storing an element.<br>Extends both the Deque and BlockingQueue interfaces.</div>
+<div class="tooltip" id="n5">Skeletal Queue implementation.</div>
+<div class="tooltip" id="n6">An optionally bounded FIFO blocking deque backed by linked nodes.</div>
+<div class="tooltip" id="n7">A bounded FIFO blocking queue backed by an array.</div>
+<div class="tooltip" id="n8">A time-based scheduling queue backed by a priority heap.</div>
+<div class="tooltip" id="n9">An optionally bounded FIFO blocking queue backed by linked nodes.</div>
+<div class="tooltip" id="n10">An unbounded blocking priority queue backed by a priority heap.</div>
+<div class="tooltip" id="n11">Heap implementation of an unbounded priority queue.</div>
+<div class="tooltip" id="n12">A simple rendezvous mechanism<br>that uses the BlockingQueue interface.</div>
+<div class="tooltip" id="n13">Efficient, resizable array implementation of the Deque interface.</div>
+<div class="tooltip" id="n14">An unbounded first in, first out (FIFO) queue based on linked nodes.</div>
+<div class="tooltip" id="n15">A BlockingQueue in which producers can<br>wait for consumers to receive elements.</div>
+<div class="tooltip" id="n16">An unbounded TransferQueue backed by linked nodes.</div>
+<div class="tooltip" id="n17">SET</div>
+<div class="tooltip" id="n18">The familiar set abstraction.<br>No duplicate elements permitted.<br>May or may not be ordered.<br>Extends the Collection interface.</div>
+<div class="tooltip" id="n19">Skeletal Set implementation.</div>
+<div class="tooltip" id="n20">A high-performance Set implementation backed by a bit vector.<br>All elements of each EnumSet instance must be elements of a single enum type.</div>
+<div class="tooltip" id="n21">Hash table implementation of the Set interface.<br>The best all-around implementation of the Set interface.</div>
+<div class="tooltip" id="n22">Hash table and linked list implementation of the Set interface.<br>An insertion-ordered Set implementation that runs nearly as fast as HashSet.</div>
+<div class="tooltip" id="n23">A set whose elements are automatically sorted,<br>either in their natural ordering (see the Comparable interface)<br>or by a Comparator object provided when a SortedSet instance is created.<br>Extends the Set interface.</div>
+<div class="tooltip" id="n24">A SortedSet extended with navigation methods<br>reporting closest matches for given search targets.<br>A NavigableSet may be accessed and traversed<br>in either ascending or descending order.</div>
+<div class="tooltip" id="n25">Red-black tree implementation of the NavigableSet interface.</div>
+<div class="tooltip" id="n26">Skips list implementation of the NavigableSet interface.</div>
+<div class="tooltip" id="n27">A Set implementation backed by a copy-on-write array.<br>This implementation is similar to CopyOnWriteArrayList.<br>Unlike most Set implementations, the add, remove,<br>and contains methods require time proportional to the size of the set.<br>This implementation is well suited to maintaining event-handler lists that must prevent duplicates.</div>
+<div class="tooltip" id="n28">LIST</div>
+<div class="tooltip" id="n29">Ordered collection, also known as a sequence.<br>Duplicates are generally permitted.<br>Allows positional access.<br>Extends the Collection interface.</div>
+<div class="tooltip" id="n30">Skeletal List implementation backed by<br>a random access data store (such as an array).</div>
+<div class="tooltip" id="n31">Skeletal List implementation backed by a<br> sequential access data store (such as a linked list).</div>
+<div class="tooltip" id="n32">Resizable array implementation of the List interface (an unsynchronized Vector).<br>The best all-around implementation of the List interface.</div>
+<div class="tooltip" id="n33">Synchronized resizable array implementation of the List interface with additional legacy methods.</div>
+<div class="tooltip" id="n34">The Stack class represents a last-in-first-out (LIFO) stack of objects.</div>
+<div class="tooltip" id="n35">Doubly-linked list implementation of the List interface.<br>Provides better performance than the ArrayList implementation if elements are frequently inserted or deleted within the list.<br>Also implements the Deque interface.<br>When accessed through the Queue interface, LinkedList acts as a FIFO queue.</div>
+<div class="tooltip" id="n36">A List implementation backed by an copy-on-write array.<br>All mutative operations (such as add, set, and remove) are implemented by making a new copy of the array.<br>No synchronization is necessary, even during iteration, and iterators are guaranteed never to throw ConcurrentModificationException.<br>This implementation is well-suited to maintaining event-handler lists (where change is infrequent, and traversal is frequent and potentially time-consuming).</div>
+<div class="tooltip" id="n38">Implementing this interface allows an object<br>to be the target of the "foreach" statement.</div>
+<div class="tooltip" id="n39">A group of objects.<br>No assumptions are made about the order of the collection (if any)<br>or whether it can contain duplicate elements.</div>
+<div class="tooltip" id="n40">Skeletal Collection implementation that is<br>neither a set nor a list (such as a "bag" or multiset).</div>
+<div class="tooltip" id="n41">Obsolete</div>
+<div class="tooltip" id="n42">Concurrent</div>
+<div class="tooltip" id="e0">extends</div>
+<div class="tooltip" id="e1">extends</div>
+<div class="tooltip" id="e2">implements</div>
+<div class="tooltip" id="e3">extends</div>
+<div class="tooltip" id="e4">extends</div>
+<div class="tooltip" id="e5">extends</div>
+<div class="tooltip" id="e6">extends</div>
+<div class="tooltip" id="e7">extends</div>
+<div class="tooltip" id="e8">extends</div>
+<div class="tooltip" id="e9">implements</div>
+<div class="tooltip" id="e10">implements</div>
+<div class="tooltip" id="e11">implements</div>
+<div class="tooltip" id="e12">extends</div>
+<div class="tooltip" id="e13">extends</div>
+<div class="tooltip" id="e14">extends</div>
+<div class="tooltip" id="e15">extends</div>
+<div class="tooltip" id="e16">extends</div>
+<div class="tooltip" id="e17">extends</div>
+<div class="tooltip" id="e18">extends</div>
+<div class="tooltip" id="e19">implements</div>
+<div class="tooltip" id="e20">implements</div>
+<div class="tooltip" id="e21">extends</div>
+<div class="tooltip" id="e22">extends</div>
+<div class="tooltip" id="e24">extends</div>
+<div class="tooltip" id="e25">extends</div>
+<div class="tooltip" id="e26">extends</div>
+<div class="tooltip" id="e27">extends</div>
+<div class="tooltip" id="e28">extends</div>
+<div class="tooltip" id="e29">implements</div>
+<div class="tooltip" id="e30">extends</div>
+<div class="tooltip" id="e31">implements</div>
+<div class="tooltip" id="e32">extends</div>
+<div class="tooltip" id="e33">extends</div>
+<div class="tooltip" id="e34">implements</div>
+<div class="tooltip" id="e35">extends</div>
+<div class="tooltip" id="e36">implements</div>
+<div class="tooltip" id="e37">extends</div>
+<div class="tooltip" id="e38">implements</div>
+<div class="tooltip" id="e39">extends</div>
+<div class="tooltip" id="e40">implements</div>
+<div class="tooltip" id="e41">extends</div>
+<div class="tooltip" id="e43">implements</div>
+<div class="tooltip" id="e44">implements</div>
+<div class="tooltip" id="e45">extends</div>
+<div class="tooltip" id="e46">extends</div>
+<div class="tooltip" id="e47">extends</div>
+<div class="tooltip" id="e48">implements</div>
+
+<map name="image1_1">
+  <area shape="poly" coords="1592,1715,1592,1632,1587,1632,1587,1637,1732,1637,1737,1632,1737,1221,1727,1221,1727,1632,1732,1632,1732,1627,1587,1627,1582,1632,1582,1715,1592,1715,1592,1715" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e48')"/>
+  <area shape="poly" coords="1592,1104,1517,1104,1517,1114,1592,1114,1592,1104,1592,1104" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e47')"/>
+  <area shape="poly" coords="1108,1365,1108,1409,1113,1409,1113,1404,946,1404,941,1409,941,1470,951,1470,951,1409,946,1409,946,1414,1113,1414,1118,1409,1118,1365,1108,1365,1108,1365" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e46')"/>
+  <area shape="poly" coords="319,1915,236,1915,236,1920,241,1920,241,898,236,898,236,903,918,903,923,898,923,779,913,779,913,898,918,898,918,893,236,893,231,898,231,1920,236,1925,319,1925,319,1915,319,1915" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e45')"/>
+  <area shape="poly" coords="407,1875,407,1742,402,1737,369,1737,369,1742,374,1742,374,1241,369,1241,369,1246,403,1246,403,1236,369,1236,364,1241,364,1742,369,1747,402,1747,402,1742,397,1742,397,1875,407,1875,407,1875" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e44')"/>
+  <area shape="poly" coords="1577,1408,1577,1136,1572,1131,1517,1131,1517,1141,1572,1141,1572,1136,1567,1136,1567,1408,1577,1408,1577,1408" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e43')"/>
+  <area shape="poly" coords="886,1920,886,1578,876,1578,876,1920,886,1920,886,1920" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e41')"/>
+  <area shape="poly" coords="1469,1510,1469,1212,1459,1212,1459,1510,1469,1510,1469,1510" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e40')"/>
+  <area shape="poly" coords="1361,1561,1151,1561,1151,1566,1156,1566,1156,1544,1151,1539,994,1539,994,1549,1151,1549,1151,1544,1146,1544,1146,1566,1151,1571,1361,1571,1361,1561,1361,1561" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e39')"/>
+  <area shape="poly" coords="1346,1612,1346,1480,1341,1480,1341,1485,1403,1485,1408,1480,1408,1212,1398,1212,1398,1480,1403,1480,1403,1475,1341,1475,1336,1480,1336,1612,1346,1612,1346,1612" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e38')"/>
+  <area shape="poly" coords="1238,1652,970,1652,970,1657,975,1657,975,1578,965,1578,965,1657,970,1662,1238,1662,1238,1652,1238,1652" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e37')"/>
+  <area shape="poly" coords="1211,1715,1211,1480,1206,1480,1206,1485,1322,1485,1327,1480,1327,1212,1317,1212,1317,1480,1322,1480,1322,1475,1206,1475,1201,1480,1201,1715,1211,1715,1211,1715" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e36')"/>
+  <area shape="poly" coords="1076,1754,940,1754,940,1759,945,1759,945,1578,935,1578,935,1759,940,1764,1076,1764,1076,1754,1076,1754" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e35')"/>
+  <area shape="poly" coords="1061,1817,1061,1591,1056,1591,1056,1596,1254,1596,1259,1591,1259,1212,1249,1212,1249,1591,1254,1591,1254,1586,1056,1586,1051,1591,1051,1817,1061,1817,1061,1817" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e34')"/>
+  <area shape="poly" coords="942,1857,907,1857,907,1862,912,1862,912,1578,902,1578,902,1862,907,1867,942,1867,942,1857,942,1857" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e33')"/>
+  <area shape="poly" coords="639,1876,639,1845,634,1845,634,1850,852,1850,857,1845,857,1578,847,1578,847,1845,852,1845,852,1840,634,1840,629,1845,629,1876,639,1876,639,1876" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e32')"/>
+  <area shape="poly" coords="568,1876,568,1721,558,1721,558,1876,568,1876,568,1876" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e31')"/>
+  <area shape="poly" coords="834,1531,739,1531,739,1536,744,1536,744,748,739,748,739,753,805,753,805,743,739,743,734,748,734,1536,739,1541,834,1541,834,1531,834,1531" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e30')"/>
+  <area shape="poly" coords="912,1485,912,1399,907,1394,866,1394,866,1399,871,1399,871,1192,861,1192,861,1399,866,1404,907,1404,907,1399,902,1399,902,1485,912,1485,912,1485" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e29')"/>
+  <area shape="poly" coords="711,1601,775,1601,780,1596,780,1241,775,1241,775,1246,1104,1246,1109,1241,1109,1133,1104,1133,1104,1138,1207,1138,1207,1128,1104,1128,1099,1133,1099,1241,1104,1241,1104,1236,775,1236,770,1241,770,1596,775,1596,775,1591,711,1591,711,1601,711,1601" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e28')"/>
+  <area shape="poly" coords="568,1486,568,1467,563,1462,541,1462,541,1467,546,1467,546,1412,536,1412,536,1467,541,1472,563,1472,563,1467,558,1467,558,1486,568,1486,568,1486" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e27')"/>
+  <area shape="poly" coords="665,1246,713,1246,718,1241,718,1134,713,1134,713,1139,775,1139,775,1129,713,1129,708,1134,708,1241,713,1241,713,1236,665,1236,665,1246,665,1246" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e26')"/>
+  <area shape="poly" coords="1222,1104,1141,1104,1141,1109,1146,1109,1146,1089,1141,1084,958,1084,958,1094,1141,1094,1141,1089,1136,1089,1136,1109,1141,1114,1222,1114,1222,1104,1222,1104" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e25')"/>
+  <area shape="poly" coords="790,1037,697,1037,697,1042,702,1042,702,564,697,564,697,569,765,569,765,559,697,559,692,564,692,1042,697,1047,790,1047,790,1037,790,1037" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e24')"/>
+  <area shape="poly" coords="1439,369,1150,369,1145,374,1145,725,1150,725,1150,720,1008,720,1008,730,1150,730,1155,725,1155,374,1150,374,1150,379,1439,379,1439,369,1439,369" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e22')"/>
+  <area shape="poly" coords="1342,767,1342,389,1337,389,1337,394,1424,394,1424,384,1337,384,1332,389,1332,767,1342,767,1342,767" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e21')"/>
+  <area shape="poly" coords="1692,715,1712,715,1717,710,1717,499,1712,499,1712,504,1739,504,1739,494,1712,494,1707,499,1707,710,1712,710,1712,705,1692,705,1692,715,1692,715" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e20')"/>
+  <area shape="poly" coords="1836,759,1836,710,1831,710,1831,715,1930,715,1935,710,1935,652,1925,652,1925,710,1930,710,1930,705,1831,705,1826,710,1826,759,1836,759,1836,759" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e19')"/>
+  <area shape="poly" coords="1722,793,1548,793,1548,798,1553,798,1553,428,1543,428,1543,798,1548,803,1722,803,1722,793,1722,793" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e18')"/>
+  <area shape="poly" coords="1632,671,1632,374,1627,369,1599,369,1599,379,1627,379,1627,374,1622,374,1622,671,1632,671,1632,671" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e17')"/>
+  <area shape="poly" coords="1922,361,1922,328,1917,323,1831,323,1831,328,1836,328,1836,270,1826,270,1826,328,1831,333,1917,333,1917,328,1912,328,1912,361,1922,361,1922,361" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e16')"/>
+  <area shape="poly" coords="1722,177,1662,177,1662,182,1667,182,1667,93,1662,88,1519,88,1519,98,1662,98,1662,93,1657,93,1657,182,1662,187,1722,187,1722,177,1722,177" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e15')"/>
+  <area shape="poly" coords="1464,659,1464,601,1454,601,1454,659,1464,659,1464,659" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e14')"/>
+  <area shape="poly" coords="1464,508,1464,465,1459,465,1459,470,1479,470,1484,465,1484,428,1474,428,1474,465,1479,465,1479,460,1459,460,1454,465,1454,508,1464,508,1464,508" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e13')"/>
+  <area shape="poly" coords="1384,285,1384,361,1389,366,1424,366,1424,356,1389,356,1389,361,1394,361,1394,285,1384,285,1384,285" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e12')"/>
+  <area shape="poly" coords="1516,335,1516,194,1511,189,1410,189,1410,194,1415,194,1415,172,1405,172,1405,194,1410,199,1511,199,1511,194,1506,194,1506,335,1516,335,1516,335" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e11')"/>
+  <area shape="poly" coords="427,408,427,372,422,367,368,367,368,372,373,372,373,328,363,328,363,372,368,377,422,377,422,372,417,372,417,408,427,408,427,408" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e10')"/>
+  <area shape="poly" coords="172,408,172,361,167,361,167,366,243,366,248,361,248,328,238,328,238,361,243,361,243,356,167,356,162,361,162,408,172,408,172,408" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e9')"/>
+  <area shape="poly" coords="115,582,115,530,110,530,110,535,300,535,305,530,305,447,300,447,300,452,325,452,325,442,300,442,295,447,295,530,300,530,300,525,110,525,105,530,105,582,115,582,115,582" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e8')"/>
+  <area shape="poly" coords="447,582,447,555,442,555,442,560,470,560,475,555,475,501,465,501,465,555,470,555,470,550,442,550,437,555,437,582,447,582,447,582" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e7')"/>
+  <area shape="poly" coords="447,748,447,675,437,675,437,748,447,748,447,748" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e6')"/>
+  <area shape="poly" coords="115,748,115,675,105,675,105,748,115,748,115,748" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e5')"/>
+  <area shape="poly" coords="285,748,285,562,280,562,280,567,383,567,388,562,388,501,378,501,378,562,383,562,383,557,280,557,275,562,275,748,285,748,285,748" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e4')"/>
+  <area shape="poly" coords="513,452,605,452,605,447,600,447,600,725,605,730,805,730,805,720,605,720,605,725,610,725,610,447,605,442,513,442,513,452,513,452" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e3')"/>
+  <area shape="poly" coords="912,686,912,646,902,646,902,686,912,686,912,686" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e2')"/>
+  <area shape="poly" coords="453,192,636,192,636,187,631,187,631,470,636,475,765,475,765,465,636,465,636,470,641,470,641,187,636,182,453,182,453,192,453,192" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e1')"/>
+  <area shape="poly" coords="926,309,926,222,916,222,916,309,926,309,926,309" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('e0')"/>
+  <area shape="rect" coords="1984,1977,2166,2007" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('n42')"/>
+  <area shape="rect" coords="1984,1924,2166,1954" alt="" onmouseout="hideTooltip()" onmouseover="showTooltip('n41')"/>
+  <area shape="rect" coords="820,686,993,764" href="http://docs.oracle.com/javase/7/docs/api/java/util/AbstractCollection.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n40')"/>
+  <area shape="rect" coords="780,309,1061,631" href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n39')"/>
+  <area shape="rect" coords="851,94,990,207" href="http://docs.oracle.com/javase/7/docs/api/java/lang/Iterable.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n38')"/>
+  <area shape="rect" coords="1484,1715,1691,1804" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/LinkedTransferQueue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n16')"/>
+  <area shape="rect" coords="1592,1031,1872,1206" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/TransferQueue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n15')"/>
+  <area shape="rect" coords="1000,1276,1219,1365" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ConcurrentLinkedQueue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n14')"/>
+  <area shape="rect" coords="319,1875,484,1964" href="http://docs.oracle.com/javase/7/docs/api/java/util/ArrayDeque.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n13')"/>
+  <area shape="rect" coords="1484,1408,1691,1497" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/SynchronousQueue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n12')"/>
+  <area shape="rect" coords="773,1920,979,2009" href="http://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n11')"/>
+  <area shape="rect" coords="1361,1510,1567,1599" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/PriorityBlockingQueue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n10')"/>
+  <area shape="rect" coords="1238,1612,1444,1701" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/LinkedBlockingQueue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n9')"/>
+  <area shape="rect" coords="1076,1715,1337,1804" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/DelayQueue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n8')"/>
+  <area shape="rect" coords="942,1817,1148,1906" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ArrayBlockingQueue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n7')"/>
+  <area shape="rect" coords="514,1875,721,1964" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/LinkedBlockingDeque.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n6')"/>
+  <area shape="rect" coords="834,1485,979,1563" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/TransferQueue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n5')"/>
+  <area shape="rect" coords="414,1486,711,1706" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/BlockingDeque.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n4')"/>
+  <area shape="rect" coords="418,1084,665,1397" href="http://docs.oracle.com/javase/7/docs/api/java/util/Deque.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n3')"/>
+  <area shape="rect" coords="1222,1022,1502,1197" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/BlockingQueue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n2')"/>
+  <area shape="rect" coords="790,1002,943,1177" href="http://docs.oracle.com/javase/7/docs/api/java/util/Queue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n1')"/>
+  <area shape="rect" coords="304,937,1921,2035" href="http://docs.oracle.com/javase/tutorial/collections/interfaces/queue.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n0')"/>
+  <area shape="rect" coords="1228,767,1447,845" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/CopyOnWriteArraySet.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n27')"/>
+  <area shape="rect" coords="1722,759,1941,837" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ConcurrentSkipListSet.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n26')"/>
+  <area shape="rect" coords="1562,671,1692,749" href="http://docs.oracle.com/javase/7/docs/api/java/util/TreeSet.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n25')"/>
+  <area shape="rect" coords="1754,361,2080,637" href="http://docs.oracle.com/javase/7/docs/api/java/util/NavigableSet.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n24')"/>
+  <area shape="rect" coords="1722,61,1941,255" href="http://docs.oracle.com/javase/7/docs/api/java/util/SortedSet.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n23')"/>
+  <area shape="rect" coords="1389,659,1528,737" href="http://docs.oracle.com/javase/7/docs/api/java/util/LinkedHashSet.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n22')"/>
+  <area shape="rect" coords="1394,508,1524,586" href="http://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n21')"/>
+  <area shape="rect" coords="1331,207,1447,285" href="http://docs.oracle.com/javase/7/docs/api/java/util/EnumSet.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n20')"/>
+  <area shape="rect" coords="1439,335,1584,413" href="http://docs.oracle.com/javase/7/docs/api/java/util/AbstractSet.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n19')"/>
+  <area shape="rect" coords="1316,61,1504,157" href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n18')"/>
+  <area shape="rect" coords="1211,15,2113,860" href="http://docs.oracle.com/javase/tutorial/collections/interfaces/set.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n17')"/>
+  <area shape="rect" coords="52,408,281,486" href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/CopyOnWriteArrayList.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n36')"/>
+  <area shape="rect" coords="392,748,492,826" href="http://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n35')"/>
+  <area shape="rect" coords="52,748,168,826" href="http://docs.oracle.com/javase/7/docs/api/java/util/Stack.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n34')"/>
+  <area shape="rect" coords="52,582,168,660" href="http://docs.oracle.com/javase/7/docs/api/java/util/Vector.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n33')"/>
+  <area shape="rect" coords="230,748,330,826" href="http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n32')"/>
+  <area shape="rect" coords="355,582,528,660" href="http://docs.oracle.com/javase/7/docs/api/java/util/AbstractSequentialList.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n31')"/>
+  <area shape="rect" coords="340,408,513,486" href="http://docs.oracle.com/javase/7/docs/api/java/util/AbstractList.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n30')"/>
+  <area shape="rect" coords="157,60,453,313" href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n29')"/>
+  <area shape="rect" coords="15,15,543,841" href="http://docs.oracle.com/javase/tutorial/collections/interfaces/list.html" alt="" target="_blank" onmouseout="hideTooltip()" onmouseover="showTooltip('n28')"/>
+</map>
+
+
+    <table class="yimagetable" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td><img class="yimage" src="Java-Collections_API-Collection.png" usemap="#image1_1" border="0" alt=""/></td>
+      </tr>
+    </table>
+</body>
+</html>

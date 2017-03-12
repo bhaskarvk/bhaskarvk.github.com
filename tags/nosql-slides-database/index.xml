@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nosql Slides Database on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/nosql-slides-database/index.xml</link>
+    <description>Recent content in Nosql Slides Database on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>© 2007-2017 Bhaskar V. Karambelkar. All rights reserved.</copyright>
+    <atom:link href="/tags/nosql-slides-database/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Introduction to NoSQL Databases</title>
+      <link>/2015/06/introduction-to-nosql-databases/</link>
+      <pubDate>Sun, 28 Jun 2015 10:55:00 +0000</pubDate>
+      
+      <guid>/2015/06/introduction-to-nosql-databases/</guid>
+      <description>&lt;p&gt;Recently I was asked to make a small presentation to a Graduate level course on Databases about NoSQL Databases. Here are the slides for the same. The slides go over high level introduction to NoSQL Databases, What they are ? What are some of the characteristics and how they differ from traditional relation databsaes ? Their Pros and Cons and finally some examples of different types of NoSQL DBs.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;
+&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;880f4c0a3e264e598eccb3e631f9833e&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

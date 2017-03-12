@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chromium Os on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/chromium-os/index.xml</link>
+    <description>Recent content in Chromium Os on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>© 2007-2017 Bhaskar V. Karambelkar. All rights reserved.</copyright>
+    <atom:link href="/tags/chromium-os/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Google CR-48 My Impressions - Part II Chromium OS</title>
+      <link>/2011/01/google-cr-48-my-impressions---part-ii-chromium-os/</link>
+      <pubDate>Wed, 12 Jan 2011 21:36:00 +0000</pubDate>
+      
+      <guid>/2011/01/google-cr-48-my-impressions---part-ii-chromium-os/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://picasaweb.google.com/lh/photo/WxQdGn-cjTgsl2Iw1hogeg?feat=embedwebsite&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;http://lh3.ggpht.com/_bQl4y98XDiM/TQwqif0l0hI/AAAAAAAAAfg/io3mG3p5r4c/s144/screenshot-20101217-222825.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;his is part II of my on going posts about Google CR-48 Netbook. &lt;a href=&#34;/2010/12/google-cr-48-my-impressions-part-1.html&#34;&gt;Part I&lt;/a&gt; went over the hardware specs of the net-book and in this part I&amp;rsquo;ll go over the much discussed &amp;ldquo;Chromium  OS&amp;rdquo;.&lt;/p&gt;
+
+&lt;h3 id=&#34;first-boot&#34;&gt;First Boot&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;U&lt;/strong&gt;pon first boot you are required to sign in to your Google account. By Google account I mean a traditional Google account or a Google Apps account that has been migrated to the new google apps infrastructure. If your Google Apps Domain has not been migrated then you can&amp;rsquo;t use that account to sign in. You also need to connect to a WI-FI network before being able to proceed.&amp;lt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;fter a successful sign in, you need to accept the Google EULA and then you  are on your way. After all this is done you get your first look at &amp;ldquo;Chromium OS&amp;rdquo;, which not surprisingly is nothing but a &amp;ldquo;Chrome&amp;rdquo; browser window, and a status bar showing time, network status, login status etc. The status bar is integrated in to the browser window, so it saves some precious vertical real estate.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O&lt;/strong&gt;ne good thing about the first boot is that a helper application is automatically launched for you, which goes over some basic features of the netbook&amp;rsquo;s hardware and software. Especially helpful for getting acquainted with CR-48&amp;rsquo;s multi-touch trackpad and special keys on the keyboard etc.&lt;/p&gt;
+
+&lt;h3 id=&#34;startup-shutdown&#34;&gt;Startup - Shutdown&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;s expected of a net-book, the CR-48 starts up very fast and also shuts down very fast too. I get a login prompt under 5 to 7 seconds and shut down is also under 5 seconds. If you short press the power button while the netbook is turned on, you&amp;rsquo;re logged out, while a long press results in complete shutdown.
+&lt;strong&gt;C&lt;/strong&gt;losing the LID will put the net-book to sleep and wake time from sleep is almost instantaneous.&lt;/p&gt;
+
+&lt;h3 id=&#34;chromium-os&#34;&gt;Chromium OS&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;C&lt;/strong&gt;hromium OS is a bit strange to use first time. You have to wrap your head around the idea that every thing i.e. all your apps and all your data is in the cloud (The new fancy word for Internet). But once you over come the initial blues, it&amp;rsquo;s in fact quite fun to use the net-book. You don&amp;rsquo;t have to worry about loosing your data or apps as everything is stored  in the cloud. Even if you reload your OS, perform a recovery, all the data/apps are automatically downloaded, ready to use under the new installation. I think that is the single most appealing feature of Chromium OS.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Y&lt;/strong&gt;ou do have some options to configure your net-book, like setting your local time-zone, enabling/disabling WI-FI/3G, options relevant to the chrome browser etc. One annoying thing I found is, every time you wipe the net-book clean and start fresh, your time-zone preference is reset to &amp;ldquo;Pacific Time&amp;rdquo;. It should be backed up and restored automatically along with your apps and data. For the technically inclined, there is also a terminal mode which allows you to run some basic command line programs. That&amp;rsquo;s about it for the &amp;ldquo;Chromium OS&amp;rdquo; from a user&amp;rsquo;s perspective that is. Very simple and very clean.&lt;/p&gt;
+
+&lt;h3 id=&#34;multi-user-support&#34;&gt;Multi User Support&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;W&lt;/strong&gt;hile it is good that chromium OS supports multiple users out of box, you can&amp;rsquo;t do fast user switch, i.e. you have to fist log out as first user in order to be able to login in as a second user. A bit annoying if two people are going to share the same netbook. Although in chromium&amp;rsquo;s defense, when you log back in, all the tabs that you had opened before logging out are restored. Also you can take a picture for each user using the webcam, which will be shown on the login screen.&lt;/p&gt;
+
+&lt;h3 id=&#34;chrome-browser&#34;&gt;Chrome Browser&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://picasaweb.google.com/lh/photo/H-oCrALxx-sDzyfdClnXeQ?feat=embedwebsite&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;http://lh5.ggpht.com/_bQl4y98XDiM/TR8_SpZ7ofI/AAAAAAAAAnY/ftzQoV5NWY0/s144/screenshot-20110101-094349.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;F&lt;/strong&gt;rom an end user perspective this is the most important area. The browser is the same as the stand-along Chrome Browser you can install under Windows/Linux. So if you&amp;rsquo;ve used chrome browser before, you should be all set. There is a dedicated button to switch to a &lt;strong&gt;&lt;em&gt;full screen&lt;/em&gt;&lt;/strong&gt; mode, which hides the top toolbar and frees up some vertical space.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Y&lt;/strong&gt;ou can have a complete integrated and unified setup across all your chrome installations if you setup &lt;a href=&#34;http://www.google.com/support/chrome/bin/answer.py?hl=en&amp;amp;answer=165139&#34; target=&#34;_blank&#34;&gt;chrome sync&lt;/a&gt;. Once you&amp;rsquo;ve setup chrome sync, all your chrome installations will be synced up to share bookmarks, extensions, passwords, preferences etc. This is a really nice feature.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;F&lt;/strong&gt;lash is already built into the browser, and you can play flash videos just fine. Although the hardware specs of the net-book does not allow for smooth playback of HD videos. In fact under cr-48, you don&amp;rsquo;t even get an option to select a HD version of a video, even if one is available. Google should really have put NVIDIA ION in this one, instead of the integrated Intel video controller.&lt;/p&gt;
+
+&lt;h3 id=&#34;chrome-web-apps&#34;&gt;Chrome Web Apps&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://picasaweb.google.com/lh/photo/SwETsrhs2VLTtC8hLfpfyQ?feat=embedwebsite&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;http://lh4.ggpht.com/_bQl4y98XDiM/TQ0PELBmnJI/AAAAAAAAAik/NDFe_ZnLxU0/s144/screenshot-20101218-144353.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;he &lt;a href=&#34;https://chrome.google.com/webstore&#34; target=&#34;_blank&#34;&gt;Chrome Web Store&lt;/a&gt; is the place to go to your cloud based apps that can run inside your browser. The web store is rather new and unfortunately most of the so called &amp;ldquo;Apps&amp;rdquo; are really nothing but bookmarks to respective sites. But there are quite a few good web apps already which are ready for prime time usage. I hope Google cleans up the web store so as to disallow bookmark only apps. But all in all, it is a step in the right direction.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;s of yet there are no paid apps, but I suppose those will also be available if and when Chromium OS takes off and more and more developers build dedicated Apps for the platform.&lt;/p&gt;
+
+&lt;h4 id=&#34;some-useful-chrome-extensions&#34;&gt;Some useful Chrome  extensions&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;H&lt;/strong&gt;ere are some chrome extensions and web apps that are useful, especially under CR-48.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://chrome.google.com/extensions/detail/mihcahmgecmbnbcchbopgniflfhgnkff?hl=en&#34; target=&#34;_blank&#34;&gt;Google Mail Checker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chrome.google.com/extensions/detail/oadboiipflhobonjjffjbfekfjcgkhco?hl=en&#34; target=&#34;_blank&#34;&gt;Chrome to Phone&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chrome.google.com/extensions/detail/kcnhkahnjcbndmmehfkdnkjomaanaooo?hl=en&#34; target=&#34;_blank&#34;&gt;Google Voice&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chrome.google.com/extensions/detail/illfnfpoggnlapniilhkplbofldeimie?hl=en&#34; target=&#34;_blank&#34;&gt;Panelize&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chrome.google.com/extensions/detail/hccbinpobnjcpckmcfngmdpnbnjpmcbd?hl=en&#34; target=&#34;_blank&#34;&gt;App Jump&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;local-file-system&#34;&gt;Local file system&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;here is limited support for viewing the local file system. No Explorer style GUI tool but file upload dialog box does allow you to select files stored under the &lt;code&gt;/home/chronos/user/downloads&lt;/code&gt; directory. This Chromium OS build sets aside a hefty 11GB partition for storing user data, though I can&amp;rsquo;t imagine which web apps would need that much space.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-inner-guts-of-chromium-os&#34;&gt;The inner guts of Chromium OS&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;F&lt;/strong&gt;or the curious , &amp;ldquo;chromium OS&amp;rdquo; is built on top of &amp;ldquo;Ubuntu Linux&amp;rdquo;, and you can access a lot of the underlying Linux functionality once you switch your net-book to the &lt;a href=&#34;http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/cr-48-chrome-notebook-developer-information&#34; target=&#34;_blank&#34;&gt;developer mode&lt;/a&gt;. In fact if you want to tinker with your CR-48, switching to developer mode is the first thing you should do. It will open up a window of other possibilities including being able to run a different flavor of a full fledged Linux distro.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;lthough the CPU is 64bit, the OS itself 32 bit. Also even though Chromium OS is open sourced, CR-48 ships with some closed source drivers as well, so you may get a sub optimal performance if you were to switch Google&amp;rsquo;s build with your own chromium OS build.&lt;/p&gt;
+
+&lt;h2 id=&#34;overall-impression&#34;&gt;Overall Impression&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;F&lt;/strong&gt;rankly I was surprised how easy it was for me to get used to &amp;ldquo;chromium OS&amp;rdquo;, even if I hadn&amp;rsquo;t used it before. Of course the fact that I was already using chrome as my primary browser helped. But giving up on local apps and using the cloud apps was not really as hard as I had expected. I had already switched to Google  Docs, so I never missed a local office suite. The web store has some useful apps for your day to day work like notes, todo lists etc. The only thing I am lacking is a decent IM application, there are quite a few available in the web store, but I am a bit skeptical of storing my IM account details at a 3rd party web-site.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;M&lt;/strong&gt;y main concern is the future of Chromium OS. There are already talks of merging chromium OS in to Android. I guess we just have to wait to find out. But for day to day tasks &amp;ldquo;Chromium OS&amp;rdquo; along with CR-48 are more than sufficient. CR-48 will surely replace my carry around laptop, an old HP nx6325.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;nother annoyance for me is &lt;a href=&#34;https://code.google.com/p/chromium/issues/detail?id=43951&#34; target=&#34;_blank&#34;&gt;this&lt;/a&gt; bug in Chrome, due to which Indic fonts are rendered wrongly in Chrome under Linux. Until this bug is fixed, I can&amp;rsquo;t use chrome under Linux full time.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Google CR-48 My Impressions - Part 1 Hardware</title>
+      <link>/2010/12/google-cr-48-my-impressions---part-1-hardware/</link>
+      <pubDate>Sat, 25 Dec 2010 15:07:00 +0000</pubDate>
+      
+      <guid>/2010/12/google-cr-48-my-impressions---part-1-hardware/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://picasaweb.google.com/lh/photo/3sKj43enTtsoeJMxWUg5rw?feat=embedwebsite&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;http://lh5.ggpht.com/_bQl4y98XDiM/TRpykOaWy_I/AAAAAAAAAlA/53kQoi2-Ds4/s144/P1010954.JPG&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;his is my series of posts about my impressions of Google&amp;rsquo;s CR-48 the net-book that runs Google&amp;rsquo;s Chromium OS.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;I&lt;/strong&gt;t was a pleasant surprise when the CR-48 showed up at my doorstep. I had applied for one fairly early in the beta program, but never expected to get one, so imagine my surprise when I opened the UPS box and saw the now famous case of CR-48 inside.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;s Google started this program with the intention of receiving feedback from the user/developer community, here goes my impressions about the net-book, it&amp;rsquo;s hardware and it&amp;rsquo;s software.&lt;/p&gt;
+
+&lt;h2 id=&#34;hardware&#34;&gt;Hardware&lt;/h2&gt;
+
+&lt;h3 id=&#34;the-exterior-components&#34;&gt;The Exterior components&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;o start with , the box that CR-48 was shipped in is really nice, it has already gained its own fame in a very short time and rightfully so. I am thinking using it as a case for HTPC, should be quite interesting if and when I get around to doing it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;s a lot has been already said about the box, let me talk a bit about the safety instructions leaflet that came with the net-book. This is by far the most interesting and quite amusing safety instruction sheet I have read. To quote a few lines from it &amp;hellip;..&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Don&amp;rsquo;t Panic.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;R&lt;/strong&gt;ead this paper. Then recycle it.&lt;/p&gt;
+
+&lt;p&gt;Or make it into a super cool paper airplane that you can give to your nephew.&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;Do not drop, disassemble, open, crush, bend, bake, deform, puncture, blend (&lt;strong&gt;guess we&amp;rsquo;ll never know if it&amp;rsquo;ll blend)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;his product contains small parts which may present a choking hazard to small children, &lt;strong&gt;as well as men who have not emotionally matured&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;All in all , quite a few amusing lines in there.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;M&lt;/strong&gt;oving on to the actual product, CR-48, The net-book is quite light, although not feather light, feels very easy to carry around and handle. I really like the mat rubbery body, but it is quite prone to fingerprints and smug marks in general. Make sure you&amp;rsquo;re not eating ribs and using this thing at the same time ;).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;he &lt;strong&gt;&lt;em&gt;LCD screen&lt;/em&gt;&lt;/strong&gt; is quite nice and pleasing to eyes, haven&amp;rsquo;t tried using this thing outdoors yet, but so far under normal light the screen is quite good. The 1280x800 max resolution works quite well on a 12&amp;rdquo;1&amp;rsquo; screen. One thing to note is that you can&amp;rsquo;t open the LCD screen with one hand, in fact you feel quite a resistance even when opening it with one hand on the lid and another holding down the bottom part.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://picasaweb.google.com/lh/photo/gteyQW3IH-sPX3UNKjEOgw?feat=embedwebsite&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;http://lh5.ggpht.com/_bQl4y98XDiM/TRpyjT1twFI/AAAAAAAAAk8/Du-BZD0hI3E/s144/P1010955.JPG&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;here is a &lt;span style=&#34;font-style: italic; font-weight: bold;&#34;&gt;VGA adapter&lt;/span&gt; on the left side for external display. This was a major disappointment, VGA adapter in 2010 ? Seriously what were they thinking, plus when you switch to the external display the LCD screen turns off, so no dual monitor setup. Wish list for the OEMs, HDMI please.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://picasaweb.google.com/lh/photo/n23D07aQCr0jyzDODm4TCw?feat=embedwebsite&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;http://lh6.ggpht.com/_bQl4y98XDiM/TR9AVzG3VjI/AAAAAAAAAnk/tj-44arOZF8/s144/P1010985.JPG&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;he &lt;span style=&#34;font-style: italic; font-weight: bold;&#34;&gt;web-cam&lt;/span&gt; is mounted on top of the screen, just like any other laptop/net-book and the &lt;strong&gt;&lt;span style=&#34;font-style: italic;&#34;&gt;microphone&lt;/span&gt;&lt;/strong&gt; is right besides it. So everything you need for video/voice chat is right there. The &lt;span style=&#34;font-style: italic; font-weight: bold;&#34;&gt;speakers&lt;/span&gt; are quite good for casual listening, and there is also a headphone jack in case you need to use your favorite head phones.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://picasaweb.google.com/lh/photo/30POSOcdk6KCsbsaUJn3yw?feat=embedwebsite&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;http://lh6.ggpht.com/_bQl4y98XDiM/TR9AWDsKGFI/AAAAAAAAAoE/r63Z8k8HmTg/s144/P1010986.JPG&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;he &lt;em&gt;Keyboard&lt;/em&gt; is already being discussed in a lot of places, and the main point being replacing F-* keys with function specific keys. So far I haven&amp;rsquo;t found any problems adjusting to the new keyboard, although it took some time getting use to the top row keys. I do miss dedicated &amp;ldquo;Page Up/Down&amp;rdquo; and &amp;ldquo;Home/End&amp;rdquo; keys. Having to type Alt-Up/Down and Crtl+Alt+Up/Down is not quite as easy as using a dedicated button for that purpose. I really don&amp;rsquo;t use the CAPSLOCK key, so I don&amp;rsquo;t mind the caps lock key being replace by the search button.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://picasaweb.google.com/lh/photo/5v9gUJq66MjAhg6MISwCBw?feat=embedwebsite&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;http://lh5.ggpht.com/_bQl4y98XDiM/TRpyixt_nsI/AAAAAAAAAk4/Z0Mii_tp_C8/s144/P1010956.JPG&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;he &lt;strong&gt;&lt;span style=&#34;font-style: italic;&#34;&gt;track-pad&lt;/span&gt;&lt;/strong&gt; on the other hand is quite a different story. I am still not getting used to multi-touch, besides I don&amp;rsquo;t think the track-pad shuts off when you&amp;rsquo;re typing, resulting in accidental clicks while typing, very very annoying.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://picasaweb.google.com/lh/photo/OjjdJBb0J2Votqz2SK6C7w?feat=embedwebsite&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;http://lh4.ggpht.com/_bQl4y98XDiM/TRpylOsF6MI/AAAAAAAAAlE/rYBqUyU5_BQ/s144/P1010947.JPG&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T&lt;/strong&gt;hankfully you can use an external USB mouse. I was able to use a wireless USB mouse very easily, but 2 things I couldn&amp;rsquo;t figure out were..
+- How to disable the track-pad when an external mouse is being used.
+- How to change mouse settings, like acceleration, sensitivity etc.&lt;/p&gt;
+
+&lt;p&gt;The USB port can also be used with a USB-ethernet adapter for wired network access, although I haven&amp;rsquo;t tried that yet.&lt;/p&gt;
+
+&lt;p&gt;There is also a &lt;em&gt;&lt;strong&gt;SD-Card slot&lt;/strong&gt;&lt;/em&gt; right behind the USB port, and although there is no explorer style GUI to access files on your SD card, the browser&amp;rsquo;s file upload dialog box does indeed allow you to navigate the SD card. Also you can use the shell in developer mode to access the SD card. Similarly you can also connect a USB external disk to the usb port.&lt;/p&gt;
+
+&lt;p&gt;That is about all on the external, after all this is a net-book so no parallel ports, no serial ports, no docking station connectors etc.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-inner-guts&#34;&gt;The inner guts&lt;/h3&gt;
+
+&lt;p&gt;Now on to the meat, what&amp;rsquo;s inside this thing, the stuff that really matters&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;- CPU :&lt;/strong&gt; Intel Atom Processor N455 1.66GHz 512K Cache.
+Not bad for a net-book, don&amp;rsquo;t expect to run a rendering farm on these though.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;- Memory :&lt;/strong&gt; Hynix 2GB DDR3 1Rx8 PC3 – 10600S Ram
+No complains here, DDR3, 2 GB, what&amp;rsquo;s not to like.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;- Hard-disk :&lt;/strong&gt; SanDisk sdsa4dh-016G 16GB SATA SSD
+More than enough for a net-book.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;- Display Adapter :&lt;/strong&gt; Intel Integrated Graphics Controller
+No HD video playbacks with this one. Why no Nvidia ION , google ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;- Wireless Wan :&lt;/strong&gt; AzureWave 802.11 a/b/g/n PCI-E Half MiniCard
+Supports 802.11 N, so quite fast wireless speeds.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;- 3g Adapter :&lt;/strong&gt; Qualcomm Gobi2000 PCI Express Mini Card.
+With 4G just around the corner, not sure 3G will suffice.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;- Bluetooth :&lt;/strong&gt; Atheros AR5BBU12 Bluetooth V2.1 ED.
+There is no GUI for bluetooth connectivity though. Has to be done via command line in developer mode.&lt;/p&gt;
+
+&lt;p&gt;In my next post, I&amp;rsquo;ll review the Chromium OS user experience.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

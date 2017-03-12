@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Howto on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/howto/index.xml</link>
+    <description>Recent content in Howto on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>© 2007-2017 Bhaskar V. Karambelkar. All rights reserved.</copyright>
+    <atom:link href="/tags/howto/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Alternative to using legends in ggplot2</title>
+      <link>/2016/03/alternative-to-using-legends-in-ggplot2/</link>
+      <pubDate>Mon, 21 Mar 2016 11:22:02 -0400</pubDate>
+      
+      <guid>/2016/03/alternative-to-using-legends-in-ggplot2/</guid>
+      <description>
+
+&lt;p&gt;Recently I got hold of some regional spending forecast data. I quickly plotted it using ggplot2, and here&amp;rsquo;s the first version of it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.orig-1.png&#34; alt=&#34;Figure 1: First Attempt&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: First Attempt
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;The data is from 2014 and the values from 2015 to 2019 are the forecasted values. For now don&amp;rsquo;t worry about the validity of this data or the lack of margin of error in the forecasted values. Lets just concentrate on the problems with the visual elements of this chart.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-problems&#34;&gt;The Problems&lt;/h2&gt;
+
+&lt;p&gt;There are two problems here&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Most of the data is hugging the x-axis, something you see very often when you have highly skewed data.&lt;/li&gt;
+&lt;li&gt;Way too many categories (regions) which makes it hard to figure out which line is for which region, even with the legend.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A crude approach to fix problem #1 would be to use log scale on y-axis, which believe me is not the way to go especially when you want to present this chart to business execs and not scientific community. For problem #2, I tried using various different color palettes but none gave enough distinction in the hues to be able to distinguish all the ten regions correctly. This is not a problem of the hues. When you have more than 4 or 5 hues it is hard to distinguish each one, especially for line or point plots where the ink to plot ratio is not high (as opposed to say a bar plot).&lt;/p&gt;
+
+&lt;h2 id=&#34;the-solutions&#34;&gt;The Solutions&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s tackle each separately. First we tackle problem #1, that of most data hugging the x-axis. In this case it was a very easy fix, the data is very easily splittable in to two clusters a) &lt;code&gt;spending &amp;lt; 10,000&lt;/code&gt;, and b) &lt;code&gt;spending &amp;gt; 10,000&lt;/code&gt;. I did just that by creating another variable which indicated which group the data belonged to and used &lt;code&gt;facet_grid&lt;/code&gt; to create two charts, but hid the facet strip and text. Here&amp;rsquo;s the result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.orig2-1.png&#34; alt=&#34;Figure 2: Using `facet_wrap` for better data visibility&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: Using &lt;code&gt;facet_wrap&lt;/code&gt; for better data visibility
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;This is much better, the data that was hugging the x-axis has now better visibility. It is &lt;strong&gt;worth noting&lt;/strong&gt; that the chart is in fact two plots, arranged vertically on top of each other, and the y-axis scale is for the bottom chart is 1,000 while that of the top chart is 10,000. This just gives an illusion of a single y-axis. Also worth noting is that we could do this because the data was easily separable. I believe when data is easily separable as is the case here, this approach is a better alternative to using log scale. &lt;a href=&#34;https://twitter.com/hrbrmstr&#34; target=&#34;_blank&#34;&gt;Bob Rudis&lt;/a&gt; helped in adding a visual separator where the scale breaks.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt; : Not many people are fans of scale breaking, and I too would advice caution when using such an approach. Perhaps a better alternative is to simply plot the two charts separately.&lt;/p&gt;
+
+&lt;p&gt;Now on to problem #2. What we really want here is a better way to indicate which line belongs to which region. If we can directly label the lines instead of using a legend on the side, then we have our solution for problem #2. After some googling around I found &lt;a href=&#34;https://twitter.com/JonKalodimos/status/636880959191826432&#34; target=&#34;_blank&#34;&gt;this Twitter conversation&lt;/a&gt; and a subsequent &lt;a href=&#34;http://rud.is/b/2015/08/27/coloring-and-drawing-outside-the-lines-in-ggplot/&#34; target=&#34;_blank&#34;&gt;blog post&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/hrbrmstr&#34; target=&#34;_blank&#34;&gt;Bob Rudis&lt;/a&gt;. Hadley suggested using the &lt;code&gt;directlables&lt;/code&gt; package, and Bob used &lt;code&gt;ggpolt2::annotation_custom&lt;/code&gt;. I first went with the &lt;code&gt;directlabels&lt;/code&gt; package but quickly realized that none of the &lt;a href=&#34;http://directlabels.r-forge.r-project.org/docs/lineplot/plots/chemqqmathscore.html&#34; target=&#34;_blank&#34;&gt;options&lt;/a&gt; were working out for me. The labels were either overlapping each other or overlapping the data, neither of which was acceptable. So I explored Bob&amp;rsquo;s option, and there too I gave up on &lt;code&gt;ggplot2::annotation_custom&lt;/code&gt; for the same reason, overlapping labels.&lt;/p&gt;
+
+&lt;p&gt;So I came up with an alternative approach, which involved using the &lt;code&gt;ggrepel&lt;/code&gt; package to make sure the labels didn&amp;rsquo;t overlap. Here&amp;rsquo;s the final result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.final-1.png&#34; alt=&#34;Figure 3: Final Version, using `ggrepel`.&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3: Final Version, using &lt;code&gt;ggrepel&lt;/code&gt;.
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;This is even better, not only do we get labels right next to each line but we also get non-overlapping labels. The only thing I wish was an option in the &lt;code&gt;ggrepel&lt;/code&gt; package that would allow repelling in just one direction, i.e. in this case it would be even nicer if I can left align all the labels, but still get vertical separation. Other than that I am happy with the result. They key to obtaining this chart was using &lt;code&gt;ggrepel&lt;/code&gt; and using &lt;code&gt;ggplot2::expand_limit()&lt;/code&gt; function to make sure there was enough room along the x-axis for the labels to not get chopped. By default ggplot2 will leave just a small area around each scale, so I had to use the &lt;code&gt;expand_limit&lt;/code&gt; function to make room for the labels.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-code&#34;&gt;The Code&lt;/h2&gt;
+
+&lt;p&gt;Here is the code for the final plot.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggplot2)
+library(readr)
+library(tidyr)
+library(dplyr)
+library(ggthemes)
+library(ggrepel)
+
+region.forecast &amp;lt;- read_csv(&#39;./region-spending-forecast.csv&#39;)
+# Add a column so we can split the plot into two plots.
+region.forecast$Budget &amp;lt;- ifelse(region.forecast$`2019`&amp;lt;10000,&#39;Low&#39;,&#39;High&#39;)
+
+# Convert wide format data to long format as required by ggplot2
+df.tidy &amp;lt;- region.forecast %&amp;gt;% gather(Year,Spending,-Region,-Budget)
+
+g &amp;lt;- ggplot(df.tidy, aes(x=Year,y=Spending,group=Region,color=Region)) +
+    # Solid line for actual data
+    geom_line(data=df.tidy %&amp;gt;% filter(Year&amp;lt;2015),
+              linetype=&#39;solid&#39;, size=0.75) +
+    # dashed line for forecast data
+    geom_line(data=df.tidy %&amp;gt;% filter(Year&amp;gt;=2014),
+              linetype=&#39;dotted&#39;, size=0.75) +
+    # Mark each data point
+    geom_point(shape=8,size=0.75) +
+    # Add labels right after the last value of each series.
+    geom_label_repel(data=df.tidy %&amp;gt;% filter(Year==2019),
+                     aes(label=Region, fill=Region),
+                     nudge_x = 0.5, size=3, color=&#39;white&#39;,
+                     force=1.5, segment.color=&#39;#bbbbbb&#39;) +
+    # Split the plot in to two plots on top of each other
+    facet_grid(Budget ~ ., scales = &#39;free_y&#39;) +
+    scale_y_continuous(labels = scales::comma) + # Add commas to y-axis labels
+    scale_x_discrete() +
+    theme_minimal() +
+    scale_color_tableau() + scale_fill_tableau() + # Tableau Colors
+    theme(strip.text = element_blank(), # Hide facet text
+          legend.position = &#39;none&#39;, # Hide legend
+          panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank())  +
+    expand_limits(x=9) # So that we have enough room along x-axis for labels.
+
+# This is to insert a ↑ as a scale seperation indicator between the two plots.
+library(grid)
+library(gtable)
+library(gridExtra)
+
+gb &amp;lt;- ggplot_build(g)
+gt &amp;lt;- ggplot_gtable(gb)
+gt &amp;lt;- gtable_add_grob(gt, textGrob(label=&amp;quot;↑&amp;quot;, gp=gpar(fontsize=30)), 5, 3,
+                      clip=&amp;quot;on&amp;quot;, name=&amp;quot;separator&amp;quot;)
+gt$heights[[5]] &amp;lt;- unit(30, &amp;quot;pt&amp;quot;)
+grid.arrange(gt)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;final-thoughts&#34;&gt;Final Thoughts&lt;/h2&gt;
+
+&lt;p&gt;There are some noteworthy thoughts here.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I could use &lt;code&gt;facet_grid&lt;/code&gt; because the data was easily splittable, otherwise I would have had to come up with some other clever option for lifting the series data that was hugging the x-axis.&lt;/li&gt;
+&lt;li&gt;Not everyone is a fan of a split sclae in an axis so tread carefully.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggrepel&lt;/code&gt; for now does not allow repelling along a single axis. This makes the label positions less than ideal. The ideal solution is to have the labels vertically aligned and enough separation along the y-axis. But fear not there is already a &lt;a href=&#34;https://github.com/slowkow/ggrepel/issues/25&#34; target=&#34;_blank&#34;&gt;feature request&lt;/a&gt; for it.&lt;/li&gt;
+&lt;li&gt;I tried various color schemes, and Tableau colors from the &lt;code&gt;ggthemes&lt;/code&gt; package gave the best hues.&lt;/li&gt;
+&lt;li&gt;You have to specify the scaled data values for &lt;code&gt;expand_limits&lt;/code&gt;. In my case, as I had seven data points, one for each year of 2013 to 2019, so I added room for two more using &lt;code&gt;expand_limits(x=9)&lt;/code&gt; to accomodate the labels.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Shiny in a SmartOS zone</title>
+      <link>/2015/10/shiny-in-a-smartos-zone/</link>
+      <pubDate>Sat, 24 Oct 2015 20:22:02 -0400</pubDate>
+      
+      <guid>/2015/10/shiny-in-a-smartos-zone/</guid>
+      <description>&lt;p&gt;My Last &lt;a href=&#34;/2015/10/setting-up-r-on-a-smartos-zone./&#34; target=&#34;_blank&#34;&gt;post&lt;/a&gt; showed you how to install R inside a &lt;a href=&#34;http://www.smartos.org&#34; target=&#34;_blank&#34;&gt;SmartOS&lt;/a&gt; zone. This post is about installing the &lt;a href=&#34;https://www.rstudio.com/products/shiny/shiny-server/&#34; target=&#34;_blank&#34;&gt;shiny server&lt;/a&gt; in the said zone. While setting up R was relatively straight forward, for setting up Shiny server I had to patch some C++ code to make shiny server work on solaris. Which means you don&amp;rsquo;t have to, just follow along.
+&lt;/p&gt;
+
+&lt;p&gt;First install R in a zone as shown in my earlier &lt;a href=&#34;/2015/10/setting-up-r-on-a-smartos-zone./&#34; target=&#34;_blank&#34;&gt;post&lt;/a&gt;. This is very important, unless you have a working R setup you cannot have a functional working Shiny server. Also make sure to allocate enough CPU, memory, and disk-space for your zone.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Install some packages
+pkgin install git-base
+# Install Shiny R package
+Rscript -e &amp;quot;install.packages(c(&#39;shiny&#39;))&amp;quot;
+# Next install the shiny server
+mkdir /opt/src &amp;amp;&amp;amp; cd /opt/src
+git clone https://github.com/rstudio/shiny-server.git
+cd shiny-server/
+# We need a patch for some solaris specific stuff
+wget https://gist.githubusercontent.com/bhaskarvk/6a15083ab9a7997df0a2/raw/5e7fec0dee4c79b828032ab007bf8b6137f735c3/solaris.diff
+git apply solaris.diff &amp;amp;&amp;amp; rm solaris.diff
+mkdir tmp
+cd tmp
+DIR=`pwd`
+PATH=$DIR/../bin:$PATH
+PYTHON=`which PYTHON`
+PYTHON=`which python`
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON=&amp;quot;$PYTHON&amp;quot; ../
+make
+mkdir ../build
+(cd .. &amp;amp;&amp;amp; ./bin/npm --python=&amp;quot;$PYTHON&amp;quot; rebuild)
+(cd .. &amp;amp;&amp;amp; ./bin/node ./ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js --python=&amp;quot;$PYTHON&amp;quot; rebuild)
+# Install the software at the predefined location
+make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This completes installation of shiny server. Next some post installation stuff&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ln -s /usr/local/shiny-server/bin/shiny-server /usr/local/bin
+useradd -m shiny
+mkdir -p /var/log/shiny-server
+mkdir -p /srv/shiny-server
+mkdir -p /var/lib/shiny-server
+chown shiny: /var/log/shiny-server /srv/shiny-server /var/lib/shiny-server
+mkdir -p /etc/shiny-server
+cd /etc/shiny-server
+wget https://raw.githubusercontent.com/rstudio/shiny-server/master/config/default.config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it, Shiny is installed and configured. To start it&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# We run the shiny server as user shiny
+su - shiny
+shiny-server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see something like&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[2015-10-25 01:49:43.019] [INFO] shiny-server - Shiny Server v1.4.1.0 (Node.js v0.10.40)
+[2015-10-25 01:49:43.021] [INFO] shiny-server - Using config file &amp;quot;/etc/shiny-server/shiny-server.conf&amp;quot;
+[2015-10-25 01:49:43.064] [INFO] shiny-server - Starting listener on 0.0.0.0:3838
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Congratulations you now have a running shiny server inside a SmartOS zone. The shiny server installation instructions came from the &lt;a href=&#34;https://github.com/rstudio/shiny-server/wiki/Building-Shiny-Server-from-Source&#34; target=&#34;_blank&#34;&gt;official docs&lt;/a&gt;, but I did have to patch some stuff to make it work under solaris. The patch is available on &lt;a href=&#34;https://gist.github.com/bhaskarvk/6a15083ab9a7997df0a2&#34; target=&#34;_blank&#34;&gt;gist&lt;/a&gt;. Next I&amp;rsquo;ll try and create a proper start-up script for shiny-server so that it can be controlled via &lt;code&gt;svcadm&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Setting up R on a SmartOS Zone.</title>
+      <link>/2015/10/setting-up-r-on-a-smartos-zone./</link>
+      <pubDate>Sat, 24 Oct 2015 18:49:00 +0000</pubDate>
+      
+      <guid>/2015/10/setting-up-r-on-a-smartos-zone./</guid>
+      <description>&lt;p&gt;Recently I converted a spare beefy laptop (8 cores, 16 GB RAM, 750GB HD) to a &lt;a href=&#34;http://www.smartos.org&#34; target=&#34;_blank&#34;&gt;SmartOS&lt;/a&gt; hypervisor. I wanted to play with some bare metal hypervisor / container stuff and ESXi was just not cutting it. I&amp;rsquo;m not a Solaris nerd, but I know enough Unix to find may way around in Linux/*BSDs/Solaris/HP-UX, so it was not a big pain. In fact ZFS is really nice.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Anyway, this post is about setting up R in a &lt;a href=&#34;https://wiki.smartos.org/display/DOC/Zones&#34; target=&#34;_blank&#34;&gt;zone&lt;/a&gt;. It wasn&amp;rsquo;t very difficult to set up R in a zone but it was not completely straight forward as well.&lt;/p&gt;
+
+&lt;p&gt;On the SmartOS host&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Update the list of available images
+imgadm update
+# import the latest base-64 image (15.3.0)
+imgadm import 842e6fa6-6e9b-11e5-8402-1b490459e334
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next create a file &lt;code&gt;zone.json&lt;/code&gt; with the following content in a convenient place.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
+  &amp;quot;alias&amp;quot;: &amp;quot;zone01&amp;quot;,
+  &amp;quot;hostname&amp;quot;: &amp;quot;zone01&amp;quot;,
+  &amp;quot;brand&amp;quot;: &amp;quot;joyent&amp;quot;,
+  &amp;quot;quota&amp;quot;: 10,
+  &amp;quot;max_physical_memory&amp;quot;: 2048,
+  &amp;quot;dataset_uuid&amp;quot;: &amp;quot;842e6fa6-6e9b-11e5-8402-1b490459e334&amp;quot;,
+  &amp;quot;default_gateway&amp;quot;: &amp;quot;10.0.0.1&amp;quot;,
+  &amp;quot;resolvers&amp;quot;: [
+    &amp;quot;8.8.8.8&amp;quot;,
+    &amp;quot;8.8.4.4&amp;quot;
+  ],
+  &amp;quot;nics&amp;quot;: [
+    {
+      &amp;quot;nic_tag&amp;quot;: &amp;quot;stub0&amp;quot;,
+      &amp;quot;ip&amp;quot;: &amp;quot;10.0.0.5&amp;quot;,
+      &amp;quot;netmask&amp;quot;: &amp;quot;255.255.255.0&amp;quot;,
+      &amp;quot;allow_ip_spoofing&amp;quot;: &amp;quot;1&amp;quot;,
+      &amp;quot;gateway&amp;quot;: &amp;quot;10.0.0.1&amp;quot;
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; You&amp;rsquo;ll probably need to change the &lt;code&gt;alias&lt;/code&gt;, &lt;code&gt;hostname&lt;/code&gt;, &lt;code&gt;quota&lt;/code&gt; (disk-space in GB), &lt;code&gt;max_physical_memory&lt;/code&gt;, and networking stuff like &lt;code&gt;gateway&lt;/code&gt; and &lt;code&gt;nics&lt;/code&gt; to match your environment. I had problems running the zone with 1G memory, better give it at least 2 Gigs.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Provision and bring up the zone
+vcadm create -f zone.json
+zlogin &amp;lt;UUID of the new zone&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now inside the zone&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pkgin update # Update pkgsrc
+# Compiler and related stuff
+# I had a hard time compiling R packages with gcc48/gcc49 so
+# I used gcc47 which worked perfectly.
+pkgin install gcc47 gcc47-libs gmake autoconf automake cmake
+# XML stuff
+pkgin install libxml2 libxml libxml++1 libxml++-2
+pkgin install R R2pkg
+# Setup CRAN Mirror
+# TODO may be https instead of http
+echo &#39;options(repos=structure(c(CRAN=&amp;quot;http://cran.rstudio.com/&amp;quot;)))&#39; &amp;gt; ~/.Rprofile
+# Install Rcpp and devtools, this will pull in a lot of goodies with it
+Rscript -e &amp;quot;install.packages(&#39;Rcpp&#39;,&#39;devtools&#39;)&amp;quot;
+# Install Hadleyverse
+Rscript -e &amp;quot;install.packages(c(&#39;plyr&#39;, &#39;dplyr&#39;, &#39;stringr&#39;, &#39;rvest&#39;, &#39;httr&#39;, &#39;reshape2&#39;, &#39;ggplot2&#39;, &#39;ggmap&#39;, &#39;tidyr&#39;, &#39;lubridate&#39;, &#39;readr&#39;, &#39;testthat&#39;, &#39;roxygen2&#39;))&amp;quot;
+# Some other useful R package
+Rscript -e &amp;quot;install.packages(c(&#39;data.table&#39;, &#39;knitr&#39;, &#39;rmarkdown&#39;))&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that it&amp;rsquo;s your usual R stuff. I&amp;rsquo;m going to convert this zone to a shiny server and will blog about it when done.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

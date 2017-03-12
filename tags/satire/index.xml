@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Satire on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/satire/index.xml</link>
+    <description>Recent content in Satire on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>© 2007-2017 Bhaskar V. Karambelkar. All rights reserved.</copyright>
+    <atom:link href="/tags/satire/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The 10 commandments for hiring Data Scientists</title>
+      <link>/2015/03/the-10-commandments-for-hiring-data-scientists/</link>
+      <pubDate>Wed, 04 Mar 2015 15:49:00 +0000</pubDate>
+      
+      <guid>/2015/03/the-10-commandments-for-hiring-data-scientists/</guid>
+      <description>
+
+&lt;p&gt;As a Data Scientist (whatever it means), I get a lot of job offers over LinkedIn and other channels. Although I&amp;rsquo;m not actively looking for a job, I still go through them. One just because I&amp;rsquo;m curious to find out what exactly do organizations look for in a Data Scientist, and secondly to amuse myself. This post is about the later part, it amuses me to no end what some people want in a Data Scientist, and I&amp;rsquo;ve made a consolidated list for all the recruiters and organizations who are looking to hire one (or more).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Warning :&lt;/strong&gt; If satire is not your cup of tea (coffee/soda) you should most certainly not refrain from not reading this article.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-1-thou-shalt-not-have-a-freaking-clue-what-data-science-is-all-about&#34;&gt;Rule 1: Thou shalt not have a freaking clue what Data Science is all about.&lt;/h3&gt;
+
+&lt;p&gt;But you should still throw in terms like Artificial Intelligence, deep learning, Neural Networks, SVM (admit it, you don&amp;rsquo;t even know what it stands for). You are not concerned whether the applicant can apply his knowledge to solve the problem at hand, all you really want to know is whether he knows the difference between supervised and unsupervised learning.&lt;br/&gt;
+In short don&amp;rsquo;t worry about what the applicant can do, just worry about how much he can memorize and regurgitate. Oh! and have him describe the Apriori algorithm over the telephonic interview.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-2-thou-shalt-use-a-fishing-net-to-grab-as-many-as-you-can-and-figure-out-what-to-do-with-them-later&#34;&gt;Rule 2: Thou shalt use a fishing net to grab as many as you can, and figure out what to do with them later.&lt;/h3&gt;
+
+&lt;p&gt;Have like 10 or 15 openings for the same post. Be very vague about what it is that you exactly expect these people to do. Better yet have a complete lack of understanding of what your problems are and how you think Data Scientists can help you solve it. Just be sure to mention you have tons of data. Yeah that&amp;rsquo;ll make them bite.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-3-thou-shalt-put-data-scientist-even-if-what-you-really-want-a-code-monkey&#34;&gt;Rule 3: Thou shalt put &amp;lsquo;Data Scientist&amp;rsquo; even if what you really want a code monkey.&lt;/h3&gt;
+
+&lt;p&gt;Well why not? I mean you can&amp;rsquo;t attract developers to work for you with &amp;lsquo;We need you to work 12 hours a day, 7 days a week, 365 days a year&amp;rsquo;. But hey if you just change that position from Software Developer to Data-Scientist, lo and behold the bees come flying to your honeypot. And if they can fix your crappy website css code on the side while doing data science-y stuff it&amp;rsquo;s a win-win.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-4-thou-shalt-never-mention-salary-range-or-benefits&#34;&gt;Rule 4: Thou shalt never mention salary range or benefits.&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s not like Data-Scientists are in hot demand or anything. They should be grateful you even put up a job post for them to see and apply. And who do they think they are demanding top notch compensation for the efforts and handwork they put in acquiring their skills. And if you really think about it, free laundry is all the benefits someone needs anyways.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-5-thou-shalt-not-care-about-the-age-v-s-experience-paradox&#34;&gt;Rule 5: Thou shalt not care about the age v/s experience paradox.&lt;/h3&gt;
+
+&lt;p&gt;We want a PhD. with 10 years of work experience, who&amp;rsquo;s young and has the zeal and energy of someone just out of the college, coz you know we need his skills to make more people click our in-your-face video pop-up ads. Plus we really can&amp;rsquo;t just say under-30 single male (that would get us sued), so we just go with young, energetic, likes to work in a startup environment, doesn&amp;rsquo;t mind staying up late in office (hey free pizza and sodas!).&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-6-thou-shalt-extol-the-virtues-of-working-in-a-startup-in-a-way-that-would-make-a-bangladeshi-garment-factory-owner-blush&#34;&gt;Rule 6: Thou shalt extol the virtues of working in a startup in a way that would make a Bangladeshi garment factory owner blush.&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Long never ending hours at work - CHECK&lt;/li&gt;
+&lt;li&gt;Jack of All trades job duties - CHECK&lt;/li&gt;
+&lt;li&gt;Low pay but promise of Stock Option - CHECK&lt;/li&gt;
+&lt;li&gt;No real usable health care coverage - CHECK&lt;/li&gt;
+&lt;li&gt;Foosball/Ping-Pong table - CHECK&lt;/li&gt;
+&lt;li&gt;Screwing over loyal employees by selling and cashing out - PRICELESS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;rule-7-thine-post-shalt-be-scattered-with-worthless-terms-like-web-scale-big-data-well-funded-startup&#34;&gt;Rule 7: Thine post shalt be scattered with worthless terms like web-scale, big data, well-funded startup.&lt;/h3&gt;
+
+&lt;p&gt;As if terms like &amp;lsquo;leverage&amp;rsquo;, &amp;lsquo;synergy&amp;rsquo; were not enough. Our dear data scientist must know how to work with &amp;lsquo;BIG DATA&amp;rsquo;. The more the meaningless and worthless terms in our job posting the better, it will allow us to hire the crème de la crème of analytics talent.
+Also throw in the fact that all the founders have PhDs in bio-informatics or AI or machine learning etc. coz you know that is so critical to have when it comes to effective leadership.
+&lt;br/&gt;Also when was the last time someone advertised themselves as a &amp;lsquo;piss-poorly funded startup&amp;rsquo;?&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-8-thine-data-scientists-must-know-every-programming-language-under-the-sun-even-the-ones-not-invented-so-far&#34;&gt;Rule 8: Thine Data-Scientists must know every programming language under the sun (even the ones not invented so far).&lt;/h3&gt;
+
+&lt;p&gt;Coz you know programming is where it&amp;rsquo;s at. If you can&amp;rsquo;t code you can&amp;rsquo;t do jack. And what do you mean you only know R or python ? All the cool kids are using Ruby or Node.js. And don&amp;rsquo;t tell us you can&amp;rsquo;t write &lt;strong&gt;enterprise applications&lt;/strong&gt; using Java/J2EE/EJBs.
+Oh! and please do explain in great detail how a Hashtable works. No job interview is complete without it.
+In short if you see an IP address the first thing that should cross your mind is Visual Basic GUI.&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-9-hadoop-hadoop-hadoop-wait-i-m-forgetting-something-ah-yes-hadoop&#34;&gt;Rule 9: Hadoop Hadoop Hadoop, wait I&amp;rsquo;m forgetting something, Ah! yes Hadoop.&lt;/h3&gt;
+
+&lt;p&gt;GEORGE: &amp;ldquo;Why don&amp;rsquo;t they have Hadoop in the mix?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;JERRY: &amp;ldquo;What do you need Hadoop for?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;GEORGE: &amp;ldquo;Hadoop is now the number one data crunching framework in America.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;JERRY: &amp;ldquo;You know why? Because people like to say &amp;ldquo;Hadoop.&amp;rdquo; &amp;ldquo;Excuse me, do
+you have any Hadoop?&amp;rdquo; &amp;ldquo;We need more Hadoop.&amp;rdquo; &amp;ldquo;Where is Hadoop? No Hadoop?&amp;rdquo;&lt;/p&gt;
+
+&lt;h3 id=&#34;rule-10-thine-data-scientist-should-be-able-to-code-design-web-apps-be-an-agile-scrum-master-software-architect-project-manager-product-manager-sales-marketing-guru-did-i-mention-a-unicorn&#34;&gt;Rule 10: Thine Data-Scientist should be able to code, design web-apps, be an Agile Scrum master, Software Architect, Project Manager, Product Manager, Sales/Marketing Guru. Did I mention a unicorn ?&lt;/h3&gt;
+
+&lt;p&gt;OK no satire on this one. Just straight up practical advice. Data scientists are not all knowing superhuman beings. Figure out what is it that your organization wants to do with data and hire well trained and decently experienced people who can solve your challenges. If looking for novice employees make sure the job has enough breathing room for them to grow into gradually. And lastly don&amp;rsquo;t go looking for unicorns because a) they don&amp;rsquo;t exist, and b) the best thing they can do is make 6-8 year old girls scream in high pitch.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;footnote :&lt;/em&gt; The difference in percentage of animals harmed in writing this post and percentage of animals that would have been harmed had I not written this post is not statistically significant.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

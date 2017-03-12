@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/index.xml" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+<link href="/index.xml" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+
+  <title>
+    
+    
+       Bash Shell Tricks 
+    
+  </title>
+  <link rel="canonical" href="/2007/06/bash-shell-tricks/">
+  
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css"
+    integrity="sha256-nXC6R0O+3ez3B440sqRACd9wvr4A1cHmzr1K+2bINzk=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" integrity="sha256-iU/Wh1HMAs/NgpurDAu14e7S3FkllcJ5aPnpPDdnO6c=" crossorigin="anonymous" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/androidstudio.min.css" integrity="sha256-rEVnyeMfkKzmBwocdeeiqGOu1M/ttUHB7K0meKIwqvw=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css" />
+
+
+<link rel="shortcut icon"
+
+    href="/img/favicon.ico"
+>
+
+
+
+</head>
+
+<a data-balloon="Back to Top" data-balloon-pos="left" id="back-to-top"><i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true"></i></a>
+
+<body lang="en-US">
+    <div class="container">
+        <section class="header row">
+            <div class="columns twelve">
+                <h1>
+                    <div class="name">Bhaskar Karambelkar&#39;s Blog</div>
+                </h1>
+                <nav>
+                    <ul>
+                        
+                        <li><a class="button" href="/"><i class='fa fa-home fa-2x'></i><span class="text">&nbsp;Home</span></a></li>
+                        
+                        <li><a class="button" href="/tags/"><i class='fa fa-tags fa-2x'></i><span class="text">&nbsp;Tags</span></a></li>
+                        
+                        <li><a class="button" href="/series/"><i class='fa fa-folder-open fa-2x'></i><span class="text">&nbsp;Series</span></a></li>
+                        
+                        <li><a class="button" href="/about/"><i class='fa fa-info-circle fa-2x'></i><span class="text">&nbsp;About</span></a></li>
+                        
+                        <li><a class="button" href="http://photos.karambelkar.info"><i class='fa fa-camera-retro fa-2x'></i><span class="text">&nbsp;Photography</span></a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+</section>
+<section class="row content">
+    <div class="columns twelve">
+        <div class="title-container">
+            <h1 class="page-heading">
+    
+        Bash Shell Tricks
+    
+</h1>
+
+            <p class="meta">&nbsp;<i class="fa fa-calendar-o"></i> Tue Jun 12 2007 19:26:00 UTC</p>
+            <p id="tags"><small>Tags: </small>
+                
+                    <a class="tag-button" href="//tags/bash">bash</a>
+                
+                    <a class="tag-button" href="//tags/unix">unix</a>
+                
+            </p>
+            <hr/>
+        </div>
+        
+        <div id="toc" class="table-of-contents">
+            <strong>Table of Contents</strong>
+            <hr class="top"/>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#completion">Completion</a></li>
+<li><a href="#socket-communication">Socket Communication</a></li>
+<li><a href="#arithmetic-evaluations">Arithmetic Evaluations</a></li>
+<li><a href="#other-neat-bash-tricks">Other neat bash tricks</a></li>
+</ul>
+</nav>
+            <hr class="bottom"/>
+        </div>
+        
+        <div class="page-content">
+            <p>Are you sure you are squeezing out all, that the bash shell can provide? Presented below are a few obscure things that bash can do, but chances are you may not have heard of them.
+</p>
+
+<h1 id="completion">Completion</h1>
+
+<p>No I am not talking about completing command/file names. I am talking about completing arguments to various commands, completing filenames based on application. This is one of the touted features of
+&lsquo;zsh&rsquo;, but unknown to many is the fact that it is also available in bash.
+All you need to do is install <a href="http://www.caliban.org/bash/index.shtml#completion" target="_blank">bash-completion</a>.</p>
+
+<p>With bash completion installed you can use the <code>TAB</code> key to complete arguments to common commands like <code>rpm, apt, find, grep</code> etc. Also bash-completion will complete host-names
+for <code>ssh, scp</code>, by looking up hosts inside your <code>$HOME/.ssh/authorized_keys</code> file. For <code>rpm</code> based distros, bash-completion will even lookup package names already installed.</p>
+
+<p>The feature I find most handy is file-name completion based on the context of the command. e.g. if you type <code>tar -zxvf</code> and then press the TAB key twice, you will get a list of only files ending in <code>.tar.gz or .tgz</code> rather than a list of all files in the directory.</p>
+
+<h1 id="socket-communication">Socket Communication</h1>
+
+<p>I bet a lot of you haven&rsquo;t heard of this, but bash can indeed perform basic socket communication via <code>/dev/tcp, /dev/udp</code>. These are pseudo devices that bash uses to communicate with network sockets. In fact if you did <code>ls -l /dev/tcp /dev/udp</code> you will get a &lsquo;No such file or directory&rsquo; error message.</p>
+
+<p>So how to use them, we below I present 2 examples.</p>
+
+<p>One to quickly check headers from a HTTP Server. Here is a simple function you can put in your <code>$HOME/.bashrc</code> that will check for headers of HTTP server.</p>
+
+<pre><code class="language-bash">headers() {
+  server=$1; port=${2:-80}
+  exec 5&lt;&gt; /dev/tcp/$server/$port
+  echo -e &quot;HEAD / HTTP/1.0\nHost: ${server}\n\n&quot; &gt;&amp;5;
+  cat 0&lt;&amp;5;
+  exec 5&gt;&amp;-
+}
+</code></pre>
+
+<p>Simply invoke it by</p>
+
+<p><code>headers &lt;servername or ip&gt; &lt;port&gt;</code></p>
+
+<p>The port number defaults to 80 if not provided.</p>
+
+<p>Second example is a quick way to check if a port is open or not. You can always use netcat or telnet, but I find this easier.</p>
+
+<pre><code class="language-bash">testPort() {
+  server=$1; port=$2; proto=${3:-tcp}
+  exec 5&lt;&gt;/dev/$proto/$server/$port
+  (( $? == 0 )) &amp;&amp; exec 5&lt;&amp;-
+}
+</code></pre>
+
+<p>Again invoke it by</p>
+
+<p><code>testPort &lt;servername or ip&gt; &lt;port&gt; &lt;protocol&gt;</code></p>
+
+<p>The protocol can be either tcp or udp and defaults to tcp.</p>
+
+<h1 id="arithmetic-evaluations">Arithmetic Evaluations</h1>
+
+<p>Bash can perform arithmetic evaluations. They are much easier to using <code>expr</code> tool. Below are some examples.<em>Note the absense of $ prefix for variable names.</em></p>
+
+<pre><code class="language-bash">((count++)) #increment value of variable 'count' by one.
+((total+=current)) # set total = total+current.
+((current&gt;max?max=current:max=max)) # ternary expression.
+</code></pre>
+
+<h1 id="other-neat-bash-tricks">Other neat bash tricks</h1>
+
+<ul>
+<li><code>^orig^repl^</code> replace &lsquo;orig&rsquo; in previous command with &lsquo;repl&rsquo; and execute the new command.</li>
+<li><code>cp filename{,.bak}</code> Copy &lsquo;filename&rsquo; as &lsquo;filename.bak.</li>
+<li><code>mkdir -p dir{1,2,3}/subdir{1,2}</code> Create <code>dir1/subdir1</code>, <code>dir1/subdir2</code>, <code>dir2/subdir1</code>, <code>dir2/subdir2</code>, <code>dir3/subdir1</code>, and <code>dir3/subdir2</code> directories</li>
+</ul>
+        </div>
+    </div>
+</section>
+
+<div class="row pager">
+    <div class="twelve columns">
+        
+        <a data-balloon="Previous Post" data-balloon-pos="right" class="button button-primary" href="/2007/06/prototyping-lamp-with-wamp/">
+            <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
+            <span class="text">Prototyping LAMP with WAMP</span>
+        </a>
+        &nbsp;
+        
+        <a data-balloon="Next Post" data-balloon-pos="left" class="u-pull-right button button-primary" href="/about/">
+          <span class="text">About Me</span>
+          <i class="fa fa-angle-double-right fa-2x" aria-hidden="true"></i>
+      </a> 
+    </div>
+</div>
+
+<section class="icons row content">
+    <div class="columns twelve">
+
+        
+        <a target="_blank" data-balloon="LinkedIN" data-balloon-pos="up" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk">
+            <i class="fa fa-linkedin fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Twitter" data-balloon-pos="up" title="Twitter" href="https://www.twitter.com/bhaskar_vk">
+            <i class="fa fa-twitter fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Github" data-balloon-pos="up" title="Github" href="https://github.com/bhaskarvk">
+            <i class="fa fa-github-square fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Stack Overflow" data-balloon-pos="up" title="StackOverflow" href="https://stackoverflow.com/users/507484">
+            <i class="fa fa-stack-overflow fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Keybase" data-balloon-pos="up" title="Keybase" href="https://www.keybase.io/bhaskarvk">
+            <i class="fa fa-key fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Slideshare" data-balloon-pos="up" title="SlideShare" href="https://www.slideshare.net/bhaskar_vk">
+            <i class="fa fa-slideshare fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Reddit" data-balloon-pos="up" title="Reddit" href="https://www.reddit.com/user/bhaskarvk">
+            <i class="fa fa-reddit-alien fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Medium" data-balloon-pos="up" title="Medium" href="https://medium.com/@bhaskar_vk">
+            <i class="fa fa-medium fa-2x"></i>
+        </a>
+        
+        <a class="u-pull-right" target="_blank" data-balloon="HOME" data-balloon-pos="up" title="Home " href="/">
+            <i class="fa fa-home fa-2x"></i>
+        </a>
+        <a class="u-pull-right" target="_blank" data-balloon="RSS Feed" data-balloon-pos="up" title="RSS Feed" href="/index.xml">
+            <i class="fa fa-rss fa-2x"></i>&nbsp;</a>
+    </div>
+</section>
+
+<section class="copyright row">
+    <div class="columns twelve">
+        © 2007-2017 Bhaskar V. Karambelkar. All rights reserved.
+    </div>
+</section>
+
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="/js/back-to-top.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"
+  integrity="sha256-D0J9D4igaYyVX/Y78Tr0yoDJsy8hi14hCEdFDakBp08=" crossorigin="anonymous"></script>
+<script>
+  ;(function () {
+    var bLazy = new Blazy();
+  })();
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.js"
+  integrity="sha256-UHui95L8O0BJv4LHVBXQYWAQnTp+ftM9UOKTQtdurbQ=" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"
+  integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"
+  integrity="sha256-XrZQp+ZMfovqr6Hb2M6okHvSEYaB/+Xbx7toWmOOZUM=" crossorigin="anonymous"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+  var u="//apps.karambelkar.info/pk/";
+  _paq.push(['setTrackerUrl', u+'piwik.php']);
+  _paq.push(['setSiteId', 1]);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+
+
+
+
+</body>
+
+</html>

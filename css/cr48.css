@@ -1,0 +1,5 @@
+.left-caption { float: left; margin: 0 1.5em 1em 0; padding: 0.5em; text-align: center; }
+.right-caption { float: right; margin: 0 0 1em 1.5em; padding: 0.5em; text-align: center; }
+.center-caption { margin: 0 0 1em 0; padding: 0; text-align: center; }
+.left-caption img, .right-caption img, .center-caption img { margin: 0 auto; display: block; }
+.left-caption p, .right-caption p, .center-caption p { background: #eee; margin: 0; line-height: 1.6em; padding: 0.5em; border-bottom: 1px solid #ccc; border-top: 1px solid #ccc; font-size: 0.9em; color: #333; }

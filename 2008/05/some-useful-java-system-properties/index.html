@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/index.xml" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+<link href="/index.xml" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+
+  <title>
+    
+    
+       Some useful Java System Properties 
+    
+  </title>
+  <link rel="canonical" href="/2008/05/some-useful-java-system-properties/">
+  
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css"
+    integrity="sha256-nXC6R0O+3ez3B440sqRACd9wvr4A1cHmzr1K+2bINzk=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" integrity="sha256-iU/Wh1HMAs/NgpurDAu14e7S3FkllcJ5aPnpPDdnO6c=" crossorigin="anonymous" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/androidstudio.min.css" integrity="sha256-rEVnyeMfkKzmBwocdeeiqGOu1M/ttUHB7K0meKIwqvw=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css" />
+
+
+<link rel="shortcut icon"
+
+    href="/img/favicon.ico"
+>
+
+
+
+</head>
+
+<a data-balloon="Back to Top" data-balloon-pos="left" id="back-to-top"><i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true"></i></a>
+
+<body lang="en-US">
+    <div class="container">
+        <section class="header row">
+            <div class="columns twelve">
+                <h1>
+                    <div class="name">Bhaskar Karambelkar&#39;s Blog</div>
+                </h1>
+                <nav>
+                    <ul>
+                        
+                        <li><a class="button" href="/"><i class='fa fa-home fa-2x'></i><span class="text">&nbsp;Home</span></a></li>
+                        
+                        <li><a class="button" href="/tags/"><i class='fa fa-tags fa-2x'></i><span class="text">&nbsp;Tags</span></a></li>
+                        
+                        <li><a class="button" href="/series/"><i class='fa fa-folder-open fa-2x'></i><span class="text">&nbsp;Series</span></a></li>
+                        
+                        <li><a class="button" href="/about/"><i class='fa fa-info-circle fa-2x'></i><span class="text">&nbsp;About</span></a></li>
+                        
+                        <li><a class="button" href="http://photos.karambelkar.info"><i class='fa fa-camera-retro fa-2x'></i><span class="text">&nbsp;Photography</span></a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+</section>
+<section class="row content">
+    <div class="columns twelve">
+        <div class="title-container">
+            <h1 class="page-heading">
+    
+        Some useful Java System Properties
+    
+</h1>
+
+            <p class="meta">&nbsp;<i class="fa fa-calendar-o"></i> Thu May 22 2008 17:55:00 UTC</p>
+            <p id="tags"><small>Tags: </small>
+                
+                    <a class="tag-button" href="//tags/java">java</a>
+                
+            </p>
+            <hr/>
+        </div>
+        
+        <div id="toc" class="table-of-contents">
+            <strong>Table of Contents</strong>
+            <hr class="top"/>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#general-properties">General Properties</a></li>
+<li><a href="#security-related-options">Security related Options</a></li>
+<li><a href="#jmx-related-options">JMX Related Options</a></li>
+<li><a href="#garbase-collection">Garbase Collection</a></li>
+<li><a href="#other-useful-properties">Other useful properties</a></li>
+</ul>
+</nav>
+            <hr class="bottom"/>
+        </div>
+        
+        <div class="page-content">
+            <p>Here are some Java system properties that can be used while starting a new JVM.
+These options either provide some kind of performance benefits under certain conditions, or are used
+to override default values, when using default values is not suitable or not a good option.
+</p>
+
+<h1 id="general-properties">General Properties</h1>
+
+<ul>
+<li><p><strong><code>-Duser.timezone=XYZ</code></strong>
+<br/>Used to set the Default Timezone of the JVM. This can be used, when you are not sure of the platform&rsquo;s default Timezone, and want to be sure that the JVM always uses a certain timezone.
+e.g. <code>-Duser.timezone=GMT</code></p></li>
+
+<li><p><strong><code>-Djava.awt.headless=true</code></strong>
+<br/>Used to run AWT in a headless (i.e. no X server) environment. Even if you are running an application server, if you need to use the AWT API to generate dynamic images, then you either need access to a Graphics Environment or you need to set this system property. This is relevant only in a *NIX environment.</p></li>
+
+<li><p><strong><code>-Djava.net.preferIPv4Stack=true</code></strong>
+<br/>This property can be set to speed up certain parts of the Networking API, if you don&rsquo;t intend to deploy the JVM in an IPV6 environment. Unless you are deploying your JVM in a IPV6 network it is a good idea to set this system property.</p></li>
+
+<li><p><strong><code>-Dsun.lang.ClassLoader.allowArraySyntax=true</code></strong>
+<br/>This option is relevant only in Java 1.6 (Java 6) and above. If you get strange Arrays related errors while running code compiled with JDK 5 and below, you can try and set this property to solve this problem.</p></li>
+</ul>
+
+<h1 id="security-related-options">Security related Options</h1>
+
+<p>I often use these options to override the default locations of keystore and truststore files. Sometimes it is necessary that you need to import certain SSL certificates in your truststore file especially the self signed ones or when importing a CA Root Certificate that is not in the truststore. If you use the default values, then it means you will have to change a file in the JDK installation, which is not a good idea. By overriding the default locations, you are free to place your truststore outside of the JDK, probably also bundle it as part of your installation. Same goes true for your keystore too.</p>
+
+<ul>
+<li><p><strong><code>javax.net.ssl.keyStore=location</code></strong>
+<br/>Used to override the default keystore location, from $HOME/.keystore</p></li>
+
+<li><p><strong><code>javax.net.ssl.trustStore=location</code></strong>
+<br/>Used to override the default root CA file from <code>$JAVA_HOME/jre/lib/security/cacerts</code></p></li>
+
+<li><p><strong><code>javax.net.ssl.keyStoreType</code></strong>
+<br/>Used to change the default keystore type from JKS. You can use a different format to store your keys, provided you have a proper security provider installed.</p></li>
+
+<li><p><strong><code>javax.net.ssl.keyStorePassword</code></strong>
+<br/>Used to provide a password for the keystore if different from the default &ldquo;changeit&rdquo;. And by the way it is a good idea to take that advise and change the default password.</p></li>
+
+<li><p><strong><code>javax.net.ssl.trustStoreType</code></strong>
+<br/>Used to change the default truststore type from JKS. You can use a different format to store your keys, provided you have a proper security provider installed.</p></li>
+
+<li><p><strong><code>javax.net.ssl.trustStorePassword</code></strong>
+<br/>Used to provide a password for the truststore if different from the default &ldquo;changeit&rdquo;. And by the way it is a good idea to take that advise and change the default password.</p></li>
+</ul>
+
+<h1 id="jmx-related-options">JMX Related Options</h1>
+
+<ul>
+<li><p><strong><code>-Dcom.sun.management.jmxremote</code></strong>
+<br/>Used to enable local JMX agent for the target JVM. Once a JMX agent has been enabled for your JVM, you can use JMX applications such as JConsole etc for monitoring and managing your JVM. <br/><strong>Note:</strong> Since Java 6 you no longer need this option if all you need is a local agent. Java 6 can automatically connect to any locally running (running on the same machine) JVM.</p></li>
+
+<li><p><strong><code>-Dcom.sun.management.jmxremote.port=portNum</code></strong>
+<br/>The default port for the JXM Remote agent is 1099. You can use the first option to override it. Jboss, starts up the Naming service on port 1099, so this option comes in handy when you want to enable remote jmx agent for a jboss server.
+<br clear="both"/></p></li>
+</ul>
+
+<p>The following options are for authentication and enabling SSL for the communications port. To be able to use SSL , you need to setup a Private Key and a Certificate and provide that information, using the security related JVM options as described above.</p>
+
+<ul>
+<li><p><strong><code>-Dcom.sun.management.jmxremote.password.file=pwFilePath</code></strong></p></li>
+
+<li><p><strong><code>-Dcom.sun.management.jmxremote.authenticate=false</code></strong></p></li>
+
+<li><p><strong><code>com.sun.management.jmxremote.ssl=false</code></strong></p></li>
+
+<li><p><strong><code>com.sun.management.jmxremote.ssl.need.client.auth=true</code></strong></p></li>
+</ul>
+
+<h1 id="garbase-collection">Garbase Collection</h1>
+
+<p>This increase the garbage collection interval for JVMs that start up an RMI communications. Ideal candidates for these settings are application servers.</p>
+
+<ul>
+<li><p><strong><code>-Dsun.rmi.dgc.server.gcInterval=3600000</code></strong></p></li>
+
+<li><p><strong><code>-Dsun.rmi.dgc.client.gcInterval=3600000</code></strong></p></li>
+</ul>
+
+<h1 id="other-useful-properties">Other useful properties</h1>
+
+<ul>
+<li><strong><code>-Duser.name=XYZ</code></strong>
+<br/>This may not be useful to all, but it sets the default username of the JVM. One place where I find this useful is, when using maven2 + openssh for repository and site uploads. Usually I have different user a/cs on different subversion repositories, so I use this to set the username to my a/c name on the corresponding subversion repository for (svn+ssh) or site upload scp locations.
+<br clear="both"/></li>
+</ul>
+
+<p>Please add any more options you can think of, in the comments section.</p>
+        </div>
+    </div>
+</section>
+
+<div class="row pager">
+    <div class="twelve columns">
+        
+        <a data-balloon="Previous Post" data-balloon-pos="right" class="button button-primary" href="/2008/05/wickets-date--time-components-and-client-server-timezones/">
+            <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
+            <span class="text">Wicket&#39;s Date &amp; Time Components and Client-Server Timezones</span>
+        </a>
+        &nbsp;
+        
+        <a data-balloon="Next Post" data-balloon-pos="left" class="u-pull-right button button-primary" href="/2007/06/new-features-in-vim-7/">
+          <span class="text">New Features in Vim 7</span>
+          <i class="fa fa-angle-double-right fa-2x" aria-hidden="true"></i>
+      </a> 
+    </div>
+</div>
+
+<section class="icons row content">
+    <div class="columns twelve">
+
+        
+        <a target="_blank" data-balloon="LinkedIN" data-balloon-pos="up" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk">
+            <i class="fa fa-linkedin fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Twitter" data-balloon-pos="up" title="Twitter" href="https://www.twitter.com/bhaskar_vk">
+            <i class="fa fa-twitter fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Github" data-balloon-pos="up" title="Github" href="https://github.com/bhaskarvk">
+            <i class="fa fa-github-square fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Stack Overflow" data-balloon-pos="up" title="StackOverflow" href="https://stackoverflow.com/users/507484">
+            <i class="fa fa-stack-overflow fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Keybase" data-balloon-pos="up" title="Keybase" href="https://www.keybase.io/bhaskarvk">
+            <i class="fa fa-key fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Slideshare" data-balloon-pos="up" title="SlideShare" href="https://www.slideshare.net/bhaskar_vk">
+            <i class="fa fa-slideshare fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Reddit" data-balloon-pos="up" title="Reddit" href="https://www.reddit.com/user/bhaskarvk">
+            <i class="fa fa-reddit-alien fa-2x"></i>
+        </a>
+        
+        
+        <a target="_blank" data-balloon="Medium" data-balloon-pos="up" title="Medium" href="https://medium.com/@bhaskar_vk">
+            <i class="fa fa-medium fa-2x"></i>
+        </a>
+        
+        <a class="u-pull-right" target="_blank" data-balloon="HOME" data-balloon-pos="up" title="Home " href="/">
+            <i class="fa fa-home fa-2x"></i>
+        </a>
+        <a class="u-pull-right" target="_blank" data-balloon="RSS Feed" data-balloon-pos="up" title="RSS Feed" href="/index.xml">
+            <i class="fa fa-rss fa-2x"></i>&nbsp;</a>
+    </div>
+</section>
+
+<section class="copyright row">
+    <div class="columns twelve">
+        © 2007-2017 Bhaskar V. Karambelkar. All rights reserved.
+    </div>
+</section>
+
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="/js/back-to-top.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"
+  integrity="sha256-D0J9D4igaYyVX/Y78Tr0yoDJsy8hi14hCEdFDakBp08=" crossorigin="anonymous"></script>
+<script>
+  ;(function () {
+    var bLazy = new Blazy();
+  })();
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.js"
+  integrity="sha256-UHui95L8O0BJv4LHVBXQYWAQnTp+ftM9UOKTQtdurbQ=" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"
+  integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"
+  integrity="sha256-XrZQp+ZMfovqr6Hb2M6okHvSEYaB/+Xbx7toWmOOZUM=" crossorigin="anonymous"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+  var u="//apps.karambelkar.info/pk/";
+  _paq.push(['setTrackerUrl', u+'piwik.php']);
+  _paq.push(['setSiteId', 1]);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+
+
+
+
+</body>
+
+</html>

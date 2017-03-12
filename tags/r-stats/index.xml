@@ -1,0 +1,1582 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R Stats on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/r-stats/index.xml</link>
+    <description>Recent content in R Stats on Bhaskar Karambelkar&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>© 2007-2017 Bhaskar V. Karambelkar. All rights reserved.</copyright>
+    <atom:link href="/tags/r-stats/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Leaflet Diary: Chapter 5, Leaflet 1.1 and Beyond</title>
+      <link>/2017/02/leaflet-diary-chapter-5-leaflet-1.1-and-beyond/</link>
+      <pubDate>Fri, 24 Feb 2017 17:00:00 -0400</pubDate>
+      
+      <guid>/2017/02/leaflet-diary-chapter-5-leaflet-1.1-and-beyond/</guid>
+      <description>&lt;p&gt;This is the sixth blog entry in my series &lt;a href=&#34;/2016/09/leaflet-diary-prologue/&#34;&gt;Leaflet-Diary&lt;/a&gt;. In my last post: &lt;a href=&#34;/2016/11/leaflet-diary-chapter-4-towards-version-1.1/&#34;&gt;Chapter 4, Towards Leaflet 1.1&lt;/a&gt;, I talked about changes that were made to the Leaflet package to make it extensible.
+This one is about the release of version 1.1 and what&amp;rsquo;s coming in the months ahead.
+&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Leaflet 1.1.0 has finally been released and available via CRAN. It contains a ton of new features, enhancements, and bug fixes.&lt;/li&gt;
+&lt;li&gt;Next iteration of changes will start soon.&lt;/li&gt;
+&lt;li&gt;Leaflet.extras is coming along nicely and should also be available on CRAN in the near future.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;long-read&#34;&gt;Long Read&lt;/h1&gt;
+
+&lt;h2 id=&#34;version-1-1&#34;&gt;Version 1.1&lt;/h2&gt;
+
+&lt;p&gt;After almost a full year of development and with contributions from many people, Leaflet 1.1.0 was &lt;a href=&#34;https://blog.rstudio.org/2017/02/22/leaflet-1-1-0/&#34; target=&#34;_blank&#34;&gt;released&lt;/a&gt; on &lt;a href=&#34;https://cran.r-project.org/package=leaflet&#34; target=&#34;_blank&#34;&gt;CRAN&lt;/a&gt;. Although RStudio folks were really nice to mention my humble contribution, I can personally tell you that this was a combination of contributions from a lot of folks. A truly team effort of many people involved in improving the GIS visualization capabilities in R.
+Here I will elaborate on the RStudio &lt;a href=&#34;https://blog.rstudio.org/2017/02/22/leaflet-1-1-0/&#34; target=&#34;_blank&#34;&gt;blog post&lt;/a&gt;  highlighting some of the major features available in leaflet 1.1.0. If you have followed the past posts of &lt;a href=&#34;/2016/09/leaflet-diary-prologue/&#34;&gt;Leaflet Diary&lt;/a&gt; you might be familiar with most of the following items.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Leaflet JS lib upgraded from 0.7.3 to 0.7.7, and respective plugins upgraded too. Leaflet 0.7.7 will be the last release in 0.7.x series of the Javascript library.&lt;/li&gt;
+&lt;li&gt;Support for custom projections via the &lt;code&gt;leafletCRS&lt;/code&gt; class. To see this in action check out some of the examples I have uploaded to Rpubs.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/proj4leaflet&#34; target=&#34;_blank&#34;&gt;Introductory post&lt;/a&gt; about Proj4Leaflet support.&lt;/li&gt;
+&lt;li&gt;Slightly advanced use case of &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-polarmaps&#34; target=&#34;_blank&#34;&gt;polar projections&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Non geographic data plotting using &lt;code&gt;L.CRS.Simple&lt;/code&gt;; &lt;a href=&#34;http://rpubs.com/bhaskarvk/tilegramsR&#34; target=&#34;_blank&#34;&gt;Tilegrams in R&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Support for &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-labels&#34; target=&#34;_blank&#34;&gt;labels&lt;/a&gt; on mouse over.&lt;/li&gt;
+&lt;li&gt;Mutually compatible marker clustering and grouping. See fourth example in this &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-marker-clusterming&#34; target=&#34;_blank&#34;&gt;Rpubs page&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Auto-completable &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-providers&#34; target=&#34;_blank&#34;&gt;3&lt;sup&gt;rd&lt;/sup&gt; party tiles provider list&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Support for adding &lt;a href=&#34;http://rpubs.com/bhaskarvk/easybutton&#34; target=&#34;_blank&#34;&gt;custom Javascript buttons and toolbars&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Ability to &lt;a href=&#34;http://rpubs.com/bhaskarvk/polygon-highlight&#34; target=&#34;_blank&#34;&gt;highlight shapes&lt;/a&gt; on mouse over.&lt;/li&gt;
+&lt;li&gt;Support for more &lt;a href=&#34;https://rstudio.github.io/leaflet/markers.html#awesome-icons&#34; target=&#34;_blank&#34;&gt;customized markers&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Support for &lt;a href=&#34;https://cran.r-project.org/package=sf&#34; target=&#34;_blank&#34;&gt;sf&lt;/a&gt; objects in addition to &lt;code&gt;sp&lt;/code&gt; objects. &lt;code&gt;sf&lt;/code&gt; is the successor and in many ways a better alternative to &lt;code&gt;sp&lt;/code&gt; for storing/processing spatial data in R.&lt;/li&gt;
+&lt;li&gt;Support for &lt;a href=&#34;https://cran.r-project.org/package=crosstalk&#34; target=&#34;_blank&#34;&gt;crosstalk&lt;/a&gt; from cross-widget communication. This allows your leaflet widget to interact with other widgets on the page.&lt;/li&gt;
+&lt;li&gt;With version 1.1.0 leaflet will handle missing data more gracefully. It will either warn or error out when data is missing depending on whether it can or cannot proceed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As you can see a lot of effort and time was put in to making Leaflet 1.1.0 as bug free and as feature rich as possible by everyone involved.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s Next?&lt;/h2&gt;
+
+&lt;p&gt;Although it is still too early to determine what&amp;rsquo;s next for leaflet, one thing we are all excited about is the release of version 1.x of the Leaflet Javascript library. At this point I am evaluating how much of an effort it will be to upgrade the R package to use the 1.x version of the JS lib. But rest assured that the new JS version not only comes with a lot of bug fixes, but also some major performance improvements and some interesting features. So stay tuned for future development.&lt;/p&gt;
+
+&lt;h2 id=&#34;leaflet-extras&#34;&gt;Leaflet Extras&lt;/h2&gt;
+
+&lt;p&gt;My own add-on package to leaflet, &lt;a href=&#34;https://github.com/bhaskarvk/leaflet.extras&#34; target=&#34;_blank&#34;&gt;leaflet-extras&lt;/a&gt; is coming along nicely. If you haven&amp;rsquo;t checked it out yet, I highly encourage you to do so. One of the advantage of the Leaflet JavaScript library is that it is very extensible and provides a ton of plugins that enhance the capabilities of the base library. We have already integrated some of these plugins in to the leaflet R package. But we cannot incorporate all the plugins and we need to keep the leaflet R package relatively stable. With that in mind we made the R package extensible, and &lt;code&gt;leaflet.extras&lt;/code&gt; is an add-on R package that provides enhanced functionality using a lot of 3&lt;sup&gt;rd&lt;/sup&gt; plugins. For those unfamiliar with &lt;code&gt;leaflet.extras&lt;/code&gt; here is a small list of feature set it supports.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Enhanced and extended support for GeoJSON, TopoJSON, GPX, KML file formats.&lt;/li&gt;
+&lt;li&gt;Automatic choropleths with bi-directional legend highlighting.&lt;/li&gt;
+&lt;li&gt;Heatmaps&lt;/li&gt;
+&lt;li&gt;More customized icons.&lt;/li&gt;
+&lt;li&gt;Support for drawing shaped and markers on the map and interacting with them in Shiny.&lt;/li&gt;
+&lt;li&gt;Search GeoJSON and markers on the map. Geolocate using OSM Nominatim API.&lt;/li&gt;
+&lt;li&gt;Support for time dimension. (Coming soon).&lt;/li&gt;
+&lt;li&gt;Miscellaneous features like tile caching, suspend map during scrolling, GPS locator.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you work with ESRI products like ArcGIS/ArcMap etc. Also check out my other add-on package &lt;a href=&#34;https://github.com/bhaskarvk/leaflet.esri&#34; target=&#34;_blank&#34;&gt;leaflet.esri&lt;/a&gt;. More on this in a separate blog post.&lt;/p&gt;
+
+&lt;h1 id=&#34;final-word&#34;&gt;Final Word&lt;/h1&gt;
+
+&lt;p&gt;2017 promises to bring a lot of exciting features to geospatial data analysis and visualization using R. A lot of interested parties and experts in this domain are involved in the process. If you want to follow I suggest you check out &lt;a href=&#34;https://github.com/r-spatial/&#34; target=&#34;_blank&#34;&gt;r-spatial&lt;/a&gt; and its related products/blogs. Also the folks over at ROpenSci are doing some fantastic work in providing a lot of packages for &lt;a href=&#34;https://ropensci.org/packages/#geospatial&#34; target=&#34;_blank&#34;&gt;geospatial analysis&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RStudio IDE Shortcuts learned at Rstudio::conf 2017</title>
+      <link>/2017/01/rstudio-ide-shortcuts-learned-at-rstudioconf-2017/</link>
+      <pubDate>Thu, 19 Jan 2017 20:44:23 -0500</pubDate>
+      
+      <guid>/2017/01/rstudio-ide-shortcuts-learned-at-rstudioconf-2017/</guid>
+      <description>&lt;p&gt;I made this doc to aggregate all the keyboard shortcuts from Kevin Ushey&amp;rsquo;s talk: &lt;em&gt;What’s New in the IDE?&lt;/em&gt; at &lt;a href=&#34;https://www.rstudio.com/conference/&#34; target=&#34;_blank&#34;&gt;RStudio::conf&lt;/a&gt; 2017 in one place. Everything is lifted from his &lt;a href=&#34;https://rawgit.com/kevinushey/2017-rstudio-conf/master/slides.html&#34; target=&#34;_blank&#34;&gt;slides&lt;/a&gt;. If you find this one page summary useful thank him not me.&lt;/p&gt;
+
+&lt;h1 id=&#34;auto-completion&#34;&gt;Auto-Completion&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl+Space&lt;/code&gt; or &lt;code&gt;Tab&lt;/code&gt;, the former will also work on new lines.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;supports fuzzy matching. e.g. &lt;code&gt;tiarlv&lt;/code&gt; will match &lt;code&gt;thisisaratherlongvariable&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;symbols can or cannot be present in the target completion.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;scans file for auto-completion candidates, not just global environment.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;filename completion searches recursively in sub directories and completes with full path name.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;works correctly inside &lt;code&gt;Sys.getenv()&lt;/code&gt;, &lt;code&gt;Sys.setenv()&lt;/code&gt;, &lt;code&gt;options()&lt;/code&gt;, &lt;code&gt;getOptions()&lt;/code&gt;, &lt;code&gt;attr()&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;other-shortcuts&#34;&gt;Other Shortcuts&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + .&lt;/code&gt;: Fuzzy find files &lt;strong&gt;This will change your life, I promise!&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Shift + F&lt;/code&gt;: Find in files&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Enter&lt;/code&gt;: Execute &lt;strong&gt;statement&lt;/strong&gt; under cursor, possibly spanning multiple lines.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Alt + Shift + M&lt;/code&gt;: Rename in scope. Refactoring FTW!&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Shift + A&lt;/code&gt;: Reformat selection.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Alt + Up/Down&lt;/code&gt; or &lt;code&gt;Alt + mouse click-n-drag&lt;/code&gt;: Multiple cursors.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Alt + -&lt;/code&gt;: Inserts the  omnipresent &lt;code&gt;&amp;lt;-&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Crtl + Shift + M&lt;/code&gt;: Inserts &lt;em&gt;une pipe&lt;/em&gt; (&lt;code&gt;%&amp;gt;%&lt;/code&gt;).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Shift + 0&lt;/code&gt;: Toggles document overview.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Shift + I&lt;/code&gt;: Inserts R code chunk. &lt;code&gt;```&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Crtl + Shift + Enter&lt;/code&gt;: Runs a whole R code chunk in Rmarkdown.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + PgUp/PgDn&lt;/code&gt;: Go Chunk Up/Down.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + 1/2&lt;/code&gt;: Transfer focus between editor/console.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Ctrl + Shift + 1/2&lt;/code&gt;: Zooms editor/console.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Alt + Shift + K&lt;/code&gt;: Show keyboard shortcuts.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Setup OSX for R</title>
+      <link>/2017/01/setup-osx-for-r/</link>
+      <pubDate>Thu, 19 Jan 2017 20:44:23 -0500</pubDate>
+      
+      <guid>/2017/01/setup-osx-for-r/</guid>
+      <description>&lt;p&gt;This is a rather detailed documentation of my OSX setup for R using homebrew. You can get away with a lot less than what I have installed below, but this is fairly comprehensive and I have also given some steps to verify installation of various packages.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;install-and-setup&#34;&gt;Install and Setup&lt;/h1&gt;
+
+&lt;h2 id=&#34;github-api-token&#34;&gt;Github API Token&lt;/h2&gt;
+
+&lt;p&gt;Get a github account and setup an API token as described &lt;a href=&#34;https://help.github.com/articles/creating-an-access-token-for-command-line-use/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;. This helps you avoid hitting Github API limits when using homebrew.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &#39;export HOMEBREW_GITHUB_API_TOKEN=&amp;quot;your_new_token&amp;quot;&#39; &amp;gt;&amp;gt; $HOME/.bash_profile
+. $HOME/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;install-homebrew&#34;&gt;Install Homebrew&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/usr/bin/ruby -e \
+    &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
+brew analytics off # full on paranoid mode
+brew tap caskroom/cask # GUI apps
+brew tap caskroom/fonts # fonts
+brew tap homebrew/science
+brew tap homebrew/completions
+brew tap homebrew/services
+brew tap homebrew/versions
+brew tap osgeo/osgeo4mac # If you need Geospatial stuff
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;bash&#34;&gt;Bash&lt;/h2&gt;
+
+&lt;p&gt;Install Bash and verify&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install bash bash-completion2
+/usr/local/bin/bash --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;GNU bash, version 4.3.46(1)-release (x86_64-apple-darwin15.5.0)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Setup bash along with some utility functions. Primarily we setup &lt;code&gt;brewPkg&lt;/code&gt; bash function which will not only install homebrew packages but also log the output for debugging purposes if so desired.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;
+sudo sh -c &#39;echo &amp;quot;/usr/local/bin/bash&amp;quot; &amp;gt;&amp;gt; /etc/shells&#39;
+
+mkdir -p $HOME/Library/Logs/Homebrew/$USER
+
+echo &#39;
+if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+  . $(brew --prefix)/share/bash-completion/bash_completion
+fi
+
+brewPkg() {
+  pkg=$1
+  shift
+  (
+    brew install ${pkg} $*  2&amp;gt;&amp;amp;1 |
+        tee $HOME/Library/Logs/Homebrew/$USER/${pkg}-$(date +&amp;quot;%F_%H%M&amp;quot;).txt
+  )
+}
+
+brewSrcPkg() {
+  pkg=$1
+  shift
+  (
+    brew install --build-from-source  ${pkg} $*  2&amp;gt;&amp;amp;1 |
+        tee $HOME/Library/Logs/Homebrew/$USER/${pkg}-$(date +&amp;quot;%F_%H%M&amp;quot;).txt
+  )
+}
+
+brewSrcPkgWgcc() {
+  pkg=$1
+  shift
+  (
+    export CC=gcc-6
+    export CXX=g++-6
+    export HOMEBREW_CC=gcc-6
+    export HOMEBREW_CXX=g++-6
+    brew install --build-from-source  ${pkg} $*  2&amp;gt;&amp;amp;1 |
+        tee $HOME/Library/Logs/Homebrew/$USER/${pkg}-$(date +&amp;quot;%F_%H%M&amp;quot;).txt
+  )
+}
+
+&#39; &amp;gt;&amp;gt;  ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Load the new bash shell, so we can use all the auto-complete goodies. Or simply close and restart the Terminal App.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/usr/local/bin/bash -l
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;c-c-compiler-s-and-libraries&#34;&gt;C/C++ Compiler/s and Libraries&lt;/h1&gt;
+
+&lt;h2 id=&#34;gcc-compiler-and-autotools&#34;&gt;GCC Compiler and Autotools&lt;/h2&gt;
+
+&lt;p&gt;Install gcc, without multilib so that &lt;a href=&#34;http://stackoverflow.com/questions/29057437/compile-openmp-programs-with-gcc-compiler-on-os-x-yosemite&#34; target=&#34;_blank&#34;&gt;OpenMP works&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg gcc --without-multilib
+/usr/local/bin/gcc-6 --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;gcc-6 (Homebrew gcc 6.1.0 --without-multilib) 6.1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/usr/local/bin/gfortran --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;GNU Fortran (Homebrew gcc 6.1.0 --without-multilib) 6.1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Setup aliases for homebrew&amp;rsquo;s gcc&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd /usr/local/bin
+ln -s gcov-6 gcov
+ln -s gcc-6 gcc
+ln -s g++-6 g++
+ln -s cpp-6 cpp
+ln -s c++-6 c++
+cd -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Install ccache to speed up compilation&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg ccache
+/usr/local/bin/ccache --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;ccache version 3.2.7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Install autotools, pkg-config, and cmake&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg cmake pkg-config autoconf automake
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Let&amp;rsquo;s make sure OpenMP is working as expected.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; omp-test.c &amp;lt;&amp;lt;&amp;quot;END&amp;quot;
+#include &amp;lt;omp.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+int main() {
+    #pragma omp parallel
+    printf(&amp;quot;Hello from thread %d, nthreads %d\n&amp;quot;, omp_get_thread_num(), omp_get_num_threads());
+}
+END
+gcc-6 -fopenmp -o omp-test omp-test.c
+./omp-test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;You should see something similar but not exactly the same.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Hello from thread 1, nthreads 8
+Hello from thread 6, nthreads 8
+Hello from thread 4, nthreads 8
+Hello from thread 2, nthreads 8
+Hello from thread 5, nthreads 8
+Hello from thread 0, nthreads 8
+Hello from thread 3, nthreads 8
+Hello from thread 7, nthreads 8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;misc-libs&#34;&gt;Misc libs&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg freetype fontconfig  pixman gettext
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;ssl-ssh-libs&#34;&gt;SSL/SSH Libs&lt;/h2&gt;
+
+&lt;p&gt;Setup and verify openssl and libressl.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg  openssl
+/usr/local/opt/openssl/bin/openssl version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;OpenSSL 1.0.2h  3 May 2016
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg  libressl
+/usr/local/opt/libressl/bin/openssl version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;LibreSSL 2.3.6
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg libssh2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;boost-libs-w-dependencies&#34;&gt;Boost libs w/ dependencies&lt;/h2&gt;
+
+&lt;p&gt;Install icu4c library for Unicode and globalization&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg icu4c
+/usr/local/opt/icu4c/bin/icu-config --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;57.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Install libxml2, libiconv, and libxslt.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg libxml2 libiconv libxslt
+brew link libxml2 --force
+/usr/local/bin/xml2-config --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;2.9.4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Install boost. Ignore the warning at the end.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg boost --with-icu4c --with-mpi --without-single
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Boost is a beast of a library, so we need some quick programs to test whether it has installed successfully.
+Shamelessly copied/adapted from the &lt;a href=&#34;https://tabreziqbal.wordpress.com/2006/03/16/how-to-test-c-boost-installation/&#34; target=&#34;_blank&#34;&gt;Intertubes&lt;/a&gt;. Ignore the warning messages spewed by the compiler.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; first.cpp &amp;lt;&amp;lt;END
+#include&amp;lt;iostream&amp;gt;
+#include&amp;lt;boost/any.hpp&amp;gt;
+int main()
+{
+    boost::any a(5);
+    a = 1.61803;
+    std::cout &amp;lt;&amp;lt; boost::any_cast&amp;lt;double&amp;gt;(a) &amp;lt;&amp;lt; std::endl;
+}
+END
+clang++ -I/usr/local/include -L/usr/local/lib  -o first first.cpp
+./first
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;1.61803
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; second.cpp &amp;lt;&amp;lt;END
+#include&amp;lt;iostream&amp;gt;
+#include &amp;lt;boost/filesystem.hpp&amp;gt;
+int main()
+{
+    boost::filesystem::path full_path( boost::filesystem::current_path() );
+    if ( boost::filesystem::exists( &amp;quot;second.cpp&amp;quot; ) )
+    {
+        std::cout &amp;lt;&amp;lt; &amp;quot;Found second.cpp file in &amp;quot; &amp;lt;&amp;lt; full_path &amp;lt;&amp;lt; std::endl;
+    } else {
+        std::cerr &amp;lt;&amp;lt; &amp;quot;Argh!, Something not working&amp;quot; &amp;lt;&amp;lt; std::endl;
+        return 1;
+    }
+}
+END
+clang++ -I/usr/local/include -L/usr/local/lib  -o second second.cpp \
+    -lboost_filesystem-mt -lboost_system-mt
+./second
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Found second.cpp file in &amp;quot;/Users/brewmaster&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;other-utility-programs&#34;&gt;Other Utility Programs&lt;/h1&gt;
+
+&lt;h2 id=&#34;wget-and-curl&#34;&gt;wget and curl&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg wget
+/usr/local/bin/wget --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;GNU Wget 1.18 built on darwin15.6.0.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg curl
+/usr/local/opt/curl/bin/curl-config --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;libcurl 7.50.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;gpg&#34;&gt;GPG&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg gpg2 --with-readline
+/usr/local/bin/gpg2 --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;gpg (GnuPG) 2.0.30
+libgcrypt 1.7.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg gpgme
+/usr/local/bin/gpgme-config --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;1.6.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;x-server&#34;&gt;X-server&lt;/h2&gt;
+
+&lt;p&gt;We need an X-Server. This takes a lot of time so be patient.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install xquartz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;git&#34;&gt;Git&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg git --with-blk-sha1 --with-gettext \
+    --with-pcre --with-persistent-https
+/usr/local/bin/git --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;git version 2.9.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;latex-support&#34;&gt;Latex Support&lt;/h2&gt;
+
+&lt;p&gt;Take a Coffee break and then some, because this is a huge one.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install mactex
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;programming-languages&#34;&gt;Programming Languages&lt;/h1&gt;
+
+&lt;h2 id=&#34;java&#34;&gt;Java&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install java
+java -version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;java version &amp;quot;1.8.0_102&amp;quot;
+Java(TM) SE Runtime Environment (build 1.8.0_102-b14)
+Java HotSpot(TM) 64-Bit Server VM (build 25.102-b14, mixed mode)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;python&#34;&gt;Python&lt;/h2&gt;
+
+&lt;p&gt;Install python2&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg python
+pip install --upgrade pip setuptools
+/usr/local/bin/python -V
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Python 2.7.12
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Install Python3&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg python3
+pip3 install --upgrade pip setuptools wheel
+/usr/local/bin/python3 -V
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Python 3.5.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;r&#34;&gt;R&lt;/h2&gt;
+
+&lt;p&gt;&lt;br/&gt;Install libsvg, librsvg, and cairo.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg cairo
+brewPkg libsvg
+brewPkg librsvg
+brewPkg pandoc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Openblas for speedier linear algebra in R.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg openblas --with-openmp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Test openblas. Shamelessly copied from &lt;a href=&#34;https://github.com/xianyi/OpenBLAS/wiki/User-Manual#code-examples&#34; target=&#34;_blank&#34;&gt;Intertubes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; test-openblas.c &amp;lt;&amp;lt;&amp;quot;END&amp;quot;
+#include &amp;lt;cblas.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+
+void main()
+{
+  int i=0;
+  double A[6] = {1.0,2.0,1.0,-3.0,4.0,-1.0};
+  double B[6] = {1.0,2.0,1.0,-3.0,4.0,-1.0};
+  double C[9] = {.5,.5,.5,.5,.5,.5,.5,.5,.5};
+  cblas_dgemm(CblasColMajor, CblasNoTrans, CblasTrans,
+      3,3,2,1,A, 3, B, 3,2,C,3);
+
+  for(i=0; i&amp;lt;9; i++)
+    printf(&amp;quot;%lf &amp;quot;, C[i]);
+  printf(&amp;quot;\n&amp;quot;);
+}
+END
+
+clang -L/usr/local/opt/openblas/lib \
+    -I/usr/local/opt/openblas/include \
+    -lopenblas -lpthread \
+    -o test-openblas test-openblas.c
+
+./test-openblas
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;11.000000 -9.000000 5.000000 -9.000000 21.000000 -1.000000 5.000000 -1.000000 3.000000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Eigen and Armadillo for Rcpp and v8 for &lt;a href=&#34;https://github.com/jeroenooms/V8&#34; target=&#34;_blank&#34;&gt;R+v8&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg eigen
+brewPkg armadillo --with-hdf5
+brewPkg v8-315
+brew link v8-315 --force
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Test Armadillo&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd /usr/local/opt/armadillo/examples/
+clang++   -O2   -o example1  example1.cpp  -larmadillo -framework Accelerate
+./example1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;You should see something like below and lot more.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Armadillo version: 7.200.2 (Plutocratic Climate Change Denialist)
+A.n_rows: 2
+A.n_cols: 3
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Test v8&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &#39;quit()&#39; | v8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;V8 version 3.15.11.18 [sample shell]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Finally install R itself, and also setup R to use Apple&amp;rsquo;s &lt;code&gt;clang&lt;/code&gt; compiler. We can also setup R to use &lt;code&gt;gcc&lt;/code&gt; compiler to take advantage of &lt;code&gt;openmp&lt;/code&gt; support, but I&amp;rsquo;ve noticed that not all R packages compile correctly when using GCC.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg r --with-openblas --with-pango
+# for rJava to work.
+R CMD javareconf \
+    JAVA_CPPFLAGS=-I/System/Library/Frameworks/JavaVM.framework/Headers
+
+# Setup $HOME/.r/Makevars file to properly link against homebrew packages.
+mkdir $HOME/.r
+cat &amp;gt; $HOME/.r/Makevars &amp;lt;&amp;lt; END
+CC=ccache clang
+CXX=ccache clang++
+SHLIB_CXXLD=ccache clang++
+FC=gfortran-6
+F77=gfortran-6
+MAKE=make -j8
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig
+PKG_LIBS += -L/usr/local/opt/icu4c/lib -L/usr/local/lib
+END
+
+
+# Also setup a R_LIBS_USER directory to install R packages locally.
+mkdir -p $HOME/Library/R/3.x/library
+cat &amp;gt; $HOME/.Renviron &amp;lt;&amp;lt;END
+export R_LIBS_USER=$HOME/Library/R/3.x/library
+END
+
+# add same stuff to .bash_profile
+cat $HOME/.Renviron &amp;gt;&amp;gt; $HOME/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;node-js&#34;&gt;Node.js&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg node
+brewPkg phantomjs casperjs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;scala&#34;&gt;Scala&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install scala
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;golang&#34;&gt;golang&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew install golang
+cat &amp;gt;&amp;gt; $HOME/.bash_profile &amp;lt;&amp;lt;END
+export GOPATH=$HOME/golang
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+END
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;gis-stuff&#34;&gt;GIS Stuff&lt;/h1&gt;
+
+&lt;p&gt;Mostly PostGIS + Geo libs.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg postgresql
+brewPkg geos
+brewPkg proj
+brewPkg gdal2 \
+    --with-armadillo --with-complete --with-libkml \
+    --with-opencl --with-postgresql --with-unsupported
+brewPkg postgis --with-gui
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;other-interesting-stuff&#34;&gt;Other Interesting Stuff&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg imagemagick --with-fontconfig --with-ghostscript \
+    --with-librsvg --with-openmp --with-pango --with-webp
+
+brewPkg vim --with-python3 --with-client-server \
+    --with-lua --with-luajit --with-override-system-vi
+
+brewPkg macvim --with-python3 --with-client-server \
+    --with-lua --with-luajit --with-override-system-vim
+
+brewPkg jq # json processing
+
+brew cask install font-hack font-fira-code #extra fonts
+
+brewPkg mlpack # Fast Machine Learning
+brewPkg protobuf --devel # Google&#39;s Protocol Buffer Library
+brewPkg gsl # GNU Scientific Library
+brewPkg libyaml # YAML Support
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;gui-apps&#34;&gt;GUI Apps&lt;/h1&gt;
+
+&lt;p&gt;Apps related to Securing your Mac.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install blockblock knockknock \
+    dhs taskexplorer kextviewr
+brew cask install suspicious-package
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;Quicklook Plugins for Developers.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install qlcolorcode qlstephen qlmarkdown \
+    quicklook-json qlprettypatch quicklook-csv betterzipql \
+    qlimagesize webpquicklook
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;These are some GUI apps I use. Pick and chose as you like. They are not necessarily related to R or even development.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew cask install google-chrome chrome-devtools firefox iterm2 seil \
+ slate keepassx free-mind itsycal flux caffeine alfred beardedspice \
+ macdown mysqlworkbench osxfuse smcfancontrol torbrowser vagrant\
+ vagrant-manager vlc cog yed slack owncloud
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leaflet Diary: Chapter 4, Towards Version 1.1</title>
+      <link>/2016/11/leaflet-diary-chapter-4-towards-version-1.1/</link>
+      <pubDate>Wed, 02 Nov 2016 17:00:00 -0400</pubDate>
+      
+      <guid>/2016/11/leaflet-diary-chapter-4-towards-version-1.1/</guid>
+      <description>&lt;p&gt;This is the fifth blog entry in my series &amp;lsquo;&lt;a href=&#34;/2016/09/leaflet-diary-prologue/&#34;&gt;Leaflet-Diary&lt;/a&gt;&amp;rsquo;. In my last post &lt;a href=&#34;/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/&#34;&gt;Chapter 3, Making Leaflet Extensible&lt;/a&gt;, I talked about changes that were made to the Leaflet package to make it extensible.
+This one is about phase IV, making the Leaflet package ready for a CRAN version upgrade.
+&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A major issue related to missing or incomplete data was fixed.&lt;/li&gt;
+&lt;li&gt;Shapes (Polylines/Polygons/Circles/Rectangles) can now be easily highlighted on mouse over.&lt;/li&gt;
+&lt;li&gt;Leaflet Documentation has been updated.&lt;/li&gt;
+&lt;li&gt;Fingers crossed for 1.1 CRAN release.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;long-read&#34;&gt;Long Read&lt;/h1&gt;
+
+&lt;h2 id=&#34;missing-data&#34;&gt;Missing Data&lt;/h2&gt;
+
+&lt;p&gt;Leaflet had issues handing entirely empty data (A Spatial object with no geometries), or even data with missing values for latitude/longitude. You can see all the &lt;a href=&#34;https://github.com/rstudio/leaflet/issues/304&#34; target=&#34;_blank&#34;&gt;issues&lt;/a&gt; on Github. Good news is all these issues have been resolved. Now Leaflet will handle empty and missing data more gracefully, issuing errors or warnings correctly.&lt;/p&gt;
+
+&lt;h2 id=&#34;highlight-shapes&#34;&gt;Highlight Shapes&lt;/h2&gt;
+
+&lt;p&gt;A very common use case when dealing with shapes is to be able to highlight them when the mouse hovers over. This was possible earlier using some ugly hacks, but now you have a very straight forward interface to do just that. Check out my &lt;a href=&#34;http://rpubs.com/bhaskarvk/polygon-highlight&#34; target=&#34;_blank&#34;&gt;Rpubs: Highlight Polygons&lt;/a&gt; example page.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This option is not yet available for addGeoJSON and addTopoJSON functions.&lt;/p&gt;
+
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+
+&lt;p&gt;Leaflet documentation has been updated and we also have  detailed example pages that deep dive into leaflet features. To get a feel of how the documentation might look like check out &lt;a href=&#34;https://bhaskarvk.github.io/leaflet/&#34; target=&#34;_blank&#34;&gt;this&lt;/a&gt; link.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;WARNING:&lt;/strong&gt; This is unpolished work and the final version will be a lot more polished than this one.&lt;/p&gt;
+
+&lt;h1 id=&#34;end-of-phase-3&#34;&gt;End of Phase 3&lt;/h1&gt;
+
+&lt;p&gt;This marks the end of Phase 4 in my leaflet development and my contracting gig with RStudio. The last eight weeks were absolutely crazy, and I hope all the long hours I put in will benefit the R GIS community even in little ways. If you like what you see or have comments/questions/critiques don&amp;rsquo;t hesitate to contact me via &lt;a href=&#34;https://twitter.com/bhaskar_vk&#34; target=&#34;_blank&#34;&gt;Twitter&lt;/a&gt; or open an issue over at &lt;a href=&#34;https://github.com/rstudio/leaflet/issues&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt;. In the mean time happy mapping.&lt;/p&gt;
+
+&lt;h1 id=&#34;what-next&#34;&gt;What Next?&lt;/h1&gt;
+
+&lt;p&gt;Even if my contracting gig with Rstudio is over, I haven&amp;rsquo;t quit leaflet development. In fact I am only just getting started, so stay tuned for more developments.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GDAL 2.x On Mac with Homebrew</title>
+      <link>/2016/10/gdal-2.x-on-mac-with-homebrew/</link>
+      <pubDate>Thu, 20 Oct 2016 17:34:35 -0400</pubDate>
+      
+      <guid>/2016/10/gdal-2.x-on-mac-with-homebrew/</guid>
+      <description>&lt;p&gt;This is a small post about upgrading to &lt;a href=&#34;https://trac.osgeo.org/gdal/&#34; target=&#34;_blank&#34;&gt;gdal 2.x&lt;/a&gt; on a Mac using homebrew.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;assumptions&#34;&gt;Assumptions&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You have homebrew installed and setup.&lt;/li&gt;
+&lt;li&gt;You already have gdal 1.x installed via homebrew&amp;rsquo;s default &amp;lsquo;gdal&amp;rsquo; formula.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;install-gdal-2-x&#34;&gt;Install gdal 2.x&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Unlink gdal 1.x using&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew unlink gdal
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Tap into &lt;a href=&#34;https://github.com/OSGeo/homebrew-osgeo4mac&#34; target=&#34;_blank&#34;&gt;osgeo4mac&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew tap osgeo/osgeo4mac &amp;amp;&amp;amp; brew tap --repair
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install gdal 2.x&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew install gdal2 --with-armadillo \
+--with-complete --with-libkml --with-unsupported
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Link gdal 2.x&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew link --force gdal2
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Verify&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$&amp;gt; gdal-config --version
+2.1.1
+$&amp;gt; gdal-config --libs
+-L/usr/local/Cellar/gdal2/2.1.1/lib -lgdal
+$&amp;gt; gdal-config --cflags
+-I/usr/local/Cellar/gdal2/2.1.1/include
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The version number shown is the latest as of Oct 20&lt;sup&gt;th&lt;/sup&gt;, 2016.&lt;/p&gt;
+
+&lt;h1 id=&#34;post-install&#34;&gt;Post Install&lt;/h1&gt;
+
+&lt;p&gt;If you are using R for geo-spatial stuff, be sure to reinstall the &lt;code&gt;rgdal&lt;/code&gt; library. Also you can now install &lt;a href=&#34;https://github.com/edzer/sfr&#34; target=&#34;_blank&#34;&gt;sf&lt;/a&gt; in R using &amp;hellip;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;devtools::install_github(&#39;edzer/sfr&#39;)
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leaflet Diary: Chapter 3, Making Leaflet Extensible</title>
+      <link>/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/</link>
+      <pubDate>Mon, 17 Oct 2016 22:00:00 -0400</pubDate>
+      
+      <guid>/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/</guid>
+      <description>&lt;p&gt;This is the fourth blog entry in my series &amp;lsquo;&lt;a href=&#34;/2016/09/leaflet-diary-prologue/&#34;&gt;Leaflet-Diary&lt;/a&gt;&amp;rsquo;. In my last post &lt;a href=&#34;/2016/10/leaflet-diary-chapter-2-projections-and-then-some/&#34;&gt;Chapter 2: Projections and then some&lt;/a&gt;, I talked projections, easy button support and upgrading leaflet to 0.7.7.
+This one is about phase III, making the Leaflet package extensible and allowing for users to integrate many more &lt;a href=&#34;https://leafletjs.com/plugins&#34; target=&#34;_blank&#34;&gt;Leaflet plugins&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Some bugs were squashed.&lt;/li&gt;
+&lt;li&gt;Leaflet package is now extensible. You can write your own R package that augment core leaflet functionality by incorporating various &lt;a href=&#34;http://leafletjs.com/plugins&#34; target=&#34;_blank&#34;&gt;plugins&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A new R package &lt;a href=&#34;https://www.github.com/bhaskarvk/leaflet.extras&#34; target=&#34;_blank&#34;&gt;leaflet.extras&lt;/a&gt; has been created to extend the leaflet package.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;long-read&#34;&gt;Long Read&lt;/h1&gt;
+
+&lt;h2 id=&#34;making-leaflet-extensible&#34;&gt;Making Leaflet extensible&lt;/h2&gt;
+
+&lt;p&gt;One of the strengths of the leaflet javascript library is the plugins eco-system it supports, and it is not fair to the R community to not be able to take advantage of this. The leaflet R package already integrates some plugins, but there are literally hundreds of plugins. It is not feasible to incorporate all of them in the R package. However with the work that went into this phase it is now possible to extend the leaflet package and incorporate as many plugins as you want. Most of the work went into opening up some of internal functions of the leaflet package as well as tidying them up a bit.&lt;/p&gt;
+
+&lt;h2 id=&#34;leaflet-extras&#34;&gt;Leaflet.extras&lt;/h2&gt;
+
+&lt;p&gt;I created a new R package &lt;a href=&#34;https://www.github.com/bhaskarvk/leaflet.extras&#34; target=&#34;_blank&#34;&gt;leaflet.extras&lt;/a&gt; where I have integrated more plugins and continue to do so. This will be the future direction for the leaflet package, the core package will only see bug fixes, performance improvements etc. and any new plugins will be developed in external packages.&lt;/p&gt;
+
+&lt;h1 id=&#34;end-of-phase-3&#34;&gt;End of Phase 3&lt;/h1&gt;
+
+&lt;p&gt;This marks the end of Phase 3 in my leaflet development. If you like what you see or have comments/questions/critiques don&amp;rsquo;t hesitate to contact me via &lt;a href=&#34;https://twitter.com/bhaskar_vk&#34; target=&#34;_blank&#34;&gt;Twitter&lt;/a&gt; or open an issue over at &lt;a href=&#34;https://github.com/rstudio/leaflet/issues&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt;. In the mean time happy mapping.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leaflet Diary: Chapter 2, Projections and then some</title>
+      <link>/2016/10/leaflet-diary-chapter-2-projections-and-then-some/</link>
+      <pubDate>Mon, 10 Oct 2016 21:00:00 -0400</pubDate>
+      
+      <guid>/2016/10/leaflet-diary-chapter-2-projections-and-then-some/</guid>
+      <description>&lt;p&gt;This is the third blog entry in my series &amp;lsquo;&lt;a href=&#34;/2016/09/leaflet-diary-prologue/&#34;&gt;Leaflet-Diary&lt;/a&gt;&amp;rsquo;. In my last post &lt;a href=&#34;/2016/09/leaflet-diary-chapter-1-plugins-galore/&#34;&gt;Chapter 1: Plugins galore&lt;/a&gt;, I talked about upgrading existing plugins and adding any missing functionality to those plugins.
+This one is about phase II, where I&amp;rsquo;ve added two extremely powerful features, custom projection support and custom buttons/toolbars and also upgraded Leaflet JS to 0.7.7.
+&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Leaflet Javascript has been upgraded from 0.7.3 to 0.7.7, which is the latest release on the 0.7.x branch.&lt;/li&gt;
+&lt;li&gt;Support for adding custom buttons/toolbars using the &lt;a href=&#34;https://github.com/CliffCloud/Leaflet.EasyButton/&#34; target=&#34;_blank&#34;&gt;Leaflet.EasyButton&lt;/a&gt; plugin.&lt;/li&gt;
+&lt;li&gt;Support for custom projections using &lt;a href=&#34;https://github.com/kartena/Proj4Leaflet/&#34; target=&#34;_blank&#34;&gt;Proj4Leaflet&lt;/a&gt; plugin.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can try out the new stuff today by building the Leaflet package from source using &lt;code&gt;devtools::install_github(&#39;rstudio/leaflet&#39;)&lt;/code&gt;. For a full list of changes see the &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/298&#34; target=&#34;_blank&#34;&gt;pull request #298&lt;/a&gt;. Also the &lt;a href=&#34;https://github.com/rstudio/leaflet/tree/master/inst/examples&#34; target=&#34;_blank&#34;&gt;examples&lt;/a&gt; folder has lots of new examples. You can see working sample code at my &lt;a href=&#34;http://rpubs.com/bhaskarvk/&#34; target=&#34;_blank&#34;&gt;Rpubs&lt;/a&gt; page.&lt;/p&gt;
+
+&lt;h1 id=&#34;long-read&#34;&gt;Long Read&lt;/h1&gt;
+
+&lt;h2 id=&#34;leaflet-0-7-7&#34;&gt;Leaflet 0.7.7&lt;/h2&gt;
+
+&lt;p&gt;The Leaflet Javascript included with the package was ver. &lt;a href=&#34;https://github.com/Leaflet/Leaflet/releases/tag/v0.7.3&#34; target=&#34;_blank&#34;&gt;0.7.3&lt;/a&gt; released on May, 23rd 2014. A lot has happened since then. The 0.7 branch latest version is now &lt;a href=&#34;https://github.com/Leaflet/Leaflet/releases/tag/v0.7.7&#34; target=&#34;_blank&#34;&gt;0.7.7&lt;/a&gt;, and now leaflet js is at ver &lt;a href=&#34;https://github.com/Leaflet/Leaflet/releases/tag/v1.0.1&#34; target=&#34;_blank&#34;&gt;1.0.1&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Leaflet 1.x is a major version upgrade, which has some backward compatibility issues with 0.7.x branch. So instead of jumping straight to 1.x I decided to first upgrade to 0.7.7. This ensures compatibility with existing code but yet gives us all the benefits of the latest release. The 0.7.7 upgrade was part of commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/298/commits/3f4720aa4ef1b3ec8b5ecd75c3294b5d756312e9&#34; target=&#34;_blank&#34;&gt;3f4720a&lt;/a&gt;, and while I was at it I also upgraded jQuery from 1.11.1 to 1.12.4.&lt;/p&gt;
+
+&lt;h2 id=&#34;custom-buttons-and-toolbars&#34;&gt;Custom Buttons and Toolbars&lt;/h2&gt;
+
+&lt;p&gt;There are quite a few plugins listed on the leaflet site for &lt;a href=&#34;http://leafletjs.com/plugins#user-interface&#34; target=&#34;_blank&#34;&gt;user interface&lt;/a&gt; add-ons. So it was a bit intimidating deciding which plugin to adopt for allowing users to define some custom buttons/toolbars. Finally I settled on the &lt;a href=&#34;https://github.com/CliffCloud/Leaflet.EasyButton/&#34; target=&#34;_blank&#34;&gt;Leaflet.EasyButton&lt;/a&gt; plugin as it allows maximum flexibility in terms of adding your own buttons and toolbars and defining your own actions for them.&lt;/p&gt;
+
+&lt;p&gt;To give a small example, here is a code that allows you to reset the map view to &lt;code&gt;[0, 0, 0]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(leaflet)
+leaflet() %&amp;gt;% addTiles() %&amp;gt;%
+    addEasyButton(easyButton(
+        icon = &#39;ion-arrow-shrink&#39;,
+        title = &#39;Reset View&#39;,
+        onClick = JS(&amp;quot;
+            function(btn, map){ map.setView([0,0],0); }&amp;quot;)
+      )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There&amp;rsquo;s a lot more you can do with the EasyButtons plugins, and you can check out more examples at my &lt;a href=&#34;http://rpubs.com/bhaskarvk/easybutton&#34; target=&#34;_blank&#34;&gt;Rpubs: EasyButtons&lt;/a&gt; page.&lt;/p&gt;
+
+&lt;h2 id=&#34;projections&#34;&gt;Projections&lt;/h2&gt;
+
+&lt;p&gt;I now come to one of the most important features added to the leaflet package, projections support. If you are unsure about what projections are, I suggest staring from the &lt;a href=&#34;https://en.wikipedia.org/wiki/Map_projection&#34; target=&#34;_blank&#34;&gt;Wikipedia entry&lt;/a&gt; on the subject, and there is always the &lt;a href=&#34;https://xkcd.com/977/&#34; target=&#34;_blank&#34;&gt;XKCD Comic&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The projections support comes courtesy of the &lt;a href=&#34;https://github.com/kartena/Proj4Leaflet&#34; target=&#34;_blank&#34;&gt;Proj4Leaflet&lt;/a&gt;  plugin which provides the glue between leaflet and &lt;a href=&#34;https://github.com/proj4js/proj4js&#34; target=&#34;_blank&#34;&gt;Proj4JS&lt;/a&gt;. With this addition you can now specify custom projections in your leaflet maps. Adding projections support to the leaflet package was more of a technical challenge than anything else, but with help from &lt;a href=&#34;https://twitter.com/TimSalabim3&#34; target=&#34;_blank&#34;&gt;Tim Salabim&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/mdsumner&#34; target=&#34;_blank&#34;&gt;Michael Summer&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/timelyportfolio&#34; target=&#34;_blank&#34;&gt;Kent Russel&lt;/a&gt;, and Rstudio&amp;rsquo;s very own &lt;a href=&#34;https://twitter.com/jcheng&#34; target=&#34;_blank&#34;&gt;Joe Cheng&lt;/a&gt; we finally had success. Once the technical aspect was sorted out the challenge was making the R API straightforward and as idiomatic as possible, here again Joe&amp;rsquo;s experience was very helpful. This was truly a team effort. I got a lot of feedback and pointers from the R and GIS community both on Twitter and Github as I was baking in support for projections, which allowed me to solidify the code quite a bit.&lt;/p&gt;
+
+&lt;p&gt;I have quite a few examples for using custom projections on my Rpubs pages.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/proj4leaflet&#34; target=&#34;_blank&#34;&gt;Proj4Leaflet Demo&lt;/a&gt;: This is a good starting point.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/epsg-28992&#34; target=&#34;_blank&#34;&gt;Tiles with projections&lt;/a&gt;: Shows you how to use non spherical mercator tiles.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-polarmaps&#34; target=&#34;_blank&#34;&gt;Polar Maps&lt;/a&gt;: Shows how to use leaflet for Arctic and Antarctic regions.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a nice view of Antarctica in it&amp;rsquo;s native &lt;a href=&#34;http://spatialreference.org/ref/epsg/wgs-84-antarctic-polar-stereographic/&#34; target=&#34;_blank&#34;&gt;EPSG:3031&lt;/a&gt; projection.
+&lt;img src=&#34;http://i.imgur.com/igDUoKy.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Projections are a somewhat advanced concept and most web mapping users will not really need them. You should be mostly fine with the default &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_Mercator&#34; target=&#34;_blank&#34;&gt;spherical mercator&lt;/a&gt; projection. Before using projections be sure to read this &lt;a href=&#34;https://github.com/bhaskarvk/leaflet/issues/16#issuecomment-249369147&#34; target=&#34;_blank&#34;&gt;note&lt;/a&gt; where I have discussed some inner working of the projections support and some limitations.&lt;/p&gt;
+
+&lt;h1 id=&#34;end-of-phase-2&#34;&gt;End of Phase 2&lt;/h1&gt;
+
+&lt;p&gt;This marks the end of Phase 2 in my leaflet development. In next phase I&amp;rsquo;ll show you how you can augment the leaflet package by developing your own plugins and some examples that I have been working on.
+If you like what you see or have comments/questions/critiques don&amp;rsquo;t hesitate to contact me via &lt;a href=&#34;https://twitter.com/bhaskar_vk&#34; target=&#34;_blank&#34;&gt;Twitter&lt;/a&gt; or open an issue over at &lt;a href=&#34;https://github.com/rstudio/leaflet/issues&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt;. In the mean time happy mapping.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leaflet Diary: Chapter 1, Plugins Galore</title>
+      <link>/2016/09/leaflet-diary-chapter-1-plugins-galore/</link>
+      <pubDate>Mon, 19 Sep 2016 21:00:00 -0400</pubDate>
+      
+      <guid>/2016/09/leaflet-diary-chapter-1-plugins-galore/</guid>
+      <description>&lt;p&gt;This is the second blog entry in my series &amp;lsquo;Leaflet-Diary&amp;rsquo;, the &lt;a href=&#34;../leaflet-diary-prologue/&#34;&gt;first entry&lt;/a&gt; was nothing more than me announcing to the world that I&amp;rsquo;m contracting with &lt;a href=&#34;http://www.rstudio.com&#34; target=&#34;_blank&#34;&gt;RStudio&lt;/a&gt; for adding new features to the &lt;a href=&#34;https://rstudio.github.io/leaflet/&#34; target=&#34;_blank&#34;&gt;Leaflet&lt;/a&gt; package. This one is about what has been done so far and what&amp;rsquo;s cooking.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All existing plugins have been upgraded to their respective latest versions.&lt;/li&gt;
+&lt;li&gt;R counterparts to any missing or new features of these plugins have also been added.&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;ve introduced additional functionality in some plugins not available before.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can try out the new stuff today by building the Leaflet package from source using &lt;code&gt;devtools::install_github(&#39;rstudio/leaflet&#39;)&lt;/code&gt;. For a full list of changes see the &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293&#34; target=&#34;_blank&#34;&gt;pull request #293&lt;/a&gt;. Also the &lt;a href=&#34;https://github.com/rstudio/leaflet/tree/master/inst/examples&#34; target=&#34;_blank&#34;&gt;examples&lt;/a&gt; folder has lots of new examples. You can see working sample code at my &lt;a href=&#34;http://rpubs.com/bhaskarvk/&#34; target=&#34;_blank&#34;&gt;Rpubs&lt;/a&gt; page.&lt;/p&gt;
+
+&lt;h1 id=&#34;long-read&#34;&gt;Long Read&lt;/h1&gt;
+
+&lt;p&gt;My plan of attack was, before adding any new features or fixing any bugs upgrade the Leaflet javascript library and existing plugins to their respective latest stable versions. The reasoning being, Leaflet javascript (henceforth LeafletJS) in the current R package is version 0.7.3. The current stable version of LeafletJS is 0.7.7. (LeafletJS 1.0 is not yet production ready.) The 0.7.7 version has seen a lot of fixes and performance improvements over 0.7.3, not to mention 0.7.3 was released way back in &lt;a href=&#34;https://github.com/Leaflet/Leaflet/releases/tag/v0.7.3&#34; target=&#34;_blank&#34;&gt;May, 23 2014&lt;/a&gt;. Similarly the various plugins that were bundled with the R package (see below) were also quite old and their respective current stable versions have seen similar performance and feature improvements. So it made sense to bring everything in the R package up to date. And that is exactly what I&amp;rsquo;ve been doing for the last 2 weeks (including weekends).&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve broken down my task in two phases, phase 1: upgrade plugins (now complete) and phase 2: upgrade LeafletJS (in progress). The reason I upgraded the plugins before LeafletJS was simply because I was more familiar with the plugin handling code than the core Leaflet code. There was a risk of some upgraded plugins not working under 0.7.3 and requiring 0.7.7, but I was willing to take that risk.&lt;/p&gt;
+
+&lt;h2 id=&#34;leaflet-providers-plugin&#34;&gt;Leaflet Providers Plugin&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/leaflet-extras/leaflet-providers&#34; target=&#34;_blank&#34;&gt;Leaflet Providers&lt;/a&gt; plugin, which provides a convenient way to add existing free tile providers has been upgraded (See commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/bcd9adf459727a88fa04a29d5c348ca4a3db8efe&#34; target=&#34;_blank&#34;&gt;bcd9adf&lt;/a&gt; for details). Of noteworthy, was the removal of MapQuest provider (Issue &lt;a href=&#34;https://github.com/leaflet-extras/leaflet-providers/issues/219&#34; target=&#34;_blank&#34;&gt;#219&lt;/a&gt;) due to MapQuest closing free access. After upgrading this plugin I saw a chance to improve the R part. Instead of having to provide the provider name in the &lt;code&gt;addProviderTiles&lt;/code&gt; call, I created a R list called &lt;code&gt;providers&lt;/code&gt; pre-populated with Names of existing providers and base-map variants if any.&lt;/p&gt;
+
+&lt;p&gt;So now instead of&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;leaflet() %&amp;gt;% addProviderTiles(&amp;quot;Stamen.Toner&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;you can do&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;leaflet() %&amp;gt;% addProviderTiles(providers$Stamen.Toner)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At first this looks like more typing, but a) you can put RStudio&amp;rsquo;s auto-complete to work for you and, b) you don&amp;rsquo;t have to remember all the providers and their variants, and there are roughly 110 of them (I checked). For a complete example of this along with code see my &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-providers&#34; target=&#34;_blank&#34;&gt;Rpubs: leaflet-providers&lt;/a&gt; entry.&lt;/p&gt;
+
+&lt;h2 id=&#34;leaflet-label-plugin&#34;&gt;Leaflet.Label Plugin&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/Leaflet/Leaflet.label&#34; target=&#34;_blank&#34;&gt;Leaflet.Label&lt;/a&gt; plugin allows you to add static or on-hover labels to your markers, polylines, and polygons. This plugin was upgraded to the latest version (See commits &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/ca2f5a593d7183387eb06fa3b056b6a66ecaef02&#34; target=&#34;_blank&#34;&gt;ca2f5a5&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/8b5dd82d4b7519fce798e17d507b34a8a6561107&#34; target=&#34;_blank&#34;&gt;8bddd82&lt;/a&gt;). In addition I also merged two pull requests on the original plugin repo and introduced some new features of my own. Now with the new version you get&amp;hellip;&lt;/p&gt;
+
+&lt;table border=&#34;0&#34;&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;image src=&#34;http://i.imgur.com/HgMzgkt.png&#34;/&gt;
+             &lt;br/&gt;Label&#39;s w/o box.
+        &lt;/td&gt;
+        &lt;td&gt;
+            &lt;image src=&#34;http://i.imgur.com/lQBFnOl.png&#34;/&gt;
+            &lt;br/&gt;Customizable text size.
+        &lt;/td&gt;
+        &lt;td rowspan=&#34;2&#34;&gt;
+            &lt;image src=&#34;http://i.imgur.com/H6yVmHv.png&#34;/&gt;
+            &lt;br/&gt;Directional Labels.
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;image src=&#34;http://i.imgur.com/2OaHN2R.png&#34;/&gt;
+            &lt;br/&gt;Stylized labels.
+
+        &lt;/td&gt;
+        &lt;td&gt;
+            &lt;image src=&#34;http://i.imgur.com/htDjAtW.png&#34;/&gt;
+            &lt;br/&gt;Markers w/o the icon.
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;I believe these new features make the plugin even more useful for your interactive mapping needs. See this &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-labels&#34; target=&#34;_blank&#34;&gt;Rpubs: Leaflet-Label&lt;/a&gt; entry for details and code samples.&lt;/p&gt;
+
+&lt;h2 id=&#34;leaflet-omnivore-plugin&#34;&gt;Leaflet-Omnivore Plugin&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/mapbox/leaflet-omnivore&#34; target=&#34;_blank&#34;&gt;Leaflet-Omnivore&lt;/a&gt; plugin by &lt;a href=&#34;http://www.mapbox.com&#34; target=&#34;_blank&#34;&gt;Mapbox&lt;/a&gt; allows you to overlay GeoJSON, TopoJSON, WKT, KML, GPX files on the Leaflet map. I have upgraded this plugin to the latest version (See commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/5abd3f4bfefedd476421f0f7a473537c6ec3eefd&#34; target=&#34;_blank&#34;&gt;5abd3f4&lt;/a&gt;). I didn&amp;rsquo;t see much changed w.r.t. the older plugin, but staying current is always a better option. For now even if the plugin is upgraded I haven&amp;rsquo;t yet added the R API to add WKT/KML/GPX files. There is a need to support these file formats in the R package via more idiomatic R APIs. The current approach to add GeoJSON/TopoJSON is also not the most ideal one. So stay tuned for more updates on this.&lt;/p&gt;
+
+&lt;p&gt;For what it&amp;rsquo;s worth do check out my example of handling GeoJSON using the &lt;a href=&#34;https://github.com/ropensci/geojsonio&#34; target=&#34;_blank&#34;&gt;geojsonio&lt;/a&gt; package over at &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-geojson&#34; target=&#34;_blank&#34;&gt;Rpubs: leaflet-geojson&lt;/a&gt;. I like this approach more than the omnivore plugin based approach because it&amp;rsquo;s much easy to add markers/polylines/polygons and style them using data with this approach than  leaflet native approach.&lt;/p&gt;
+
+&lt;h2 id=&#34;leaflet-measure-plugin&#34;&gt;Leaflet Measure Plugin&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/ljagis/leaflet-measure&#34; target=&#34;_blank&#34;&gt;Leaflet Measure&lt;/a&gt; is a very useful plugin that enables you to add a controller on your map which can be used to measure distances between points or areas of a polygon. I upgraded it to the latest version (See commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/c58926f7a2fc8e93abdd5393a1e1feba42666932&#34; target=&#34;_blank&#34;&gt;c58926f&lt;/a&gt;). The new version supports localization in certain locales, which goes nicely with OpenStreetMaps (OSM) base-map layer which uses localized labels.
+e.g. below you see the plugin displaying the options and text in German.&lt;/p&gt;
+
+&lt;p&gt;&lt;image src=&#34;http://i.imgur.com/VD5RU42.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;For details see my &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-measure&#34; target=&#34;_blank&#34;&gt;Rpubs: leaflet-measure&lt;/a&gt; entry.&lt;/p&gt;
+
+&lt;h2 id=&#34;minimap-plugin&#34;&gt;MiniMap Plugin&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/Norkart/Leaflet-MiniMap&#34; target=&#34;_blank&#34;&gt;Minimap plugin&lt;/a&gt; was by far the most fun and most challenging to work on. I had implemented a rudimentary example of it a while ago, but it had a fixed base-map. What I wanted was an ability to sync the mini-map&amp;rsquo;s tile layer with the base-map&amp;rsquo;s. And there&amp;rsquo;s a restriction in LeafletJS in that no two map&amp;rsquo;s can share layers. Finally I was able to achieve it albeit using some native Javascript code. And solving that problem also allowed me to solve another interesting use case of showing markers in both base-map and mini-map. See commits &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/8eb9daaa5a9b4ea1f16f1510f6d9cefdb78f01ae&#34; target=&#34;_blank&#34;&gt;8eb9daa&lt;/a&gt;, &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/d5250ca3f7190457d9f6b2e67ddc9721371838cd&#34; target=&#34;_blank&#34;&gt;d5250ca&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/f392477238406a837f4a3b2c540a283a114de309&#34; target=&#34;_blank&#34;&gt;f3924772&lt;/a&gt;
+Here&amp;rsquo;s a sample of what can be done now.&lt;br/&gt;&lt;br/&gt;
+&lt;image src=&#34;http://i.imgur.com/AXUKIdk.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;For a full list of possibilities check out my &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-minimap&#34; target=&#34;_blank&#34;&gt;Rpubs: Minimap&lt;/a&gt; entry.&lt;/p&gt;
+
+&lt;h2 id=&#34;simple-graticule-graticule-plugins&#34;&gt;Simple-Graticule &amp;amp; Graticule Plugins&lt;/h2&gt;
+
+&lt;p&gt;I had implemented the &lt;a href=&#34;https://github.com/ablakey/Leaflet.SimpleGraticule&#34; target=&#34;_blank&#34;&gt;Simple Graticule&lt;/a&gt; plugin, but when I did upgrade it this time, I realized that it is meant only for &lt;a href=&#34;http://leafletjs.com/examples/crs-simple/crs-simple.html&#34; target=&#34;_blank&#34;&gt;L.CRS.Simple&lt;/a&gt;, but there is a proper &lt;a href=&#34;https://github.com/turban/Leaflet.Graticule&#34; target=&#34;_blank&#34;&gt;Graticule&lt;/a&gt; plugin too, so I included it in this round too. See commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/727dd479baa174d57c7072dcdac4b29017538ad1&#34; target=&#34;_blank&#34;&gt;727dd47&lt;/a&gt; for details.&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-graticule&#34; target=&#34;_blank&#34;&gt;Rpubs: Graticule&lt;/a&gt; and &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-simplegraticule&#34; target=&#34;_blank&#34;&gt;Rpubs: Simple Graticule&lt;/a&gt; entries for code samples.&lt;/p&gt;
+
+&lt;h2 id=&#34;marker-clusters-plugin&#34;&gt;Marker Clusters Plugin&lt;/h2&gt;
+
+&lt;p&gt;Finally we come to my favorite of all, the &lt;a href=&#34;https://github.com/Leaflet/Leaflet.markercluster&#34; target=&#34;_blank&#34;&gt;Marker Cluster&lt;/a&gt; plugin. This plugin was way overdue for an upgrade and I found two very useful sub-plugins, the &lt;a href=&#34;https://github.com/ghybs/Leaflet.MarkerCluster.LayerSupport&#34; target=&#34;_blank&#34;&gt;layer support&lt;/a&gt; sub-plugin &amp;amp; the &lt;a href=&#34;https://github.com/ghybs/Leaflet.MarkerCluster.Freezable&#34; target=&#34;_blank&#34;&gt;freezable&lt;/a&gt; sub-plugin. The former makes marker clustering work along with layers and layer-controllers, so you can add your markers to different layers and show/hide these layers using a layer controller and the marker cluster plugin will update it&amp;rsquo;s clusters accordingly. The later allows you to freeze/unfreeze clustering at a specific zoom level. I believe these were worth additions to what is an already very useful plugin. For the code curious see commit &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/293/commits/b6c980d5ade6729af0f4e7712397a114cb8dd30d&#34; target=&#34;_blank&#34;&gt;b6c980&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For code samples and some spiffy clustering check out the &lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-marker-clusterming&#34; target=&#34;_blank&#34;&gt;Rpubs: Marker Cluster&lt;/a&gt; entry.&lt;/p&gt;
+
+&lt;h1 id=&#34;end-of-phase-1&#34;&gt;End of Phase 1&lt;/h1&gt;
+
+&lt;p&gt;This concludes my two weeks of development. For most part the coding was grunt work and involved taking what has already been built in Javascript and making it available in R. The challenge was to make the new stuff available in as idiomatic way as possible to R. I did have to scratch my head a few times, especially with the mini-map syncing with base-map examples. In addition to these changes, I have also added two new plugins but they are not merged in the code base yet. More on them in the next post. If you like what you see or have comments/questions/critiques don&amp;rsquo;t hesitate to contact me via &lt;a href=&#34;https://twitter.com/bhaskar_vk&#34; target=&#34;_blank&#34;&gt;Twitter&lt;/a&gt; or open an issue over at &lt;a href=&#34;https://github.com/rstudio/leaflet/issues&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt;. In the mean time happy mapping.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leaflet Diary: Prologue</title>
+      <link>/2016/09/leaflet-diary-prologue/</link>
+      <pubDate>Sat, 10 Sep 2016 16:44:02 -0400</pubDate>
+      
+      <guid>/2016/09/leaflet-diary-prologue/</guid>
+      <description>
+
+&lt;p&gt;Sometime in Sep./Oct. 2015 I was working on a research effort that required building some web and print maps. Not a whole lot of GIS analysis but simply plotting some data on map for better representation. I had joined the project mid-way and the first editions of the maps were screen shots of Google Maps&lt;sup&gt;TM&lt;/sup&gt;. Needless to say the were aesthetically hideous and not interactive. So I set about to find a better alternative to mapping and stumbled on &lt;a href=&#34;https://www.github.com/rstudio/leaflet&#34; target=&#34;_blank&#34;&gt;leaflet&lt;/a&gt; for R by &lt;a href=&#34;http://www.rstudio.com/&#34; target=&#34;_blank&#34;&gt;RStudio&lt;/a&gt;. This looked perfect for getting started. I had not much GIS know-how but it was well documented and so I started using it.&lt;/p&gt;
+
+&lt;p&gt;As I progressed I noticed that the original javascript library &lt;a href=&#34;http://www.leafletjs.com&#34; target=&#34;_blank&#34;&gt;leaflet&lt;/a&gt; provided a lot of &lt;a href=&#34;http://leafletjs.com/plugins&#34; target=&#34;_blank&#34;&gt;plugins&lt;/a&gt; but most of them were not available in the R package. So this was a challenge, and being a good open-source netizen I proceeded to adding support for some plugins in the R package. This resulted in two pull requests (PRs) on the leaflet repo &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/181&#34; target=&#34;_blank&#34;&gt;PR-181&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://github.com/rstudio/leaflet/pull/184&#34; target=&#34;_blank&#34;&gt;PR-184&lt;/a&gt;, which I&amp;rsquo;m happy to say were accepted and merged into the master branch.&lt;/p&gt;
+
+&lt;p&gt;Fast forward 9 months, and I&amp;rsquo;m happy to announce that I am officially contracting with RStudio to add even more features to the leaflet package. I&amp;rsquo;ll be blogging about my coding adventures under &amp;lsquo;Leaflet Diary&amp;rsquo; series on this blog post. In each subsequent blog post I&amp;rsquo;ll add my progress as well as thoughts on features/performance of the changes going in. You can track my changes at &lt;a href=&#34;https://www.github.com/bhaskarvk&#34; target=&#34;_blank&#34;&gt;my fork&lt;/a&gt; of the package.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;series-posts&#34;&gt;Series Posts&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;2016-09-19 &lt;a href=&#34;../leaflet-diary-chapter-1-plugins-galore/&#34;&gt;Chapter 1: Plugins Galore&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2016-10-10 &lt;a href=&#34;/2016/10/leaflet-diary-chapter-2-projections-and-then-some/&#34;&gt;Chapter 2: Projections and then some&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2016-10-19 &lt;a href=&#34;/2016/10/leaflet-diary-chapter-3-making-leaflet-extensible/&#34;&gt;Chapter 3: Making Leaflet extensible&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2016-11-02 &lt;a href=&#34;/2016/11/leaflet-diary-chapter-4-towards-version-1.1/&#34;&gt;Chapter 4: Towards Version 1.1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017-02-17 &lt;a href=&#34;/2017/02/leaflet-diary-chapter-5-leaflet-1.1-and-beyond/&#34;&gt;Chapter 5, Leaflet 1.1 and Beyond&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Alternative to using legends in ggplot2</title>
+      <link>/2016/03/alternative-to-using-legends-in-ggplot2/</link>
+      <pubDate>Mon, 21 Mar 2016 11:22:02 -0400</pubDate>
+      
+      <guid>/2016/03/alternative-to-using-legends-in-ggplot2/</guid>
+      <description>
+
+&lt;p&gt;Recently I got hold of some regional spending forecast data. I quickly plotted it using ggplot2, and here&amp;rsquo;s the first version of it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.orig-1.png&#34; alt=&#34;Figure 1: First Attempt&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: First Attempt
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;The data is from 2014 and the values from 2015 to 2019 are the forecasted values. For now don&amp;rsquo;t worry about the validity of this data or the lack of margin of error in the forecasted values. Lets just concentrate on the problems with the visual elements of this chart.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-problems&#34;&gt;The Problems&lt;/h2&gt;
+
+&lt;p&gt;There are two problems here&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Most of the data is hugging the x-axis, something you see very often when you have highly skewed data.&lt;/li&gt;
+&lt;li&gt;Way too many categories (regions) which makes it hard to figure out which line is for which region, even with the legend.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A crude approach to fix problem #1 would be to use log scale on y-axis, which believe me is not the way to go especially when you want to present this chart to business execs and not scientific community. For problem #2, I tried using various different color palettes but none gave enough distinction in the hues to be able to distinguish all the ten regions correctly. This is not a problem of the hues. When you have more than 4 or 5 hues it is hard to distinguish each one, especially for line or point plots where the ink to plot ratio is not high (as opposed to say a bar plot).&lt;/p&gt;
+
+&lt;h2 id=&#34;the-solutions&#34;&gt;The Solutions&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s tackle each separately. First we tackle problem #1, that of most data hugging the x-axis. In this case it was a very easy fix, the data is very easily splittable in to two clusters a) &lt;code&gt;spending &amp;lt; 10,000&lt;/code&gt;, and b) &lt;code&gt;spending &amp;gt; 10,000&lt;/code&gt;. I did just that by creating another variable which indicated which group the data belonged to and used &lt;code&gt;facet_grid&lt;/code&gt; to create two charts, but hid the facet strip and text. Here&amp;rsquo;s the result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.orig2-1.png&#34; alt=&#34;Figure 2: Using `facet_wrap` for better data visibility&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: Using &lt;code&gt;facet_wrap&lt;/code&gt; for better data visibility
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;This is much better, the data that was hugging the x-axis has now better visibility. It is &lt;strong&gt;worth noting&lt;/strong&gt; that the chart is in fact two plots, arranged vertically on top of each other, and the y-axis scale is for the bottom chart is 1,000 while that of the top chart is 10,000. This just gives an illusion of a single y-axis. Also worth noting is that we could do this because the data was easily separable. I believe when data is easily separable as is the case here, this approach is a better alternative to using log scale. &lt;a href=&#34;https://twitter.com/hrbrmstr&#34; target=&#34;_blank&#34;&gt;Bob Rudis&lt;/a&gt; helped in adding a visual separator where the scale breaks.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt; : Not many people are fans of scale breaking, and I too would advice caution when using such an approach. Perhaps a better alternative is to simply plot the two charts separately.&lt;/p&gt;
+
+&lt;p&gt;Now on to problem #2. What we really want here is a better way to indicate which line belongs to which region. If we can directly label the lines instead of using a legend on the side, then we have our solution for problem #2. After some googling around I found &lt;a href=&#34;https://twitter.com/JonKalodimos/status/636880959191826432&#34; target=&#34;_blank&#34;&gt;this Twitter conversation&lt;/a&gt; and a subsequent &lt;a href=&#34;http://rud.is/b/2015/08/27/coloring-and-drawing-outside-the-lines-in-ggplot/&#34; target=&#34;_blank&#34;&gt;blog post&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/hrbrmstr&#34; target=&#34;_blank&#34;&gt;Bob Rudis&lt;/a&gt;. Hadley suggested using the &lt;code&gt;directlables&lt;/code&gt; package, and Bob used &lt;code&gt;ggpolt2::annotation_custom&lt;/code&gt;. I first went with the &lt;code&gt;directlabels&lt;/code&gt; package but quickly realized that none of the &lt;a href=&#34;http://directlabels.r-forge.r-project.org/docs/lineplot/plots/chemqqmathscore.html&#34; target=&#34;_blank&#34;&gt;options&lt;/a&gt; were working out for me. The labels were either overlapping each other or overlapping the data, neither of which was acceptable. So I explored Bob&amp;rsquo;s option, and there too I gave up on &lt;code&gt;ggplot2::annotation_custom&lt;/code&gt; for the same reason, overlapping labels.&lt;/p&gt;
+
+&lt;p&gt;So I came up with an alternative approach, which involved using the &lt;code&gt;ggrepel&lt;/code&gt; package to make sure the labels didn&amp;rsquo;t overlap. Here&amp;rsquo;s the final result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/region-forecast-blog_files/figure-markdown_github/svg.final-1.png&#34; alt=&#34;Figure 3: Final Version, using `ggrepel`.&#34; width=&#34;960&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3: Final Version, using &lt;code&gt;ggrepel&lt;/code&gt;.
+&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;This is even better, not only do we get labels right next to each line but we also get non-overlapping labels. The only thing I wish was an option in the &lt;code&gt;ggrepel&lt;/code&gt; package that would allow repelling in just one direction, i.e. in this case it would be even nicer if I can left align all the labels, but still get vertical separation. Other than that I am happy with the result. They key to obtaining this chart was using &lt;code&gt;ggrepel&lt;/code&gt; and using &lt;code&gt;ggplot2::expand_limit()&lt;/code&gt; function to make sure there was enough room along the x-axis for the labels to not get chopped. By default ggplot2 will leave just a small area around each scale, so I had to use the &lt;code&gt;expand_limit&lt;/code&gt; function to make room for the labels.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-code&#34;&gt;The Code&lt;/h2&gt;
+
+&lt;p&gt;Here is the code for the final plot.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggplot2)
+library(readr)
+library(tidyr)
+library(dplyr)
+library(ggthemes)
+library(ggrepel)
+
+region.forecast &amp;lt;- read_csv(&#39;./region-spending-forecast.csv&#39;)
+# Add a column so we can split the plot into two plots.
+region.forecast$Budget &amp;lt;- ifelse(region.forecast$`2019`&amp;lt;10000,&#39;Low&#39;,&#39;High&#39;)
+
+# Convert wide format data to long format as required by ggplot2
+df.tidy &amp;lt;- region.forecast %&amp;gt;% gather(Year,Spending,-Region,-Budget)
+
+g &amp;lt;- ggplot(df.tidy, aes(x=Year,y=Spending,group=Region,color=Region)) +
+    # Solid line for actual data
+    geom_line(data=df.tidy %&amp;gt;% filter(Year&amp;lt;2015),
+              linetype=&#39;solid&#39;, size=0.75) +
+    # dashed line for forecast data
+    geom_line(data=df.tidy %&amp;gt;% filter(Year&amp;gt;=2014),
+              linetype=&#39;dotted&#39;, size=0.75) +
+    # Mark each data point
+    geom_point(shape=8,size=0.75) +
+    # Add labels right after the last value of each series.
+    geom_label_repel(data=df.tidy %&amp;gt;% filter(Year==2019),
+                     aes(label=Region, fill=Region),
+                     nudge_x = 0.5, size=3, color=&#39;white&#39;,
+                     force=1.5, segment.color=&#39;#bbbbbb&#39;) +
+    # Split the plot in to two plots on top of each other
+    facet_grid(Budget ~ ., scales = &#39;free_y&#39;) +
+    scale_y_continuous(labels = scales::comma) + # Add commas to y-axis labels
+    scale_x_discrete() +
+    theme_minimal() +
+    scale_color_tableau() + scale_fill_tableau() + # Tableau Colors
+    theme(strip.text = element_blank(), # Hide facet text
+          legend.position = &#39;none&#39;, # Hide legend
+          panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank())  +
+    expand_limits(x=9) # So that we have enough room along x-axis for labels.
+
+# This is to insert a ↑ as a scale seperation indicator between the two plots.
+library(grid)
+library(gtable)
+library(gridExtra)
+
+gb &amp;lt;- ggplot_build(g)
+gt &amp;lt;- ggplot_gtable(gb)
+gt &amp;lt;- gtable_add_grob(gt, textGrob(label=&amp;quot;↑&amp;quot;, gp=gpar(fontsize=30)), 5, 3,
+                      clip=&amp;quot;on&amp;quot;, name=&amp;quot;separator&amp;quot;)
+gt$heights[[5]] &amp;lt;- unit(30, &amp;quot;pt&amp;quot;)
+grid.arrange(gt)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;final-thoughts&#34;&gt;Final Thoughts&lt;/h2&gt;
+
+&lt;p&gt;There are some noteworthy thoughts here.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I could use &lt;code&gt;facet_grid&lt;/code&gt; because the data was easily splittable, otherwise I would have had to come up with some other clever option for lifting the series data that was hugging the x-axis.&lt;/li&gt;
+&lt;li&gt;Not everyone is a fan of a split sclae in an axis so tread carefully.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggrepel&lt;/code&gt; for now does not allow repelling along a single axis. This makes the label positions less than ideal. The ideal solution is to have the labels vertically aligned and enough separation along the y-axis. But fear not there is already a &lt;a href=&#34;https://github.com/slowkow/ggrepel/issues/25&#34; target=&#34;_blank&#34;&gt;feature request&lt;/a&gt; for it.&lt;/li&gt;
+&lt;li&gt;I tried various color schemes, and Tableau colors from the &lt;code&gt;ggthemes&lt;/code&gt; package gave the best hues.&lt;/li&gt;
+&lt;li&gt;You have to specify the scaled data values for &lt;code&gt;expand_limits&lt;/code&gt;. In my case, as I had seven data points, one for each year of 2013 to 2019, so I added room for two more using &lt;code&gt;expand_limits(x=9)&lt;/code&gt; to accomodate the labels.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Re-plotting Russian AirStrikes In Syria</title>
+      <link>/2015/11/re-plotting-russian-airstrikes-in-syria/</link>
+      <pubDate>Tue, 10 Nov 2015 11:56:30 -0500</pubDate>
+      
+      <guid>/2015/11/re-plotting-russian-airstrikes-in-syria/</guid>
+      <description>&lt;p&gt;My Cartography mentor &lt;a href=&#34;https://twitter.com/hrbrmstr&#34; target=&#34;_blank&#34;&gt;Bob Rudis&lt;/a&gt; pointed me to a blog post visualizing &lt;a href=&#34;http://r-datameister.blogspot.com/2015/11/plotting-russian-airstrikes-in-syria.html&#34; target=&#34;_blank&#34;&gt;Russian Air Strikes in Syria&lt;/a&gt; and commanded me to redo the static maps to something more interactive and easier to explore.
+&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;p&gt;Interactive Map at &lt;a href=&#34;http://rpubs.com/bhaskarvk/russian-airstrikes-in-syria&#34; target=&#34;_blank&#34;&gt;Rpubs&lt;/a&gt; created using Leaflet after scraping data using RSelenium+ PhantomJS + dplyr. You can use the LayerSelector at the Top Right to toggle various Base Tiles. Clicking on any Marker will show details about that Air Strike.&lt;/p&gt;
+
+&lt;h1 id=&#34;long-read&#34;&gt;Long Read&lt;/h1&gt;
+
+&lt;h2 id=&#34;data-acquisition&#34;&gt;Data Acquisition&lt;/h2&gt;
+
+&lt;p&gt;The data comes from crowdsourcing of Russian Ministry of Defense&amp;rsquo;s (MOD) Youtube&lt;sup&gt;TM&lt;/sup&gt; channel. The process and the data is described &lt;a href=&#34;https://www.bellingcat.com/news/mena/2015/10/26/what-russias-own-videos-and-maps-reveal-about-who-they-are-bombing-in-syria/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt; and the data can be found at &lt;a href=&#34;http://russia-strikes-syria.silk.co/&#34; target=&#34;_blank&#34;&gt;http://russia-strikes-syria.silk.co/&lt;/a&gt;. The argument is that a majority of the strikes claimed by the Russian MOD to be targeting ISIS held areas are actually targeting non-ISIS rebel areas and as such helping the Asaad regime more than fighting ISIS.&lt;/p&gt;
+
+&lt;p&gt;The original visualization was done by copying the data and putting it in an excel spreadsheet and then mapped using R&amp;rsquo;s &lt;code&gt;ggmap&lt;/code&gt; package. But in the interest of reproducibility I wanted to scrape the data directly from within R. For this I initially tried using &lt;a href=&#34;https://cran.r-project.org/web/packages/rvest/&#34; target=&#34;_blank&#34;&gt;rvest&lt;/a&gt; but quickly realized that this was a no go as the table containing the data was dynamically populated using AJAX/Javascript stuff. So I had to turn to RSelenium + PhantomJS as described &lt;a href=&#34;https://cran.r-project.org/web/packages/RSelenium/vignettes/RSelenium-headless.html&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Below is the web-scraping code, and the webpage from where this data was scraped can be found &lt;a href=&#34;http://russia-strikes-syria.silk.co/explore/table/collection/strike-id/column/date-uploaded/column/time-in-utc-uploaded/column/accuracy-of-russian-location/column/actual-location-co-ords/column/closest-location-governorate/column/claimed-location/column/claimed-targets/column/closest-location-actual/column/status/column/isis-in-the-area/column/error-type/column/notes/column/checkdesk-link/column/video-url/slice/0/1000&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(RSelenium)
+library(rvest)
+
+pJS &amp;lt;- phantom()
+Sys.sleep(5) # give the binary a moment
+remDr &amp;lt;- remoteDriver(browserName = &#39;phantomjs&#39;)
+remDr$open()
+remDr$navigate(&#39;http://russia-strikes-syria.silk.co/explore/table/collection/strike-id/column/date-uploaded/column/time-in-utc-uploaded/column/accuracy-of-russian-location/column/actual-location-co-ords/column/closest-location-governorate/column/claimed-location/column/claimed-targets/column/closest-location-actual/column/status/column/isis-in-the-area/column/error-type/column/notes/column/checkdesk-link/column/video-url/slice/0/1000&#39;)
+Sys.sleep(2) # Some time for page to load
+events &amp;lt;- read_html(remDr$getPageSource()[[1]]) %&amp;gt;%
+  html_node(xpath= &#39;//*[@id=&amp;quot;canvas&amp;quot;]/div/div[3]/div[2]/div[2]/div[4]/table&#39;) %&amp;gt;%
+  html_table()
+remDr$close()
+pJS$stop() # close the PhantomJS process
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;
+In short the code starts a RSelenium + PhantomJS WebDriver fetches the webpage containing the data. Then the html table is parsed using rvest&amp;rsquo;s &lt;code&gt;html_table()&lt;/code&gt; after the correct table is selected using the proper xpath to the table.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-preparation&#34;&gt;Data Preparation&lt;/h2&gt;
+
+&lt;p&gt;To plot the data correctly I need to perform the following steps.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Filter out data containing invalid Lat/Long coordinates.&lt;/li&gt;
+&lt;li&gt;Split the single column containing Lat/Long in to two columns.&lt;/li&gt;
+&lt;li&gt;Create a new column to be used for Popup Display when a point is clicked on the map.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Thankfully &lt;code&gt;dplyr&lt;/code&gt; and &lt;code&gt;tidyr&lt;/code&gt; are more than capable of doing all this using some basic simple steps shown below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+library(tidyr)
+
+events %&amp;gt;% filter(str_detect(`Actual location co-ords`,
+                             &#39;[0-9]+\\.[0-9]+, *[0-9]+\\.[0-9]+&#39;)) %&amp;gt;%
+  separate(`Actual location co-ords`,c(&#39;lat&#39;,&#39;lon&#39;),
+           sep = &#39;,&#39;, convert = TRUE, remove = TRUE ) %&amp;gt;%
+  mutate(popup = sprintf(&#39;
+    &amp;lt;P&amp;gt;&amp;lt;center&amp;gt;&amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;/center&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Status:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Date Uploaded:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s %s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Claimed Location:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Claimed Targets:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Closest Governorate:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Closest Actual Location:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;ISIS Presence:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Error:&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Notes:&amp;lt;/i&amp;gt; %s&amp;lt;br/&amp;gt;&amp;lt;i&amp;gt;Description:&amp;lt;/i&amp;gt; &amp;lt;a href=&amp;quot;%s&amp;quot;&amp;gt;%s&amp;lt;/a&amp;gt; / &amp;lt;i&amp;gt;Video:&amp;lt;/i&amp;gt; &amp;lt;a href=&amp;quot;%s&amp;quot;&amp;gt;%s&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;/P&amp;gt;&#39;,
+    Airstrikes, Status,
+    `Date (Uploaded)`, `Time in UTC (Uploaded)`,
+    `Claimed location`, `Claimed targets`,
+    `Closest location governorate`, `Closest location (actual)`,
+    `ISIS in the area?`, `Error type`,
+    Notes, `Checkdesk link`, Airstrikes,
+    `Video URL`, Airstrikes
+    )) -&amp;gt; events
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;filter&lt;/code&gt; function filters out all data points which don&amp;rsquo;t match the regex for the the Lat/Long format. The &lt;code&gt;separate&lt;/code&gt; function splits the &amp;lsquo;Actual location co-ords&amp;rsquo; column in to two columns lat and lon. And finally the &lt;code&gt;mutate&lt;/code&gt; function is used to create the HTML code that will be used to display the popup when this datapoint is clicked on the Map.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-plotting&#34;&gt;Data Plotting&lt;/h2&gt;
+
+&lt;p&gt;Finally for Data Plotting I used &lt;a href=&#34;https://rstudio.github.io/leaflet/&#34; target=&#34;_blank&#34;&gt;Leaflet for R&lt;/a&gt; library. You will need to build the library from source as I use some new features in the library that haven&amp;rsquo;t yet made it to CRAN. You can do this using &lt;code&gt;devetool::install_github(&#39;rstudio/leaflet&#39;)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Map consists of following elements&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Multiple Base Tile Maps out of which only one can be active at any given time.&lt;/li&gt;
+&lt;li&gt;A GeoJSON for plotting the various Administrative areas of Syria superimposed on the base map.&lt;/li&gt;
+&lt;li&gt;Markers for the Air Strikes.&lt;/li&gt;
+&lt;li&gt;A Layer Selection option.&lt;/li&gt;
+&lt;li&gt;A mini map to know the global context.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I also needed a way to visually distinguish between VERIFIED and FALSE strikes. Verified being strikes that claimed to have targeted ISIS and actually targeted ISIS or actually have targeted non-ISIS areas and not claimed to have targeted ISIS in short those where the claim and actual targets tally, and FALSE being the ones where there was a discrepancy in either the claimed and actual target or claimed and actual location. I chose to use Blue colored Markers for VERIFIED and Red colored for FALSE.&lt;/p&gt;
+
+&lt;p&gt;The code for plotting is shown below&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(leaflet)
+
+if(!file.exists(&#39;./cities.json&#39;) {
+	# Syrian Cities GeoJSON downloaded from
+	# http://crisis.net/projects/syria-tracker/cities.json
+	# More Info @ http://blog.crisis.net/choropleth-maps-with-d3/
+	download.file(url=&#39;http://crisis.net/projects/syria-tracker/cities.json&#39;, destfile=&#39;cities.json&#39;)
+}
+cities &amp;lt;- readLines(&#39;./cities.json&#39;, warn =F) %&amp;gt;% paste(collapse=&#39;\n&#39;)
+
+# Leaflet Map + Various Base Tiles
+events %&amp;gt;% leaflet() %&amp;gt;%
+  addTiles(group=&amp;quot;Default&amp;quot;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.PositronNoLabels&#39;,group=&#39;Blank-Canvas&#39;) %&amp;gt;%
+  addProviderTiles(&#39;OpenStreetMap.BlackAndWhite&#39;, group=&amp;quot;OSM-BlackNWhite&amp;quot;) %&amp;gt;%
+  addProviderTiles(&#39;MapQuestOpen.OSM&#39;, group=&#39;MapQuest&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLite&#39;, group=&#39;Stamen-Light&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.WorldStreetMap&#39;,group=&#39;Esri-1&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.DeLorme&#39;,group=&#39;Esri-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.OceanBasemap&#39;,group=&#39;Esri-3&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Esri.NatGeoWorldMap&#39;,group=&#39;NatGeo&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.Positron&#39;,group=&#39;CartoDB-1&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.PositronNoLabels&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerHybrid&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLines&#39;,group=&#39;CartoDB-2&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.DarkMatter&#39;,group=&#39;CartoDB-3&#39;) %&amp;gt;%
+  addProviderTiles(&#39;CartoDB.DarkMatterNoLabels&#39;,group=&#39;CartoDB-4&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Acetate.basemap&#39;,group=&#39;Acetate&#39;) %&amp;gt;%
+  addProviderTiles(&#39;Stamen.TonerLabels&#39;,group=&#39;Acetate&#39;) -&amp;gt; eventMap
+
+# Awesome Icons with color depending on Status
+icon &amp;lt;- awesomeIcons(icon = &#39;crosshairs&#39;,
+                     markerColor = ifelse(events$Status == &#39;VERIFIED&#39;,&#39;blue&#39;,&#39;red&#39;),
+                     library = &#39;fa&#39;,
+                     iconColor = &#39;black&#39;)
+
+# Add Markers for AirStrikes and GeoJSON for Syrian Regions
+eventMap %&amp;gt;%
+  addAwesomeMarkers(
+    lat=~lat, lng=~lon,
+    label = ~Airstrikes, icon=icon,
+    group = &#39;Air Strikes&#39;,
+    popup = ~popup
+  ) %&amp;gt;%
+  addGeoJSON(cities, weight = 0.7, color = &amp;quot;#00FF00&amp;quot;,
+             stroke=T, fill = F, fillOpacity = 0.1,
+             group=&#39;Syria Regions&#39;) -&amp;gt; eventMap
+
+# Add a Layer Control for toggling Layers/BaseMaps
+eventMap  %&amp;gt;%  addLayersControl(
+  baseGroups = c(&#39;Default&#39;,
+                 &#39;Blank-Canvas&#39;,
+                 &#39;OSM-BlackNWhite&#39;,
+                 &#39;MapQuest&#39;,
+                 &#39;Stamen-Light&#39;,
+                 &#39;Esri-1&#39;,
+                 &#39;Esri-2&#39;,
+                 &#39;Esri-3&#39;,
+                 &#39;NatGeo&#39;,
+                 &#39;CartoDB-1&#39;,
+                 &#39;CartoDB-2&#39;,
+                 &#39;CartoDB-3&#39;,
+                 &#39;CartoDB-4&#39;,
+                 &#39;Acetate&#39;),
+  overlayGroups = c(&amp;quot;Air Strikes&amp;quot;, &amp;quot;Syria Regions&amp;quot;),
+  options = layersControlOptions(collapsed = TRUE)
+) -&amp;gt; eventMap
+
+# Finally Add a Minimap and render the Map
+eventMap %&amp;gt;% addMiniMap()
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;
+And the final map is shown below.&lt;/p&gt;
+
+&lt;iframe class=&#34;b-lazy&#34;  data-src=&#34;https://rstudio-pubs-static.s3.amazonaws.com/124776_4236f220adb94d12b4eecc77575e9076.html&#34; 
+  width=&#34;90%&#34; 
+  height=&#34;350px&#34; &gt;
+ &lt;p&gt;Your browser does not support iframes.&lt;/p&gt;
+&lt;/iframe&gt;
+
+&lt;p&gt;Or access it at &lt;a href=&#34;http://rpubs.com/bhaskarvk/russian-airstrikes-in-syria&#34; target=&#34;_blank&#34;&gt;Rpubs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For Web Scraping dynamic data RSelinium + PhantomJS makes a killer combo.&lt;/li&gt;
+&lt;li&gt;R&amp;rsquo;s leaflet library allows for easy creation of interactive maps.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Shiny in a SmartOS zone</title>
+      <link>/2015/10/shiny-in-a-smartos-zone/</link>
+      <pubDate>Sat, 24 Oct 2015 20:22:02 -0400</pubDate>
+      
+      <guid>/2015/10/shiny-in-a-smartos-zone/</guid>
+      <description>&lt;p&gt;My Last &lt;a href=&#34;/2015/10/setting-up-r-on-a-smartos-zone./&#34; target=&#34;_blank&#34;&gt;post&lt;/a&gt; showed you how to install R inside a &lt;a href=&#34;http://www.smartos.org&#34; target=&#34;_blank&#34;&gt;SmartOS&lt;/a&gt; zone. This post is about installing the &lt;a href=&#34;https://www.rstudio.com/products/shiny/shiny-server/&#34; target=&#34;_blank&#34;&gt;shiny server&lt;/a&gt; in the said zone. While setting up R was relatively straight forward, for setting up Shiny server I had to patch some C++ code to make shiny server work on solaris. Which means you don&amp;rsquo;t have to, just follow along.
+&lt;/p&gt;
+
+&lt;p&gt;First install R in a zone as shown in my earlier &lt;a href=&#34;/2015/10/setting-up-r-on-a-smartos-zone./&#34; target=&#34;_blank&#34;&gt;post&lt;/a&gt;. This is very important, unless you have a working R setup you cannot have a functional working Shiny server. Also make sure to allocate enough CPU, memory, and disk-space for your zone.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Install some packages
+pkgin install git-base
+# Install Shiny R package
+Rscript -e &amp;quot;install.packages(c(&#39;shiny&#39;))&amp;quot;
+# Next install the shiny server
+mkdir /opt/src &amp;amp;&amp;amp; cd /opt/src
+git clone https://github.com/rstudio/shiny-server.git
+cd shiny-server/
+# We need a patch for some solaris specific stuff
+wget https://gist.githubusercontent.com/bhaskarvk/6a15083ab9a7997df0a2/raw/5e7fec0dee4c79b828032ab007bf8b6137f735c3/solaris.diff
+git apply solaris.diff &amp;amp;&amp;amp; rm solaris.diff
+mkdir tmp
+cd tmp
+DIR=`pwd`
+PATH=$DIR/../bin:$PATH
+PYTHON=`which PYTHON`
+PYTHON=`which python`
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON=&amp;quot;$PYTHON&amp;quot; ../
+make
+mkdir ../build
+(cd .. &amp;amp;&amp;amp; ./bin/npm --python=&amp;quot;$PYTHON&amp;quot; rebuild)
+(cd .. &amp;amp;&amp;amp; ./bin/node ./ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js --python=&amp;quot;$PYTHON&amp;quot; rebuild)
+# Install the software at the predefined location
+make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This completes installation of shiny server. Next some post installation stuff&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ln -s /usr/local/shiny-server/bin/shiny-server /usr/local/bin
+useradd -m shiny
+mkdir -p /var/log/shiny-server
+mkdir -p /srv/shiny-server
+mkdir -p /var/lib/shiny-server
+chown shiny: /var/log/shiny-server /srv/shiny-server /var/lib/shiny-server
+mkdir -p /etc/shiny-server
+cd /etc/shiny-server
+wget https://raw.githubusercontent.com/rstudio/shiny-server/master/config/default.config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it, Shiny is installed and configured. To start it&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# We run the shiny server as user shiny
+su - shiny
+shiny-server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see something like&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[2015-10-25 01:49:43.019] [INFO] shiny-server - Shiny Server v1.4.1.0 (Node.js v0.10.40)
+[2015-10-25 01:49:43.021] [INFO] shiny-server - Using config file &amp;quot;/etc/shiny-server/shiny-server.conf&amp;quot;
+[2015-10-25 01:49:43.064] [INFO] shiny-server - Starting listener on 0.0.0.0:3838
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Congratulations you now have a running shiny server inside a SmartOS zone. The shiny server installation instructions came from the &lt;a href=&#34;https://github.com/rstudio/shiny-server/wiki/Building-Shiny-Server-from-Source&#34; target=&#34;_blank&#34;&gt;official docs&lt;/a&gt;, but I did have to patch some stuff to make it work under solaris. The patch is available on &lt;a href=&#34;https://gist.github.com/bhaskarvk/6a15083ab9a7997df0a2&#34; target=&#34;_blank&#34;&gt;gist&lt;/a&gt;. Next I&amp;rsquo;ll try and create a proper start-up script for shiny-server so that it can be controlled via &lt;code&gt;svcadm&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Setting up R on a SmartOS Zone.</title>
+      <link>/2015/10/setting-up-r-on-a-smartos-zone./</link>
+      <pubDate>Sat, 24 Oct 2015 18:49:00 +0000</pubDate>
+      
+      <guid>/2015/10/setting-up-r-on-a-smartos-zone./</guid>
+      <description>&lt;p&gt;Recently I converted a spare beefy laptop (8 cores, 16 GB RAM, 750GB HD) to a &lt;a href=&#34;http://www.smartos.org&#34; target=&#34;_blank&#34;&gt;SmartOS&lt;/a&gt; hypervisor. I wanted to play with some bare metal hypervisor / container stuff and ESXi was just not cutting it. I&amp;rsquo;m not a Solaris nerd, but I know enough Unix to find may way around in Linux/*BSDs/Solaris/HP-UX, so it was not a big pain. In fact ZFS is really nice.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Anyway, this post is about setting up R in a &lt;a href=&#34;https://wiki.smartos.org/display/DOC/Zones&#34; target=&#34;_blank&#34;&gt;zone&lt;/a&gt;. It wasn&amp;rsquo;t very difficult to set up R in a zone but it was not completely straight forward as well.&lt;/p&gt;
+
+&lt;p&gt;On the SmartOS host&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Update the list of available images
+imgadm update
+# import the latest base-64 image (15.3.0)
+imgadm import 842e6fa6-6e9b-11e5-8402-1b490459e334
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next create a file &lt;code&gt;zone.json&lt;/code&gt; with the following content in a convenient place.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;{
+  &amp;quot;alias&amp;quot;: &amp;quot;zone01&amp;quot;,
+  &amp;quot;hostname&amp;quot;: &amp;quot;zone01&amp;quot;,
+  &amp;quot;brand&amp;quot;: &amp;quot;joyent&amp;quot;,
+  &amp;quot;quota&amp;quot;: 10,
+  &amp;quot;max_physical_memory&amp;quot;: 2048,
+  &amp;quot;dataset_uuid&amp;quot;: &amp;quot;842e6fa6-6e9b-11e5-8402-1b490459e334&amp;quot;,
+  &amp;quot;default_gateway&amp;quot;: &amp;quot;10.0.0.1&amp;quot;,
+  &amp;quot;resolvers&amp;quot;: [
+    &amp;quot;8.8.8.8&amp;quot;,
+    &amp;quot;8.8.4.4&amp;quot;
+  ],
+  &amp;quot;nics&amp;quot;: [
+    {
+      &amp;quot;nic_tag&amp;quot;: &amp;quot;stub0&amp;quot;,
+      &amp;quot;ip&amp;quot;: &amp;quot;10.0.0.5&amp;quot;,
+      &amp;quot;netmask&amp;quot;: &amp;quot;255.255.255.0&amp;quot;,
+      &amp;quot;allow_ip_spoofing&amp;quot;: &amp;quot;1&amp;quot;,
+      &amp;quot;gateway&amp;quot;: &amp;quot;10.0.0.1&amp;quot;
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; You&amp;rsquo;ll probably need to change the &lt;code&gt;alias&lt;/code&gt;, &lt;code&gt;hostname&lt;/code&gt;, &lt;code&gt;quota&lt;/code&gt; (disk-space in GB), &lt;code&gt;max_physical_memory&lt;/code&gt;, and networking stuff like &lt;code&gt;gateway&lt;/code&gt; and &lt;code&gt;nics&lt;/code&gt; to match your environment. I had problems running the zone with 1G memory, better give it at least 2 Gigs.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Provision and bring up the zone
+vcadm create -f zone.json
+zlogin &amp;lt;UUID of the new zone&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now inside the zone&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pkgin update # Update pkgsrc
+# Compiler and related stuff
+# I had a hard time compiling R packages with gcc48/gcc49 so
+# I used gcc47 which worked perfectly.
+pkgin install gcc47 gcc47-libs gmake autoconf automake cmake
+# XML stuff
+pkgin install libxml2 libxml libxml++1 libxml++-2
+pkgin install R R2pkg
+# Setup CRAN Mirror
+# TODO may be https instead of http
+echo &#39;options(repos=structure(c(CRAN=&amp;quot;http://cran.rstudio.com/&amp;quot;)))&#39; &amp;gt; ~/.Rprofile
+# Install Rcpp and devtools, this will pull in a lot of goodies with it
+Rscript -e &amp;quot;install.packages(&#39;Rcpp&#39;,&#39;devtools&#39;)&amp;quot;
+# Install Hadleyverse
+Rscript -e &amp;quot;install.packages(c(&#39;plyr&#39;, &#39;dplyr&#39;, &#39;stringr&#39;, &#39;rvest&#39;, &#39;httr&#39;, &#39;reshape2&#39;, &#39;ggplot2&#39;, &#39;ggmap&#39;, &#39;tidyr&#39;, &#39;lubridate&#39;, &#39;readr&#39;, &#39;testthat&#39;, &#39;roxygen2&#39;))&amp;quot;
+# Some other useful R package
+Rscript -e &amp;quot;install.packages(c(&#39;data.table&#39;, &#39;knitr&#39;, &#39;rmarkdown&#39;))&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that it&amp;rsquo;s your usual R stuff. I&amp;rsquo;m going to convert this zone to a shiny server and will blog about it when done.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redoing some Bad Data Viz.</title>
+      <link>/2015/09/redoing-some-bad-data-viz./</link>
+      <pubDate>Sat, 12 Sep 2015 17:12:00 +0000</pubDate>
+      
+      <guid>/2015/09/redoing-some-bad-data-viz./</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://pbs.twimg.com/media/COt0Ev0WIAEADUL.png:large&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I saw the above graph in my Twitter feed. This beauty comes from &lt;a href=&#34;https://twitter.com/businessinsider/status/642734996889993216&#34; target=&#34;_blank&#34;&gt;Business Insider&lt;/a&gt; and was part of &lt;a href=&#34;http://www.businessinsider.com/misery-index-of-major-global-economies-2015-9&#34; target=&#34;_blank&#34;&gt;this&lt;/a&gt; article describing the misery in the world.
+There are so many wrong visualization elements here. So let&amp;rsquo;s see what they are and if we can fix them.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Stacked Bar Chart&lt;/em&gt; are not useful when you have to compare the category which doesn&amp;rsquo;t align on an axis. In this case you can&amp;rsquo;t really compare the inflation values of each country because they don&amp;rsquo;t have a common baseline. Secondly it is very apparent that both the categories that is unemployment and inflation have different range, so the common range of -5 to 25 is not really ideal.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Vertical Labels&lt;/em&gt; Unless your head is attached at 270 degrees to your neck, it is really very hard to read vertical labels.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Legends are Confusing&lt;/em&gt;. Both the values are expressed in percentage, but only the Unemployment label has the % sign. Also notice the space between Unemploy and ment.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;No order to the x-axis labels.&lt;/em&gt; neither alphabetical nor by the value of either inflation nor unemployment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So how do we better this? Business Insider article cited the source of the chart as &lt;a href=&#34;https://www.societegenerale.com/en/home&#34; target=&#34;_blank&#34;&gt;Société Générale&amp;rsquo;s&lt;/a&gt; Global Economic Outlook report. I couldn&amp;rsquo;t find the said report or the data for the said chart anywhere on their website. &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook&#34; target=&#34;_blank&#34;&gt;CIA World Fact book&lt;/a&gt; also has various indicators for each country, two of which are &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook/rankorder/2092rank.html&#34; target=&#34;_blank&#34;&gt;Inflation rate (consumer prices)&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook/rankorder/2129rank.html&#34; target=&#34;_blank&#34;&gt;Unemployment rate&lt;/a&gt;. This would be perfect for demonstration purpose, even if the values from the CIA fact book may not be exactly same as that in the chart. Both these pages have a link to download the raw data in a tab separated format (TSV).&lt;/p&gt;
+
+&lt;p&gt;So after downloading the raw data and a few data wrangling in R, here is the result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/BIPlot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now instead of stacked bar chart you have two side-by-side charts. This allows you to compare the Inflation and Unemployment across Countries easily. Secondly each chart gets its own scale for the x-axis, which allows us to better scale the bars.&lt;/li&gt;
+&lt;li&gt;Instead of having you to rotate your head, now the chart is rotated so you can easily read each country label.&lt;/li&gt;
+&lt;li&gt;The x-axis labels are now consistent and both indicate that we&amp;rsquo;re looking at percentage values.&lt;/li&gt;
+&lt;li&gt;The y-axis data is sorted alphabetically as opposed to no order before.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For the interested the R code which produced the graph is shown below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+library(readr)
+library(tidyr)
+library(gridExtra)
+library(ggplot2)
+library(httr)
+
+setwd(&#39;/Users/XYZ/Documents/cia-factbook/rankorder&#39;)
+inf &amp;lt;- read_tsv(&#39;rawdata_2092.txt&#39;, col_names = F)
+uemp &amp;lt;- read_tsv(&#39;rawdata_2129.txt&#39;, col_names = F)
+
+countries &amp;lt;- c(&#39;Switzerland&#39;, &#39;Taiwan&#39;, &#39;Japan&#39;, &#39;Korea, South&#39;, &#39;United States&#39;,
+               &#39;Czech Republic&#39;, &#39;United Kingdom&#39;, &#39;Poland&#39;, &#39;China&#39;, &#39;Germany&#39;,
+               &#39;Netherlands&#39;, &#39;Mexico&#39;, &#39;Australia&#39;, &#39;France&#39;, &#39;Chile&#39;,
+               &#39;European Union&#39;, &#39;Italy&#39;, &#39;Indonesia&#39;, &#39;Brazil&#39;, &#39;Russia&#39;, &#39;Spain&#39;)
+
+df &amp;lt;- inner_join(inf, uemp,by=&#39;X2&#39;)
+df &amp;lt;- df %&amp;gt;% select(X2, X3.x, X3.y) %&amp;gt;%
+  rename(Country=X2, unemployment=X3.y, inflation=X3.x)
+
+df &amp;lt;- df %&amp;gt;% arrange(Country)
+df &amp;lt;- df %&amp;gt;% mutate(unemployment=as.numeric(unemployment),
+                    inflation=as.numeric(inflation),
+                    Country=factor(Country, levels=rev(unique(df$Country)),
+                                   ordered = T))
+
+
+mytheme &amp;lt;- theme_bw() +
+  theme(axis.ticks.y=element_blank()) +
+  theme(panel.border=element_blank()) +
+  theme(panel.grid=element_blank())
+
+gInf &amp;lt;- ggplot(df %&amp;gt;% filter(Country %in% countries),
+       aes(Country, inflation)) +
+  geom_bar(stat=&#39;identity&#39;,fill=&#39;#C29365&#39;) + coord_flip() +
+  xlab(&#39;&#39;) + ylab(&#39;Inflation (%)&#39;) + mytheme
+
+gUemp &amp;lt;- ggplot(df %&amp;gt;% filter(Country %in% countries),
+       aes(Country, unemployment)) +
+  geom_bar(stat=&#39;identity&#39;, fill=&#39;#65ADC2&#39;) + coord_flip() +
+  xlab(&#39;&#39;) + ylab(&#39;Unemployment (%)&#39;) + mytheme +
+  theme(axis.text.y=element_blank())
+grid.arrange(gInf, gUemp, ncol=2)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
