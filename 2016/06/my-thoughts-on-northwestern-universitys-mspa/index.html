@@ -20,7 +20,6 @@
   <link rel="canonical" href="/2016/06/my-thoughts-on-northwestern-universitys-mspa/">
   
 
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css"
     integrity="sha256-nXC6R0O+3ez3B440sqRACd9wvr4A1cHmzr1K+2bINzk=" crossorigin="anonymous" />
@@ -33,6 +32,7 @@
 
 
 
+
 <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
 
@@ -40,6 +40,9 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css" />
+
+
+
 
 
 <link rel="shortcut icon"
@@ -57,57 +60,54 @@
     <script>
         document.body.className += ' fade-out';
     </script>
-    <div class="container">
-        <section class="header row">
-            <div class="columns twelve">
-                <h1>
-                    <div class="name">Bhaskar Karambelkar&#39;s Blog</div>
-                </h1>
-                <nav>
-                    <ul>
-                        
-                        <li><a class="button" href="/"><i class='fa fa-home fa-2x'></i><span class="text">&nbsp;Home</span></a></li>
-                        
-                        <li><a class="button" href="/tags/"><i class='fa fa-tags fa-2x'></i><span class="text">&nbsp;Tags</span></a></li>
-                        
-                        <li><a class="button" href="/series/"><i class='fa fa-folder-open fa-2x'></i><span class="text">&nbsp;Series</span></a></li>
-                        
-                        <li><a class="button" href="/about/"><i class='fa fa-info-circle fa-2x'></i><span class="text">&nbsp;About</span></a></li>
-                        
-                        <li><a class="button" href="http://photos.karambelkar.info"><i class='fa fa-camera-retro fa-2x'></i><span class="text">&nbsp;Photography</span></a></li>
-                        
-                    </ul>
-                </nav>
-            </div>
-        </section>
+    <section class="container">
+        <header id="main">
+            <h1 id="site-title">Bhaskar Karambelkar&#39;s Blog</h1>
+            <nav id="site-nav" class="row">
+                <ul class="twelve columns">
+                    
+                    <li><a class="button" href="/"><i class='fa fa-home fa-2x'></i><span class="text">&nbsp;Home</span></a></li>
+                    
+                    <li><a class="button" href="/tags/"><i class='fa fa-tags fa-2x'></i><span class="text">&nbsp;Tags</span></a></li>
+                    
+                    <li><a class="button" href="/series/"><i class='fa fa-folder-open fa-2x'></i><span class="text">&nbsp;Series</span></a></li>
+                    
+                    <li><a class="button" href="/about/"><i class='fa fa-info-circle fa-2x'></i><span class="text">&nbsp;About</span></a></li>
+                    
+                    <li><a class="button" href="http://photos.karambelkar.info"><i class='fa fa-camera-retro fa-2x'></i><span class="text">&nbsp;Photography</span></a></li>
+                    
+                </ul>
+            </nav>
+        </header>
 
-</section>
-<section class="row content">
-    <div class="columns twelve">
-        <div class="title-container">
+<main class="row content">
+    <article class="columns twelve">
+        <header id="title-container">
             <h1 class="page-heading">
     
         My Thoughts on Northwestern University&#39;s MSPA
     
 </h1>
 
-            <p class="meta">&nbsp;<i class="fa fa-calendar-o"></i> Thu Jun 16 2016 18:30:00 EDT</p>
-            <p id="tags"><small>Tags: </small>
+            <p class="meta">&nbsp;<i class="fa fa-calendar-o"></i>
+                <time datetime="2016-06-16T18:30:00-04:00">Thu Jun 16 2016 18:30:00 EDT</time>
+            </p>
+            <p class="taxonomy"><small>Tags: </small>
                 
-                    <a class="tag-button" href="//tags/mspa">MSPA</a>
+                    <a class="button" href="/tags/mspa">MSPA</a>
                 
-                    <a class="tag-button" href="//tags/education">Education</a>
+                    <a class="button" href="/tags/education">Education</a>
                 
-                    <a class="tag-button" href="//tags/northwestern">Northwestern</a>
+                    <a class="button" href="/tags/northwestern">Northwestern</a>
                 
-                    <a class="tag-button" href="//tags/predictive-analytics">Predictive Analytics</a>
+                    <a class="button" href="/tags/predictive-analytics">Predictive Analytics</a>
                 
             </p>
             <hr/>
-        </div>
+        </header>
         
-        <div id="toc" class="table-of-contents">
-            <strong>Table of Contents</strong>
+        <section id="toc" class="table-of-contents">
+            <header>Table of Contents</header>
             <hr class="top"/>
             <nav id="TableOfContents">
 <ul>
@@ -141,9 +141,9 @@
 </ul>
 </nav>
             <hr class="bottom"/>
-        </div>
+        </section>
         
-        <div class="page-content">
+        <section class="page-content">
             <p>This is my review of Northwestern University&rsquo;s Masters in Predictive Analytics (MSPA) online degree. I enrolled in MSAP in the Summer of 2013 and finished in the Summer of 2016. Normally it shouldn&rsquo;t take this long to finish this program, but I took a break after the first Q1/015 and resumed in Q1/2016. This blog post is a retrospective analysis of the program, what I got out of it, and what it meant to me.
 </p>
 
@@ -385,91 +385,94 @@ Don&rsquo;t get me wrong, database schema design and normalization are very impo
 <p>Learning never stops and time is never enough. This program will give you a good insight into the world of analytics, but there is tons more to learn and explore. For starters I want to revisit some of my Math skills (learned ages ago in high school and under grad), so as to better understand some of the foundations of statistics and machine learning. Revisiting some of my comp-sci fundamentals like data structures and algorithms would go a long way too. I have fairly decent exposure to things like Hadoop, Spark etc and I&rsquo;ve also built up my R and Python skills, but there are always new things happening in this space. I am very much interested in building some domain expertise outside my core domain of information security, especially in digital marketing analytics and risk analytics. Did I mention the need to master Bayesian analysis?</p>
 
 <p>The list of things to learn is endless but I now have access to resources I need and the confidence to tackle these one by one. If you have read this nearly 5,000 words long essay I congratulate you and thank you for your patience. If you want me to answer any questions I would gladly do so, just reach out to me on Twitter (<a href="https://twitter.com/bhaskar_vk" target="_blank">@bhaskar_vk</a>) or LinkedIn (<a href="https://www.linkedin.com/in/bhaskarvk" target="_blank">bhaskarvk</a>).</p>
-        </div>
-    </div>
-</section>
+        </section>
+    </article>
+</main>
 
-<div class="row pager">
-    <div class="twelve columns">
+<nav id="pager" class="pagination">
+    <ul class="row">
+        <li class="one-half column">
         
-        <a data-balloon="Previous Post" data-balloon-pos="right" class="button button-primary" href="/2016/09/leaflet-diary-prologue/">
+        <a data-balloon="Previous Post" data-balloon-pos="right" class="button button-primary u-pull-left" href="/2016/09/leaflet-diary-prologue/">
             <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
             <span class="text">Leaflet Diary: Prologue</span>
         </a>
-        &nbsp;
+        &nbsp;</li>
+        <li class="one-half column">&nbsp;
         
-        <a data-balloon="Next Post" data-balloon-pos="left" class="u-pull-right button button-primary" href="/2016/03/alternative-to-using-legends-in-ggplot2/">
+        <a data-balloon="Next Post" data-balloon-pos="left" class="button button-primary u-pull-right" href="/2016/03/alternative-to-using-legends-in-ggplot2/">
           <span class="text">Alternative to using legends in ggplot2</span>
           <i class="fa fa-angle-double-right fa-2x" aria-hidden="true"></i>
-      </a> 
-    </div>
-</div>
+      </a>
+      </li>
+    </ul>
+</nav>
 
-<section class="icons row content">
-    <div class="columns twelve">
+<footer>
+    <nav id="icons" class="row content">
+        <ul class="columns twelve">
+            
+            <li><a target="_blank" data-balloon="LinkedIN" data-balloon-pos="up" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk">
+                <i class="fa fa-linkedin fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Twitter" data-balloon-pos="up" title="Twitter" href="https://www.twitter.com/bhaskar_vk">
+                <i class="fa fa-twitter fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Github" data-balloon-pos="up" title="Github" href="https://github.com/bhaskarvk">
+                <i class="fa fa-github-square fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Stack Overflow" data-balloon-pos="up" title="StackOverflow" href="https://stackoverflow.com/users/507484">
+                <i class="fa fa-stack-overflow fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Keybase" data-balloon-pos="up" title="Keybase" href="https://www.keybase.io/bhaskarvk">
+                <i class="fa fa-key fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Slideshare" data-balloon-pos="up" title="SlideShare" href="https://www.slideshare.net/bhaskar_vk">
+                <i class="fa fa-slideshare fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Reddit" data-balloon-pos="up" title="Reddit" href="https://www.reddit.com/user/bhaskarvk">
+                <i class="fa fa-reddit-alien fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Medium" data-balloon-pos="up" title="Medium" href="https://medium.com/@bhaskar_vk">
+                <i class="fa fa-medium fa-2x"></i>
+            </a></li>
+            
+            <li class="u-pull-right"><a data-balloon="HOME" data-balloon-pos="up" title="Home " href="/">
+                <i class="fa fa-home fa-2x"></i>
+            </a></li>
+            <li class="u-pull-right"><a target="_blank" data-balloon="RSS Feed" data-balloon-pos="up" title="RSS Feed" href="/index.xml">
+                <i class="fa fa-rss fa-2x"></i>&nbsp;</a></li>
+        </ul>
+    </nav>
 
-        
-        <a target="_blank" data-balloon="LinkedIN" data-balloon-pos="up" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk">
-            <i class="fa fa-linkedin fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Twitter" data-balloon-pos="up" title="Twitter" href="https://www.twitter.com/bhaskar_vk">
-            <i class="fa fa-twitter fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Github" data-balloon-pos="up" title="Github" href="https://github.com/bhaskarvk">
-            <i class="fa fa-github-square fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Stack Overflow" data-balloon-pos="up" title="StackOverflow" href="https://stackoverflow.com/users/507484">
-            <i class="fa fa-stack-overflow fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Keybase" data-balloon-pos="up" title="Keybase" href="https://www.keybase.io/bhaskarvk">
-            <i class="fa fa-key fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Slideshare" data-balloon-pos="up" title="SlideShare" href="https://www.slideshare.net/bhaskar_vk">
-            <i class="fa fa-slideshare fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Reddit" data-balloon-pos="up" title="Reddit" href="https://www.reddit.com/user/bhaskarvk">
-            <i class="fa fa-reddit-alien fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Medium" data-balloon-pos="up" title="Medium" href="https://medium.com/@bhaskar_vk">
-            <i class="fa fa-medium fa-2x"></i>
-        </a>
-        
-        <a class="u-pull-right" data-balloon="HOME" data-balloon-pos="up" title="Home " href="/">
-            <i class="fa fa-home fa-2x"></i>
-        </a>
-        <a class="u-pull-right" target="_blank" data-balloon="RSS Feed" data-balloon-pos="up" title="RSS Feed" href="/index.xml">
-            <i class="fa fa-rss fa-2x"></i>&nbsp;</a>
-    </div>
-</section>
-
-<section class="copyright row">
-    <div class="columns twelve">
+    <section id="copyright" class="columns twelve">
         © 2007-2017 Bhaskar V. Karambelkar. All rights reserved.
-    </div>
+    </section>
+</footer>
+
 </section>
 
-</div>
 
 
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-<script src="/js/back-to-top.js"></script>
+<script src="/js/effects.js"></script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"
@@ -494,24 +497,27 @@ Don&rsquo;t get me wrong, database schema design and normalization are very impo
 </script>
 
 
+
 <script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-  var u="//apps.karambelkar.info/pk/";
-  _paq.push(['setTrackerUrl', u+'piwik.php']);
-  _paq.push(['setSiteId', 1]);
-  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
+    var _paq = _paq || [];
+     _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"] ]); 
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function () {
+        var u = "//apps.karambelkar.info/pk/";
+        _paq.push(['setTrackerUrl', u + 'piwik.php']);
+        _paq.push(['setSiteId',  1 ]);
+        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
+    })();
 </script>
-<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<noscript>
+    <p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p>
+</noscript>
+
 
 
 
 
 </body>
-
 </html>

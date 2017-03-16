@@ -20,7 +20,6 @@
   <link rel="canonical" href="/2012/05/freebsd/">
   
 
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css"
     integrity="sha256-nXC6R0O+3ez3B440sqRACd9wvr4A1cHmzr1K+2bINzk=" crossorigin="anonymous" />
@@ -33,6 +32,7 @@
 
 
 
+
 <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
 
@@ -40,6 +40,9 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css" />
+
+
+
 
 
 <link rel="shortcut icon"
@@ -57,50 +60,47 @@
     <script>
         document.body.className += ' fade-out';
     </script>
-    <div class="container">
-        <section class="header row">
-            <div class="columns twelve">
-                <h1>
-                    <div class="name">Bhaskar Karambelkar&#39;s Blog</div>
-                </h1>
-                <nav>
-                    <ul>
-                        
-                        <li><a class="button" href="/"><i class='fa fa-home fa-2x'></i><span class="text">&nbsp;Home</span></a></li>
-                        
-                        <li><a class="button" href="/tags/"><i class='fa fa-tags fa-2x'></i><span class="text">&nbsp;Tags</span></a></li>
-                        
-                        <li><a class="button" href="/series/"><i class='fa fa-folder-open fa-2x'></i><span class="text">&nbsp;Series</span></a></li>
-                        
-                        <li><a class="button" href="/about/"><i class='fa fa-info-circle fa-2x'></i><span class="text">&nbsp;About</span></a></li>
-                        
-                        <li><a class="button" href="http://photos.karambelkar.info"><i class='fa fa-camera-retro fa-2x'></i><span class="text">&nbsp;Photography</span></a></li>
-                        
-                    </ul>
-                </nav>
-            </div>
-        </section>
+    <section class="container">
+        <header id="main">
+            <h1 id="site-title">Bhaskar Karambelkar&#39;s Blog</h1>
+            <nav id="site-nav" class="row">
+                <ul class="twelve columns">
+                    
+                    <li><a class="button" href="/"><i class='fa fa-home fa-2x'></i><span class="text">&nbsp;Home</span></a></li>
+                    
+                    <li><a class="button" href="/tags/"><i class='fa fa-tags fa-2x'></i><span class="text">&nbsp;Tags</span></a></li>
+                    
+                    <li><a class="button" href="/series/"><i class='fa fa-folder-open fa-2x'></i><span class="text">&nbsp;Series</span></a></li>
+                    
+                    <li><a class="button" href="/about/"><i class='fa fa-info-circle fa-2x'></i><span class="text">&nbsp;About</span></a></li>
+                    
+                    <li><a class="button" href="http://photos.karambelkar.info"><i class='fa fa-camera-retro fa-2x'></i><span class="text">&nbsp;Photography</span></a></li>
+                    
+                </ul>
+            </nav>
+        </header>
 
-</section>
-<section class="row content">
-    <div class="columns twelve">
-        <div class="title-container">
+<main class="row content">
+    <article class="columns twelve">
+        <header id="title-container">
             <h1 class="page-heading">
     
         FreeBSD
     
 </h1>
 
-            <p class="meta">&nbsp;<i class="fa fa-calendar-o"></i> Thu May 31 2012 10:34:00 UTC</p>
-            <p id="tags"><small>Tags: </small>
+            <p class="meta">&nbsp;<i class="fa fa-calendar-o"></i>
+                <time datetime="2012-05-31T10:34:00&#43;00:00">Thu May 31 2012 10:34:00 UTC</time>
+            </p>
+            <p class="taxonomy"><small>Tags: </small>
                 
-                    <a class="tag-button" href="//tags/freebsd-bsd">FreeBSD BSD</a>
+                    <a class="button" href="/tags/freebsd-bsd">FreeBSD BSD</a>
                 
             </p>
             <hr/>
-        </div>
+        </header>
         
-        <div class="page-content">
+        <section class="page-content">
             <a href="https://lh3.googleusercontent.com/-chR6xPaVAAM/T8d71vunxVI/AAAAAAAAA1k/A2cq7g4yqb8/s800-Ic42/logo-full.png" data-lightbox="home" data-title="FreeBSD" >
     <img  class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
         data-src="http://4.bp.blogspot.com/-chR6xPaVAAM/T8d71vunxVI/AAAAAAAAA1k/GMwK9bcrxoA/s320/logo-full.png" />
@@ -120,91 +120,94 @@ Recently I have got more and more curious about BSDs, may be because of their cl
 
 <p>PC-BSD was nice, it was not quite up to my taste, so I decided to start at the source, FreeBSD. Going forward I&rsquo;ll show you how to install FreeBSD 9.x.</p>
 
-        </div>
-    </div>
-</section>
+        </section>
+    </article>
+</main>
 
-<div class="row pager">
-    <div class="twelve columns">
+<nav id="pager" class="pagination">
+    <ul class="row">
+        <li class="one-half column">
         
-        <a data-balloon="Previous Post" data-balloon-pos="right" class="button button-primary" href="/2012/06/java-1.7-collections---uml-class-diagrams/">
+        <a data-balloon="Previous Post" data-balloon-pos="right" class="button button-primary u-pull-left" href="/2012/06/java-1.7-collections---uml-class-diagrams/">
             <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
             <span class="text">Java 1.7 Collections - UML Class Diagrams</span>
         </a>
-        &nbsp;
+        &nbsp;</li>
+        <li class="one-half column">&nbsp;
         
-        <a data-balloon="Next Post" data-balloon-pos="left" class="u-pull-right button button-primary" href="/2011/01/google-cr-48-my-impressions---part-ii-chromium-os/">
+        <a data-balloon="Next Post" data-balloon-pos="left" class="button button-primary u-pull-right" href="/2011/01/google-cr-48-my-impressions---part-ii-chromium-os/">
           <span class="text">Google CR-48 My Impressions - Part II Chromium OS</span>
           <i class="fa fa-angle-double-right fa-2x" aria-hidden="true"></i>
-      </a> 
-    </div>
-</div>
+      </a>
+      </li>
+    </ul>
+</nav>
 
-<section class="icons row content">
-    <div class="columns twelve">
+<footer>
+    <nav id="icons" class="row content">
+        <ul class="columns twelve">
+            
+            <li><a target="_blank" data-balloon="LinkedIN" data-balloon-pos="up" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk">
+                <i class="fa fa-linkedin fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Twitter" data-balloon-pos="up" title="Twitter" href="https://www.twitter.com/bhaskar_vk">
+                <i class="fa fa-twitter fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Github" data-balloon-pos="up" title="Github" href="https://github.com/bhaskarvk">
+                <i class="fa fa-github-square fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Stack Overflow" data-balloon-pos="up" title="StackOverflow" href="https://stackoverflow.com/users/507484">
+                <i class="fa fa-stack-overflow fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Keybase" data-balloon-pos="up" title="Keybase" href="https://www.keybase.io/bhaskarvk">
+                <i class="fa fa-key fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Slideshare" data-balloon-pos="up" title="SlideShare" href="https://www.slideshare.net/bhaskar_vk">
+                <i class="fa fa-slideshare fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Reddit" data-balloon-pos="up" title="Reddit" href="https://www.reddit.com/user/bhaskarvk">
+                <i class="fa fa-reddit-alien fa-2x"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Medium" data-balloon-pos="up" title="Medium" href="https://medium.com/@bhaskar_vk">
+                <i class="fa fa-medium fa-2x"></i>
+            </a></li>
+            
+            <li class="u-pull-right"><a data-balloon="HOME" data-balloon-pos="up" title="Home " href="/">
+                <i class="fa fa-home fa-2x"></i>
+            </a></li>
+            <li class="u-pull-right"><a target="_blank" data-balloon="RSS Feed" data-balloon-pos="up" title="RSS Feed" href="/index.xml">
+                <i class="fa fa-rss fa-2x"></i>&nbsp;</a></li>
+        </ul>
+    </nav>
 
-        
-        <a target="_blank" data-balloon="LinkedIN" data-balloon-pos="up" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk">
-            <i class="fa fa-linkedin fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Twitter" data-balloon-pos="up" title="Twitter" href="https://www.twitter.com/bhaskar_vk">
-            <i class="fa fa-twitter fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Github" data-balloon-pos="up" title="Github" href="https://github.com/bhaskarvk">
-            <i class="fa fa-github-square fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Stack Overflow" data-balloon-pos="up" title="StackOverflow" href="https://stackoverflow.com/users/507484">
-            <i class="fa fa-stack-overflow fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Keybase" data-balloon-pos="up" title="Keybase" href="https://www.keybase.io/bhaskarvk">
-            <i class="fa fa-key fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Slideshare" data-balloon-pos="up" title="SlideShare" href="https://www.slideshare.net/bhaskar_vk">
-            <i class="fa fa-slideshare fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Reddit" data-balloon-pos="up" title="Reddit" href="https://www.reddit.com/user/bhaskarvk">
-            <i class="fa fa-reddit-alien fa-2x"></i>
-        </a>
-        
-        
-        <a target="_blank" data-balloon="Medium" data-balloon-pos="up" title="Medium" href="https://medium.com/@bhaskar_vk">
-            <i class="fa fa-medium fa-2x"></i>
-        </a>
-        
-        <a class="u-pull-right" data-balloon="HOME" data-balloon-pos="up" title="Home " href="/">
-            <i class="fa fa-home fa-2x"></i>
-        </a>
-        <a class="u-pull-right" target="_blank" data-balloon="RSS Feed" data-balloon-pos="up" title="RSS Feed" href="/index.xml">
-            <i class="fa fa-rss fa-2x"></i>&nbsp;</a>
-    </div>
-</section>
-
-<section class="copyright row">
-    <div class="columns twelve">
+    <section id="copyright" class="columns twelve">
         © 2007-2017 Bhaskar V. Karambelkar. All rights reserved.
-    </div>
+    </section>
+</footer>
+
 </section>
 
-</div>
 
 
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-<script src="/js/back-to-top.js"></script>
+<script src="/js/effects.js"></script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"
@@ -229,24 +232,27 @@ Recently I have got more and more curious about BSDs, may be because of their cl
 </script>
 
 
+
 <script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"]]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-  var u="//apps.karambelkar.info/pk/";
-  _paq.push(['setTrackerUrl', u+'piwik.php']);
-  _paq.push(['setSiteId', 1]);
-  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
+    var _paq = _paq || [];
+     _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"] ]); 
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function () {
+        var u = "//apps.karambelkar.info/pk/";
+        _paq.push(['setTrackerUrl', u + 'piwik.php']);
+        _paq.push(['setSiteId',  1 ]);
+        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
+    })();
 </script>
-<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<noscript>
+    <p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p>
+</noscript>
+
 
 
 
 
 </body>
-
 </html>
