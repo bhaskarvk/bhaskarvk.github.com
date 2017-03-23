@@ -734,11 +734,11 @@ This one is about phase IV, making the Leaflet package ready for a CRAN version 
     </item>
     
     <item>
-      <title>GDAL 2.x On Mac with Homebrew</title>
-      <link>/2016/10/gdal-2.x-on-mac-with-homebrew/</link>
+      <title>GDAL 2 On Mac with Homebrew</title>
+      <link>/2016/10/gdal-2-on-mac-with-homebrew/</link>
       <pubDate>Thu, 20 Oct 2016 17:34:35 -0400</pubDate>
       
-      <guid>/2016/10/gdal-2.x-on-mac-with-homebrew/</guid>
+      <guid>/2016/10/gdal-2-on-mac-with-homebrew/</guid>
       <description>&lt;p&gt;This is a small post about upgrading to &lt;a href=&#34;https://trac.osgeo.org/gdal/&#34; target=&#34;_blank&#34;&gt;gdal 2.x&lt;/a&gt; on a Mac using homebrew.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -887,12 +887,19 @@ leaflet() %&amp;gt;% addTiles() %&amp;gt;%
 &lt;li&gt;&lt;a href=&#34;http://rpubs.com/bhaskarvk/leaflet-polarmaps&#34; target=&#34;_blank&#34;&gt;Polar Maps&lt;/a&gt;: Shows how to use leaflet for Arctic and Antarctic regions.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Here&amp;rsquo;s a nice view of Antarctica in it&amp;rsquo;s native &lt;a href=&#34;http://spatialreference.org/ref/epsg/wgs-84-antarctic-polar-stereographic/&#34; target=&#34;_blank&#34;&gt;EPSG:3031&lt;/a&gt; projection.
-&lt;img src=&#34;http://i.imgur.com/igDUoKy.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a nice view of Antarctica in it&amp;rsquo;s native &lt;a href=&#34;http://spatialreference.org/ref/epsg/wgs-84-antarctic-polar-stereographic/&#34; target=&#34;_blank&#34;&gt;EPSG:3031&lt;/a&gt; projection.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe class=&#34;b-lazy&#34;  data-src=&#34;//rstudio-pubs-static.s3.amazonaws.com/211593_b53affc75af34147840f34e4534a88da.html&#34; 
+  width=&#34;90%&#34; 
+  height=&#34;650px&#34; &gt;
+ &lt;p&gt;Your browser does not support iframes.&lt;/p&gt;
+&lt;/iframe&gt;
 
-&lt;p&gt;Projections are a somewhat advanced concept and most web mapping users will not really need them. You should be mostly fine with the default &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_Mercator&#34; target=&#34;_blank&#34;&gt;spherical mercator&lt;/a&gt; projection. Before using projections be sure to read this &lt;a href=&#34;https://github.com/bhaskarvk/leaflet/issues/16#issuecomment-249369147&#34; target=&#34;_blank&#34;&gt;note&lt;/a&gt; where I have discussed some inner working of the projections support and some limitations.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;
+&lt;p class=&#34;alert alert-warning&#34;&gt;
+    &lt;i class=&#34;fa fa-exclamation-triangle fa-2x&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;
+    &lt;strong&gt;WARNING!&lt;/strong&gt;&lt;br/&gt;Projections are a somewhat advanced concept and most web mapping users will not really need them. You should be mostly fine with the default &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_Mercator&#34; target=&#34;_blank&#34;&gt;spherical mercator&lt;/a&gt; projection. Before using projections be sure to read this &lt;a href=&#34;https://github.com/bhaskarvk/leaflet/issues/16#issuecomment-249369147&#34; target=&#34;_blank&#34;&gt;note&lt;/a&gt; where I have discussed some inner working of the projections support and some limitations.
+ &lt;/p&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;end-of-phase-2&#34;&gt;End of Phase 2&lt;/h1&gt;
 

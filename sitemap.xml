@@ -22,7 +22,7 @@
   </url>
   
   <url>
-    <loc>/2016/10/gdal-2.x-on-mac-with-homebrew/</loc>
+    <loc>/2016/10/gdal-2-on-mac-with-homebrew/</loc>
     <lastmod>2016-10-20T17:34:35-04:00</lastmod>
   </url>
   
@@ -395,13 +395,13 @@
   </url>
   
   <url>
-    <loc>/tags/leaflet-diary/</loc>
+    <loc>/series/leaflet-diary/</loc>
     <lastmod>2017-02-24T17:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/series/leaflet-diary/</loc>
+    <loc>/tags/leaflet-diary/</loc>
     <lastmod>2017-02-24T17:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
@@ -467,7 +467,7 @@
   </url>
   
   <url>
-    <loc>/posts/</loc>
+    <loc>/post/</loc>
     <lastmod>2017-02-24T17:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
