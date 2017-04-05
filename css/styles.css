@@ -22,11 +22,11 @@
 * - font-ralway
 * - font-roboto
 */
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i");
-@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i");
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400,400i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=Anton:300,300i,400,400i,700");
+@import url("https://fonts.googleapis.com/css?family=Droid+Sans+Mono:300,300i,400,400i,700,700i");
 body {
-  font-family: "Roboto Condensed", "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 h1,
 h2,
@@ -34,13 +34,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", "Roboto Condensed", sans-serif;
-  letter-spacing: 0.2px;
+  font-family: "Anton", sans-serif;
+  letter-spacing: 0.75px;
   font-weight: bold;
 }
 pre,
 code {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Droid Sans Mono", monospace;
+  letter-spacing: -0.05rem;
 }
 /* ==== VARIABLES ==== */
 /* ---- Colors ---- */
@@ -50,20 +51,22 @@ code {
 html {
   font-size: 16px;
   background-color: #fcfcfc;
-  color: #5a5a5a;
+  color: #222;
 }
 /* Adopt font-size by screen width */
 @media screen {
   html {
-    font-size: calc(14px + (20 - 16) * (100vw - 350px) / (1100 - 350));
+    font-size: calc(14px + (18 - 16) * (100vw - 350px) / (1100 - 350));
   }
 }
 body {
+  max-width: 90%;
+  margin: auto;
   background-color: #fcfcfc;
-  color: #5a5a5a;
+  color: #222;
   font-weight: 300;
   line-height: 1.45 /* fallback value. */;
-  line-height: calc(1.3em + (1.35 - 1.3) * ((100vw - 21em) / (30 - 21)));
+  line-height: calc(1.2em + (1.35 - 1.3) * ((100vw - 21em) / (30 - 21)));
   font-size: 1.1rem;
   opacity: 1;
   transition: 1s opacity;
@@ -73,53 +76,59 @@ body.fade-out {
   transition: none;
 }
 h1 {
-  color: #666;
+  color: #333;
   margin-bottom: 0.5rem;
-  margin-top: 0.4rem;
+  margin-top: 2rem;
+  font-weight: 500;
   font-size: 2rem;
 }
 h2 {
-  color: #666;
+  color: #333;
   margin-bottom: 0.5rem;
-  margin-top: 0.4rem;
+  margin-top: 2rem;
+  font-weight: 500;
   font-size: 1.4rem;
 }
 h3 {
-  color: #666;
+  color: #333;
   margin-bottom: 0.5rem;
-  margin-top: 0.4rem;
+  margin-top: 2rem;
+  font-weight: 500;
   font-size: 1.2rem;
 }
 h4 {
-  color: #666;
+  color: #333;
   margin-bottom: 0.5rem;
-  margin-top: 0.4rem;
+  margin-top: 2rem;
+  font-weight: 500;
   font-size: 1rem;
 }
 h5 {
-  color: #666;
+  color: #333;
   margin-bottom: 0.5rem;
-  margin-top: 0.4rem;
+  margin-top: 2rem;
+  font-weight: 500;
   font-size: 0.9rem;
 }
 h6 {
-  color: #666;
+  color: #333;
   margin-bottom: 0.5rem;
-  margin-top: 0.4rem;
+  margin-top: 2rem;
+  font-weight: 500;
   font-size: 0.8rem;
 }
 code {
   border: 0;
   color: #900;
   background-color: #f1f1f1;
-  font-size: 0.85rem;
+  font-size: 1rem;
   padding: 0.1rem 0.3rem;
   hyphens: none;
 }
 pre {
   color: #900;
   background-color: #f1f1f1;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   margin-bottom: 1rem;
   border-radius: 4px;
   box-shadow: 0 0 6px #555;
@@ -127,7 +136,7 @@ pre {
 pre > code {
   margin: 0;
   color: #900;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   padding: 0.2rem 0.5rem;
   white-space: pre-wrap !important;
 }
@@ -154,10 +163,14 @@ blockquote {
 blockquote footer cite:before {
   content: "— ";
 }
+main.content {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
 /* ==== Hugo Theme Components ==== */
 /* ---- buttons ---- */
 .button {
-  height: 2rem;
+  height: 2.1rem;
   margin-bottom: 0;
   line-height: 2rem;
   padding: 0 1rem;
@@ -220,8 +233,8 @@ nav ul li a.button span.text {
   display: none;
 }
 .container {
-  padding: 0;
-  width: 98%;
+  max-width: 100%;
+  padding: 0.25rem;
 }
 header#main {
   margin: 1rem 0 2rem 0;
@@ -260,7 +273,7 @@ ul.post-list .post-item .post-title {
   margin-bottom: 0.5rem;
 }
 ul.post-list .post-item .post-title a {
-  color: #666;
+  color: #333;
   transition: all 250ms ease-out;
 }
 ul.post-list .post-item .post-title a:hover {
@@ -279,6 +292,7 @@ ul.post-list hr.list-break {
   text-align: center;
 }
 header#title-container h1.page-heading {
+  margin-top: 0.5rem;
   font-size: 1.7rem;
 }
 header#title-container .taxonomy {
@@ -292,39 +306,35 @@ header#title-container .taxonomy .button {
   text-transform: capitalize;
   white-space: nowrap !important;
   font-weight: 400;
-  height: 1.2rem;
+  height: 1.5rem;
   line-height: 1.2rem;
   padding-left: 10px;
   padding-right: 10px;
 }
-section.table-of-contents {
+section.sidebar {
   text-transform: capitalize;
   margin-bottom: 20px !important;
-  margin-top: 10px !important;
-  height: 80%;
+  margin-top: 15px !important;
+  height: 60%;
 }
-section.table-of-contents header {
+section.sidebar header {
   font-weight: bold;
   font-size: 1.1rem;
   display: block;
-  background-color: #ddd;
-  color: #5a5a5a;
+  background-color: #222;
+  color: #fcfcfc;
   box-shadow: 0 0 6px #555;
-  padding-left: 1%;
-  padding-top: 1%;
+  text-align: center;
+  padding: 2px 10px 2px;
+  margin-bottom: 10px;
 }
-section.table-of-contents hr {
-  border-top: 3px solid #ddd !important;
+section.sidebar hr {
+  border-top: 3px solid #222 !important;
   margin: 0 !important;
-}
-section.table-of-contents hr.top {
-  margin-bottom: 10px !important;
-}
-section.table-of-contents hr.bottom {
   margin-top: 10px !important;
 }
 nav#TableOfContents {
-  height: 100%;
+  max-height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -333,7 +343,7 @@ nav#TableOfContents ul {
   margin: 0;
   list-style: none !important;
   font-size: 0.9rem;
-  line-height: 1.2rem;
+  line-height: 1.23rem;
 }
 nav#TableOfContents ul ul {
   font-size: 0.85rem;
@@ -350,7 +360,7 @@ nav#TableOfContents ul li {
 nav#TableOfContents ul li a {
   display: block;
   text-decoration: none !important;
-  color: #666;
+  color: #333;
   padding-left: 100%;
   margin-left: -100%;
   transition: all 250ms ease-out;
@@ -359,41 +369,65 @@ nav#TableOfContents ul li a:hover {
   background-color: rgba(30,174,219,0.8);
   color: #fcfcfc;
 }
+nav#TableOfContents ul li a:hover code {
+  color: #fcfcfc;
+}
 nav#TableOfContents ul li a:active,
 nav#TableOfContents ul li a.active {
   background-color: #1eaedb;
   color: #fcfcfc;
   box-shadow: 0 0 6px #555;
 }
+nav#TableOfContents ul li a:active code,
+nav#TableOfContents ul li a.active code {
+  color: #fcfcfc;
+}
+nav#TableOfContents ul li a code {
+  color: #222;
+  background-color: rgba(0,0,0,0);
+  padding: 0;
+  font-size: 0.9rem;
+}
+nav#TableOfContents > ul {
+  padding: 5px 10px;
+}
+nav#TableOfContents::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+}
+nav#TableOfContents::-webkit-scrollbar {
+  width: 1px;
+}
+nav#TableOfContents::-webkit-scrollbar-thumb {
+  background-color: #000;
+  width: 3px;
+}
 section.page-content h1 {
   font-size: 1.6rem;
 }
 section.page-content p {
   margin-bottom: 1rem;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
+  hyphens: none;
 }
+section.page-content ol,
 section.page-content ul {
-  margin-bottom: 2px;
   list-style-position: outside;
   padding-left: 1rem;
 }
+section.page-content ol li,
 section.page-content ul li {
   margin-bottom: 5px;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
+  hyphens: none;
 }
+section.page-content ol li pre,
 section.page-content ul li pre {
   margin-top: 0.25rem;
   margin-bottom: 1rem;
 }
+section.page-content ol li p,
 section.page-content ul li p {
   display: inline;
 }
+section.page-content ol li ul,
 section.page-content ul li ul {
   margin: 5px;
   font-size: 95%;
@@ -412,6 +446,7 @@ section.page-content ul li ul {
   margin-bottom: 0px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  width: 80%;
 }
 footer nav ul {
   padding: 1rem 0.5rem 0 0.5rem;
@@ -419,7 +454,7 @@ footer nav ul {
 }
 footer nav ul li a {
   font-size: 0.7rem;
-  color: #666;
+  color: #5a5a5a;
   transition: all 250ms ease-out;
 }
 footer nav ul li a:hover {
@@ -450,7 +485,7 @@ footer #copyright {
 /* Hidden on mobile devices */
   position: fixed !important;
   bottom: 0px !important;
-  right: 12px !important;
+  right: 30px !important;
   padding: 0px !important;
   font-size: 0.8rem !important;
   color: #1eaedb !important;
@@ -507,23 +542,11 @@ footer #copyright {
   .pager a.button span.text {
     display: inline !important;
   }
-  .container {
-    width: 95% !important;
-/* contract the content a bit */
-  }
 }
 /* Medium Devices, Desktops */
 @media only screen and (min-width: 992px) {
-  .table-of-contents {
+  .sidebar {
     float: right !important;
-    width: 20vw !important;
-    margin-right: 1em !important;
     position: fixed !important;
-    left: 76vw !important;
-    top: 165px;
-  }
-  .container {
-    width: 70vw !important;
-    margin-right: 25vw !important;
   }
 }

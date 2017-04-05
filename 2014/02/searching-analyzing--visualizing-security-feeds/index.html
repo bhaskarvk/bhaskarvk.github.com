@@ -1,10 +1,399 @@
-<!DOCTYPE html><html lang="en-US" prefix="og: http://ogp.me/ns#
-              article: http://ogp.me/ns/article#"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="chrome=1"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="/index.xml" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog"/><link href="/index.xml" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog"/><meta property="og:title" content="Searching, Analyzing &amp; Visualizing Security Feeds"/><meta property="og:description" content="If you work with Computer or Network Security, then terms like CVE, CPE, CWE, CCE, etc. should be very familiar to you. If not, you&rsquo;re in the wrong field :).
-For those who don&rsquo;t work in these fields but are curious about it, these are some of the security related feeds provided by independent organizations such as MITRE or NIST and are part of the &ldquo;Making Security Measurable&rdquo; initiative. These feeds provide meta data about things related to Computer/Network Security such as standard names for platforms/operating-systems/software/hardware, standard names for common vulnerabilities, weakness, configurations."/><meta property="og:type" content="article"/><meta property="og:url" content="/2014/02/searching-analyzing--visualizing-security-feeds/"/><meta property="article:published_time" content="2014-02-22T16:27:00&#43;00:00"/><meta property="article:modified_time" content="2014-02-22T16:27:00&#43;00:00"/><meta property="og:site_name" content="Bhaskar Karambelkar&#39;s Blog"/><meta itemprop="name" content="Searching, Analyzing &amp; Visualizing Security Feeds"><meta itemprop="description" content="If you work with Computer or Network Security, then terms like CVE, CPE, CWE, CCE, etc. should be very familiar to you. If not, you&rsquo;re in the wrong field :).
-For those who don&rsquo;t work in these fields but are curious about it, these are some of the security related feeds provided by independent organizations such as MITRE or NIST and are part of the &ldquo;Making Security Measurable&rdquo; initiative. These feeds provide meta data about things related to Computer/Network Security such as standard names for platforms/operating-systems/software/hardware, standard names for common vulnerabilities, weakness, configurations."><meta itemprop="dateModified" content="2014-02-22T16:27:00&#43;00:00"/><meta itemprop="wordCount" content="1075"><meta itemprop="keywords" content="leaflet-diary,apache,api,bash,book-review,cartography,chromium-os,cloudera,cpe,cr-48,cricket,cve,cwe,dashboard,data-science,data-scientist,dataviz,dplyr-lubridate,education,elasticsearch,freebsd-bsd,ggplot2,gis,hadoop,howto,humor,infosec,java,kibana,konkan,lamp,leaflet,leaflet-diary,maven,meetup,mspa,mysql,northwestern,nosql-slides-database,omni-complete,perl,photography,php,predictive-analytics,python,r,r-stats,rest,rhadoop,rstats,rvest,satire,search,security-feeds,shiny,sindhudurga,smartos,streamgraph,talk,travel,tweepy,twitter,unix,video,vim,vim7,wamp,wicket,windows,"/><meta name="twitter:card" content="summary"/><meta name="twitter:text:title" content="Searching, Analyzing &amp; Visualizing Security Feeds"/><meta name="twitter:title" content="Searching, Analyzing &amp; Visualizing Security Feeds"/><meta name="twitter:description" content="If you work with Computer or Network Security, then terms like CVE, CPE, CWE, CCE, etc. should be very familiar to you. If not, you&rsquo;re in the wrong field :).
-For those who don&rsquo;t work in these fields but are curious about it, these are some of the security related feeds provided by independent organizations such as MITRE or NIST and are part of the &ldquo;Making Security Measurable&rdquo; initiative. These feeds provide meta data about things related to Computer/Network Security such as standard names for platforms/operating-systems/software/hardware, standard names for common vulnerabilities, weakness, configurations."/><meta name="twitter:site" content="@bhaskar_vk"/><title>Searching, Analyzing &amp; Visualizing Security Feeds</title><link rel="canonical" href="/2014/02/searching-analyzing--visualizing-security-feeds/"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw=" crossorigin="anonymous"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css" integrity="sha256-nXC6R0O+3ez3B440sqRACd9wvr4A1cHmzr1K+2bINzk=" crossorigin="anonymous"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" integrity="sha256-iU/Wh1HMAs/NgpurDAu14e7S3FkllcJ5aPnpPDdnO6c=" crossorigin="anonymous"/><link rel="stylesheet" type="text/css" href="/css/styles.min.css"><link rel="stylesheet" type="text/css" href="/css/skeleton-tabs.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/androidstudio.min.css" integrity="sha256-rEVnyeMfkKzmBwocdeeiqGOu1M/ttUHB7K0meKIwqvw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css"/><link rel="shortcut icon" href="/img/favicon.ico"></head><a data-balloon="Back to Top" data-balloon-pos="left" id="back-to-top"><i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true"></i></a><body lang="en-US"><script>document.body.className += ' fade-out';</script><section class="container"><header id="main"><h1 id="site-title">Bhaskar Karambelkar&#39;s Blog</h1><nav id="site-nav" class="row"><ul class="twelve columns"><li><a class="button" href="/"><i class="fa fa-home fa-2x"></i><span class="text">&nbsp;Home</span></a></li><li><a class="button" href="/tags/"><i class="fa fa-tags fa-2x"></i><span class="text">&nbsp;Tags</span></a></li><li><a class="button" href="/series/"><i class="fa fa-link fa-2x"></i><span class="text">&nbsp;Series</span></a></li><li><a class="button" href="/about/"><i class="fa fa-info-circle fa-2x"></i><span class="text">&nbsp;About</span></a></li><li><a class="button" href="http://photos.karambelkar.info"><i class="fa fa-camera-retro fa-2x"></i><span class="text">&nbsp;Photography</span></a></li></ul></nav></header><main class="row content"><article class="columns twelve"><header id="title-container"><h1 class="page-heading">Searching, Analyzing &amp; Visualizing Security Feeds</h1><p class="meta">&nbsp;<i class="fa fa-calendar-o"></i> <time datetime="2014-02-22T16:27:00&#43;00:00">Sat Feb 22 2014 16:27:00 UTC</time></p><p class="taxonomy"><small>Tags: </small><a class="button" href="/tags/elasticsearch">elasticsearch</a> <a class="button" href="/tags/cpe">CPE</a> <a class="button" href="/tags/cve">CVE</a> <a class="button" href="/tags/perl">perl</a> <a class="button" href="/tags/cwe">CWE</a> <a class="button" href="/tags/security-feeds">&#34;security feeds&#34;</a> <a class="button" href="/tags/kibana">kibana</a> <a class="button" href="/tags/api">API</a> <a class="button" href="/tags/dashboard">dashboard</a></p><hr/></header><section class="page-content"><p><strong>I</strong>f you work with Computer or Network Security, then terms like <a href="https://cve.mitre.org/" target="_blank">CVE</a>, <a href="https://cpe.mitre.org/" target="_blank">CPE</a>, <a href="https://cwe.mitre.org/" target="_blank">CWE</a>, <a href="http://nvd.nist.gov/cce/index.cfm" target="_blank">CCE</a>, etc. should be very familiar to you. If not, you&rsquo;re in the wrong field :).</p><p>For those who don&rsquo;t work in these fields but are curious about it, these are some of the security related feeds provided by independent organizations such as <a href="http://www.mitre.org/" target="_blank">MITRE</a> or <a href="http://www.nist.gov/" target="_blank">NIST</a> and are part of the &ldquo;<a href="https://measurablesecurity.mitre.org/" target="_blank">Making Security Measurable</a>&rdquo; initiative. These feeds provide meta data about things related to Computer/Network Security such as standard names for platforms/operating-systems/software/hardware, standard names for common vulnerabilities, weakness, configurations. Using these standard names help different vendors identify and tag security vulnerabilities, platforms, etc in a non-ambiguous way. Almost any vendor in this space relies on these feeds, and incorporates them in their products in some way or another. We use them too, but &hellip;..</p><p>We have more than one security related products, and each provides a unique take on Computer/Network security, and this is not unique to our way of working. You&rsquo;ll see this pattern in the whole of security industry, organizations having products catering to SIEM (Security Information and Event Management), VM (Vulnerability Management), Log Management, Compliance etc.</p><p>In our case each of these product offerings intake some or all of these feeds (which are provided in XML format), parse the feed and load it in a RDBMS.  The problems with this approach are &hellip;</p><ul><li>Each product team has it&rsquo;s own code base for parsing these feeds and it&rsquo;s own DB schema for representing these feeds in DB. So a lot of work is duplicated, and there are no standards across products on how to model these feeds in each product.</li><li>Each Product only takes in a subset of the available feeds, and brings in new feeds if and when needed. So it&rsquo;s a never ending cycle for each new feed. Write parsers, design DB schma, and code the ETL procedures.</li><li>Due the rather complex nature of these feed formats, and rather limited ability to model such complex structures in a RDBMS, we end up throwing away a lot of information and cherry pick only important attributes such as ID, name, description, title etc. and keep our models simple. </li><li>And perhaps the most important, no text search capability within or across feeds. These feeds have some very elaborate descriptions , code samples, so full  text search is very critical.</li></ul><p>So while this approach works , as you can see it&rsquo;s not very efficient, duplication of work, no standard model across products and limitations of the storage platform result in discarding information that could potentially be useful.</p><p>So what&rsquo;s needed is</p><ul><li>A independent meta store that can handle any and all available feeds.</li><li>A flexible storage platform not limited by shortcomings of a RDBMS system and in turn can retain almost all available information in the feeds.</li><li>A very simple REST API for each product to tap in to the meta store.</li><li>A full text search as well as a field based search interface as part of the REST API.</li><li>A framework / API for descriptive statistical analysis, exploratory analysis on the information store.</li><li>A very simple dashboard to visualize these feeds, for birds eye view.</li></ul><p>As most of these feeds are published as XMLs , initially I thought of using a &lsquo;XML DB&rsquo; for the job. I have quite a bit of experience with &lsquo;Oracle XMLDB&rsquo;, but although it can offer a much flexible platform for storage, we&rsquo;ll still need to define a proper DB schema based on the underlying XML schema, to take full advantage of &lsquo;XMLDB&rsquo; features, and we&rsquo;ll still need to write our one API layer on top of XMLDB. So the amount of efforts is not reduced significantly. Not to mention any statistical analysis or dashboarding is added effort.</p><p>So what&rsquo;s the alternative for developing such a solution ? &hellip;. <strong><a href="http://www.elasticsearch.org/" target="_blank">ElasticSearch</a>.</strong></p><p>Why ? , because &hellip;..</p><ul><li>ES offers a very flexible storage model, not only is it a full text search product but a very competent storage platform for unstructured or semi-structured data (NoSQL DB if you will).</li><li>It works very well schema less, and efforts to define a Index Mapping (equivalent to a DB Schema) are very minimal compared to a traditional RDBMS schema designing. So you can work in a mix environment where you define mappings for a key set of attributes and leave the rest for ES&rsquo;s dynamic mapping.</li><li>Full text search is ES&rsquo;s bread and butter, and it also works well for field based querying/filtering.</li><li>ES provides statistical APIs (facets in pre-1.0 release, and aggregations in 1.0+ releases) out of box, without us having to write a single piece of code.</li><li>ES provides <a href="http://www.elasticsearch.org/overview/kibana/" target="_blank">kibana</a> for building dashboards on data stored in ES. Kibana does all the heavy lifting and you can build very intuitive dashboards in a very short amount of time.</li></ul><p>So what&rsquo;s need to be done by us ? Well not much really, here&rsquo;s what I&rsquo;ve done so far..</p><ul><li>A simple perl script which can download data feeds (XMLs), convert XML to JSON (trust me with perl this is a breeze, 2 lines of code ), minimal normalization of data if needed and then use elasticsearch perl API to bulk index the feed. (The whole code is about 100 to 120 lines).</li><li>Define a minimal set of mappings for the feeds. Again the idea is to make heavy use of ES&rsquo; dynamic mappings for most fields and only provide explicit mappings for a select few key attributes.</li><li>Built kibana dashboards for search as well as summarizing feed data in graphs.</li></ul><p>In short the coding effort was a very small perl script, es mapping template, and kibana dashboard building, all accomplished in a matter of hours, as opposed to the current approach which requires days/weeks for each new feed we want to work with.</p><p>Overall I&rsquo;m very pleased and satisfied with what has been achieved. Below are some Kibana dashboards I&rsquo;ve build. Please note that as nice as Kibana is, what&rsquo;s more important is the full text search capabilities that we get from ES, and a very easy and intuitive REST API, which can be used by any product to tap in to this feed store, that&rsquo;s more important to us. Not to mention the ridiculously small amount of time spent to put this all together. </p><p><em>Figure 1: CVEs by Score (Also Adobe Ouch..)</em> <a href="https://lh3.googleusercontent.com/-zmW5utCjOQU/UwkRPZucr3I/AAAAAAAABcQ/lp82qVehue0/s1440/CVEs_by_score.png" data-lightbox="MITRE" data-title=" CVEs by Score (Also Adobe Ouch..)"><img class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://2.bp.blogspot.com/-zmW5utCjOQU/UwkRPZucr3I/AAAAAAAABcQ/lp82qVehue0/s1600/CVEs_by_score.png"/></a></p><p><em>Figure 2: CVEs by OS</em> <a href="http://2.bp.blogspot.com/-WZdr1Sycvy0/UwkROoI2WRI/AAAAAAAABb0/PcrouIMtn-w/s1600/CVEs.png" data-lightbox="MITRE" data-title=" CVEs by OS"><img class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://2.bp.blogspot.com/-WZdr1Sycvy0/UwkROoI2WRI/AAAAAAAABb0/PcrouIMtn-w/s1600/CVEs.png"/></a></p><p><em>Figure 3: CPEs</em> <a href="http://4.bp.blogspot.com/-MPTLcLabgZs/UwkROm7ZdiI/AAAAAAAABbw/VSUd2ABfkyI/s1600/CPEs.png" data-lightbox="MITRE" data-title=" CPEs"><img class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://4.bp.blogspot.com/-MPTLcLabgZs/UwkROm7ZdiI/AAAAAAAABbw/VSUd2ABfkyI/s1600/CPEs.png"/></a></p><p><em>Figure 4: CCEs</em> <a href="http://2.bp.blogspot.com/-Mj4gMKx6ew4/UwkROi1hMkI/AAAAAAAABb8/bP-OfXcRx2Y/s1600/CCEs.png" data-lightbox="MITRE" data-title=" CCEs"><img class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://2.bp.blogspot.com/-Mj4gMKx6ew4/UwkROi1hMkI/AAAAAAAABb8/bP-OfXcRx2Y/s1600/CCEs.png"/></a></p><p><em>Figure 5: CWEs</em> <a href="http://2.bp.blogspot.com/-WqK791vz-us/UwkRPgpTD8I/AAAAAAAABcI/8DJgmphabvk/s1600/CWE.png" data-lightbox="MITRE" data-title=" CWEs"><img class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://2.bp.blogspot.com/-WqK791vz-us/UwkRPgpTD8I/AAAAAAAABcI/8DJgmphabvk/s1600/CWE.png"/></a></p><p><em>Figure 6: CCEs</em> <a href="http://3.bp.blogspot.com/-uzvuBrP5V5o/UwkRPsd2TtI/AAAAAAAABcM/4DwqaDjRSzY/s1600/NVDCCEs.png" data-lightbox="MITRE" data-title=" CCEs"><img class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://3.bp.blogspot.com/-uzvuBrP5V5o/UwkRPsd2TtI/AAAAAAAABcM/4DwqaDjRSzY/s1600/NVDCCEs.png"/></a></p></section></article></main><nav id="pager" class="pagination"><ul class="row"><li class="one-half column"><a data-balloon="Previous Post" data-balloon-pos="right" class="button button-primary u-pull-left" href="/2014/03/book-review--data-smart/"><i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i> <span class="text">Book Review : Data Smart</span> </a>&nbsp;</li><li class="one-half column">&nbsp; <a data-balloon="Next Post" data-balloon-pos="left" class="button button-primary u-pull-right" href="/2013/09/installing-rhadoop-on-cloudera-cdh-4.3.0/"><span class="text">Installing RHadoop on Cloudera CDH 4.3.0</span> <i class="fa fa-angle-double-right fa-2x" aria-hidden="true"></i></a></li></ul></nav><footer><nav id="icons" class="row content"><ul class="columns twelve"><li><a target="_blank" data-balloon="LinkedIN" data-balloon-pos="up" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk"><i class="fa fa-linkedin-square fa-2x fa-fw" aria-hidden="true"></i></a></li><li><a target="_blank" data-balloon="Twitter" data-balloon-pos="up" title="Twitter" href="https://www.twitter.com/bhaskar_vk"><i class="fa fa-twitter-square fa-2x fa-fw" aria-hidden="true"></i></a></li><li><a target="_blank" data-balloon="Github" data-balloon-pos="up" title="Github" href="https://github.com/bhaskarvk"><i class="fa fa-github-square fa-2x fa-fw" aria-hidden="true"></i></a></li><li><a target="_blank" data-balloon="Stack Overflow" data-balloon-pos="up" title="StackOverflow" href="https://stackoverflow.com/users/507484"><i class="fa fa-stack-overflow fa-2x fa-fw" aria-hidden="true"></i></a></li><li><a target="_blank" data-balloon="Keybase" data-balloon-pos="up" title="Keybase" href="https://www.keybase.io/bhaskarvk"><i class="fa fa-key fa-2x fa-fw" aria-hidden="true"></i></a></li><li><a target="_blank" data-balloon="Slideshare" data-balloon-pos="up" title="SlideShare" href="https://www.slideshare.net/bhaskar_vk"><i class="fa fa-slideshare fa-2x fa-fw" aria-hidden="true"></i></a></li><li><a target="_blank" data-balloon="Reddit" data-balloon-pos="up" title="Reddit" href="https://www.reddit.com/user/bhaskarvk"><i class="fa fa-reddit-square fa-2x fa-fw" aria-hidden="true"></i></a></li><li><a target="_blank" data-balloon="Medium" data-balloon-pos="up" title="Medium" href="https://medium.com/@bhaskar_vk"><i class="fa fa-medium fa-2x fa-fw" aria-hidden="true"></i></a></li><li class="u-pull-right"><a data-balloon="HOME" data-balloon-pos="up" title="Home " href="/"><i class="fa fa-home fa-2x fa-fw" aria-hidden="true"></i></a></li><li class="u-pull-right"><a target="_blank" data-balloon="RSS Feed" data-balloon-pos="up" title="RSS Feed" href="/index.xml"><i class="fa fa-rss-square fa-2x fa-fw" aria-hidden="true"></i>&nbsp;</a></li></ul></nav><section id="copyright" class="columns twelve">© 2007-2017 Bhaskar V. Karambelkar. All rights reserved.</section></footer></section><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script><script src="/js/effects.js"></script><script src="/js/skeleton-tabs.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js" integrity="sha256-D0J9D4igaYyVX/Y78Tr0yoDJsy8hi14hCEdFDakBp08=" crossorigin="anonymous"></script><script>;(function () {
+<!DOCTYPE html>
+<html lang="en-US"
+      prefix="og: http://ogp.me/ns#
+              article: http://ogp.me/ns/article#">
+
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/index.xml" rel="alternate" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+<link href="/index.xml" rel="feed" type="application/rss+xml" title="Bhaskar Karambelkar&#39;s Blog" />
+
+<meta property="og:title" content="Searching, Analyzing &amp; Visualizing Security Feeds" />
+<meta property="og:description" content="If you work with Computer or Network Security, then terms like CVE, CPE, CWE, CCE, etc. should be very familiar to you. If not, you&rsquo;re in the wrong field :).
+For those who don&rsquo;t work in these fields but are curious about it, these are some of the security related feeds provided by independent organizations such as MITRE or NIST and are part of the &ldquo;Making Security Measurable&rdquo; initiative. These feeds provide meta data about things related to Computer/Network Security such as standard names for platforms/operating-systems/software/hardware, standard names for common vulnerabilities, weakness, configurations." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2014/02/searching-analyzing--visualizing-security-feeds/" />
+
+
+
+<meta property="article:published_time" content="2014-02-22T16:27:00&#43;00:00"/>
+<meta property="article:modified_time" content="2014-02-22T16:27:00&#43;00:00"/>
+
+<meta property="og:site_name" content="Bhaskar Karambelkar&#39;s Blog" />
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Searching, Analyzing &amp; Visualizing Security Feeds">
+<meta itemprop="description" content="If you work with Computer or Network Security, then terms like CVE, CPE, CWE, CCE, etc. should be very familiar to you. If not, you&rsquo;re in the wrong field :).
+For those who don&rsquo;t work in these fields but are curious about it, these are some of the security related feeds provided by independent organizations such as MITRE or NIST and are part of the &ldquo;Making Security Measurable&rdquo; initiative. These feeds provide meta data about things related to Computer/Network Security such as standard names for platforms/operating-systems/software/hardware, standard names for common vulnerabilities, weakness, configurations.">
+
+
+<meta itemprop="dateModified" content="2014-02-22T16:27:00&#43;00:00" />
+<meta itemprop="wordCount" content="1075">
+
+
+
+<meta itemprop="keywords" content="leaflet-diary,apache,api,bash,book-review,cartography,chromium-os,cloudera,cpe,cr-48,cricket,cve,cwe,dashboard,data-science,data-scientist,dataviz,dplyr-lubridate,education,elasticsearch,freebsd-bsd,ggplot2,gis,hadoop,howto,humor,infosec,java,kibana,konkan,lamp,leaflet,leaflet-diary,maven,meetup,mspa,mysql,northwestern,nosql-slides-database,omni-complete,perl,photography,php,predictive-analytics,python,r,r-stats,rest,rhadoop,rstats,rvest,satire,search,security-feeds,shiny,sindhudurga,smartos,streamgraph,talk,travel,tweepy,twitter,unix,video,vim,vim7,wamp,wicket,windows," />
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Searching, Analyzing &amp; Visualizing Security Feeds"/>
+<meta name="twitter:title" content="Searching, Analyzing &amp; Visualizing Security Feeds"/>
+<meta name="twitter:description" content="If you work with Computer or Network Security, then terms like CVE, CPE, CWE, CCE, etc. should be very familiar to you. If not, you&rsquo;re in the wrong field :).
+For those who don&rsquo;t work in these fields but are curious about it, these are some of the security related feeds provided by independent organizations such as MITRE or NIST and are part of the &ldquo;Making Security Measurable&rdquo; initiative. These feeds provide meta data about things related to Computer/Network Security such as standard names for platforms/operating-systems/software/hardware, standard names for common vulnerabilities, weakness, configurations."/>
+<meta name="twitter:site" content="@bhaskar_vk"/>
+
+
+  <title>
+    
+    
+       Searching, Analyzing &amp; Visualizing Security Feeds 
+    
+  </title>
+  <link rel="canonical" href="/2014/02/searching-analyzing--visualizing-security-feeds/">
+  
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css"
+    integrity="sha256-nXC6R0O+3ez3B440sqRACd9wvr4A1cHmzr1K+2bINzk=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" integrity="sha256-iU/Wh1HMAs/NgpurDAu14e7S3FkllcJ5aPnpPDdnO6c=" crossorigin="anonymous" />
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/styles.min.css">
+<link rel="stylesheet" type="text/css" href="/css/skeleton-tabs.min.css">
+
+
+
+
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/androidstudio.min.css"
+    integrity="sha256-rEVnyeMfkKzmBwocdeeiqGOu1M/ttUHB7K0meKIwqvw="
+    crossorigin="anonymous" >
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css" />
+
+
+
+
+
+<link rel="shortcut icon"
+
+    href="/img/favicon.ico"
+>
+
+
+
+</head>
+
+<body lang="en-US">
+    <script>
+        document.body.className += ' fade-out';
+    </script>
+    <a data-balloon="Back to Top" data-balloon-pos="left" id="back-to-top"><i class="fa fa-arrow-circle-up fa-3x" aria-hidden="true"></i></a>
+    <section class="container">
+        <header id="main">
+            <h1 id="site-title">Bhaskar Karambelkar&#39;s Blog</h1>
+            <nav id="site-nav" class="row">
+                <ul class="twelve columns">
+                    
+                    <li><a class="button" href="/"><i class='fa fa-home fa-2x'></i><span class="text">&nbsp;Home</span></a></li>
+                    
+                    <li><a class="button" href="/tags/"><i class='fa fa-tags fa-2x'></i><span class="text">&nbsp;Tags</span></a></li>
+                    
+                    <li><a class="button" href="/series/"><i class='fa fa-link fa-2x'></i><span class="text">&nbsp;Series</span></a></li>
+                    
+                    <li><a class="button" href="/about/"><i class='fa fa-info-circle fa-2x'></i><span class="text">&nbsp;About</span></a></li>
+                    
+                    <li><a class="button" href="http://photos.karambelkar.info"><i class='fa fa-camera-retro fa-2x'></i><span class="text">&nbsp;Photography</span></a></li>
+                    
+                </ul>
+            </nav>
+        </header>
+
+<main class="row content">
+    <article class="columns twelve">
+        <header id="title-container">
+            <h1 class="page-heading">
+    
+        Searching, Analyzing &amp; Visualizing Security Feeds
+    
+</h1>
+
+            <p class="meta">&nbsp;<i class="fa fa-calendar-o"></i>
+                <time datetime="2014-02-22T16:27:00&#43;00:00">Sat Feb 22 2014 16:27:00 UTC</time>
+            </p>
+            <p class="taxonomy"><small>Tags: </small>
+                
+                    <a class="button" href="/tags/elasticsearch">elasticsearch</a>
+                
+                    <a class="button" href="/tags/cpe">CPE</a>
+                
+                    <a class="button" href="/tags/cve">CVE</a>
+                
+                    <a class="button" href="/tags/perl">perl</a>
+                
+                    <a class="button" href="/tags/cwe">CWE</a>
+                
+                    <a class="button" href="/tags/security-feeds">&#34;security feeds&#34;</a>
+                
+                    <a class="button" href="/tags/kibana">kibana</a>
+                
+                    <a class="button" href="/tags/api">API</a>
+                
+                    <a class="button" href="/tags/dashboard">dashboard</a>
+                
+            </p>
+            <hr/>
+        </header>
+        
+        <section class="page-content">
+            <p><strong>I</strong>f you work with Computer or Network Security, then terms like <a href="https://cve.mitre.org/" target="_blank">CVE</a>, <a href="https://cpe.mitre.org/" target="_blank">CPE</a>, <a href="https://cwe.mitre.org/" target="_blank">CWE</a>, <a href="http://nvd.nist.gov/cce/index.cfm" target="_blank">CCE</a>, etc. should be very familiar to you. If not, you&rsquo;re in the wrong field :).</p>
+
+<p>For those who don&rsquo;t work in these fields but are curious about it, these are some of the security related feeds provided by independent organizations such as <a href="http://www.mitre.org/" target="_blank">MITRE</a> or <a href="http://www.nist.gov/" target="_blank">NIST</a> and are part of the &ldquo;<a href="https://measurablesecurity.mitre.org/" target="_blank">Making Security Measurable</a>&rdquo; initiative. These feeds provide meta data about things related to Computer/Network Security such as standard names for platforms/operating-systems/software/hardware, standard names for common vulnerabilities, weakness, configurations. Using these standard names help different vendors identify and tag security vulnerabilities, platforms, etc in a non-ambiguous way.
+Almost any vendor in this space relies on these feeds, and incorporates them in their products in some way or another. We use them too, but &hellip;..</p>
+
+<p>We have more than one security related products, and each provides a unique take on Computer/Network security, and this is not unique to our way of working. You&rsquo;ll see this pattern in the whole of security industry, organizations having products catering to SIEM (Security Information and Event Management), VM (Vulnerability Management), Log Management, Compliance etc.</p>
+
+<p>In our case each of these product offerings intake some or all of these feeds (which are provided in XML format), parse the feed and load it in a RDBMS. 
+The problems with this approach are &hellip;</p>
+
+<ul>
+<li>Each product team has it&rsquo;s own code base for parsing these feeds and it&rsquo;s own DB schema for representing these feeds in DB. So a lot of work is duplicated, and there are no standards across products on how to model these feeds in each product.</li>
+<li>Each Product only takes in a subset of the available feeds, and brings in new feeds if and when needed. So it&rsquo;s a never ending cycle for each new feed. Write parsers, design DB schma, and code the ETL procedures.</li>
+<li>Due the rather complex nature of these feed formats, and rather limited ability to model such complex structures in a RDBMS, we end up throwing away a lot of information and cherry pick only important attributes such as ID, name, description, title etc. and keep our models simple. </li>
+<li>And perhaps the most important, no text search capability within or across feeds. These feeds have some very elaborate descriptions , code samples, so full  text search is very critical.</li>
+</ul>
+
+<p>So while this approach works , as you can see it&rsquo;s not very efficient, duplication of work, no standard model across products and limitations of the storage platform result in discarding information that could potentially be useful.</p>
+
+<p>So what&rsquo;s needed is</p>
+
+<ul>
+<li>A independent meta store that can handle any and all available feeds.</li>
+<li>A flexible storage platform not limited by shortcomings of a RDBMS system and in turn can retain almost all available information in the feeds.</li>
+<li>A very simple REST API for each product to tap in to the meta store.</li>
+<li>A full text search as well as a field based search interface as part of the REST API.</li>
+<li>A framework / API for descriptive statistical analysis, exploratory analysis on the information store.</li>
+<li>A very simple dashboard to visualize these feeds, for birds eye view.</li>
+</ul>
+
+<p>As most of these feeds are published as XMLs , initially I thought of using a &lsquo;XML DB&rsquo; for the job. I have quite a bit of experience with &lsquo;Oracle XMLDB&rsquo;, but although it can offer a much flexible platform for storage, we&rsquo;ll still need to define a proper DB schema based on the underlying XML schema, to take full advantage of &lsquo;XMLDB&rsquo; features, and we&rsquo;ll still need to write our one API layer on top of XMLDB. So the amount of efforts is not reduced significantly. Not to mention any statistical analysis or dashboarding is added effort.</p>
+
+<p>So what&rsquo;s the alternative for developing such a solution ? &hellip;. <strong><a href="http://www.elasticsearch.org/" target="_blank">ElasticSearch</a>.</strong></p>
+
+<p>Why ? , because &hellip;..</p>
+
+<ul>
+<li>ES offers a very flexible storage model, not only is it a full text search product but a very competent storage platform for unstructured or semi-structured data (NoSQL DB if you will).</li>
+<li>It works very well schema less, and efforts to define a Index Mapping (equivalent to a DB Schema) are very minimal compared to a traditional RDBMS schema designing. So you can work in a mix environment where you define mappings for a key set of attributes and leave the rest for ES&rsquo;s dynamic mapping.</li>
+<li>Full text search is ES&rsquo;s bread and butter, and it also works well for field based querying/filtering.</li>
+<li>ES provides statistical APIs (facets in pre-1.0 release, and aggregations in 1.0+ releases) out of box, without us having to write a single piece of code.</li>
+<li>ES provides <a href="http://www.elasticsearch.org/overview/kibana/" target="_blank">kibana</a> for building dashboards on data stored in ES. Kibana does all the heavy lifting and you can build very intuitive dashboards in a very short amount of time.</li>
+</ul>
+
+<p>So what&rsquo;s need to be done by us ? Well not much really, here&rsquo;s what I&rsquo;ve done so far..</p>
+
+<ul>
+<li>A simple perl script which can download data feeds (XMLs), convert XML to JSON (trust me with perl this is a breeze, 2 lines of code ), minimal normalization of data if needed and then use elasticsearch perl API to bulk index the feed. (The whole code is about 100 to 120 lines).</li>
+<li>Define a minimal set of mappings for the feeds. Again the idea is to make heavy use of ES&rsquo; dynamic mappings for most fields and only provide explicit mappings for a select few key attributes.</li>
+<li>Built kibana dashboards for search as well as summarizing feed data in graphs.</li>
+</ul>
+
+<p>In short the coding effort was a very small perl script, es mapping template, and kibana dashboard building, all accomplished in a matter of hours, as opposed to the current approach which requires days/weeks for each new feed we want to work with.</p>
+
+<p>Overall I&rsquo;m very pleased and satisfied with what has been achieved. Below are some Kibana dashboards I&rsquo;ve build.
+Please note that as nice as Kibana is, what&rsquo;s more important is the full text search capabilities that we get from ES, and a very easy and intuitive REST API, which can be used by any product to tap in to this feed store, that&rsquo;s more important to us. Not to mention the ridiculously small amount of time spent to put this all together. </p>
+
+<p><em>Figure 1: CVEs by Score (Also Adobe Ouch..)</em>
+<a href="https://lh3.googleusercontent.com/-zmW5utCjOQU/UwkRPZucr3I/AAAAAAAABcQ/lp82qVehue0/s1440/CVEs_by_score.png" data-lightbox="MITRE" data-title=" CVEs by Score (Also Adobe Ouch..)" >
+    <img  class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-src="http://2.bp.blogspot.com/-zmW5utCjOQU/UwkRPZucr3I/AAAAAAAABcQ/lp82qVehue0/s1600/CVEs_by_score.png" />
+</a>
+</p>
+
+<p><em>Figure 2: CVEs by OS</em>
+<a href="http://2.bp.blogspot.com/-WZdr1Sycvy0/UwkROoI2WRI/AAAAAAAABb0/PcrouIMtn-w/s1600/CVEs.png" data-lightbox="MITRE" data-title=" CVEs by OS" >
+    <img  class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-src="http://2.bp.blogspot.com/-WZdr1Sycvy0/UwkROoI2WRI/AAAAAAAABb0/PcrouIMtn-w/s1600/CVEs.png" />
+</a>
+</p>
+
+<p><em>Figure 3: CPEs</em>
+<a href="http://4.bp.blogspot.com/-MPTLcLabgZs/UwkROm7ZdiI/AAAAAAAABbw/VSUd2ABfkyI/s1600/CPEs.png" data-lightbox="MITRE" data-title=" CPEs" >
+    <img  class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-src="http://4.bp.blogspot.com/-MPTLcLabgZs/UwkROm7ZdiI/AAAAAAAABbw/VSUd2ABfkyI/s1600/CPEs.png" />
+</a>
+</p>
+
+<p><em>Figure 4: CCEs</em>
+<a href="http://2.bp.blogspot.com/-Mj4gMKx6ew4/UwkROi1hMkI/AAAAAAAABb8/bP-OfXcRx2Y/s1600/CCEs.png" data-lightbox="MITRE" data-title=" CCEs" >
+    <img  class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-src="http://2.bp.blogspot.com/-Mj4gMKx6ew4/UwkROi1hMkI/AAAAAAAABb8/bP-OfXcRx2Y/s1600/CCEs.png" />
+</a>
+</p>
+
+<p><em>Figure 5: CWEs</em>
+<a href="http://2.bp.blogspot.com/-WqK791vz-us/UwkRPgpTD8I/AAAAAAAABcI/8DJgmphabvk/s1600/CWE.png" data-lightbox="MITRE" data-title=" CWEs" >
+    <img  class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-src="http://2.bp.blogspot.com/-WqK791vz-us/UwkRPgpTD8I/AAAAAAAABcI/8DJgmphabvk/s1600/CWE.png" />
+</a>
+</p>
+
+<p><em>Figure 6: CCEs</em>
+<a href="http://3.bp.blogspot.com/-uzvuBrP5V5o/UwkRPsd2TtI/AAAAAAAABcM/4DwqaDjRSzY/s1600/NVDCCEs.png" data-lightbox="MITRE" data-title=" CCEs" >
+    <img  class="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-src="http://3.bp.blogspot.com/-uzvuBrP5V5o/UwkRPsd2TtI/AAAAAAAABcM/4DwqaDjRSzY/s1600/NVDCCEs.png" />
+</a>
+</p>
+
+        </section>
+    </article>
+</main>
+
+<nav id="pager" class="pagination">
+    <ul class="row">
+        <li class="one-half column">
+        
+        <a data-balloon="Previous Post" data-balloon-pos="right" class="button button-primary u-pull-left" href="/2014/03/book-review--data-smart/">
+            <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>
+            <span class="text">Book Review : Data Smart</span>
+        </a>
+        &nbsp;</li>
+        <li class="one-half column">&nbsp;
+        
+        <a data-balloon="Next Post" data-balloon-pos="left" class="button button-primary u-pull-right" href="/2013/09/installing-rhadoop-on-cloudera-cdh-4.3.0/">
+          <span class="text">Installing RHadoop on Cloudera CDH 4.3.0</span>
+          <i class="fa fa-angle-double-right fa-2x" aria-hidden="true"></i>
+      </a>
+      </li>
+    </ul>
+</nav>
+
+<footer>
+    <nav id="icons" class="row content">
+        <ul class="columns twelve">
+            
+            <li><a target="_blank" data-balloon="LinkedIN" data-balloon-pos="up" title="LinkedIn" href="https://www.linkedin.com/in/bhaskarvk">
+                <i class="fa fa-linkedin-square fa-2x fa-fw"  aria-hidden="true"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Twitter" data-balloon-pos="up" title="Twitter" href="https://www.twitter.com/bhaskar_vk">
+                <i class="fa fa-twitter-square fa-2x fa-fw" aria-hidden="true"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Github" data-balloon-pos="up" title="Github" href="https://github.com/bhaskarvk">
+                <i class="fa fa-github-square fa-2x fa-fw" aria-hidden="true"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Stack Overflow" data-balloon-pos="up" title="StackOverflow" href="https://stackoverflow.com/users/507484">
+                <i class="fa fa-stack-overflow fa-2x fa-fw" aria-hidden="true"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Keybase" data-balloon-pos="up" title="Keybase" href="https://www.keybase.io/bhaskarvk">
+                <i class="fa fa-key fa-2x fa-fw" aria-hidden="true"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Slideshare" data-balloon-pos="up" title="SlideShare" href="https://www.slideshare.net/bhaskar_vk">
+                <i class="fa fa-slideshare fa-2x fa-fw" aria-hidden="true"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Reddit" data-balloon-pos="up" title="Reddit" href="https://www.reddit.com/user/bhaskarvk">
+                <i class="fa fa-reddit-square fa-2x fa-fw" aria-hidden="true"></i>
+            </a></li>
+            
+            
+            <li><a target="_blank" data-balloon="Medium" data-balloon-pos="up" title="Medium" href="https://medium.com/@bhaskar_vk">
+                <i class="fa fa-medium fa-2x fa-fw" aria-hidden="true"></i>
+            </a></li>
+            
+            <li class="u-pull-right"><a data-balloon="HOME" data-balloon-pos="up" title="Home " href="/">
+                <i class="fa fa-home fa-2x fa-fw" aria-hidden="true"></i>
+            </a></li>
+            <li class="u-pull-right"><a target="_blank" data-balloon="RSS Feed" data-balloon-pos="up" title="RSS Feed" href="/index.xml">
+                <i class="fa fa-rss-square fa-2x fa-fw" aria-hidden="true"></i>&nbsp;</a></li>
+        </ul>
+    </nav>
+
+    <section id="copyright" class="columns twelve">
+        © 2007-2017 Bhaskar V. Karambelkar. All rights reserved.
+    </section>
+</footer>
+
+</section>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="/js/effects.js"></script>
+<script src="/js/skeleton-tabs.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"
+  integrity="sha256-D0J9D4igaYyVX/Y78Tr0yoDJsy8hi14hCEdFDakBp08=" crossorigin="anonymous"></script>
+<script>
+  ;(function () {
     var bLazy = new Blazy();
-  })();</script><script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js" integrity="sha256-9r7DHolfe5aoH+bUj4FEqRBq2tmaIXBxOYUZFalCjSE=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js" integrity="sha256-XrZQp&#43;ZMfovqr6Hb2M6okHvSEYaB/&#43;Xbx7toWmOOZUM=" crossorigin="anonymous"></script><script>hljs.initHighlightingOnLoad();</script><script type="text/javascript">var _paq = _paq || [];
+  })();
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js"
+  integrity="sha256-9r7DHolfe5aoH+bUj4FEqRBq2tmaIXBxOYUZFalCjSE=" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"
+  integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/r.min.js"
+  integrity="sha256-XrZQp&#43;ZMfovqr6Hb2M6okHvSEYaB/&#43;Xbx7toWmOOZUM="
+  crossorigin="anonymous"></script>
+
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+<script type="text/javascript">
+    var _paq = _paq || [];
      _paq.push(["setDomains", ["*.www.karambelkar.info","*.blog.karambelkar.info"] ]); 
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
@@ -14,4 +403,17 @@ For those who don&rsquo;t work in these fields but are curious about it, these a
         _paq.push(['setSiteId',  1 ]);
         var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
         g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
-    })();</script><noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0" alt=""/></p></noscript></body></html>
+    })();
+</script>
+<noscript>
+    <p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=1" style="border:0;" alt="" /></p>
+</noscript>
+
+
+
+
+
+
+
+</body>
+</html>

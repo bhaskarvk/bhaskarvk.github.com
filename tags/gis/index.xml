@@ -160,7 +160,8 @@ This one is about phase IV, making the Leaflet package ready for a CRAN version 
 
 &lt;li&gt;&lt;p&gt;Install gdal 2.x&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew install gdal2 --with-armadillo \
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew install jasper netcdf # gdal dependencies
+brew install gdal2 --with-armadillo \
 --with-complete --with-libkml --with-unsupported
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
