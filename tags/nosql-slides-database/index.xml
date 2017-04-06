@@ -18,7 +18,9 @@
       <description>&lt;p&gt;Recently I was asked to make a small presentation to a Graduate level course on Databases about NoSQL Databases. Here are the slides for the same. The slides go over high level introduction to NoSQL Databases, What they are ? What are some of the characteristics and how they differ from traditional relation databsaes ? Their Pros and Cons and finally some examples of different types of NoSQL DBs.&lt;/p&gt;
 
 &lt;p&gt;&amp;nbsp;
-&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;880f4c0a3e264e598eccb3e631f9833e&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+&lt;div class=&#34;embed speakerdeck&#34;&gt;
+&lt;iframe class=&#34;b-lazy&#34; data-src=&#34;//speakerdeck.com/player/880f4c0a3e264e598eccb3e631f9833e?&#34; width=&#34;100%&#34; height=&#34;487&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px&#34; allowfullscreen webkitallowfullscreen mozallowfullscreen&gt; &lt;/iframe&gt;
+&lt;/div&gt;
 &lt;/p&gt;
 </description>
     </item>

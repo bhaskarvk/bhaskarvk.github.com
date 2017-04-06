@@ -19,7 +19,9 @@
 
 &lt;p&gt;And here&amp;rsquo;s the slide deck of the talk&amp;hellip;&lt;/p&gt;
 
-&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;7ba5e31d097e4181b19ac084bcc07232&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+&lt;div class=&#34;embed speakerdeck&#34;&gt;
+&lt;iframe class=&#34;b-lazy&#34; data-src=&#34;//speakerdeck.com/player/7ba5e31d097e4181b19ac084bcc07232?&#34; width=&#34;100%&#34; height=&#34;487&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px&#34; allowfullscreen webkitallowfullscreen mozallowfullscreen&gt; &lt;/iframe&gt;
+&lt;/div&gt;
 
 </description>
     </item>

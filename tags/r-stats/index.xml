@@ -643,7 +643,7 @@ brewPkg postgis --with-gui
 &lt;h1 id=&#34;other-interesting-stuff&#34;&gt;Other Interesting Stuff&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brewPkg imagemagick --with-fontconfig --with-ghostscript \
-    --with-librsvg --with-openmp --with-pango --with-webp
+    --with-librsvg --with-pango --with-webp
 
 brewPkg vim --with-python3 --with-client-server \
     --with-lua --with-luajit --with-override-system-vi
