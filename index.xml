@@ -22,11 +22,11 @@
 
 &lt;p&gt;As has been mentioned ad nauseam: Any one can code. What has not been said enough is that there is a lot more to coding than merely assembling a set of instructions in a programming language of your choice to make the machine do what you want. Not as catchy as &amp;lsquo;Any one can code!&amp;rsquo;, is it?&lt;/p&gt;
 
-&lt;p&gt;As a professional software developer turned data scientist, I feel compelled to share some software engineering wisdom with my fellow data scientist who may have followed a non coding heavy path. If you are an academic researcher turned data scientist, or perhaps a data analyst used to point-and-click GUI tools, or excel (the horror!), then learning and being able to code in a programming language can be a liberating, exhilarating, but also a very scary experience. But fear not, this post is just for you, and hopefully some of my points will encourage you to explore software engineering in more detail.&lt;/p&gt;
+&lt;p&gt;As a professional software developer turned data scientist, I feel compelled to share some software engineering wisdom with my fellow data scientist who may have followed a non coding heavy path. If you are an academic researcher turned data scientist, or perhaps a data analyst used to point-and-click GUI tools, or excel (the horror!), then learning and being able to code in a programming language can be a liberating, exhilarating, but also a very scary experience. But fear no more. This post and the follow up posts in this series are just for professionals like you. This series will introduce you and encourage you to explore software engineering in more detail, in order to become proficient in writing good code no matter the programming language.&lt;/p&gt;
 
 &lt;h1 id=&#34;so-what-is-software-engineering&#34;&gt;So What is Software Engineering?&lt;/h1&gt;
 
-&lt;p&gt;Instead of referencing a formal definition which you can easily look up using Google, let me tell you what I think the practice of software engineering aims to accomplish. Writing more or less working code is the easy part. What software engineering aims to accomplish is making the code portable, concise, relatively bug free, secure, performant within given constraints, and reusable, all with limited man-power and budget. And believe me, this is not as easy as you might think it is, nor is this process a natural extension of the practice of coding. By that I mean that you can&amp;rsquo;t learn software engineering by coding more and more, let alone master it. Proper software engineering is an art+science on to it self, of which coding skills are an important but nonetheless only a small piece.&lt;/p&gt;
+&lt;p&gt;Instead of referencing a formal definition which you can easily look up using Google, let me tell you what I think the practice of software engineering aims to accomplish. Writing more or less working code is the easy part. What software engineering aims to accomplish is making the code portable, concise, relatively bug free, secure, performant within given constraints, and reusable, with limited man-power and budget. And believe me, this is not as easy as you might think it is, nor is this process a natural extension of the practice of coding. By that I mean that you can&amp;rsquo;t learn software engineering by coding more and more, let alone master it. Proper software engineering is an art+science on to it self, of which coding skills are an important but nonetheless only a small piece.&lt;/p&gt;
 
 &lt;p&gt;The reason I chose to explain software engineering this way, is because, the term software engineering is in itself somewhat controversial and debated. So instead of drowning you in the controversy about the term, I present my understanding of the intent behind software engineering. But be forewarned that this is one person&amp;rsquo;s opinion so take it for what it&amp;rsquo;s worth.&lt;/p&gt;
 
@@ -34,9 +34,7 @@
 
 &lt;p&gt;For many a reasons. As I mentioned previously more and more data analysis is now done in code rather than point-and-click GUI tools. This places the added burden of learning how to code on an data analyst / researcher who may not have had exposure to coding before. Even if you had taken a programming language class before, it was mostly to teach you the syntax of the programming language rather than teach you about software engineering.&lt;/p&gt;
 
-&lt;p&gt;The implications of the above are they you may write code that works but it may have all sorts of issues. It may not be portable on account of using non-portable APIs/Libraries. It may not be optimized/concise and as a result non performant at scale. It may have a large surface area for bugs and security vulnerabilities. It may not be maintainable in the long run, and hence prevent you from reproducing your results in the future.&lt;/p&gt;
-
-&lt;p&gt;I would go as far as to argue that if you care about the veracity and reproducibility of your research/analysis then you absolutely must care about software engineering.&lt;/p&gt;
+&lt;p&gt;The implications of the above are they you may write code that works but it may have all sorts of issues. It may not be portable on account of using non-portable APIs/Libraries. It may not be optimized/concise and as a result non performant at scale. It may have a large surface area for bugs and security vulnerabilities. It may not be maintainable in the long run, and hence prevent you from reproducing your results in the future. Given all this, I would go as far as to argue that if you care about the veracity and reproducibility of your research/analysis then you absolutely must care about software engineering.&lt;/p&gt;
 
 &lt;h1 id=&#34;cliff-notes-for-software-engineering&#34;&gt;Cliff Notes for Software Engineering&lt;/h1&gt;
 
@@ -72,8 +70,12 @@ Always follow them no matter how big/small your program/script is, and how much 
 &lt;p&gt;Finally&amp;hellip;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;DON&amp;rsquo;T BLINDLY COPY CODE FROM STACK OVERFLOW&lt;/strong&gt;.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DON&amp;rsquo;T BLINDLY COPY CODE FROM STACK OVERFLOW&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h1 id=&#34;anything-more&#34;&gt;Anything More?&lt;/h1&gt;
+
+&lt;p&gt;Yes! A lot more. Over the course of this series I will expand on each of my bullet points in a separate blog post that will deep dive in to the point. In the mean time feel free to look up software engineering, the controversy around it. If you have any comments to share find me on Twitter (link at the bottom).&lt;/p&gt;
 </description>
     </item>
     

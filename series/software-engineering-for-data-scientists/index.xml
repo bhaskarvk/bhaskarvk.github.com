@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software Engineering on Bhaskar Karambelkar&#39;s Blog</title>
-    <link>/tags/software-engineering/index.xml</link>
-    <description>Recent content in Software Engineering on Bhaskar Karambelkar&#39;s Blog</description>
+    <title>Software Engineering For Data Scientists on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/series/software-engineering-for-data-scientists/index.xml</link>
+    <description>Recent content in Software Engineering For Data Scientists on Bhaskar Karambelkar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>© 2007-2017 Bhaskar V. Karambelkar. All rights reserved.</copyright>
-    <atom:link href="/tags/software-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/series/software-engineering-for-data-scientists/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Data Scientists And Software Engineering</title>
