@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Science on Bhaskar Karambelkar&#39;s Blog</title>
-    <link>/tags/data-science/index.xml</link>
-    <description>Recent content in Data Science on Bhaskar Karambelkar&#39;s Blog</description>
+    <title>Software Engineering on Bhaskar Karambelkar&#39;s Blog</title>
+    <link>/tags/software-engineering/index.xml</link>
+    <description>Recent content in Software Engineering on Bhaskar Karambelkar&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>© 2007-2017 Bhaskar V. Karambelkar. All rights reserved.</copyright>
-    <atom:link href="/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/software-engineering/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Data Scientists And Software Engineering</title>
@@ -73,17 +73,6 @@ Always follow them no matter how big/small your program/script is, and how much 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;DON&amp;rsquo;T BLINDLY COPY CODE FROM STACK OVERFLOW&lt;/strong&gt;.&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Book Review : Data Smart</title>
-      <link>/2014/03/book-review--data-smart/</link>
-      <pubDate>Sat, 29 Mar 2014 20:27:00 +0000</pubDate>
-      
-      <guid>/2014/03/book-review--data-smart/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/17682206-data-smart&#34; style=&#34;float: right; padding-left: 20px&#34;&gt;&lt;img alt=&#34;Data Smart: Using Data Science to Transform Information into Insight&#34; border=&#34;0&#34; src=&#34;https://d202m5krfqbpi5.cloudfront.net/books/1381288882m/17682206.jpg&#34; /&gt;&lt;br/&gt;Data Smart by&lt;br/&gt;John W. Foreman&lt;/a&gt;
-There is no reason why you should not buy this book, if you even are remotely connected with things like &amp;lsquo;Data Science&amp;rsquo;, &amp;lsquo;Analytics&amp;rsquo;, &amp;lsquo;Forecasting&amp;rsquo; etc.I enjoyed all chapters and especially Chapters 4 (Optimization), 6 (Regression), 8 (Forecasting).Seriously buy this book, now.It&amp;rsquo;s very easy read, and yet the author does not merely skimp important concepts, so you get best of both worlds, a good solid foundation and practical implementation.&lt;br&gt;One thing I like is for 90% of the time, the subject matter and the spreadsheet diagrams are on the same set of pages, so you don&amp;rsquo;t have to go back and forth between pages to sync text and images.&lt;/p&gt;
 </description>
     </item>
     

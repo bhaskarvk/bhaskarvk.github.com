@@ -7,8 +7,75 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>© 2007-2017 Bhaskar V. Karambelkar. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 24 Feb 2017 17:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 13 Apr 2017 22:29:01 -0400</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Data Scientists And Software Engineering</title>
+      <link>/2017/04/data-scientists-and-software-engineering/</link>
+      <pubDate>Thu, 13 Apr 2017 22:29:01 -0400</pubDate>
+      
+      <guid>/2017/04/data-scientists-and-software-engineering/</guid>
+      <description>
+
+&lt;h1 id=&#34;coding-software-engineering&#34;&gt;Coding != Software Engineering&lt;/h1&gt;
+
+&lt;p&gt;As has been mentioned ad nauseam: Any one can code. What has not been said enough is that there is a lot more to coding than merely assembling a set of instructions in a programming language of your choice to make the machine do what you want. Not as catchy as &amp;lsquo;Any one can code!&amp;rsquo;, is it?&lt;/p&gt;
+
+&lt;p&gt;As a professional software developer turned data scientist, I feel compelled to share some software engineering wisdom with my fellow data scientist who may have followed a non coding heavy path. If you are an academic researcher turned data scientist, or perhaps a data analyst used to point-and-click GUI tools, or excel (the horror!), then learning and being able to code in a programming language can be a liberating, exhilarating, but also a very scary experience. But fear not, this post is just for you, and hopefully some of my points will encourage you to explore software engineering in more detail.&lt;/p&gt;
+
+&lt;h1 id=&#34;so-what-is-software-engineering&#34;&gt;So What is Software Engineering?&lt;/h1&gt;
+
+&lt;p&gt;Instead of referencing a formal definition which you can easily look up using Google, let me tell you what I think the practice of software engineering aims to accomplish. Writing more or less working code is the easy part. What software engineering aims to accomplish is making the code portable, concise, relatively bug free, secure, performant within given constraints, and reusable, all with limited man-power and budget. And believe me, this is not as easy as you might think it is, nor is this process a natural extension of the practice of coding. By that I mean that you can&amp;rsquo;t learn software engineering by coding more and more, let alone master it. Proper software engineering is an art+science on to it self, of which coding skills are an important but nonetheless only a small piece.&lt;/p&gt;
+
+&lt;p&gt;The reason I chose to explain software engineering this way, is because, the term software engineering is in itself somewhat controversial and debated. So instead of drowning you in the controversy about the term, I present my understanding of the intent behind software engineering. But be forewarned that this is one person&amp;rsquo;s opinion so take it for what it&amp;rsquo;s worth.&lt;/p&gt;
+
+&lt;h1 id=&#34;so-why-must-data-scientists-care&#34;&gt;So Why Must Data Scientists Care?&lt;/h1&gt;
+
+&lt;p&gt;For many a reasons. As I mentioned previously more and more data analysis is now done in code rather than point-and-click GUI tools. This places the added burden of learning how to code on an data analyst / researcher who may not have had exposure to coding before. Even if you had taken a programming language class before, it was mostly to teach you the syntax of the programming language rather than teach you about software engineering.&lt;/p&gt;
+
+&lt;p&gt;The implications of the above are they you may write code that works but it may have all sorts of issues. It may not be portable on account of using non-portable APIs/Libraries. It may not be optimized/concise and as a result non performant at scale. It may have a large surface area for bugs and security vulnerabilities. It may not be maintainable in the long run, and hence prevent you from reproducing your results in the future.&lt;/p&gt;
+
+&lt;p&gt;I would go as far as to argue that if you care about the veracity and reproducibility of your research/analysis then you absolutely must care about software engineering.&lt;/p&gt;
+
+&lt;h1 id=&#34;cliff-notes-for-software-engineering&#34;&gt;Cliff Notes for Software Engineering&lt;/h1&gt;
+
+&lt;p&gt;I must warn you this page is only meant to get you started on software engineering, and not tell you all that there is about it. Even then, following most of my advice below will make you a better coder (ahem software engineer).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Have a basic understanding of how computer systems work. The hardware, the software (including OS/Kernel), the network, the Internet. &lt;strong&gt;This will go a long way, I promise&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Try and pick up at least 2 or 3 programming languages. Broaden your repertoire.&lt;/li&gt;
+&lt;li&gt;Learn about various programming paradigms like imperative, object-oriented, functional etc.&lt;/li&gt;
+&lt;li&gt;Many a modern languages don&amp;rsquo;t strictly fall under a single paradigm. Form a habit of recognizing which features adhere to which paradigms.&lt;/li&gt;
+&lt;li&gt;Embrace each programing language&amp;rsquo;s idiosyncrasies rather that fight them. If in doubt always remember that people lot smarter than you put hours into developing the language/API/library you are using.&lt;/li&gt;
+&lt;li&gt;Have a good understanding of the &lt;strong&gt;standard library&lt;/strong&gt; of a programming language. It will prevent you from inefficiently duplicating functionality that was at your disposal from the get go.&lt;/li&gt;
+&lt;li&gt;In addition to the standard library research a bit on some leading 3rd party libraries/APIs available. Someone always has the problem solved before you. Your skill lies in finding it rather than duplicating it.&lt;/li&gt;
+&lt;li&gt;Start picking up on how to distinguish efficient vs inefficient code. Efficiency can defined in terms of performance, conciseness, resource consumption etc.&lt;/li&gt;
+&lt;li&gt;Teach yourself the principles of &lt;strong&gt;application security&lt;/strong&gt; and secure coding. Not being a full time software developer doesn&amp;rsquo;t alleviate you from writing secure code.&lt;/li&gt;
+&lt;li&gt;Think beyond your immediate use case. Think of use cases in future or use cases by users other than yourself. &amp;ldquo;It suffices my needs&amp;rdquo; is a narrow mindset.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Write less code and more comments&lt;/strong&gt;. Think of that someone who has to read your code six months or an year from now. Even if that someone is you, I can tell you from experience that reading properly commented code can do wonders to lower your stress levels.&lt;/li&gt;
+&lt;li&gt;Be critical of your coding abilities rather than being confident about them. Let that imposter syndrome be your motivation to improve.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automate your testing&lt;/strong&gt;. Be it unit tests or integration tests, take out the human as much as possible from the equation.&lt;/li&gt;
+&lt;li&gt;Learn about &lt;strong&gt;software delivery pipelines&lt;/strong&gt;. Continuous integration (CI), automated deployments, devops are not just buzzwords. They play a critical part in your overall product development.&lt;/li&gt;
+&lt;li&gt;Familiarize yourself with distributed computing, cloud environments, virtualization and container technologies.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The last four ones are special and deserve to be separated out from the rest.
+Always follow them no matter how big/small your program/script is, and how much you are pressed for time. Excuse the shouting because they are that much important.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;NEVER CODE WITHOUT A VERSION CONTROL SYSTEM, PREFERABLY GIT&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DON&amp;rsquo;T HARD CODE STRINGS, NUMBERS, FILE/DIRECTORY NAMES EVER!&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ALWAYS METICULOUSLY DOCUMENT YOUR &amp;ldquo;CLEVER&amp;rdquo; HACKS. ALWAYS!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DON&amp;rsquo;T BLINDLY COPY CODE FROM STACK OVERFLOW&lt;/strong&gt;.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Leaflet Diary: Chapter 5, Leaflet 1.1 and Beyond</title>
@@ -1752,88 +1819,6 @@ Rscript -e &amp;quot;install.packages(c(&#39;data.table&#39;, &#39;knitr&#39;, &
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;After that it&amp;rsquo;s your usual R stuff. I&amp;rsquo;m going to convert this zone to a shiny server and will blog about it when done.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Redoing some Bad Data Viz.</title>
-      <link>/2015/09/redoing-some-bad-data-viz./</link>
-      <pubDate>Sat, 12 Sep 2015 17:12:00 +0000</pubDate>
-      
-      <guid>/2015/09/redoing-some-bad-data-viz./</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://pbs.twimg.com/media/COt0Ev0WIAEADUL.png:large&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I saw the above graph in my Twitter feed. This beauty comes from &lt;a href=&#34;https://twitter.com/businessinsider/status/642734996889993216&#34; target=&#34;_blank&#34;&gt;Business Insider&lt;/a&gt; and was part of &lt;a href=&#34;http://www.businessinsider.com/misery-index-of-major-global-economies-2015-9&#34; target=&#34;_blank&#34;&gt;this&lt;/a&gt; article describing the misery in the world.
-There are so many wrong visualization elements here. So let&amp;rsquo;s see what they are and if we can fix them.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;Stacked Bar Chart&lt;/em&gt; are not useful when you have to compare the category which doesn&amp;rsquo;t align on an axis. In this case you can&amp;rsquo;t really compare the inflation values of each country because they don&amp;rsquo;t have a common baseline. Secondly it is very apparent that both the categories that is unemployment and inflation have different range, so the common range of -5 to 25 is not really ideal.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Vertical Labels&lt;/em&gt; Unless your head is attached at 270 degrees to your neck, it is really very hard to read vertical labels.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Legends are Confusing&lt;/em&gt;. Both the values are expressed in percentage, but only the Unemployment label has the % sign. Also notice the space between Unemploy and ment.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;No order to the x-axis labels.&lt;/em&gt; neither alphabetical nor by the value of either inflation nor unemployment.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So how do we better this? Business Insider article cited the source of the chart as &lt;a href=&#34;https://www.societegenerale.com/en/home&#34; target=&#34;_blank&#34;&gt;Société Générale&amp;rsquo;s&lt;/a&gt; Global Economic Outlook report. I couldn&amp;rsquo;t find the said report or the data for the said chart anywhere on their website. &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook&#34; target=&#34;_blank&#34;&gt;CIA World Fact book&lt;/a&gt; also has various indicators for each country, two of which are &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook/rankorder/2092rank.html&#34; target=&#34;_blank&#34;&gt;Inflation rate (consumer prices)&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://www.cia.gov/library/publications/the-world-factbook/rankorder/2129rank.html&#34; target=&#34;_blank&#34;&gt;Unemployment rate&lt;/a&gt;. This would be perfect for demonstration purpose, even if the values from the CIA fact book may not be exactly same as that in the chart. Both these pages have a link to download the raw data in a tab separated format (TSV).&lt;/p&gt;
-
-&lt;p&gt;So after downloading the raw data and a few data wrangling in R, here is the result.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;/images/BIPlot.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Note&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Now instead of stacked bar chart you have two side-by-side charts. This allows you to compare the Inflation and Unemployment across Countries easily. Secondly each chart gets its own scale for the x-axis, which allows us to better scale the bars.&lt;/li&gt;
-&lt;li&gt;Instead of having you to rotate your head, now the chart is rotated so you can easily read each country label.&lt;/li&gt;
-&lt;li&gt;The x-axis labels are now consistent and both indicate that we&amp;rsquo;re looking at percentage values.&lt;/li&gt;
-&lt;li&gt;The y-axis data is sorted alphabetically as opposed to no order before.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For the interested the R code which produced the graph is shown below.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
-library(readr)
-library(tidyr)
-library(gridExtra)
-library(ggplot2)
-library(httr)
-
-setwd(&#39;/Users/XYZ/Documents/cia-factbook/rankorder&#39;)
-inf &amp;lt;- read_tsv(&#39;rawdata_2092.txt&#39;, col_names = F)
-uemp &amp;lt;- read_tsv(&#39;rawdata_2129.txt&#39;, col_names = F)
-
-countries &amp;lt;- c(&#39;Switzerland&#39;, &#39;Taiwan&#39;, &#39;Japan&#39;, &#39;Korea, South&#39;, &#39;United States&#39;,
-               &#39;Czech Republic&#39;, &#39;United Kingdom&#39;, &#39;Poland&#39;, &#39;China&#39;, &#39;Germany&#39;,
-               &#39;Netherlands&#39;, &#39;Mexico&#39;, &#39;Australia&#39;, &#39;France&#39;, &#39;Chile&#39;,
-               &#39;European Union&#39;, &#39;Italy&#39;, &#39;Indonesia&#39;, &#39;Brazil&#39;, &#39;Russia&#39;, &#39;Spain&#39;)
-
-df &amp;lt;- inner_join(inf, uemp,by=&#39;X2&#39;)
-df &amp;lt;- df %&amp;gt;% select(X2, X3.x, X3.y) %&amp;gt;%
-  rename(Country=X2, unemployment=X3.y, inflation=X3.x)
-
-df &amp;lt;- df %&amp;gt;% arrange(Country)
-df &amp;lt;- df %&amp;gt;% mutate(unemployment=as.numeric(unemployment),
-                    inflation=as.numeric(inflation),
-                    Country=factor(Country, levels=rev(unique(df$Country)),
-                                   ordered = T))
-
-
-mytheme &amp;lt;- theme_bw() +
-  theme(axis.ticks.y=element_blank()) +
-  theme(panel.border=element_blank()) +
-  theme(panel.grid=element_blank())
-
-gInf &amp;lt;- ggplot(df %&amp;gt;% filter(Country %in% countries),
-       aes(Country, inflation)) +
-  geom_bar(stat=&#39;identity&#39;,fill=&#39;#C29365&#39;) + coord_flip() +
-  xlab(&#39;&#39;) + ylab(&#39;Inflation (%)&#39;) + mytheme
-
-gUemp &amp;lt;- ggplot(df %&amp;gt;% filter(Country %in% countries),
-       aes(Country, unemployment)) +
-  geom_bar(stat=&#39;identity&#39;, fill=&#39;#65ADC2&#39;) + coord_flip() +
-  xlab(&#39;&#39;) + ylab(&#39;Unemployment (%)&#39;) + mytheme +
-  theme(axis.text.y=element_blank())
-grid.arrange(gInf, gUemp, ncol=2)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
     </item>
     
   </channel>

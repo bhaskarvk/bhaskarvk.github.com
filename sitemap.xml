@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>/2017/04/data-scientists-and-software-engineering/</loc>
+    <lastmod>2017-04-13T22:29:01-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2017/02/leaflet-diary-chapter-5-leaflet-1.1-and-beyond/</loc>
     <lastmod>2017-02-24T17:00:00-04:00</lastmod>
   </url>
@@ -216,7 +221,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2017-02-24T17:00:00-04:00</lastmod>
+    <lastmod>2017-04-13T22:29:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -282,7 +287,7 @@
   
   <url>
     <loc>/tags/data-science/</loc>
-    <lastmod>2014-03-29T20:27:00+00:00</lastmod>
+    <lastmod>2017-04-13T22:29:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -468,7 +473,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2017-02-24T17:00:00-04:00</lastmod>
+    <lastmod>2017-04-13T22:29:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -558,6 +563,12 @@
   <url>
     <loc>/tags/smartos/</loc>
     <lastmod>2015-10-24T20:22:02-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/software-engineering/</loc>
+    <lastmod>2017-04-13T22:29:01-04:00</lastmod>
     <priority>0</priority>
   </url>
   
